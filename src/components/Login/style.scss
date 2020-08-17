@@ -1,0 +1,32 @@
+.settings {
+  display: flex;
+  justify-content: center;
+  padding-top: 5em;
+}
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width: 30%;
+    padding: 2em;
+    input {
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1.15em;
+      margin-bottom: 10px;
+    }
+    button {
+      color: #fff;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+    }
+  }
+
+
+.loading {
+  color: #fff;
+}
