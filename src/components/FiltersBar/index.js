@@ -10,17 +10,11 @@ import { Button } from 'semantic-ui-react';
 import SearchBar from '../SearchBar';
 
 const FiltersBar = ({
-  matin, midi, soir, 
-  gastronomie, culture_art, bars, promenades, 
-  activites_aquatiques, shopping, spectacles_concerts, 
-  onHandleClick
-}) => {
-  
-  const handleClick = () => {
-    console.log('Click');
-  };
+  matin, midi, soir,
+  gastronomie, culture_art, bars, promenades,
+  activites_aquatiques, shopping, spectacles_concerts, onGetAvail
+}) => (
 
-  return (
   <div className="filtersbar">
 
     <SearchBar />
@@ -28,17 +22,19 @@ const FiltersBar = ({
     <div className="availability">
       <div className="availability-dates">
         <p>Selectionner vos dates</p>
-        <button>
+        <button type="button">
           Start Day
         </button>
-        <button>
+        <button type="button">
           End Day
         </button>
       </div>
       <div className="availability-time">
         <p>Je suis dispo</p>
         <Button
-          onClick={handleClick}
+          onClick={() => {
+            onGetAvail();
+          }}
         >
           Matin
         </Button>
@@ -66,7 +62,8 @@ const FiltersBar = ({
             </div>
             <div>
               <label htmlFor="bars">Bars : </label>
-              <input type="checkbox" id="bars" name="bars" />              </div>
+              <input type="checkbox" id="bars" name="bars" />
+            </div>
             <div>
               <label htmlFor="promenades">Promenades / Randonnées : </label>
               <input type="checkbox" id="promenades" name="promenades" />
@@ -90,6 +87,6 @@ const FiltersBar = ({
       </form>
     </div>
   </div>
-)};
+);
 
 export default FiltersBar;
