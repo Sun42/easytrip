@@ -71,8 +71,8 @@ const FiltersBar = ({
           </div>
           <div className="form-col2">
             <div>
-              <label htmlFor="gastronomie">Gastronomie : </label>
-              <input type="checkbox" id="gastronomie" name="gastronomie" />
+              <label htmlFor="shopping">Shopping : </label>
+              <input type="checkbox" id="shopping" name="shopping" />
             </div>
             <div>
               <label htmlFor="activites_acquatiques">Activités aquatiques : </label>
@@ -83,6 +83,11 @@ const FiltersBar = ({
               <input type="checkbox" id="spectacles_concerts" name="spectacles_concerts" />
             </div>
           </div>
+        </div>
+        <div className="button-submit">
+        <Button>
+            C'est parti !
+        </Button>
         </div>
       </form>
     </div>
