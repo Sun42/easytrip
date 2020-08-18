@@ -1,7 +1,7 @@
 const authController = {
     
     signupPage : (request, response) => {
-        response.render('signup')
+        response.json('signup')
     },
 
     signupAction: (request, response) => {
@@ -13,7 +13,7 @@ const authController = {
     },
     
     signinPage: (request, response) => {
-        response.render('connexion')
+        response.json('connexion')
     }, 
 
     signinAction:(request,response) => {
