@@ -13,7 +13,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+        <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -28,7 +28,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+      <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -43,7 +43,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+      <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -59,7 +59,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+        <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -74,7 +74,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+      <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -89,7 +89,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+      <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -104,7 +104,7 @@ const Result = () => (
     <Item>
       <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
       <Item.Content>
-        <Item.Header as='a'>Falaise</Item.Header>
+      <h3>Randonnée entre plages et falaises</h3>
         <Item.Meta>
           <span className='cinema'>Etretat</span>
         </Item.Meta>
@@ -115,7 +115,7 @@ const Result = () => (
         </Item.Extra>
       </Item.Content>
     </Item>
-    
+
   </Item.Group>
   
 
