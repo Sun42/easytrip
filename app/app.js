@@ -24,7 +24,7 @@ app.use(cors());
 app.use(session({
     saveUninitialized: true, 
     resave:true, 
-    secret:'my secret pw'
+    secret:process.env.SECRET
     }));
 
 
