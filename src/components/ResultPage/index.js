@@ -17,7 +17,6 @@ const ResultPage = () => {
         matin={false}
         midi={false}
         soir={false}
-        onHandleClick={handleClick}
       />
       <Result
         gastronomie={false}
