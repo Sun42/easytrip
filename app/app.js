@@ -5,6 +5,9 @@ const express = require('express');
 const session = require('express-session');
 
 const cookieParser = require('cookie-parser');
+
+// For cross-origin sharing
+const cors = require('cors');
 // Import routing
 const router = require('./router');
 
@@ -12,6 +15,7 @@ const router = require('./router');
 
 const app = express();
 
+app.use(cors());
 
 // Add function to serve static files (REACT ??)
 // app.use(express.static('public'));
