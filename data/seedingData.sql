@@ -23,8 +23,8 @@ INSERT INTO activites(nom, information, dispo, localisation, carnet_id, categori
 ('Falaise du malaise', 'Enorme circuit de randonnée pour les plus aguerris', '07:00:00', 'lat : 15, lon: 32', 1, 2);
 
 
-
-
+-- Il faudra rajouter des contraintes sur activites.dispo pour qu'une telle heure de la journée = matin, aprem ou soir 
+-- Il faudra faire une migration sur carnet.user_id où l'on va transformer le user_id en not null 
 
 
 
