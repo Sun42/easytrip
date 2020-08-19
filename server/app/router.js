@@ -25,7 +25,7 @@ const router = express.Router();
 //router.get('/', mainController.homepage);
 
 // Authentification routes
-router.route('/inscription')
+router.route('/api/inscription')
     .get(authController.signupPage)
     .post(authController.signupAction);
 
