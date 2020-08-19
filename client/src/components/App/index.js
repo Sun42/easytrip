@@ -1,16 +1,19 @@
-// == Import npm
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 
 import './styles.css';
-import SearchBar from '../SearchBar';
-import Login from '../LoginPage/Login';
-import HomePage from '../HomePage/HomePage';
-import Header from '../Header';
+import 'semantic-ui-css/semantic.min.css'
+
+
 import Footer from '../Footer';
+import Header from '../Header';
+import HomePage from '../HomePage/HomePage';
+import Login from '../LoginPage/Login';
 import NotFound from '../NotFound';
+import ResultPage from '../ResultPage';
+import SearchBar from '../SearchBar';
 
 // == Composant
 const App = () => {
@@ -21,6 +24,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
+     <ResultPage />
       <Switch>
         <Route exact path="/">
           <SearchBar

@@ -55,6 +55,8 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+
+    "add": "^2.0.6",
     "axios": "^0.19.2",
     "prop-types": "*",
     "react": "*",
@@ -63,8 +65,11 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "redux": "*",
+    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.0",
     "slugify": "^1.4.5",
-    "styled-components": "*"
+    "styled-components": "*",
+    "yarn": "^1.22.4"
+
   }
 }

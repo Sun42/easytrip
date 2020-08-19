@@ -1,0 +1,19 @@
+.result {
+  width: 70%;
+  border: 2px solid rgba(6, 192, 130, 0.164);
+  border-radius: 10px;
+  margin: 5px;
+  display: flex;
+
+  &-list {
+    width: 60%;
+    margin: 10px;
+    overflow: scroll;
+  }
+
+  &-map {
+    width: 40%;
+    border: 1px solid gray;
+    margin: 15px;
+  }
+}

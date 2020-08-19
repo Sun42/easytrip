@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+
 // == Import : local
 // Composants
 import App from 'src/components/App';
@@ -15,6 +16,7 @@ import store from 'src/store';
 //    => crée une structure d'objets imbriqués (DOM virtuel)
 const rootReactElement = (
   <Provider store={store}>
+
     <Router>
       <App />
     </Router>
