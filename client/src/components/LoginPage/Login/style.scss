@@ -4,15 +4,16 @@
   padding-top: 5em;
 }
 .settings-form {
+  border-radius: 10px;
+  border: 1px solid grey;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: red;
     width: 30%;
     padding: 2em;
     input {
-      border: none;
+      border: 1px solid grey;
       border-radius: 10px;
       padding: 12px;
       font-size: 1.15em;
