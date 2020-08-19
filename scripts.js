@@ -1,4 +1,5 @@
 // const axios = require('axios').default;
+var mymap;
 
 // Fonction d'initialisation de la carte
 function initMap() {
@@ -45,15 +46,26 @@ function initMap() {
     });
 }
 
-function  searchCoordinates() {
-    console.log("ca passe");
+async function searchCoordinates() {
+    const city = document.getElementById('city-field').value;
+    data = await getNominatimData(city);
+    lat = data.data[0].lat;
+    lon = data.data[0].lon;
+    full_name = data.data[0].display_name;
+    adress = data.data[0].address
+    console.log(data);
+    coordinates = [lat, lon];
+    
+    // On centre la carte sur la ville
+    mymap.panTo(coordinates);
 }
 
 async function getNominatimData(city) {
     try {
         const url = `https://nominatim.openstreetmap.org/search?q=${city}&format=json&addressdetails=1&limit=1&polygon_svg=1`;
-        const response = await axios.get(url);
-      console.log(response);
+        // const url = `https://nominatim.openstreetmap.org/search?city=${city}&amenity=bar&format=json&addressdetails=1&limit=1&polygon_svg=1`;
+        const data = await axios.get(url);
+      return data;
     } catch (error) {
       console.error(error);
     }

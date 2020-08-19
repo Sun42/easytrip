@@ -27,6 +27,8 @@ https://nominatim.org/release-docs/develop/api/Overview/
 https://nominatim.org/release-docs/develop/api/Search/
 https://nominatim.openstreetmap.org/status.php?format=json
 
+Recuperer les 100 premier bar à paris:
+https://nominatim.openstreetmap.org/search?city=Paris&amenity=bar&format=json&addressdetails=1&limit=100&polygon_svg=1
 
 Host son propre serveur de données overpass-api: 
 https://wiki.openstreetmap.org/wiki/Overpass_API/Installation#Populating_the_DB
