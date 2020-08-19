@@ -13,21 +13,28 @@ CREATE TABLE user(
 ); 
 
 CREATE TABLE carnet(
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "nom" TEXT, 
+    "ville" TEXT,
     "date_depart" TIMESTAMPTZ,
     "date_retour" TIMESTAMPTZ,
-    "carnet_activites" -- FK? 
+    "carnet_activites" TEXT,
+    "user_id" INT NOT NULL REFERENCES "user"(id)
 ); 
 
 CREATE TABLE categorie(
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "nom" TEXT
 );
 
 CREATE TABLE activites(
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "nom" TEXT NOT NULL, 
     "information" TEXT,
     "date_debut" TIMESTAMPTZ,
     "date_fin" TIMESTAMPTZ, 
-    "localisation" -- quel datatype ?
+    "localisation" TEXT,
+    "carnet_id" INT REFERENCES "carnet"(id),
+    "categorie_id" INT REFERENCES "categorie"(id)
 ); 
 
