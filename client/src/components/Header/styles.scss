@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  background-color: rgb(89, 112, 177);
+  padding: 1.5rem;
+}
+
+h1 {
+  width: 75%;
+}
+
+.login {
+  width: 25%;
+  text-align: center;
+  margin-left: 1200px;
+  margin-top: 15px;
+}
+
+button {
+  margin-left: 15px;
+  padding: 2rem;
+  border: 1px solid rgb(25, 48, 85);
+  font-size: 20px;
+  background-color: white;
+  color: #333258;
+  box-shadow: 10px 5px 5px rgb(25, 48, 85);
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #333258;
+  color: white;
+  transition: 0.5s;
+}
+
+.logo {
+  width: 15%;
+  height: 35%;
+
+}
