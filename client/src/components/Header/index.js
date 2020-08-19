@@ -2,11 +2,10 @@ import React from 'react';
 
 // Styles
 import './styles.scss';
-import Logo from '../../assets/logo.png'
 
 const Header = () => (
   <div className="header">
-    <img className="logo" src={Logo} alt="ourlogo" />
+    <h1>EasyTrip</h1>
     <div className="login">
       <button>Connexion</button>
       <button>Inscription</button>
