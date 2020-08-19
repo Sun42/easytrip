@@ -7,34 +7,37 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
             integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
             crossorigin=""/>
-        <style>#mapid { height: 500px; width: 500px;}</style>
+        <style>#mapid { height: 600px; width: 600px;}</style>
     </head>
     <body>
         <div id="mapid"> </div>
+         <!--Champs de recherche-->
+         <p>
+            <label for="city-field">Ville : </label>
+            <input type="text" id="city-field">
+        </p>
+        <p>
+            <label for="distance-field">Distance : </label>
+            <input type="range" min="1" max="200" id="distance-field">
+        </p>
+        <p id="distance-value"></p>
+        <button  onclick="searchCoordinates()"> Rechercher </button>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
         <script>
-            // On initialise la latitude et la longitude de Paris (centre de la carte)
-            var lat = 48.852969;
-            var lon = 2.349903;
+            // On initialise la latitude et la longitude de Lyon (centre de la carte)
+            var lat = 45.7542305;
+            var lon = 4.8386187;
             var macarte = null;
-            // Fonction d'initialisation de la carte
-            function initMap() {
-                // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-                mymap = L.map('mapid').setView([lat, lon], 11);
-                // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
-                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                    // Il est toujours bien de laisser le lien vers la source des données
-                    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                    minZoom: 1,
-                    maxZoom: 20
-                }).addTo(mymap);
-            }
-            window.onload = function(){
-		// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-		initMap(); 
+
+            window.onload = function() {
+                // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+                initMap(); 
             };
         </script>
+        <script src="scripts.js" ></script>
     </body>
 </html>

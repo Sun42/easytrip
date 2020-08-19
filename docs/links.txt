@@ -1,2 +1,32 @@
 https://nouvelle-techno.fr/actualites/serie/tutoriels-openstreetmap?page=1
 https://leafletjs.com/examples/
+
+https://wiki.openstreetmap.org/wiki/FR:Serveurs/tile.openstreetmap.fr
+https://www.craig.fr/fr/contenu/1377-flux-tuile-wmswmtstms
+
+
+TMS= Tiles Map server (?)
+Les services sont disponibles en deux projections :
+
+EPSG:3857, autrement appelée "spherical/web mercator" ou "projection google" - c'est la même projection qui est utilisée par l'API du géoportail. Elle utilise les mêmes niveaux de résolution que les autres services en lignes, et permettent donc de superposer facilement un fond de plan Openstreetmap/Google/IGN aux données du CRAIG.
+ 
+
+EPSG:2154 : c'est du Lambert 93 standard, pour une utilisation directe dans des SIG bureautiques. Les 16 niveaux de résolution vont de 1:5120000 à 1:156, avec un facteur standard de 2 entre les niveaux, p.ex 1:20000, 1:10000, 1:5000...
+
+
+Layers par groupe de markers:
+https://leafletjs.com/examples/layers-control/
+
+https://github.com/masajid390/BeautifyMarker
+https://github.com/MatthewBarker/leaflet-wikipedia
+
+http://overpass-api.de/
+https://overpass-turbo.eu/
+
+https://nominatim.org/release-docs/develop/api/Overview/
+https://nominatim.org/release-docs/develop/api/Search/
+https://nominatim.openstreetmap.org/status.php?format=json
+
+
+Host son propre serveur de données overpass-api: 
+https://wiki.openstreetmap.org/wiki/Overpass_API/Installation#Populating_the_DB
