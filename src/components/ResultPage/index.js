@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FiltersBar from '../FiltersBar';
+import FiltersBar from '../../containers/FiltersBar';
 import Result from '../Result';
 
 import './styles.scss';
@@ -14,9 +14,9 @@ const ResultPage = () => {
   return (
     <div className="resultpage">
       <FiltersBar
-        matin={false}
         midi={false}
         soir={false}
+        ville={"Paris"}
       />
       <Result
         gastronomie={false}

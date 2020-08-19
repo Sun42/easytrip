@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 // styles
 import './styles.scss';
@@ -12,9 +13,11 @@ import SearchBar from '../SearchBar';
 const FiltersBar = ({
   matin, midi, soir,
   gastronomie, culture_art, bars, promenades,
-  activites_aquatiques, shopping, spectacles_concerts, onGetAvail
-}) => (
+  activites_aquatiques, shopping, spectacles_concerts, handleAvail, 
+  handlePref
+}) => {
 
+  return (
   <div className="filtersbar">
 
     <SearchBar />
@@ -22,6 +25,7 @@ const FiltersBar = ({
     <div className="availability">
       <div className="availability-dates">
         <p>Selectionner vos dates</p>
+        console.log
         <button type="button">
           Start Day
         </button>
@@ -33,7 +37,8 @@ const FiltersBar = ({
         <p>Je suis dispo</p>
         <Button
           onClick={() => {
-            onGetAvail();
+            console.log('mon on click');
+            handleAvail();
           }}
         >
           Matin
@@ -54,7 +59,14 @@ const FiltersBar = ({
           <div className="form-col1">
             <div>
               <label htmlFor="gastronomie">Gastronomie : </label>
-              <input type="checkbox" id="gastronomie" name="gastronomie" />
+              <input 
+                type="checkbox" 
+                id="gastronomie" 
+                name="gastronomie"
+                onClick={() => {
+                  handlePref();
+                }}
+              />
             </div>
             <div>
               <label htmlFor="culture_art">Culture / Art : </label>
@@ -92,6 +104,10 @@ const FiltersBar = ({
       </form>
     </div>
   </div>
-);
+)};
+
+FiltersBar.propTypes = {
+  handleAvail: PropTypes.func.isRequired,
+};
 
 export default FiltersBar;
