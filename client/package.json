@@ -56,6 +56,14 @@
   },
   "dependencies": {
 
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-redux": "*",
+    "redux": "*",
+    "styled-components": "*"
+
+
     "add": "^2.0.6",
     "axios": "^0.19.2",
     "prop-types": "*",
