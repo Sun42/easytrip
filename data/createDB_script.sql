@@ -4,14 +4,16 @@
 -- CREATE DATABASE easytrip OWNER easytrip;
 
 -- Une fois connecté à l'utilisateur et BDD, 1er déploimenet (création de tables + champs conformément au MCD)
-DROP TABLE IF EXISTS "user";
-DROP TABLE IF EXISTS "carnet";
-DROP TABLE IF EXISTS "categorie"; 
-DROP TABLE IF EXISTS "activites";
+DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS "carnet" CASCADE;
+DROP TABLE IF EXISTS "categorie" CASCADE; 
+DROP TABLE IF EXISTS "activites" CASCADE;
+
 
 CREATE TABLE "user"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "email" TEXT NOT NULL UNIQUE,
+    "password" TEXT NOT NULL,
     "nom" TEXT,
     "prenom" TEXT,
     "photo" TEXT

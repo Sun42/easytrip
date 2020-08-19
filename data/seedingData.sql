@@ -1,9 +1,10 @@
-INSERT INTO user (email, nom, prenom) VALUES
-('thrall@orgrimmar.com', 'Durotar', 'Thrall'),
-('garrosh@hurlenfer.com', 'Hurlenfer', 'Garrosh'),
-('jaina@portvaillant.com', 'Portvaillant', 'Jaina'),
-('edwin@vancleef.com', 'Vancleef', 'Edwin'),
-('malfurion@hurlorage.com', 'Hurlorage', 'Malfurion');
+INSERT INTO user (email, password, nom, prenom)
+('test@ŧest.com', 'test', 'Test', 'Test')
+('thrall@orgrimmar.com', 'test','Durotar', 'Thrall'),
+('garrosh@hurlenfer.com','test', 'Hurlenfer', 'Garrosh'),
+('jaina@portvaillant.com', 'test', 'Portvaillant', 'Jaina'),
+('edwin@vancleef.com', 'test', 'Vancleef', 'Edwin'),
+('malfurion@hurlorage.com', 'test', 'Hurlorage', 'Malfurion');
 
 INSERT INTO carnet(nom, ville, date_depart, date_retour, user_id) VALUES
 ('Roadtrip dans le sud', 'Narbonne', '2016-06-22', '2016-07-01', 1),
