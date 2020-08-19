@@ -1,32 +1,40 @@
-import React, { useState } from 'react';
-
+import React from 'react';
+import Proptypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
-
-// Styles
 import './styles.scss';
 
-const SearchBar = () => {
-  const [search, setSearch] = useState("");
-  const onInputChange = (content) => {
-    setSearch(content);
-  }
-  return (
-    <div className="search-bar">
-      <form>
-        <Input
-          placeholder="Cherchez..."
-          fluid
-          icon="search"
-          iconPosition="left"
-          value={search}
-          onChange={(evt) => {
-            console.log(evt.target.value);
-            const content = evt.target.value;
-            onInputChange(content);
-          }}
-        />
-      </form>
-    </div>
-)};
+const SearchBar = ({
+  search, handleChange, handleSubmit, loading,
+}) => (
+  <div className="search-bar">
+    <form
+      onSubmit={(evt) => {
+        evt.preventDefault();
+        handleSubmit();
+      }}
+    >
+      <Input
+        value={search}
+        onChange={(evt) => {
+          const text = evt.target.value;
+          handleChange(text);
+          console.log('je suis la');
+        }}
+        loading={loading}
+        placeholder="quelle est votre destination?"
+        fluid
+        icon="search"
+        iconPosition="left"
+      />
+    </form>
+  </div>
+);
+
+SearchBar.propTypes = {
+  loading: Proptypes.bool.isRequired,
+  search: Proptypes.string.isRequired,
+  handleChange: Proptypes.func.isRequired,
+  handleSubmit: Proptypes.func.isRequired,
+};
 
 export default SearchBar;
