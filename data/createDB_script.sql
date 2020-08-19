@@ -18,8 +18,7 @@ CREATE TABLE carnet(
     "ville" TEXT,
     "date_depart" TIMESTAMPTZ,
     "date_retour" TIMESTAMPTZ,
-    "carnet_activites" TEXT,
-    "user_id" INT NOT NULL REFERENCES "user"(id)
+    "user_id" INT REFERENCES "user"(id) -- Il faudra faire une migration où l'on va transformer le user_id en not null 
 ); 
 
 CREATE TABLE categorie(
@@ -31,10 +30,10 @@ CREATE TABLE activites(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "nom" TEXT NOT NULL, 
     "information" TEXT,
-    "date_debut" TIMESTAMPTZ,
-    "date_fin" TIMESTAMPTZ, 
+    "dispo" TIME, -- Il faudra rajouter des contraintes pour qu'une telle heure de la journée = matin, aprem ou soir  
     "localisation" TEXT,
     "carnet_id" INT REFERENCES "carnet"(id),
     "categorie_id" INT REFERENCES "categorie"(id)
 ); 
+
 
