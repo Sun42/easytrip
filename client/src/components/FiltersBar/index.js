@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // styles
 import './styles.scss';
@@ -10,14 +10,8 @@ import { Button } from 'semantic-ui-react';
 // import des autres composants
 import SearchBar from '../SearchBar';
 
-const FiltersBar = ({
-  matin, midi, soir,
-  gastronomie, culture_art, bars, promenades,
-  activites_aquatiques, shopping, spectacles_concerts, handleAvail, 
-  handlePref
-}) => {
+const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, handlePrefBar, handlePrefPromenade, handlePrefShopping, handlePrefActAqua, handlePrefSpectacle }) => (
 
-  return (
   <div className="filtersbar">
 
     <SearchBar />
@@ -58,55 +52,104 @@ const FiltersBar = ({
           <div className="form-col1">
             <div>
               <label htmlFor="gastronomie">Gastronomie : </label>
-              <input 
-                type="checkbox" 
-                id="gastronomie" 
+              <input
+                type="checkbox"
+                id="gastronomie"
                 name="gastronomie"
                 onClick={() => {
-                  handlePref();
+                  handlePrefGastronomie();
                 }}
               />
             </div>
             <div>
               <label htmlFor="culture_art">Culture / Art : </label>
-              <input type="checkbox" id="culture_art" name="culture_art" />
+              <input 
+                type="checkbox" 
+                id="culture_art" 
+                name="culture_art"
+                onClick={() => {
+                  handlePrefCulture();
+                }}
+              />
             </div>
             <div>
               <label htmlFor="bars">Bars : </label>
-              <input type="checkbox" id="bars" name="bars" />
+              <input 
+                type="checkbox" 
+                id="bars" 
+                name="bars"
+                onClick={() => {
+                  handlePrefBar();
+                }}
+              />
             </div>
             <div>
               <label htmlFor="promenades">Promenades / Randonnées : </label>
-              <input type="checkbox" id="promenades" name="promenades" />
+              <input 
+                type="checkbox"
+                id="promenades"
+                name="promenades"
+                onClick={() => {
+                  handlePrefPromenade();
+                }}
+              />
             </div>
           </div>
           <div className="form-col2">
             <div>
               <label htmlFor="shopping">Shopping : </label>
-              <input type="checkbox" id="shopping" name="shopping" />
+              <input 
+                type="checkbox"
+                id="shopping"
+                name="shopping"
+                onClick={() => {
+                  handlePrefShopping();
+                }}
+              />
             </div>
             <div>
               <label htmlFor="activites_acquatiques">Activités aquatiques : </label>
-              <input type="checkbox" id="activites_acquatiques" name="activites_acquatiques" />
+              <input 
+                type="checkbox" 
+                id="activites_acquatiques"
+                name="activites_acquatiques"
+                onClick={() => {
+                  handlePrefActAqua();
+                }}
+              />
             </div>
             <div>
               <label htmlFor="spectacles_concerts">Spectacles / Concerts : </label>
-              <input type="checkbox" id="spectacles_concerts" name="spectacles_concerts" />
+              <input 
+                type="checkbox" 
+                id="spectacles_concerts"
+                name="spectacles_concerts"
+                onClick={() => {
+                  handlePrefSpectacle();
+                }}
+              />
             </div>
           </div>
         </div>
         <div className="button-submit">
-        <Button>
+          <Button>
             C'est parti !
-        </Button>
+          </Button>
         </div>
       </form>
     </div>
   </div>
-)};
+);
 
 FiltersBar.propTypes = {
   handleAvail: PropTypes.func.isRequired,
+  handlePrefGastronomie: PropTypes.func.isRequired,
+  handlePrefCulture: PropTypes.isRequired,
+  handlePrefBar: PropTypes.isRequired,
+  handlePrefPromenade: PropTypes.isRequired,
+  handlePrefShopping: PropTypes.isRequired,
+  handlePrefActAqua: PropTypes.isRequired,
+  handlePrefSpectacle: PropTypes.isRequired,
 };
 
 export default FiltersBar;

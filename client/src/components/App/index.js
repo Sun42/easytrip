@@ -24,7 +24,6 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-     <ResultPage />
       <Switch>
         <Route exact path="/">
           <SearchBar
@@ -40,6 +39,9 @@ const App = () => {
             password={password}
             handleChangePassword={setPassword}
           />
+        </Route>
+        <Route path="/result">
+          <ResultPage />
         </Route>
         <Route>
           <NotFound />
