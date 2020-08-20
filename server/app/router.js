@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 
 // Import controllers here
 
@@ -19,10 +20,10 @@ const searchController = require('./controllers/searchController');
 
 
 
-const router = express.Router();
+
 
 // Homepage routes
-//router.get('/', mainController.homepage);
+router.get('/', mainController.homePage);
 
 // Authentification routes
 router.route('/api/inscription')

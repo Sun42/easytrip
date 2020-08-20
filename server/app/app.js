@@ -4,7 +4,9 @@ const express = require('express');
 
 const session = require('express-session');
 
-const cookieParser = require('cookie-parser');
+const userMiddleware = require('./middlewares/userMid');
+
+// const cookieParser = require('cookie-parser');
 
 // For cross-origin sharing
 const cors = require('cors');
@@ -22,14 +24,19 @@ app.use(cors());
 
 // Gestion des sessions : saveInitialized à décider si vrai/faux, l'utilisateur reste loggé pendant 10 minutes
 app.use(session({
+    secret:'mylittlesecret',
     saveUninitialized: true, 
-    resave:true, 
-    SECRET:process.env.SECRET 
+    resave:true
     }));
 
 
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
 app.use(express.urlencoded({extended:true}));
+
+app.use(userMiddleware);
+
+// app.use(cookieParser());
+
 
 app.use(express.json());
 // Routing
