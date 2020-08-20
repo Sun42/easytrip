@@ -19,7 +19,6 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
     <div className="availability">
       <div className="availability-dates">
         <p>Selectionner vos dates</p>
-        console.log
         <button type="button">
           Start Day
         </button>
