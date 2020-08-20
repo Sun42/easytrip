@@ -1,5 +1,5 @@
-INSERT INTO user (email, password, name, surname)
-('test@ŧest.com', 'test', 'Test', 'Test')
+INSERT INTO "user" (email, password, name, surname) VALUES
+('test@ŧest.com', 'test', 'Test', 'Test'),
 ('thrall@orgrimmar.com', 'test','Durotar', 'Thrall'),
 ('garrosh@hurlenfer.com','test', 'Hurlenfer', 'Garrosh'),
 ('jaina@portvaillant.com', 'test', 'Portvaillant', 'Jaina'),
@@ -14,14 +14,15 @@ INSERT INTO travelogue(name, city, date_departure, date_return, user_id) VALUES
 INSERT INTO category(label) VALUES
 ('Gastronomie'), 
 ('Randonnée'), 
-('Activité aquatique')
-('Promenade')
+('Activité aquatique'),
+('Promenade'),
 ('Bar');
 
 INSERT INTO activity(name, information, localisation, travelogue_id, category_id) VALUES
 ('Auberge du Lion', 'Haute cuisine et grande carte de vins', 'lat : 45, lon: 32', 2, 1),
 ('Aquaparc', 'Piscines et jeux aquatiques pour tous les âges','lat : 95, lon: 12', 1, 3),
 ('Falaise du malaise', 'Enorme circuit de randonnée pour les plus aguerris','lat : 15, lon: 32', 1, 2);
+
 
 
 
