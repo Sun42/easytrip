@@ -32,3 +32,5 @@ https://nominatim.openstreetmap.org/search?city=Paris&amenity=bar&format=json&ad
 
 Host son propre serveur de données overpass-api: 
 https://wiki.openstreetmap.org/wiki/Overpass_API/Installation#Populating_the_DB
+
+https://www.youtube.com/watch?v=J7pFiXh-ydA
