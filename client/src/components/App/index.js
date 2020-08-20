@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 
 import './styles.css';
-import 'semantic-ui-css/semantic.min.css'
-
+import 'semantic-ui-css/semantic.min.css';
 
 import Footer from '../Footer';
 import Header from '../Header';
-import HomePage from '../HomePage/HomePage';
-import Login from '../LoginPage/Login';
+import HomePage from '../HomePage';
 import NotFound from '../NotFound';
-import ResultPage from '../ResultPage';
+import Result from '../Result';
 import SearchBar from '../SearchBar';
+import LoginForm from '../../containers/LoginForm';
 
 // == Composant
 const App = () => {
@@ -24,7 +23,6 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-     <ResultPage />
       <Switch>
         <Route exact path="/">
           <SearchBar
@@ -33,13 +31,9 @@ const App = () => {
           />
           <HomePage />
         </Route>
-        <Route exact path="/Login">
-          <Login
-            email={email}
-            handleChangeEmail={setEmail}
-            password={password}
-            handleChangePassword={setPassword}
-          />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/resultats">
+          <Result />
         </Route>
         <Route>
           <NotFound />
