@@ -5,42 +5,41 @@
 
 -- Une fois connecté à l'utilisateur et BDD, 1er déploimenet (création de tables + champs conformément au MCD)
 DROP TABLE IF EXISTS "user" CASCADE;
-DROP TABLE IF EXISTS "carnet" CASCADE;
-DROP TABLE IF EXISTS "categorie" CASCADE; 
-DROP TABLE IF EXISTS "activites" CASCADE;
+DROP TABLE IF EXISTS "travelogue" CASCADE;
+DROP TABLE IF EXISTS "category" CASCADE; 
+DROP TABLE IF EXISTS "activity" CASCADE;
 
 
 CREATE TABLE "user"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "nom" TEXT,
-    "prenom" TEXT,
+    "name" TEXT,
+    "surname" TEXT,
     "photo" TEXT
 ); 
 
-CREATE TABLE "carnet"(
+CREATE TABLE "travelogue"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "nom" TEXT, 
-    "ville" TEXT,
-    "date_depart" TIMESTAMPTZ,
-    "date_retour" TIMESTAMPTZ,
+    "name" TEXT, 
+    "city" TEXT,
+    "date_departure" TIMESTAMPTZ,
+    "date_return" TIMESTAMPTZ,
     "user_id" INT REFERENCES "user"(id) 
 ); 
 
-CREATE TABLE "categorie"(
+CREATE TABLE "category"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "nom" TEXT
+    "label" TEXT
 );
 
-CREATE TABLE "activites"(
+CREATE TABLE "activity"(
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "nom" TEXT NOT NULL, 
-    "information" TEXT,
-    "dispo" TIME,  
+    "name" TEXT NOT NULL, 
+    "information" TEXT, 
     "localisation" TEXT,
-    "carnet_id" INT REFERENCES "carnet"(id),
-    "categorie_id" INT REFERENCES "categorie"(id)
+    "travelogue_id" INT REFERENCES "travelogue"(id),
+    "category_id" INT REFERENCES "category"(id)
 ); 
 
 
