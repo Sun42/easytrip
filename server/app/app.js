@@ -19,12 +19,12 @@ app.use(cors());
 
 // Add function to serve static files (REACT ??)
 // app.use(express.static('public'));
-
+console.log(process.env.SECRET);
 // Gestion des sessions : saveInitialized à décider si vrai/faux, l'utilisateur reste loggé pendant 10 minutes
 app.use(session({
-    saveUninitialized: true, 
-    resave:true, 
-    SECRET:process.env.SECRET 
+    saveUninitialized: true,
+    resave:true,
+    secret:process.env.SECRET
     }));
 
 
