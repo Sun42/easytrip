@@ -1,8 +1,19 @@
-.explications {
+@use 'src/styles/vars';
+
+.wrapper {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+
+  .explications {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+
+    div.ui.three.steps {
+      margin: 0;
+    }
+  }
 }
 
-div.ui.three.steps {
-  margin: 0;
-}
+
+

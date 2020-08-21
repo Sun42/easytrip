@@ -6,6 +6,7 @@ export const GET_PREF_PROMENADE = 'GET_PREF_PROMENADE';
 export const GET_PREF_SHOPPING = 'GET_PREF_SHOPPING';
 export const GET_PREF_ACT_AQUA = 'GET_PREF_ACT_AQUA';
 export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
+export const GET_DATA = 'GET_DATA';
 
 export const getAvail = () => ({
   type: GET_AVAIL,
@@ -37,4 +38,9 @@ export const getPrefActAqua = () => ({
 
 export const getPrefSpectacle = () => ({
   type: GET_PREF_SPECTACLE,
+});
+
+export const getData = (payload) => ({
+  type: GET_DATA,
+  payload,
 });

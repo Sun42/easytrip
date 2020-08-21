@@ -1,7 +1,9 @@
-import { GET_AVAIL } from '../store/action/filters-actions';
-import { GET_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE, GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE } from '../store/action/filters-actions';
+import { GET_AVAIL, GET_DATA } from '../store/action/filters-actions';
+import { GET_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, 
+  GET_PREF_PROMENADE, GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, 
+  GET_PREF_SPECTACLE } from '../store/action/filters-actions';
 
-// Initial STATE de l'application
+// Initial STATE de filters
 export const initialState = {
   matin: false,
   midi: false,
@@ -13,11 +15,19 @@ export const initialState = {
   shopping: false,
   act_aqua: false,
   spectacle: false,
+  data: [],
 };
 
 // Fonction de REDUCER
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case GET_DATA:
+      return {
+        ...state,
+        data: [
+          action.payload,
+        ],
+      };
     case GET_AVAIL:
       return {
         ...state,

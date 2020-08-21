@@ -10,8 +10,12 @@ import { Button } from 'semantic-ui-react';
 // import des autres composants
 import SearchBar from '../SearchBar';
 
-const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, handlePrefBar, handlePrefPromenade, handlePrefShopping, handlePrefActAqua, handlePrefSpectacle }) => (
-
+const FiltersBar = ({
+  handleAvail, handlePrefGastronomie,
+  handlePrefCulture, handlePrefBar, handlePrefPromenade,
+  handlePrefShopping, handlePrefActAqua, handlePrefSpectacle,
+  fetchData,
+}) => (
   <div className="filtersbar">
 
     <SearchBar />
@@ -62,9 +66,9 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
             </div>
             <div>
               <label htmlFor="culture_art">Culture / Art : </label>
-              <input 
-                type="checkbox" 
-                id="culture_art" 
+              <input
+                type="checkbox"
+                id="culture_art"
                 name="culture_art"
                 onClick={() => {
                   handlePrefCulture();
@@ -73,9 +77,9 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
             </div>
             <div>
               <label htmlFor="bars">Bars : </label>
-              <input 
-                type="checkbox" 
-                id="bars" 
+              <input
+                type="checkbox"
+                id="bars"
                 name="bars"
                 onClick={() => {
                   handlePrefBar();
@@ -84,7 +88,7 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
             </div>
             <div>
               <label htmlFor="promenades">Promenades / Randonnées : </label>
-              <input 
+              <input
                 type="checkbox"
                 id="promenades"
                 name="promenades"
@@ -97,7 +101,7 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
           <div className="form-col2">
             <div>
               <label htmlFor="shopping">Shopping : </label>
-              <input 
+              <input
                 type="checkbox"
                 id="shopping"
                 name="shopping"
@@ -108,8 +112,8 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
             </div>
             <div>
               <label htmlFor="activites_acquatiques">Activités aquatiques : </label>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 id="activites_acquatiques"
                 name="activites_acquatiques"
                 onClick={() => {
@@ -119,8 +123,8 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
             </div>
             <div>
               <label htmlFor="spectacles_concerts">Spectacles / Concerts : </label>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 id="spectacles_concerts"
                 name="spectacles_concerts"
                 onClick={() => {
@@ -131,7 +135,11 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
           </div>
         </div>
         <div className="button-submit">
-          <Button>
+          <Button
+            onClick={() => {
+              fetchData();
+            }}
+          >
             C'est parti !
           </Button>
         </div>
@@ -143,12 +151,13 @@ const FiltersBar = ({ handleAvail, handlePrefGastronomie, handlePrefCulture, han
 FiltersBar.propTypes = {
   handleAvail: PropTypes.func.isRequired,
   handlePrefGastronomie: PropTypes.func.isRequired,
-  handlePrefCulture: PropTypes.isRequired,
-  handlePrefBar: PropTypes.isRequired,
-  handlePrefPromenade: PropTypes.isRequired,
-  handlePrefShopping: PropTypes.isRequired,
-  handlePrefActAqua: PropTypes.isRequired,
-  handlePrefSpectacle: PropTypes.isRequired,
+  handlePrefCulture: PropTypes.func.isRequired,
+  handlePrefBar: PropTypes.func.isRequired,
+  handlePrefPromenade: PropTypes.func.isRequired,
+  handlePrefShopping: PropTypes.func.isRequired,
+  handlePrefActAqua: PropTypes.func.isRequired,
+  handlePrefSpectacle: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;
