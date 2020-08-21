@@ -1,23 +1,28 @@
-const Sequelize = require('sequelize');
+const {Sequelize, DataTypes} = require('sequelize');
+const sequelize = new Sequelize('easytrip', 'easytrip', 'easytrip', {
+    host:'localhost',
+    dialect:'postgres',
+    logging: console.log
+});  //('postgres://easytrip:easytrip@localhost:5432/easytrip');
 
-const sequelize = require('../database');
-
-class User extends Sequelize.Model {
-    get fullname(){
-        return this.surname + this.name;
-    };
-};
-
-sequelize.define('user',
-{
-    email: Sequelize.STRING,
-    password: Sequelize.STRING,
-    name: Sequelize.STRING,
-    surname: Sequelize.STRING,
-    photo: Sequelize.STRING,
-}, {
-    sequelize,
-    tableName: "user"
+const User = sequelize.define('User', {
+    email: {
+        type: DataTypes.STRING
+    },
+    password: {
+        type: DataTypes.STRING
+    },
+    name: {
+        type: DataTypes.STRING
+    },
+    surname: {
+        type: DataTypes.STRING
+    },
+    photo: {
+        type: DataTypes.STRING
+    },
 });
 
-module.exports = User;
+console.log(User === sequelize.models.User);
+
+// module.exports = User;

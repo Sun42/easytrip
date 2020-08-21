@@ -1,10 +1,18 @@
 require('dotenv').config();
 // Import of needed packages (express)
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const session = require('express-session');
 
-const userMiddleware = require('./middlewares/userMid');
+// database
+const db = require('./config/database')
+
+// Test DB
+db.authenticate()
+.then(() => console.log('Database connected....'))
+.catch(err => console.log('Error: ' + err))
+
 
 // const cookieParser = require('cookie-parser');
 
@@ -17,6 +25,9 @@ const router = require('./router');
 
 const app = express();
 
+
+
+// Pour que le front puisse faire appel à notre API
 app.use(cors());
 
 // Add function to serve static files (REACT ??)
@@ -29,18 +40,18 @@ app.use(session({
     resave:true
     }));
 
-
+//app.use(express.json());
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
-app.use(express.urlencoded({extended:true}));
+//app.use(express.urlencoded({extended:true}));
 
-app.use(userMiddleware);
 
 // app.use(cookieParser());
 
+app.use(bodyParser.json());
 
-app.use(express.json());
 // Routing
 app.use(router);
+
 
 // config
 const PORT = process.env.PORT || 3000;

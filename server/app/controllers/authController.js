@@ -1,6 +1,7 @@
 const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
-const { User } = require('../models/user');
+const User = require('../models/user');
+
 
 
 const authController = {
@@ -14,7 +15,30 @@ const authController = {
         response.json('signup')
     },
 
-    signupAction: async (request, response) => {
+    signupAction: (request, response, next) => {
+        console.log(request.body);
+        response.status(201).json({message: 'Object created'});
+        
+        
+        
+        
+        /*let {email, password1, password2} = request.body;
+
+        console.log({
+            email,
+            password1,
+            password2
+        });
+
+        let errors = [];
+
+        if(!email || !password1 || !password2) {
+            errors.push({message: "Please enter all fields"});
+        }
+        
+        
+        */
+        
         //On regarde si l'utilisateur existe déjà en BDD
         /*const user = await User.findOne({
             where : {
@@ -30,7 +54,7 @@ const authController = {
         } */
     // 2. Si l'utilisateur n'existe pas encore, on fait les vérifications 
 
-    // Vérification du mail
+    /*// Vérification du mail
     if(!emailValidator.validate(request.body.email)) {
         console.log('Email invalide, redirection vers la page inscription')
         //return response.redirect('/inscription')
@@ -45,16 +69,20 @@ const authController = {
     }
 
     // Cryptage du mot de passe avec bcrypt avec 5 saltRounds
-    const saltRounds = 5;
+    try {
+        const hashedPassword = await bcrypt.hash(request.body.password, 5);
+        user.push
+    } catch (error) {
+        
+    }
 
-    const encryptedPassword = await bcrypt.hash(request.body.password, saltRounds);
-    user.password = encryptedPassword;
+ user.password = encryptedPassword;
 
    await user.insert(); 
 
-   response.status('200').json({data:user});
+   response.status('200').json({data:user}); */
     
-},
+}, 
 
     signinPage: (request, response) => {
         response.json('This is your login page')
