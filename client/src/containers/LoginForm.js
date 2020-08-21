@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import LoginForm from '../components/LoginForm';
-import { changeField, login, logout } from '../store/action/user-actions';
+import { changeField, login, logout } from '../store/action/login-actions';
 
 const mapStateToProps = (state) => ({
-  email: state.user.email,
-  password: state.user.password,
-  isLogged: state.user.isLogged,
-  loggedMessage: state.user.loggedMessage,
+  email: state.login.email,
+  password: state.login.password,
+  isLogged: state.login.isLogged,
+  loggedMessage: state.login.loggedMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,15 +14,14 @@ const mapDispatchToProps = (dispatch) => ({
     // Je rassemble dans un objet le nom de l'input
     // qui a changé, et sa valeur
     const changeObject = {
-      [name]: value
+      [name]: value,
     };
-    console.log(changeObject)
+    console.log(changeObject);
     dispatch(changeField(changeObject));
-
   },
-  handleLogin: () => {
+  handleLogin: (changeData) => {
     console.log('login');
-    dispatch(login());
+    dispatch(login(changeData));
   },
   handleLogout: () => {
     console.log('logout');

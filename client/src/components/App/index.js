@@ -17,9 +17,7 @@ import LoginForm from '../../containers/LoginForm';
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-
+ 
   return (
     <div className="app">
       <Header />

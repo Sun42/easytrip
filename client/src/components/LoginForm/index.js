@@ -15,15 +15,17 @@ const LoginForm = ({
   isLogged,
   loggedMessage,
 }) => {
+  console.log(LoginForm);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
 
   return (
-    <div className= "settings">
-    <div className="login-form">
-      {isLogged && (
+    <div className="settings">
+      <div className="login-form">
+        {isLogged && (
         <div className="login-form-logged">
           <p className="login-form-message">
             {loggedMessage}
@@ -36,8 +38,8 @@ const LoginForm = ({
             Déconnexion
           </button>
         </div>
-      )}
-      {!isLogged && (
+        )}
+        {!isLogged && (
 
         <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <Field
@@ -54,13 +56,13 @@ const LoginForm = ({
           <button
             type="submit"
             className="login-form-button"
-            onClick={handleLogin}
+            onClick="submit"
           >
             OK
           </button>
         </form>
-      )}
-    </div>
+        )}
+      </div>
     </div>
   );
 };

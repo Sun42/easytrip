@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import filters from './filters';
-import user from './user';
+import login from './login';
 
 export default combineReducers({
   filters,
-  user,
+  login,
 });

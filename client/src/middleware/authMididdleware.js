@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 import { LOGIN, CHECK_AUTH, LOGOUT, loginSuccess, loginError, logoutSuccess } from '../action/user-actions';
 
 export default (store) => (next) => (action) => {
@@ -7,7 +7,7 @@ export default (store) => (next) => (action) => {
     case LOGOUT: {
       axios({
         method: 'post',
-        url: 'http://localhost:3001/logout',
+        url: ,
         withCredentials: true
       })
         .then((res) => {
@@ -22,7 +22,7 @@ export default (store) => (next) => (action) => {
     case CHECK_AUTH: {
       axios({
         method: 'post',
-        url: 'http://localhost:3001/isLogged',
+        url: ,
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
@@ -41,7 +41,7 @@ export default (store) => (next) => (action) => {
       const { user } = store.getState();
       axios({
         method: 'post',
-        url: 'http://localhost:3001/login',
+        url: ,
         data: user,
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })
@@ -62,3 +62,4 @@ export default (store) => (next) => (action) => {
   }
 
 }
+*/

@@ -7,22 +7,22 @@ export const LOGOUT = 'LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 export const checkAuth = () => ({
-  type: CHECK_AUTH
+  type: CHECK_AUTH,
 });
 
 export const loginSuccess = (payload) => ({
   type: LOGIN_SUCCESS,
-  payload
+  payload,
 });
 
 export const loginError = (payload) => ({
   type: LOGIN_ERROR,
-  payload
+  payload,
 });
 
 export const changeField = (payload) => ({
   type: CHANGE_FIELD,
-  payload
+  payload,
 });
 
 export const login = () => ({
@@ -30,9 +30,9 @@ export const login = () => ({
 });
 
 export const logout = () => ({
-  type: LOGOUT
+  type: LOGOUT,
 });
 
 export const logoutSuccess = () => ({
-  type: LOGOUT_SUCCESS
+  type: LOGOUT_SUCCESS,
 });
