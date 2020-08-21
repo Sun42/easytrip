@@ -41,16 +41,18 @@ const LoginForm = ({
         )}
         {!isLogged && (
 
-        <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+        <form method="post" autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <Field
             name="email"
             onChange={changeField}
+            placeholder="email"
             value={email}
           />
           <Field
             name="password"
             type="password"
             onChange={changeField}
+            placeholder="Mot de passe"
             value={password}
           />
           <button

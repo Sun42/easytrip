@@ -6,7 +6,7 @@ const stateInitial = {
   email: 'nawal@easytrip.com',
   password: 'nawal',
   username: 'Nawal',
-  isLogged: true,
+  isLogged: false,
   loggedMessage: 'Bienvenue',
   error: '',
   login: {},
