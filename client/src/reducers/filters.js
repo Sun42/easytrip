@@ -2,7 +2,8 @@ import {
   GET_AVAIL,
   GET_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE,
   GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE,
-  GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS, GET_SEARCH_SUBMIT_ERROR,
+  GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS,
+  GET_SEARCH_SUBMIT_ERROR, GET_SEARCH_SUBMIT_SUCCESS_NAME,
 } from '../store/action/filters-actions';
 
 // Initial STATE de filters
@@ -22,6 +23,7 @@ export const initialState = {
   searchedLocations: [],
   cordinates: [51.509865, -0.118092],
   error: '',
+  name: 'London',
 };
 
 // Fonction de REDUCER
@@ -53,6 +55,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         error: 'Serched place doesnt exist',
+      };
+    case GET_SEARCH_SUBMIT_SUCCESS_NAME:
+      return {
+        ...state,
+        name: action.payload,
       };
     case GET_AVAIL:
       return {

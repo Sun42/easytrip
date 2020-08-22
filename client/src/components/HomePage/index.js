@@ -13,11 +13,6 @@ import './styles.scss';
 
 const HomePage = () => (
   <div className="wrapper">
-    <div>
-      <video autoPlay muted loop id="myVideo">
-        <source src="/client/src/assets/homepageVideo.mp4" type="video/mp4" />
-      </video>
-    </div>
     <div className="explications">
       <Step.Group widths={3}>
         <Step>

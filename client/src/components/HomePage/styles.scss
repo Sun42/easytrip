@@ -3,14 +3,24 @@
 .wrapper {
   display: flex;
   align-items: center;
+  height: 70%;
 
   .explications {
-    margin-top: 100px;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 
     div.ui.three.steps {
       margin: 0;
+      width: 50%;
+    }
+
+    button.ui.animated.button {
+      color: white;
+      font-weight: bold;
+      background-color: black;
+      height: 70px;
+
     }
   }
 }

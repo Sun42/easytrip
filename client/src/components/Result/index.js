@@ -18,164 +18,158 @@ import {
 } from 'react-leaflet';
 // import { Icon } from "leaflet";
 
-const Result = ({ cordinates }) => {
-  const viewport = {
-    center: cordinates,
-    zoom: 11,
-  };
-  return (
-    <div className="result">
-      <div className="result-list">
-        <Item.Group divided>
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+const Result = ({ cordinates, name }) => (
+  <div className="result">
+    <div className="result-list">
+      <Item.Group divided>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
 
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
 
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
 
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
 
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
 
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
 
-          <Item>
-            <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
-            <Item.Content>
-              <h3>Randonnée entre plages et falaises</h3>
-              <Item.Meta>
-                <span className="cinema">Etretat</span>
-              </Item.Meta>
-              <Item.Description>Romantique théâtre ouvert sur la Manche,
-                Étretat a inspiré les plus illustres artistes.
-              </Item.Description>
-              <Item.Extra>
-                <Button>Plus d'info</Button>
-                <Button>Carnet de voyage</Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-        </Item.Group>
-      </div>
-
-      <div className="result-map">
-        <Map
-          viewport={viewport}
-          // onViewportChanged={onViewportChanged}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <Marker position={[45.4, -75.7]}>
-            <Popup>
-              <h3>Etretat</h3>
-              <p><Link to="/amenity">Plus d'info</Link></p>
-              <button
-                type="submit"
-                onClick={() => {
-                  console.log('popup buton');
-                }}
-              >
-                Click
-              </button>
-            </Popup>
-          </Marker>
-        </Map>
-      </div>
+        <Item>
+          <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
+          <Item.Content>
+            <h3>Randonnée entre plages et falaises</h3>
+            <Item.Meta>
+              <span className="cinema">Etretat</span>
+            </Item.Meta>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
+            <Item.Extra>
+              <Button>Plus d'info</Button>
+              <Button>Carnet de voyage</Button>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
+      </Item.Group>
     </div>
-  );
-};
+
+    <div className="result-map">
+      <Map
+        center={cordinates}
+        zoom={11}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Marker position={cordinates}>
+          <Popup>
+            <h3>{name}</h3>
+            <p><Link to="/amenity">Plus d'info</Link></p>
+            <button
+              type="submit"
+              onClick={() => {
+                console.log('popup buton');
+              }}
+            >
+              Click
+            </button>
+          </Popup>
+        </Marker>
+      </Map>
+    </div>
+  </div>
+);
 
 Result.propTypes = {
   cordinates: PropTypes.arrayOf(PropTypes.number).isRequired,

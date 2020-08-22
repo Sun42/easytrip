@@ -9,6 +9,7 @@ export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
 export const GET_SEARCH = 'GET_SEARCH';
 export const GET_SEARCH_SUBMIT = 'GET_SEARCH_SUBMIT';
 export const GET_SEARCH_SUBMIT_SUCCESS = 'GET_SEARCH_SUBMIT_SUCCESS';
+export const GET_SEARCH_SUBMIT_SUCCESS_NAME = 'GET_SEARCH_SUBMIT_SUCCESS_NAME';
 export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
 
 export const getAvail = () => ({
@@ -31,6 +32,11 @@ export const getSearchSubmitSuccess = (payload) => ({
 
 export const getSearchSubmitError = (payload) => ({
   type: GET_SEARCH_SUBMIT_ERROR,
+  payload,
+});
+
+export const getSearchSubmitSuccessName = (payload) => ({
+  type: GET_SEARCH_SUBMIT_SUCCESS_NAME,
   payload,
 });
 

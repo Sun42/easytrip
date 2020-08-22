@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { GET_SEARCH_SUBMIT, getSearchSubmitSuccess, getSearchSubmitError } from '../store/action/filters-actions';
+import { GET_SEARCH_SUBMIT, getSearchSubmitSuccess, 
+  getSearchSubmitError, getSearchSubmitSuccessName } from '../store/action/filters-actions';
 
 const ajaxMiddleware = (store) => (next) => (action) => {
   next(action);
@@ -15,8 +16,9 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         .then((res) => {
           const lat = parseFloat((res.data.location.lat), 10);
           const lon = parseFloat((res.data.location.lon), 10);
-          const cordo = [lat, lon];
-          store.dispatch(getSearchSubmitSuccess(cordo));
+          const cordinates = [lat, lon];
+          store.dispatch(getSearchSubmitSuccess(cordinates));
+          store.dispatch(getSearchSubmitSuccessName(res.data.location.display_name));
         })
         .catch((err) => {
           console.error(err);
