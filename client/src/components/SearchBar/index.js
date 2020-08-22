@@ -6,32 +6,29 @@ import './styles.scss';
 const SearchBar = ({
   searchInput, handleSubmit,
   loading, handleSearch,
-}) => {
-  console.log('cest input', searchInput);
-  return (
-    <div className="search-bar">
-      <form
-        onSubmit={(evt) => {
-          evt.preventDefault();
-          handleSubmit();
+}) => (
+  <div className="search-bar">
+    <form
+      onSubmit={(evt) => {
+        evt.preventDefault();
+        handleSubmit();
+      }}
+    >
+      <Input
+        value={searchInput}
+        onChange={(evt) => {
+          const text = evt.target.value;
+          handleSearch(text);
         }}
-      >
-        <Input
-          value={searchInput}
-          onChange={(evt) => {
-            const text = evt.target.value;
-            handleSearch(text);
-          }}
-          loading={loading}
-          placeholder="quelle est votre destination?"
-          fluid
-          icon="search"
-          iconPosition="left"
-        />
-      </form>
-    </div>
-  );
-};
+        loading={loading}
+        placeholder="quelle est votre destination?"
+        fluid
+        icon="search"
+        iconPosition="left"
+      />
+    </form>
+  </div>
+);
 
 SearchBar.propTypes = {
   loading: PropTypes.bool.isRequired,

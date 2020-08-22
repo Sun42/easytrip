@@ -2,7 +2,7 @@ import React from 'react';
 
 // semantic-ui
 import {
-  Icon, Step, Button, Embed
+  Icon, Step, Button,
 } from 'semantic-ui-react';
 
 // Router
@@ -14,13 +14,8 @@ import './styles.scss';
 const HomePage = () => (
   <div className="wrapper">
     <div>
-      <Embed
-        icon="right circle arrow"
-        placeholder="assets/logo.png"
-        url="assets/homepageVideo.mp4"
-      />
       <video autoPlay muted loop id="myVideo">
-        <source src="../../../assets/homepageVideo.mp4" type="video/mp4" />
+        <source src="/client/src/assets/homepageVideo.mp4" type="video/mp4" />
       </video>
     </div>
     <div className="explications">

@@ -5,15 +5,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_SEARCH_SUBMIT: {
-      const destination = store.getState().search;
-      console.log('cest la destination', destination);
+      const destination = store.getState().filters.search;
+      console.log('je suis la destination', destination);
       axios({
         method: 'get',
-        url: 'http://localhost:3000/api/search?location=PARIS',
+        url: `http://localhost:3000/api/search?location=${destination}`,
         data: destination,
       })
         .then((res) => {
-          store.dispatch(getSearchSubmitSuccess(res.data.location.boundingbox));
+          const lat = parseFloat((res.data.location.lat), 10);
+          const lon = parseFloat((res.data.location.lon), 10);
+          const cordo = [lat, lon];
+          store.dispatch(getSearchSubmitSuccess(cordo));
         })
         .catch((err) => {
           console.error(err);

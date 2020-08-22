@@ -18,9 +18,9 @@ export const initialState = {
   act_aqua: false,
   spectacle: false,
   data: [],
-  search: 'Paris',
+  search: '',
   searchedLocations: [],
-  cordinates: ['48.8155755', '48.902156', '2.224122', '2.4697602'],
+  cordinates: [51.509865, -0.118092],
   error: '',
 };
 
@@ -41,7 +41,6 @@ export default (state = initialState, action = {}) => {
             city: state.search,
           },
         ],
-        search: '',
       };
     case GET_SEARCH_SUBMIT_SUCCESS:
       return {
