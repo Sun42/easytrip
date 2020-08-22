@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import Result from '../components/Result';
 
-const mapStateToProps = () => {
-  return {
-    newMap: state.data,
-  };
-};
+const mapStateToProps = (state) => ({
+  newMap: state.cordinates,
+});
 
 const mapDispatchToState = null;
 

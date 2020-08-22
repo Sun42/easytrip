@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FiltersBar from '../../containers/FiltersBar';
-import Result from '../Result';
+import Result from '../../containers/Result';
 
 import './styles.scss';
 

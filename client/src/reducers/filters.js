@@ -1,7 +1,9 @@
-import { GET_AVAIL, GET_DATA } from '../store/action/filters-actions';
-import { GET_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, 
-  GET_PREF_PROMENADE, GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, 
-  GET_PREF_SPECTACLE } from '../store/action/filters-actions';
+import {
+  GET_AVAIL,
+  GET_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE,
+  GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE,
+  GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS, GET_SEARCH_SUBMIT_ERROR,
+} from '../store/action/filters-actions';
 
 // Initial STATE de filters
 export const initialState = {
@@ -16,17 +18,42 @@ export const initialState = {
   act_aqua: false,
   spectacle: false,
   data: [],
+  search: 'Paris',
+  searchedLocations: [],
+  cordinates: ['48.8155755', '48.902156', '2.224122', '2.4697602'],
+  error: '',
 };
 
 // Fonction de REDUCER
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_DATA:
+    case GET_SEARCH:
       return {
         ...state,
-        data: [
-          action.payload,
+        search: action.payload,
+      };
+    case GET_SEARCH_SUBMIT:
+      return {
+        ...state,
+        searchedLocations: [
+          ...state.searchedLocations,
+          {
+            city: state.search,
+          },
         ],
+        search: '',
+      };
+    case GET_SEARCH_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        cordinates: [
+          ...action.payload,
+        ],
+      };
+    case GET_SEARCH_SUBMIT_ERROR:
+      return {
+        ...state,
+        error: 'Serched place doesnt exist',
       };
     case GET_AVAIL:
       return {

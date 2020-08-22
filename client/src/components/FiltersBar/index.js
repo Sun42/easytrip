@@ -1,3 +1,4 @@
+/* eslint-disable padded-blocks */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,13 +9,12 @@ import './styles.scss';
 import { Button } from 'semantic-ui-react';
 
 // import des autres composants
-import SearchBar from '../SearchBar';
+import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
   handleAvail, handlePrefGastronomie,
   handlePrefCulture, handlePrefBar, handlePrefPromenade,
   handlePrefShopping, handlePrefActAqua, handlePrefSpectacle,
-  fetchData,
 }) => (
   <div className="filtersbar">
 
@@ -137,7 +137,7 @@ const FiltersBar = ({
         <div className="button-submit">
           <Button
             onClick={() => {
-              fetchData();
+              console.log('click');
             }}
           >
             C'est parti !
@@ -157,7 +157,6 @@ FiltersBar.propTypes = {
   handlePrefShopping: PropTypes.func.isRequired,
   handlePrefActAqua: PropTypes.func.isRequired,
   handlePrefSpectacle: PropTypes.func.isRequired,
-  fetchData: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;

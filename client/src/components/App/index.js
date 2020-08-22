@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 
@@ -9,15 +8,14 @@ import 'semantic-ui-css/semantic.min.css'
 
 import Footer from '../Footer';
 import Header from '../Header';
-import HomePage from '../HomePage/HomePage';
+import HomePage from '../HomePage';
 import Login from '../LoginPage/Login';
 import NotFound from '../NotFound';
 import ResultPage from '../ResultPage';
-import SearchBar from '../SearchBar';
+import SearchBar from '../../containers/SearchBar';
 
 // == Composant
 const App = () => {
-  const [search, setSearch] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -26,10 +24,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          <SearchBar
-            search={search}
-            handleChange={setSearch}
-          />
+          <SearchBar />
           <HomePage />
         </Route>
         <Route exact path="/Login">

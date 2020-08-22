@@ -18,10 +18,11 @@ import {
 } from 'react-leaflet';
 // import { Icon } from "leaflet";
 
-const Result = ({newMap}) => (
+const Result = ({ newMap }) => {
+  console.log('je suis la nouvelle carte', newMap);
+  return (
   <div className="result">
     <div className="result-list">
-
       <Item.Group divided>
         <Item>
           <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
@@ -30,7 +31,7 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
               Étretat a inspiré les plus illustres artistes.
             </Item.Description>
             <Item.Extra>
@@ -47,7 +48,7 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
               Étretat a inspiré les plus illustres artistes.
             </Item.Description>
             <Item.Extra>
@@ -64,7 +65,7 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
               Étretat a inspiré les plus illustres artistes.
             </Item.Description>
             <Item.Extra>
@@ -81,8 +82,9 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
-              Étretat a inspiré les plus illustres artistes.</Item.Description>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
             <Item.Extra>
               <Button>Plus d'info</Button>
               <Button>Carnet de voyage</Button>
@@ -97,8 +99,9 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
-              Étretat a inspiré les plus illustres artistes.</Item.Description>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
             <Item.Extra>
               <Button>Plus d'info</Button>
               <Button>Carnet de voyage</Button>
@@ -113,8 +116,9 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
-              Étretat a inspiré les plus illustres artistes.</Item.Description>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
             <Item.Extra>
               <Button>Plus d'info</Button>
               <Button>Carnet de voyage</Button>
@@ -129,8 +133,9 @@ const Result = ({newMap}) => (
             <Item.Meta>
               <span className="cinema">Etretat</span>
             </Item.Meta>
-            <Item.Description>Romantique théâtre ouvert sur la Manche, 
-              Étretat a inspiré les plus illustres artistes.</Item.Description>
+            <Item.Description>Romantique théâtre ouvert sur la Manche,
+              Étretat a inspiré les plus illustres artistes.
+            </Item.Description>
             <Item.Extra>
               <Button>Plus d'info</Button>
               <Button>Carnet de voyage</Button>
@@ -141,25 +146,32 @@ const Result = ({newMap}) => (
     </div>
 
     <div className="result-map">
-      <Map 
-        center={[45.4, -75.7]} 
+      <Map
+        center={[51.505, -0.09]}
         zoom={12}
       >
         <TileLayer
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={[45.4, -75.7]}>
           <Popup>
             <h3>Etretat</h3>
-              <p><Link to={'/amenity'}>Plus d'info</Link></p>
-              <p><Link to={'/carnet-de-voyage'}>Ajoutez au carnet de voyage</Link></p>
+            <p><Link to="/amenity">Plus d'info</Link></p>
+            <button
+              type="submit"
+              onClick={() => {
+                console.log('popup buton');
+              }}
+            >
+              Click
+            </button>
           </Popup>
         </Marker>
       </Map>
     </div>
   </div>
-);
+)};
 
 Result.propTypes = {
   newMap: PropTypes.arrayOf(PropTypes.string).isRequired,

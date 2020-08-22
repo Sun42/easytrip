@@ -6,10 +6,32 @@ export const GET_PREF_PROMENADE = 'GET_PREF_PROMENADE';
 export const GET_PREF_SHOPPING = 'GET_PREF_SHOPPING';
 export const GET_PREF_ACT_AQUA = 'GET_PREF_ACT_AQUA';
 export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
-export const GET_DATA = 'GET_DATA';
+export const GET_SEARCH = 'GET_SEARCH';
+export const GET_SEARCH_SUBMIT = 'GET_SEARCH_SUBMIT';
+export const GET_SEARCH_SUBMIT_SUCCESS = 'GET_SEARCH_SUBMIT_SUCCESS';
+export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
 
 export const getAvail = () => ({
   type: GET_AVAIL,
+});
+
+export const getSearch = (payload) => ({
+  type: GET_SEARCH,
+  payload,
+});
+
+export const getSearchSubmit = () => ({
+  type: GET_SEARCH_SUBMIT,
+});
+
+export const getSearchSubmitSuccess = (payload) => ({
+  type: GET_SEARCH_SUBMIT_SUCCESS,
+  payload,
+});
+
+export const getSearchSubmitError = (payload) => ({
+  type: GET_SEARCH_SUBMIT_ERROR,
+  payload,
 });
 
 export const getPrefGastronomie = () => ({
@@ -38,9 +60,4 @@ export const getPrefActAqua = () => ({
 
 export const getPrefSpectacle = () => ({
   type: GET_PREF_SPECTACLE,
-});
-
-export const getData = (payload) => ({
-  type: GET_DATA,
-  payload,
 });
