@@ -37,9 +37,6 @@ AuthToken.generate = async function (UserId) {
 return AuthToken;
 
 
-
-// needs to be added later eventually :  return authToken; 
-
 // Test model, ok if "true"
 console.log(AuthToken === sequelize.models.AuthToken);
 

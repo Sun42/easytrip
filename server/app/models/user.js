@@ -35,7 +35,7 @@ User.associate = function(models) {
     User.hasMany(models.AuthToken);
 };
 
-// return User
+ return User
 
 // Test model, ok if "true"
 console.log(User === sequelize.models.User);

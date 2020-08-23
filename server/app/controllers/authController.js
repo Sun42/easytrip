@@ -16,72 +16,27 @@ const authController = {
         response.json('signup')
     },
 
-    signupAction: (request, response, next) => {
-        console.log(request.body);
-        response.status(201).json({message: 'Object created'});
-        
-        
-        
-        
-        /*let {email, password1, password2} = request.body;
+    signupAction: async (request, response) => {
+       // password hashing with bcrypt
+       const hash = bcrypt.hashSync(request.body.password, 8);
 
-        console.log({
-            email,
-            password1,
-            password2
-        });
+       try {
+           // create a new user with pw hash from bcrypt
+           let user = await User.create(
+               Object.assign(request.body, {password : hash})
+           );
 
-        let errors = [];
+           // data will be an object with the user and its authtoken
+           let data = await user.authorize();
 
-        if(!email || !password1 || !password2) {
-            errors.push({message: "Please enter all fields"});
-        }
-        
-        
-        */
-        
-        //On regarde si l'utilisateur existe déjà en BDD
-        /*const user = await User.findOne({
-            where : {
-                email: request.body.email
-            }
-        });
+           // returns new user and authtoken to client
+           return response.json(data);
 
-        // 1. Si le user existe déjà
-        if (user) {
-            // On le redirige vers la page de login avec un message
-          console.log('User existe déjà');
-            
-        } */
-    // 2. Si l'utilisateur n'existe pas encore, on fait les vérifications 
+       } catch(err) {
+           return response.status(400).send(err)
+       }
 
-    /*// Vérification du mail
-    if(!emailValidator.validate(request.body.email)) {
-        console.log('Email invalide, redirection vers la page inscription')
-        //return response.redirect('/inscription')
-    }
-
-    // Vérification du mot de passe avec confirmation
-    if (request.body.password !== request.body.passwordConfirm){
-        console.log('Confirmation mdp ne passe pas, redirection vers page inscription')
-        // return response.redirect('/inscription')
-            
-        
-    }
-
-    // Cryptage du mot de passe avec bcrypt avec 5 saltRounds
-    try {
-        const hashedPassword = await bcrypt.hash(request.body.password, 5);
-        user.push
-    } catch (error) {
-        
-    }
-
- user.password = encryptedPassword;
-
-   await user.insert(); 
-
-   response.status('200').json({data:user}); */
+       // Should have later : search for email in DB to see if they are an already existing user
     
 }, 
 
