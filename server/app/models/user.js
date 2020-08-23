@@ -20,9 +20,14 @@ const User = sequelize.define('User', {
     },
     photo: {
         type: DataTypes.STRING
-    },
-});
+    }, 
+         
+    }, {
+        tableName: 'user'
+    }
+);
 
+// Test model, ok if "true"
 console.log(User === sequelize.models.User);
 
-// module.exports = User;
+ module.exports = User;

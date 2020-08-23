@@ -1,6 +1,7 @@
 const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const AuthToken = require('../models/authToken');
 
 
 
