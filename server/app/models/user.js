@@ -43,6 +43,12 @@ User.associate = function({AuthToken}) {
     User.hasMany(AuthToken);
 };
 
+User.associate = function({Travelogue}) {
+    User.hasMany(Travelogue, {
+        foreignKey: 'travelogue_id'
+    });
+}
+
 User.authenticate = async function(email, password) {
     const user = await User.findOne({where: {email}});
 
