@@ -1,6 +1,8 @@
+@use 'src/styles/vars';
+
 .result {
-  width: 100%;
-  border: 2px solid rgba(6, 192, 130, 0.164);
+  width: 70%;
+  border: vars.$border;
   border-radius: 10px;
   margin: 5px;
   display: flex;
@@ -13,7 +15,11 @@
 
   &-map {
     width: 40%;
-    border: 1px solid gray;
     margin: 15px;
+
+    .leaflet-container {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

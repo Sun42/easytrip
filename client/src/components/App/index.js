@@ -11,7 +11,6 @@ import Header from '../Header';
 import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Result from '../Result';
-import SearchBar from '../SearchBar';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
 
@@ -24,10 +23,6 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          <SearchBar
-            search={search}
-            handleChange={setSearch}
-          />
           <HomePage />
         </Route>
         <Route exact path="/login" component={LoginForm} />
