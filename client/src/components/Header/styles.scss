@@ -10,9 +10,19 @@ h1 {
 
 .login {
   width: 25%;
-  text-align: center;
+  text-align: right;
 }
 
-button {
-  margin: 1em;
+.login a {
+  text-decoration: none;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.login a:hover {
+  color: #8a0f53;
+}
+
+.login .active {
+  color: #2c7613;
 }
