@@ -18,8 +18,8 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start": "node app/app.js",
-    "test": "jest"
+    "start": "node app/start.js",
+    "test": "NODE_ENV=test jest --testTimeout=10000"
   },
   "repository": {
     "type": "git",
