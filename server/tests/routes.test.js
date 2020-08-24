@@ -1,5 +1,9 @@
+const axios = require('axios');
+jest.mock('axios');
 const request = require('supertest');
 const app = require('../app/app.js');
+
+
 
 describe('Unkown endpoints should return a 404', () => {
   test('/', async () => {
@@ -27,7 +31,15 @@ describe('/api/search ', () => {
     expect(response.body.error).toMatch(/missing location/);
   });
 
-  test('/api/search/ OK location', async () => {
+  test('/api/search/ OK location with mock', async () => {
+    const mocked_response = {
+      "lat" : "42.42",
+      "lon" : "42.42",
+      "display_name" : "Paris ville lumière",
+      "address" : {},
+    };
+    const resp = {data : [mocked_response]};
+    axios.get.mockResolvedValue(resp);
     const response = await request(app).get('/api/search?location=PARIS');
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveProperty('location');
@@ -36,4 +48,5 @@ describe('/api/search ', () => {
     expect(response.body.location).toHaveProperty('display_name');
     expect(response.body.location).toHaveProperty('address');
   });
+
 });
