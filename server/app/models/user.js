@@ -28,7 +28,8 @@ const User = sequelize.define('User', {
     }, 
          
     }, {
-        tableName: 'user'
+        tableName: 'user',
+        timestamps : false
     }
 );
 
@@ -61,8 +62,8 @@ User.prototype.authorize = async function() {
 
 // On pourra créer aussi une instance de déconnexion ici
 
-
-
+// Synchronisation du modèle dans la BDD, grâce au alter true, la table user se crée si elle n'existe pas et les modifications sont appliquées aux données déjà existantes
+// User.sync({alter:true});
 
  return User;
 

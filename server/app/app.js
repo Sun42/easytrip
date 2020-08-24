@@ -40,13 +40,11 @@ app.use(session({
     resave:true
     }));
 
-//app.use(express.json());
-// Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
-//app.use(express.urlencoded({extended:true}));
-
 
 // app.use(cookieParser());
 
+// Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 // Routing
