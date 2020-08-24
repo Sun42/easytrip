@@ -12,7 +12,6 @@ import HomePage from '../HomePage';
 import Login from '../LoginPage/Login';
 import NotFound from '../NotFound';
 import ResultPage from '../ResultPage';
-import SearchBar from '../../containers/SearchBar';
 
 // == Composant
 const App = () => {
@@ -24,7 +23,6 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          <SearchBar />
           <HomePage />
         </Route>
         <Route exact path="/Login">

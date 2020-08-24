@@ -3,7 +3,17 @@
 .wrapper {
   display: flex;
   align-items: center;
+  flex-direction: column;
   height: 70%;
+
+  video {
+    object-fit: cover;
+    width: 100vw;
+    height: 70vh;
+    position: fixed;
+    top: 2;
+    left: 0;
+  }
 
   .explications {
     display: flex;
@@ -13,6 +23,10 @@
     div.ui.three.steps {
       margin: 0;
       width: 50%;
+
+      div.step {
+        background-color: rgba(255, 255, 255, 0.651);
+      }
     }
 
     button.ui.animated.button {
@@ -20,7 +34,6 @@
       font-weight: bold;
       background-color: black;
       height: 70px;
-
     }
   }
 }

@@ -10,9 +10,17 @@ import { Link } from 'react-router-dom';
 
 // Styles
 import './styles.scss';
+import Video from '../../assets/homepageVideo.mp4';
+
+// Composants
+import SearchBar from '../../containers/SearchBar';
 
 const HomePage = () => (
   <div className="wrapper">
+    <video autoPlay loop muted>
+      <source src={Video} />
+    </video>
+    <SearchBar />
     <div className="explications">
       <Step.Group widths={3}>
         <Step>

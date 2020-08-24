@@ -61,6 +61,7 @@
     "prop-types": "*",
     "react": "*",
     "react-browser-router": "^2.1.2",
+    "react-dates": "^21.8.0",
     "react-dom": "*",
     "react-leaflet": "^2.7.0",
     "react-redux": "^7.2.1",

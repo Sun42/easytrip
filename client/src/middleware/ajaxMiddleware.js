@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { GET_SEARCH_SUBMIT, getSearchSubmitSuccess, 
-  getSearchSubmitError, getSearchSubmitSuccessName } from '../store/action/filters-actions';
+  getSearchSubmitError, getSearchSubmitSuccessName, getLoading 
+} from '../store/action/filters-actions';
 
 const ajaxMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_SEARCH_SUBMIT: {
       const destination = store.getState().filters.search;
-      console.log('je suis la destination', destination);
       axios({
         method: 'get',
         url: `http://localhost:3000/api/search?location=${destination}`,
@@ -18,7 +18,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           const lon = parseFloat((res.data.location.lon), 10);
           const cordinates = [lat, lon];
           store.dispatch(getSearchSubmitSuccess(cordinates));
-          store.dispatch(getSearchSubmitSuccessName(res.data.location.display_name));
+          store.dispatch(getSearchSubmitSuccessName(res.data.location.address.city));
         })
         .catch((err) => {
           console.error(err);
