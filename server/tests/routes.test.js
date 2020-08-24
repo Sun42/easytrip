@@ -10,4 +10,30 @@ describe('Unkown endpoints should return a 404', () => {
     const response = await request(app).get('/blablabla');
     expect(response.statusCode).toBe(404);
     });
+});
+
+describe('/api/search ', () => {
+  test('/api/search no location in query', async () => {
+    const response = await request(app).get('/api/search');
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toHaveProperty('error');
+    expect(response.body.error).toMatch(/missing location/);
   });
+
+  test('/api/search/ empty location', async () => {
+    const response = await request(app).get('/api/search?location=');
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toHaveProperty('error');
+    expect(response.body.error).toMatch(/missing location/);
+  });
+
+  test('/api/search/ OK location', async () => {
+    const response = await request(app).get('/api/search?location=PARIS');
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty('location');
+    expect(response.body.location).toHaveProperty('lat');
+    expect(response.body.location).toHaveProperty('lon');
+    expect(response.body.location).toHaveProperty('display_name');
+    expect(response.body.location).toHaveProperty('address');
+  });
+});
