@@ -3,7 +3,7 @@ const mainController = {
 
         homePage: (request, response) => {
             console.log(request.session)
-            response.json('This is your easytrip homepage!')
+            response.json('This is your easytrip homepage!') // Insert front homepage here
         },
 
 
