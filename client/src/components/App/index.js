@@ -13,11 +13,12 @@ import NotFound from '../NotFound';
 import Result from '../Result';
 import SearchBar from '../SearchBar';
 import LoginForm from '../../containers/LoginForm';
+import SignUpForm from '../SignUpForm';
 
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
- 
+
   return (
     <div className="app">
       <Header />
@@ -30,6 +31,11 @@ const App = () => {
           <HomePage />
         </Route>
         <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/sign-up">
+          <SignUpForm
+            handleChange={setSearch}
+          />
+        </Route>
         <Route exact path="/resultats">
           <Result />
         </Route>

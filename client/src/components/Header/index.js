@@ -6,12 +6,12 @@ import './styles.scss';
 
 const Header = () => (
   <div className="header">
-    <h1>EasyTrip</h1>
-    <NavLink activeClassName="active" to="/">Home</NavLink>
+    <div>
+      <NavLink activeClassName="active" to="/"><h1>EasyTrip</h1></NavLink>
+    </div>
     <div className="login">
       <NavLink activeClassName="active" to="/Login">Connexion</NavLink>
-      <NavLink activeClassName="active" to="/Login">Inscription</NavLink>
-
+      <NavLink activeClassName="active" to="/sign-up">Inscription</NavLink>
 
     </div>
   </div>

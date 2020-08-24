@@ -1,6 +1,6 @@
 .settings {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding-top: 5em;
 }
 .login-form {
@@ -17,15 +17,30 @@
       border-radius: 10px;
       padding: 12px;
       font-size: 1.15em;
-      margin-bottom: 10px;
+      margin-bottom: 2em;
+      margin-top: 0;
     }
     button {
       color: #fff;
       padding: 15px;
       border: none;
       border-radius: 10px;
+      margin-bottom: 2em;
     }
+   
   }
+
+ p{
+    margin-bottom: 0;
+    }
+
+ span{
+display: flex;
+    }
+
+ h1{
+      margin-bottom: 3em;
+    }
 
 
 .loading {
