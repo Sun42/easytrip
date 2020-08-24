@@ -1,9 +1,8 @@
 require('dotenv').config();
 // Import of needed packages (express)
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // database
 const db = require('./config/database')

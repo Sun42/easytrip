@@ -1,10 +1,10 @@
 const { Sequelize } = require('sequelize');
 
-async () => {
+/*async () => {
     await sequelize.sync();
     
 }
-console.log("All models syncronized successflly");
+console.log("All models syncronized successflly"); */
 
 module.exports = new Sequelize('easytrip', 'easytrip', 'easytrip', {
     host:'localhost',

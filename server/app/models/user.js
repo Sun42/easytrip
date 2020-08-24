@@ -8,6 +8,11 @@ const sequelize = new Sequelize('easytrip', 'easytrip', 'easytrip', {
 });  //('postgres://easytrip:easytrip@localhost:5432/easytrip');
 
 const User = sequelize.define('User', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+    },
     email: {
         type: DataTypes.STRING,
         unique: true,
