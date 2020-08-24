@@ -55,15 +55,12 @@
     "webpack-merge": "*"
   },
   "dependencies": {
-
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
     "redux": "*",
-    "styled-components": "*"
-
-
+    "styled-components": "*",
     "add": "^2.0.6",
     "axios": "^0.19.2",
     "prop-types": "*",
@@ -78,6 +75,5 @@
     "slugify": "^1.4.5",
     "styled-components": "*",
     "yarn": "^1.22.4"
-
   }
 }
