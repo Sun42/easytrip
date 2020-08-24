@@ -39,4 +39,21 @@ button:hover {
   .logo {
     width: 40%;
   }
+.login {
+  width: 25%;
+  text-align: right;
+}
+
+.login a {
+  text-decoration: none;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.login a:hover {
+  color: #8a0f53;
+}
+
+.login .active {
+  color: #2c7613;
 }
