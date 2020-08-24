@@ -80,7 +80,7 @@ LoginForm.propTypes = {
 };
 
 LoginForm.defaultProps = {
-  isLogged: false,
+  isLogged: true,
   loggedMessage: 'Connecté',
 };
 

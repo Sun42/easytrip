@@ -2,8 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// == Import : local
-//import './styles.css';
 
 // == Composant
 const Field = ({
