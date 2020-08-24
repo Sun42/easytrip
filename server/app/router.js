@@ -31,39 +31,40 @@ router.route('/api/inscription')
 
 
 
-router.route('/connexion')
+router.route('/api/connexion')
     .get(authController.signinPage)
     .post(authController.signinAction);
 
 
+router.get('/api/search', searchController.search);
 /* Profile routes 
-router.get('/mon-profil', profileController.getProfile);
+router.get('/api/mon-profil', profileController.getProfile);
 
-router.post('/mon-profil', profilController.submitInfo);
+router.post('/api/mon-profil', profilController.submitInfo);
 
-router.patch('/mon-profil', profilController.editInfo);
+router.patch('/api/mon-profil', profilController.editInfo);
 
-router.delete('/mon-profil', profilController.deleteInfo);
+router.delete('/api/mon-profil', profilController.deleteInfo);
 
 Carnet de voyage routes
-router.get('/mes-voyages', tripController.getAllTrips); 
+router.get('/api/mes-voyages', tripController.getAllTrips); 
 
-router.get('/mes-voyages/mon-voyage/:tripId', tripController.getOneTrip);
+router.get('/api/mes-voyages/mon-voyage/:tripId', tripController.getOneTrip);
 
 Accès au formulaire pour ajouter un nouveau voyage
-router.get('mon-voyage/voyage/new', tripController.newTripForm);
+router.get('/api/mon-voyage/voyage/new', tripController.newTripForm);
 
 Permet d'ajouter un nouveau voyage
-router.post('mon-voyage/new', tripController.submitNewTrip);
+router.post('/api/mon-voyage/new', tripController.submitNewTrip);
 
 Permet de modifier un voyage existant
-router.patch('/mon-voyage/:tripId', tripController.editTrip);
+router.patch('/api/mon-voyage/:tripId', tripController.editTrip);
 
 Permet de supprimer un voyage existant
-router.delete('/mon-voyage/:tripId', tripController.deleteTrip);
+router.delete('/api/mon-voyage/:tripId', tripController.deleteTrip);
 
 Search routes
-router.get('/recherche', searchController.getSearchPage);
+
 
 Result routes TODO */
 
