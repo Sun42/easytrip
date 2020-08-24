@@ -16,10 +16,12 @@ import {
 import {
   Map, Marker, Popup, TileLayer,
 } from 'react-leaflet';
-// import { Icon } from "leaflet";
+
+import FiltersBar from '../FiltersBar';
 
 const Result = ({ cordinates, name }) => (
   <div className="result">
+    <FiltersBar />
     <div className="result-list">
       <Item.Group divided>
         <Item>
