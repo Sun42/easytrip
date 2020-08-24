@@ -1,19 +1,23 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 
 // Styles
-import './styles.scss';
+import "./styles.scss";
+import Logo from "../../assets/logo.png";
 
 const Header = () => (
   <div className="header">
-    <div>
-      <NavLink activeClassName="active" to="/"><h1>EasyTrip</h1></NavLink>
-    </div>
+    <img className="logo" src={Logo} alt="clermont" />
     <div className="login">
-      <NavLink activeClassName="active" to="/Login">Connexion</NavLink>
-      <NavLink activeClassName="active" to="/sign-up">Inscription</NavLink>
-
+      <Link to="/login">
+        <button className="button">Connexion</button>
+      </Link>
+      <Link to="/login">
+        <button className="button">Inscription</button>
+      </Link>
     </div>
   </div>
 );
+
 export default Header;
