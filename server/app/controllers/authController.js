@@ -44,17 +44,27 @@ const authController = {
         response.json('This is your login page')
     }, 
 
-    signinAction:(request,response, next) => {
-        const post = response.locals.post = request.body;
+    signinAction: async (request,response) => {
+        const { email, password} = request.body;
 
-        const errors = [];
-        // On vérifie que le username et mdp correspondent bien en BDD
-        if(!post.email){
-            errors.push("This email doesn't exist in our database");
-        };
-        // Si oui ok, sinon erreur
+        // Si le user/password ne sont pas définis, on envoie une erreur 400
+        if (!email || !password) {
+            return response.status(400).send('Merci renseigner votre email et votre mot de passe');
+        }
+
+        try {
+            let user = await User.authenticate(email, password);
+
+            user = await user.authorize();
+
+            return response.json(user);
+        } catch (err) {
+            return response.status(400).send('Email ou mot de passe invalide');
+        }
         
     }
+
+    // Méthode déconnexion ?
 };
 
 module.exports = authController;
