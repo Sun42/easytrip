@@ -1,23 +1,23 @@
+@use 'src/styles/vars';
+
 .filtersbar {
   width: 30%;
-  border: 2px solid rgba(6, 192, 130, 0.164);
-  border-radius: 10px;
+  border: vars.$border;
+  border-radius: vars.$border-radius;
   margin: 5px;
+
+  .destination {
+    height: 15%;
+    margin: 15px 15px 0px 15px;
+  }
 
   .availability {
     height: 25%;
-    margin: 15px 15px 50px 15px;
-    background-color: rgba(128, 202, 186, 0.041);
+    margin: 15px 15px 40px 15px;
 
     &-dates {
       text-align: center;
       margin: 3px;
-
-      p {
-        text-align: center;
-        padding: 0.5em 1em 0.5em 1em;
-        background-color: rgba(6, 192, 130, 0.164);
-      }
       
       button {
         background-color: white;
@@ -27,30 +27,12 @@
     &-time {
       text-align: center;
       margin: 3px;
-
-      p {
-        text-align: center;
-        padding: 0.5em 1em 0.5em 1em;
-        background-color: rgba(6, 192, 130, 0.164);
-      }
     }
   }
 
   .preferences {
     height: 50%;
     margin: 15px;
-
-    p {
-      text-align: center;
-      padding: 0.5em 1em 0.5em 1em;
-      background-color: rgba(6, 192, 130, 0.164);
-    }
-
-    .button-submit {
-      display: flex;
-      justify-content: center;
-      margin-top: 25px;
-    }
 
     .form {
       display: flex;
@@ -59,33 +41,63 @@
       &-col1 {
         width: 50%;
         padding: 1em;
-        border: 1px solid rgba(6, 192, 130, 0.164);
+        border: vars.$filter-columns;
         margin-right: 2px;
 
         div {
           padding: 0.5em;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
+          align-items: center;
+    
+          label {
+            width: 90%;
+          }
+
+          input {
+            display: block;
+            width: 15%;
+          }
         }
       }
 
       &-col2 {
         width: 50%;
         padding: 1em;
-        border: 1px solid rgba(6, 192, 130, 0.164);
+        border: vars.$filter-columns;
         margin-left: 2px;
 
         div {
           padding: 0.5em;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
+          align-items: center;
+
+          label {
+            width: 90%;
+          }
+
+          input {
+            display: block;
+            width: 15%;
+          }
         }
       }
+    }
+
+    .button-submit {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
     }
   }
 }
 
-
+.filtersbar p {
+  text-align: center;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: vars.$filter-heading;
+}
 
 
 

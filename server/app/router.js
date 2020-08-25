@@ -38,6 +38,7 @@ router.route('/api/connexion')
     .post(authController.signinAction);
 
 
+router.get('/api/search', searchController.search);
 /* Profile routes 
 router.get('/api/mon-profil', profileController.getProfile);
 
@@ -65,7 +66,7 @@ Permet de supprimer un voyage existant
 router.delete('/api/mon-voyage/:tripId', tripController.deleteTrip);
 
 Search routes
-router.get('/api/recherche', searchController.getSearchPage);
+
 
 Result routes TODO */
 

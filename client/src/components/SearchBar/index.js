@@ -1,10 +1,11 @@
 import React from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import './styles.scss';
 
 const SearchBar = ({
-  search, handleChange, handleSubmit, loading,
+  searchInput, handleSubmit,
+  loading, handleSearch,
 }) => (
   <div className="search-bar">
     <form
@@ -14,11 +15,10 @@ const SearchBar = ({
       }}
     >
       <Input
-        value={search}
+        value={searchInput}
         onChange={(evt) => {
           const text = evt.target.value;
-          handleChange(text);
-          console.log('je suis la');
+          handleSearch(text);
         }}
         loading={loading}
         placeholder="quelle est votre destination?"
@@ -31,10 +31,10 @@ const SearchBar = ({
 );
 
 SearchBar.propTypes = {
-  loading: Proptypes.bool.isRequired,
-  search: Proptypes.string.isRequired,
-  handleChange: Proptypes.func.isRequired,
-  handleSubmit: Proptypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  searchInput: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
