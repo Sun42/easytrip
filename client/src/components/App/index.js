@@ -33,7 +33,6 @@ const App = () => {
 
       <Switch>
         <Route exact path="/">
-          <SearchBar search={search} handleChange={setSearch} />
           <HomePage />
         </Route>
         <Route exact path="/result">
