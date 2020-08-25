@@ -44,11 +44,6 @@ const App = () => {
         <Route exact path="/resultats">
           <Result />
         </Route>
-<<<<<<< HEAD
-        <Route path="/details" component={() => <Details data={data} />} />
-
-        <Route path="/carnet" component={() => <Carnet data={data} />} />
-=======
         <Route path="/resultats/details">
           <Details data={data} />
           </Route>
@@ -56,7 +51,6 @@ const App = () => {
         <Route path="/carnet">
           <Carnet data={data} />
           </Route>
->>>>>>> features/front_login
 
         <Route>
           <NotFound />
