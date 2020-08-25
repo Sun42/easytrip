@@ -11,6 +11,7 @@ import Header from '../Header';
 import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Result from '../Result';
+import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
 
@@ -24,6 +25,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route exact path="/result">
+          <ResultPage />
         </Route>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/sign-up">

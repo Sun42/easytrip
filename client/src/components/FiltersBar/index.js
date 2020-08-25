@@ -33,6 +33,7 @@ const FiltersBar = ({
   const handleOnDateChange = (startDate, endDate) => setDateRange(startDate, endDate);
 
   return (
+
     <div className="filtersbar">
       <div className="destination">
         <p>Selectionner votre destination</p>
@@ -60,7 +61,6 @@ const FiltersBar = ({
               showDefaultInputIcon
 
             />
-
           </div>
         </div>
         <div className="availability-time">

@@ -18,12 +18,12 @@ export const initialState = {
   shopping: false,
   act_aqua: false,
   spectacle: false,
-  data: [],
   search: '',
   searchedLocations: [],
   cordinates: [51.509865, -0.118092],
   error: '',
   name: 'London',
+  loading: false,
 };
 
 // Fonction de REDUCER
@@ -37,6 +37,7 @@ export default (state = initialState, action = {}) => {
     case GET_SEARCH_SUBMIT:
       return {
         ...state,
+        loading: true,
         searchedLocations: [
           ...state.searchedLocations,
           {
@@ -47,6 +48,7 @@ export default (state = initialState, action = {}) => {
     case GET_SEARCH_SUBMIT_SUCCESS:
       return {
         ...state,
+        loading: false,
         cordinates: [
           ...action.payload,
         ],

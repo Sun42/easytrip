@@ -40,6 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
   handlePrefSpectacle: () => {
     dispatch(getPrefSpectacle());
   },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FiltersBar);

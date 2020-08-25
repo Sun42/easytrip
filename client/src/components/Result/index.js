@@ -17,12 +17,12 @@ import {
   Map, Marker, Popup, TileLayer,
 } from 'react-leaflet';
 
-import FiltersBar from '../FiltersBar';
-
-const Result = ({ cordinates, name }) => (
+const Result = ({ cordinates, name, loading }) => (
   <div className="result">
-    <FiltersBar />
     <div className="result-list">
+      {loading && <div><p>Recherche des resultats...</p></div>}
+      {!loading
+      && (
       <Item.Group divided>
         <Item>
           <Item.Image src="https://www.aquatique-vacances.com/media/9258/initial/plage-etretat-falaises-amont-aval.jpg" />
@@ -143,9 +143,13 @@ const Result = ({ cordinates, name }) => (
           </Item.Content>
         </Item>
       </Item.Group>
+      )}
     </div>
 
     <div className="result-map">
+      {loading && <div><p>Recherche en cours...</p></div>}
+      {!loading
+      && (
       <Map
         center={cordinates}
         zoom={11}
@@ -169,12 +173,15 @@ const Result = ({ cordinates, name }) => (
           </Popup>
         </Marker>
       </Map>
+      )}
     </div>
   </div>
 );
 
 Result.propTypes = {
   cordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+  name: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Result;

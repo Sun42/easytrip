@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// selantuc-ui
 import { Input } from 'semantic-ui-react';
+
 import './styles.scss';
 
 const SearchBar = ({
@@ -21,8 +24,10 @@ const SearchBar = ({
           handleSearch(text);
         }}
         loading={loading}
+        action="search"
         placeholder="quelle est votre destination?"
         fluid
+        focus
         icon="search"
         iconPosition="left"
       />
