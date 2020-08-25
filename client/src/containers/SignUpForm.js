@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
-import LoginForm from '../components/LoginForm';
+import SignUpForm from '../components/SignUpForm';
 import { changeField, login, logout } from '../store/action/login-actions';
 
 const mapStateToProps = (state) => ({
   email: state.login.email,
   password: state.login.password,
+  name: state.login.name,
   isLogged: state.login.isLogged,
-  loggedMessage: state.login.loggedMessage,
+  lastName: state.login.lastName,
+  birthDate: state.login.birthDate,
 });
 
 
@@ -30,4 +32,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

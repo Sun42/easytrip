@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Field from './Field.js';
 // import { useField } from './hooks';
@@ -14,6 +14,7 @@ const SignUp = ({
   name,
   lastName,
   birthDate,
+  isLogged,
 }) => {
   console.log(SignUp);
 
@@ -34,6 +35,13 @@ const SignUp = ({
           <p>Nom</p>
 
           <Field
+            name="lastName"
+            onChange={changeField}
+            placeholder=""
+            value={lastName}
+          />
+
+          <Field
             name="name"
             onChange={changeField}
             placeholder=""
@@ -41,13 +49,6 @@ const SignUp = ({
           />
           <p>Prenom</p>
 
-          <Field
-            name="lastName"
-            type="password"
-            onChange={changeField}
-            placeholder=""
-            value={lastName}
-          />
           <p>date de naissance</p>
 
           <Field
@@ -81,9 +82,9 @@ const SignUp = ({
           >
             Valider mon incription
           </button>
-          <NavLink activeClassName="active" to="/login">
+          <Link activeClassName="active" to="/login">
             <span>vous avez deja un compte ?</span>
-          </NavLink>
+          </Link>
         </form>
 
       </div>

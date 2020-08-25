@@ -12,9 +12,9 @@ import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Result from '../Result';
 import LoginForm from '../../containers/LoginForm';
-import SignUpForm from '../SignUpForm';
-import Details from "../Details";
-import Carnet from "../Carnet";
+import SignUpForm from '../../containers/SignUpForm';
+import Details from '../Details';
+import Carnet from '../Carnet';
 
 // == Composant
 const App = () => {
@@ -38,15 +38,25 @@ const App = () => {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/sign-up">
           <SignUpForm
-            handleChange={setSearch}
+            component={SignUpForm}
           />
         </Route>
         <Route exact path="/resultats">
           <Result />
         </Route>
+<<<<<<< HEAD
         <Route path="/details" component={() => <Details data={data} />} />
 
         <Route path="/carnet" component={() => <Carnet data={data} />} />
+=======
+        <Route path="/resultats/details">
+          <Details data={data} />
+          </Route>
+
+        <Route path="/carnet">
+          <Carnet data={data} />
+          </Route>
+>>>>>>> features/front_login
 
         <Route>
           <NotFound />
