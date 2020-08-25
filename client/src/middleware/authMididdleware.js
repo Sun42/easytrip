@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { LOGIN, CHECK_AUTH, LOGOUT, loginSuccess, loginError, logoutSuccess } from '../action/user-actions';
+import { LOGIN, loginSuccess, loginError} from '../store/action/login-actions';
 
 export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
-    case LOGOUT: {
+    /*case LOGOUT: {
       axios({
         method: 'post',
         url: ,
@@ -18,11 +18,11 @@ export default (store) => (next) => (action) => {
           console.error(err);
         })
       break;
-    }
-    case CHECK_AUTH: {
+    }*/ 
+    /*case CHECK_AUTH: {
       axios({
         method: 'post',
-        url: ,
+        url :"",
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
@@ -35,13 +35,13 @@ export default (store) => (next) => (action) => {
           console.error(err);
         })
       break;
-    }
+    }   */
     // réagir au login
     case LOGIN: {
       const { user } = store.getState();
       axios({
         method: 'post',
-        url: ,
+        url: "http://localhost:3000/api/connexion",
         data: user,
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })

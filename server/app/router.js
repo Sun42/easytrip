@@ -7,8 +7,6 @@ const router = express.Router();
 // Gestion des inscriptions et connexions en session
 const authController = require('./controllers/authController');
 
-// Gestion de la page d'accueil
-const mainController = require('./controllers/mainController');
 
 // Gestion du profil et des données personnelles
 const profileController = require('./controllers/profileController');
@@ -23,19 +21,19 @@ const searchController = require('./controllers/searchController');
 
 
 
-// Homepage routes
-router.get('/', mainController.homePage);
+
 
 // Authentification routes
 router.route('/api/inscription')
-    .get(authController.signupPage)
     .post(authController.signupAction);
 
-
+    
 
 router.route('/api/connexion')
-    .get(authController.signinPage)
     .post(authController.signinAction);
+
+router.route('/api/isLogged')
+    .post(authController.isLoggedVerif);
 
 
 router.get('/api/search', searchController.search);

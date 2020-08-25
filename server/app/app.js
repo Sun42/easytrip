@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const userMiddleware = require('../app/middlewares/userMiddleware');
 
 // database
 const db = require('./config/database')
@@ -26,8 +27,9 @@ const app = express();
 
 
 
-// Pour que le front puisse faire appel à notre API
 app.use(cors());
+
+app.use(express.urlencoded({extended:true}))
 
 // Add function to serve static files (REACT ??)
 // app.use(express.static('public'));
@@ -39,12 +41,14 @@ app.use(session({
     }));
 
 
-// app.use(cookieParser());
+
 
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
 app.use(bodyParser.urlencoded({extended:true}));
+
 app.use(bodyParser.json());
 
+app.use(userMiddleware);
 // Routing
 app.use(router);
 
