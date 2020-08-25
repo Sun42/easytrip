@@ -5,11 +5,14 @@ import {
 const stateInitial = {
   email: 'nawal@easytrip.com',
   password: 'nawal',
-  username: 'Nawal',
+  lastName: 'Lotfi',
+  name: 'Nawal',
+  birthDate: ' 26 Novembre 1988',
   isLogged: false,
   loggedMessage: 'Bienvenue Nawal',
   error: '',
   login: {},
+
 };
 
 export default (state = stateInitial, action = {}) => {
@@ -35,7 +38,7 @@ export default (state = stateInitial, action = {}) => {
         password: '',
         error: '',
         login: action.payload,
-        loggedMessage: `Bienvenue Nawal`,
+        loggedMessage: 'Bienvenue Nawal',
       };
     case LOGIN:
       return {

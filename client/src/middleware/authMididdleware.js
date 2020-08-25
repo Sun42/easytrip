@@ -1,4 +1,4 @@
-/*import axios from 'axios';
+import axios from 'axios';
 import { LOGIN, CHECK_AUTH, LOGOUT, loginSuccess, loginError, logoutSuccess } from '../action/user-actions';
 
 export default (store) => (next) => (action) => {
@@ -62,4 +62,4 @@ export default (store) => (next) => (action) => {
   }
 
 }
-*/
+
