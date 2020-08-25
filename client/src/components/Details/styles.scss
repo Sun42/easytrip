@@ -1,21 +1,18 @@
-
-.details{
+.details {
   display: flex;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  
+  margin: 5%;
 }
 
-.activity_detail{
+.activity_detail {
   width: 50%;
   border: 1px solid black;
 }
 
-.activity_picture{
+.activity_picture {
   width: 50%;
 }
 
-.activity_picture img{
+.activity_picture img {
   width: 100%;
 }
 
@@ -26,4 +23,7 @@
 
 .paragraphs {
   font-size: 15px;
+}
+
+.backToList {
 }

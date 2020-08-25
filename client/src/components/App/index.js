@@ -14,16 +14,26 @@ import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
+import Details from "../Details";
+import Carnet from "../Carnet";
 
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
 
+  const data = {
+    ville: "Clermont-Ferrand",
+    description: "C'est une description",
+    horaire: "18h-20H",
+  };
+
   return (
     <div className="app">
       <Header />
+
       <Switch>
         <Route exact path="/">
+          <SearchBar search={search} handleChange={setSearch} />
           <HomePage />
         </Route>
         <Route exact path="/result">
@@ -38,6 +48,10 @@ const App = () => {
         <Route exact path="/resultats">
           <Result />
         </Route>
+        <Route path="/details" component={() => <Details data={data} />} />
+
+        <Route path="/carnet" component={() => <Carnet data={data} />} />
+
         <Route>
           <NotFound />
         </Route>
