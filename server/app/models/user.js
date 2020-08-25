@@ -1,3 +1,23 @@
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/database');
+
+class User extends Model { };
+
+User.init({
+  name: DataTypes.TEXT,
+  surname: DataTypes.TEXT,  
+  email: DataTypes.TEXT,
+  password: DataTypes.STRING
+}, {
+  sequelize,
+  tableName: "user",
+  timestamps: false
+});
+
+module.exports = User;
+
+
+/*
 const bcrypt = require('bcrypt');
 const AuthToken = require('../models/authToken');
 const {Sequelize, DataTypes} = require('sequelize');
@@ -81,4 +101,4 @@ User.prototype.authorize = async function() {
 // Test model, ok if "true"
 console.log(User === sequelize.models.User);
 
- module.exports = User;
+ module.exports = User; */

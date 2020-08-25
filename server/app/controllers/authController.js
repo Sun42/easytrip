@@ -1,7 +1,6 @@
 const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const AuthToken = require('../models/authToken');
 
 
 
@@ -17,27 +16,28 @@ const authController = {
     },
 
     signupAction: async (request, response) => {
-       // password hashing with bcrypt
-       const hash = bcrypt.hashSync(request.body.password, 8);
+    const {name, surname, email, password} = request.body
 
-       try {
-           // create a new user with pw hash from bcrypt
-           let user = await User.create(
-               Object.assign(request.body, {password : hash})
-           );
+    // Si l'un de ces champs manquent, il faut les remplir
+    if(!name || !surname || !email || !password ) {
+        response.status(400).send("Merci de remplir vos informations")
+    }
+       
+    // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
+    let newUser = User.build({
+        name,
+        surname,
+        email, 
+        password: await bcrypt.hashSync(password, 10)
 
-           // data will be an object with the user and its authtoken
-           let data = await user.authorize();
+    });
 
-           // returns new user and authtoken to client
-           return response.json(data);
+    // Sauvegarde de le nouvel utilisateur
+    await newUser.save();
 
-       } catch(err) {
-           return response.status(400).send(err)
-       }
+    return response.json(newUser)
 
-       // Should have later : search for email in DB to see if they are an already existing user
-    
+      
 }, 
 
     signinPage: (request, response) => {
@@ -45,26 +45,30 @@ const authController = {
     }, 
 
     signinAction: async (request,response) => {
+        try { 
         const { email, password} = request.body;
 
-        // Si le user/password ne sont pas définis, on envoie une erreur 400
-        if (!email || !password) {
-            return response.status(400).send('Merci renseigner votre email et votre mot de passe');
+        const thisUser = await User.findOne({
+            where: {
+                email
         }
+    });
+        // On vérifie que l'utilisateur ait rempli le bon mail et le bon mot de passe associé
+        if(thisUser && await bcrypt.compareSync(password, thisUser.password)) {
+        // Permet de ne récupérer que les 'dataValues' et pas les autres données
+        request.session.thisUser = thisUser.get({plain:true});
 
-        try {
-            let user = await User.authenticate(email, password);
-
-            user = await user.authorize();
-
-            return response.json(user);
+        response.json('Email et mot de passe correspondent')
+            } else {
+        response.json('Email et mot de passe ne correspondent pas')
+            }
         } catch (err) {
-            return response.status(400).send('Email ou mot de passe invalide');
-        }
-        
+        response.status(400).send(err);
     }
 
-    // Méthode déconnexion ?
-};
+}
+
+    // Méthode déconnexion ? 
+}
 
 module.exports = authController;
