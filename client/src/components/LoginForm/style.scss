@@ -1,0 +1,48 @@
+.settings {
+  display: flex;
+  justify-content: left;
+  padding-top: 5em;
+}
+.login-form {
+  border-radius: 10px;
+  border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    padding: 2em;
+    input {
+      border: 1px solid grey;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1.15em;
+      margin-bottom: 2em;
+      margin-top: 0;
+    }
+    button {
+      color: #fff;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 2em;
+    }
+   
+  }
+
+ p{
+    margin-bottom: 0;
+    }
+
+ span{
+display: flex;
+    }
+
+ h1{
+      margin-bottom: 3em;
+    }
+
+
+.loading {
+  color: #fff;
+}

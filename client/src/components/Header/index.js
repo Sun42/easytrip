@@ -1,14 +1,21 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 // Styles
-import './styles.scss';
+import "./styles.scss";
+import Logo from "../../assets/logo.png";
 
 const Header = () => (
   <div className="header">
-    <h1>EasyTrip</h1>
+    <img className="logo" src={Logo} alt="clermont" />
     <div className="login">
-      <button>Connexion</button>
-      <button>Inscription</button>
+      <Link to="/login">
+        <button className="button">Connexion</button>
+      </Link>
+      <Link to="/login">
+        <button className="button">Inscription</button>
+      </Link>
     </div>
   </div>
 );
