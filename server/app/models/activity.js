@@ -1,46 +1,17 @@
-const {Sequelize, DataTypes} = require('sequelize');
-const sequelize = new Sequelize('easytrip', 'easytrip', 'easytrip', {
-    host:'localhost',
-    dialect:'postgres',
-    logging: console.log
-}); 
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/database');
 
-const Activity = sequelize.define('Activity', {
-    id: {
-        type : DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-    },
+class Activity extends Model { };
 
-    name: {
-        type: DataTypes.STRING
-    },
-
-    information: {
-        type: DataTypes.TEXT
-    },
-
-    localisation: {
-        type: DataTypes.STRING
-    },
-
-   
+Activity.init({
+  name: DataTypes.TEXT,
+  information: DataTypes.TEXT,  
+  localisation: DataTypes.TEXT,
 }, {
-    tableName:'activity',
-    timestamps: false
+  sequelize,
+  tableName: "activity",
+  timestamps: false
 });
 
-//Associations
-Activity.associate = function({Travelogue}) {
-    Activity.belongsTo(Travelogue, {
-        foreignKey: 'travelogue_id'
-    });
-};
-
-Activity.associate = function({Category}) {
-    Activity.belongsTo(Category, {
-        foreignKey: 'category_id'
-    })
-};
 
 module.exports = Activity;

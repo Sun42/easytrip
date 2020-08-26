@@ -1,31 +1,16 @@
-const {Sequelize, DataTypes} = require('sequelize');
-const sequelize = new Sequelize('easytrip', 'easytrip', 'easytrip', {
-    host:'localhost',
-    dialect:'postgres',
-    logging: console.log
-}); 
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/database');
 
-const Category = sequelize.define('Category', {
-    id: {
-        type : DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-    },
+class Category extends Model { };
 
-    label: {
-        type: DataTypes.STRING
-    },
-   
+Category.init({
+  label: DataTypes.TEXT,
 }, {
-    tableName:'category',
-    timestamps: false
+  sequelize,
+  tableName: "category",
+  timestamps: false
 });
 
-//Associations
-Category.associate = function({Activity}) {
-    Category.hasMany(Activity, {
-        foreignKey: 'category_id'
-    });
-}
+
 
 module.exports = Category;
