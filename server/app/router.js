@@ -35,8 +35,6 @@ router.route('/api/connexion')
 
 
 router.get('/api/search', searchController.search);
-// router.get('/api/search/filters', searchController.filters);
-
 /* Profile routes 
 router.get('/api/mon-profil', profileController.getProfile);
 
