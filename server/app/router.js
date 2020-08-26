@@ -35,6 +35,9 @@ router.route('/api/connexion')
 router.route('/api/isLogged')
     .post(authController.isLoggedVerif);
 
+// Trip routes
+router.route('/api/mon-voyage/new')
+    .post(tripController.createNewTravelogue);
 
 router.get('/api/search', searchController.search);
 /* Profile routes 
