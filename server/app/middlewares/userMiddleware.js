@@ -4,7 +4,7 @@ const userMiddleware = (request, response, next) => {
         response.locals.user = request.session.user;
     } else {
         response.locals.user = false;
-        console.log('Utilisateur non connecté')
+        console.log('Utilisateur non connecté', request.session.user)
     }
 
     next();
