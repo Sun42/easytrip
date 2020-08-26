@@ -5,7 +5,7 @@ import './styles.scss';
 
 const Footer = () => (
   <div className="footer">
-    {/* <div className="team">
+    <div className="team">
       <p>Equipe EasyTrip</p>
     </div>
     <div className="team-member">
@@ -22,7 +22,7 @@ const Footer = () => (
     </div>
     <div className="team-member">
       <p>Michal</p>
-      <a href="linkedin.com/in/💻-michal-puczek-04959a108">
+      <a href="https://linkedin.com/in/michal-puczek">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" atl="linkedin" />
       </a>
     </div>
@@ -37,7 +37,7 @@ const Footer = () => (
       <a href="linkedin.com/in/💻-michal-puczek-04959a108">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" atl="linkedin" />
       </a>
-    </div> */}
+    </div>
     <p>Copyright</p>
   </div>
 );

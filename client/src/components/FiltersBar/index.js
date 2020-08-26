@@ -17,9 +17,9 @@ import { Button } from 'semantic-ui-react';
 import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
-  handleAvail, handlePrefGastronomie,
-  handlePrefCulture, handlePrefBar, handlePrefPromenade,
-  handlePrefShopping, handlePrefActAqua, handlePrefSpectacle,
+  handlePrefGastronomie, handlePrefCulture, handlePrefBar,
+  handlePrefPromenade, handlePrefShopping, handlePrefActAqua,
+  handlePrefSpectacle, handlePrefMonuments,
 }) => {
 
   const [dateRange, setDateRange] = useState({
@@ -39,45 +39,26 @@ const FiltersBar = ({
         <p>Selectionner votre destination</p>
         <SearchBar />
       </div>
-      <div className="availability">
-        <div className="availability-dates">
-          <p>Selectionner vos dates</p>
-          <div className="calendar">
+      <div className="dates">
+        <p>Selectionner vos dates</p>
+        <div className="calendar">
 
-            <DateRangePicker
-              startDatePlaceholderText="Départ"
-              startDate={startDate}
-              onDatesChange={handleOnDateChange}
-              endDatePlaceholderText="Retour"
-              endDate={endDate}
-              numberOfMonths={1}
-              displayFormat="DD/MM/YYYY"
-              showClearDates
-              focusedInput={focus}
-              onFocusChange={(focus) => setFocus(focus)}
-              startDateId="startDateMookh"
-              endDateId="endDateMookh"
-              minimumNights={0}
-              showDefaultInputIcon
-
-            />
-          </div>
-        </div>
-        <div className="availability-time">
-          <p>Je suis dispo</p>
-          <Button
-            onClick={() => {
-              handleAvail();
-            }}
-          >
-            Matin
-          </Button>
-          <Button>
-            Midi
-          </Button>
-          <Button>
-            Soir
-          </Button>
+          <DateRangePicker
+            startDatePlaceholderText="Départ"
+            startDate={startDate}
+            onDatesChange={handleOnDateChange}
+            endDatePlaceholderText="Retour"
+            endDate={endDate}
+            numberOfMonths={1}
+            displayFormat="DD/MM/YYYY"
+            showClearDates
+            focusedInput={focus}
+            onFocusChange={(focus) => setFocus(focus)}
+            startDateId="startDateMookh"
+            endDateId="endDateMookh"
+            minimumNights={0}
+            showDefaultInputIcon
+          />
         </div>
       </div>
 
@@ -165,6 +146,17 @@ const FiltersBar = ({
                   }}
                 />
               </div>
+              <div>
+                <label htmlFor="monuments_historiques">Monuments historiques : </label>
+                <input
+                  type="checkbox"
+                  id="monuments_historiques"
+                  name="monuments_historiques"
+                  onClick={() => {
+                    handlePrefMonuments();
+                  }}
+                />
+              </div>
             </div>
           </div>
           <div className="button-submit">
@@ -183,7 +175,6 @@ const FiltersBar = ({
 };
 
 FiltersBar.propTypes = {
-  handleAvail: PropTypes.func.isRequired,
   handlePrefGastronomie: PropTypes.func.isRequired,
   handlePrefCulture: PropTypes.func.isRequired,
   handlePrefBar: PropTypes.func.isRequired,
@@ -191,6 +182,7 @@ FiltersBar.propTypes = {
   handlePrefShopping: PropTypes.func.isRequired,
   handlePrefActAqua: PropTypes.func.isRequired,
   handlePrefSpectacle: PropTypes.func.isRequired,
+  handlePrefMonuments: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;

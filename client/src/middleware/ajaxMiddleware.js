@@ -1,7 +1,9 @@
 import axios from 'axios';
-import { GET_SEARCH_SUBMIT, getSearchSubmitSuccess, 
-  getSearchSubmitError, getSearchSubmitSuccessName, getLoading 
+import { GET_SEARCH_SUBMIT, getSearchSubmitSuccess,
+  getSearchSubmitError, getSearchSubmitSuccessName,
 } from '../store/action/filters-actions';
+
+import { getSearchResultToState } from '../store/action/trips-actions';
 
 const ajaxMiddleware = (store) => (next) => (action) => {
   next(action);
@@ -19,6 +21,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           const cordinates = [lat, lon];
           store.dispatch(getSearchSubmitSuccess(cordinates));
           store.dispatch(getSearchSubmitSuccessName(res.data.location.address.city));
+          store.dispatch(getSearchResultToState(res.data));
         })
         .catch((err) => {
           console.error(err);

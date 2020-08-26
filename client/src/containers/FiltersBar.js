@@ -1,17 +1,13 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  getAvail, getPrefGastronomie, getPrefCulture, getPrefBar, getPrefPromenade,
-  getPrefShopping, getPrefActAqua, getPrefSpectacle,
+  getPrefGastronomie, getPrefCulture, getPrefBar, getPrefPromenade,
+  getPrefShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
 } from '../store/action/filters-actions';
 
 const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => ({
-
-  handleAvail: () => {
-    dispatch(getAvail());
-  },
 
   handlePrefGastronomie: () => {
     dispatch(getPrefGastronomie());
@@ -39,6 +35,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handlePrefSpectacle: () => {
     dispatch(getPrefSpectacle());
+  },
+
+  handlePrefMonuments: () => {
+    dispatch(getPrefMonuments());
   },
 
 });

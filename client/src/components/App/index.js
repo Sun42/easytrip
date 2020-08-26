@@ -14,17 +14,18 @@ import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
-import Details from "../Details";
-import Carnet from "../Carnet";
+import Details from '../Details';
+import Carnet from '../Carnet';
+import MonVoyage from '../../containers/MonVoyage';
 
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
 
   const data = {
-    ville: "Clermont-Ferrand",
+    ville: 'Clermont-Ferrand',
     description: "C'est une description",
-    horaire: "18h-20H",
+    horaire: '18h-20H',
   };
 
   return (
@@ -50,7 +51,9 @@ const App = () => {
         <Route path="/details" component={() => <Details data={data} />} />
 
         <Route path="/carnet" component={() => <Carnet data={data} />} />
-
+        <Route>
+          <MonVoyage />
+        </Route>
         <Route>
           <NotFound />
         </Route>
