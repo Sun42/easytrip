@@ -15,9 +15,7 @@ const profileController = require('./controllers/profileController');
 const tripController = require('./controllers/tripController');
 
 // Gestion des recherches et filtrages (préférences) + résultats
-const searchController = require('./controllers/searchController');
-
-
+const searchController = require('./controllers/searchController').searchController;
 
 const router = express.Router();
 

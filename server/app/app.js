@@ -34,10 +34,4 @@ app.use(express.json());
 // Routing
 app.use(router);
 
-// config
-const PORT = process.env.PORT || 3000;
-
-// Enable server
-app.listen(PORT, () => {
-    console.log(`Currently listening on ${PORT}`);
-});
+module.exports = app

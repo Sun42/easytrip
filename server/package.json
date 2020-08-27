@@ -15,11 +15,13 @@
   },
   "devDependencies": {
     "sequelize": "^6.3.4",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "jest": "^26.4.2",
+    "supertest": "^4.0.2",
   },
   "scripts": {
-    "start": "node app/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app/start.js",
+    "test": "NODE_ENV=test jest --testTimeout=10000"
   },
   "repository": {
     "type": "git",
@@ -30,5 +32,11 @@
   "bugs": {
     "url": "https://github.com/O-clock-Galactica/projet-voyage/issues"
   },
-  "homepage": "https://github.com/O-clock-Galactica/projet-voyage#readme"
+  "homepage": "https://github.com/O-clock-Galactica/projet-voyage#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
 }
