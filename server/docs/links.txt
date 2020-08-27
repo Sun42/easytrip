@@ -4,3 +4,16 @@ http://overpass-turbo.eu/
 https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL
 https://wiki.openstreetmap.org/wiki/Overpass_API/Language_Guide
 https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_API_by_Example
+
+
+
+Gastronomie :
+/*
+This is an example Overpass query.
+Try it out by pressing the Run button above!
+You can find more examples with the Load tool.
+*/
+node
+  [amenity=restaurant]
+  (45.7073666, 4.7718134,45.8082628, 4.8983774);
+out;
