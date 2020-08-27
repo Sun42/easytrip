@@ -1,10 +1,6 @@
 const axios = require('axios').default;
 
-// mapping filters with OSM keywords
-const available_filters = {
-    'food' : 'amenity=restaurant',
-    'pub' : 'amenity=pub',
-};
+const {available_filters} = require('../helpers/filterHelper');
 
 function checkFiltersParams (query) {
     return !!(query.filters && query.filters == true);
@@ -37,8 +33,10 @@ function cardinalPointToBboxstr(cp) {
 function filtersToOverpassStr(filters) {
     str = "";
     for (filter of filters) {
-        value = available_filters[filter];
-        str += `node[${value}];out;`
+        values = available_filters[filter];
+        for (value of values) {
+            str += `node[${value}];out;`
+        }
     }
     return str;
 };
@@ -48,8 +46,6 @@ function filtersToOverpassStr(filters) {
  */
 function overpassURL(cp, filters) {
     const bbox = cardinalPointToBboxstr(cp);
-    const filter1 = "node[amenity=pub];out;";
-    const filter2 = "node[amenity=restaurant];out;";
     const overpass_filters = filtersToOverpassStr(filters);
     overpass_query = `[out:json][timeout:25][bbox:${bbox}];${overpass_filters}`;
     overpass_url = `http://overpass-api.de/api/interpreter?data=${overpass_query}`;
