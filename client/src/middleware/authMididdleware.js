@@ -38,12 +38,13 @@ export default (store) => (next) => (action) => {
     }   */
     // réagir au login
     case LOGIN: {
-      const { user } = store.getState();
+      const { login } = store.getState();
+      console.log(login);
       axios({
         method: 'post',
         url: "http://localhost:3000/api/connexion",
-        data: user,
-        withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
+        data: login,
+        withCredentials: false // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
           const { info } = res.data;
