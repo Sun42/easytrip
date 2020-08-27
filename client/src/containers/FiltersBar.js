@@ -1,51 +1,59 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  getPrefGastronomie, removePrefGastronomie, getPrefCulture, getPrefBar, getPrefPromenade,
+  addGastronomie, addCulture, addBar, getPrefPromenade,
   getPrefShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
+  removeGastronomie, removeCulture, removeBar,
 } from '../store/action/filters-actions';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+  allPoiOfDestination: state.trips.result,
+});
 
 const mapDispatchToProps = (dispatch) => ({
 
-  handlePrefGastronomie: (checkbox) => {
-    if (checkbox.checked) {
-      console.log('je coche', checkbox.checked);
-      dispatch(getPrefGastronomie());
-    }
-    else {
-      console.log('je dechoche', checkbox.checked);
-      dispatch(removePrefGastronomie());
-    }
+  handleAddGastronomie: (gastronomie) => {
+    dispatch(addGastronomie(gastronomie));
   },
 
-  handlePrefCulture: () => {
-    dispatch(getPrefCulture());
+  handleRemoveGastronomie: (gastronomie) => {
+    dispatch(removeGastronomie(gastronomie));
   },
 
-  handlePrefBar: () => {
-    dispatch(getPrefBar());
+  handleAddCulture: (art) => {
+    dispatch(addCulture(art));
   },
 
-  handlePrefPromenade: () => {
-    dispatch(getPrefPromenade());
+  handleRemoveCulture: (art) => {
+    dispatch(removeCulture(art));
   },
 
-  handlePrefShopping: () => {
-    dispatch(getPrefShopping());
+  handleAddBar: (bars) => {
+    dispatch(addBar(bars));
   },
 
-  handlePrefActAqua: () => {
-    dispatch(getPrefActAqua());
+  handleRemoveBar: (bars) => {
+    dispatch(removeBar(bars));
   },
 
-  handlePrefSpectacle: () => {
-    dispatch(getPrefSpectacle());
+  handlePrefPromenade: (excursion) => {
+    dispatch(getPrefPromenade(excursion));
   },
 
-  handlePrefMonuments: () => {
-    dispatch(getPrefMonuments());
+  handlePrefShopping: (shop) => {
+    dispatch(getPrefShopping(shop));
+  },
+
+  handlePrefActAqua: (aquatic) => {
+    dispatch(getPrefActAqua(aquatic));
+  },
+
+  handlePrefSpectacle: (fun) => {
+    dispatch(getPrefSpectacle(fun));
+  },
+
+  handlePrefMonuments: (historic) => {
+    dispatch(getPrefMonuments(historic));
   },
 
 });

@@ -1,25 +1,28 @@
 import {
-  GET_PREF_GASTRONOMIE, REMOVE_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE,
+  ADD_GASTRONOMIE, ADD_CULTURE, ADD_BAR, GET_PREF_PROMENADE,
   GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE,
   GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS,
   GET_SEARCH_SUBMIT_ERROR, GET_SEARCH_SUBMIT_SUCCESS_NAME,
-  GET_PREF_MONUMENTS, GET_FILTER_GASTRONOMIE_TO_STATE, GET_FILTER_CULTURE_TO_STATE,
-  GET_FILTER_BAR_TO_STATE,
+  GET_PREF_MONUMENTS,
+  REMOVE_GASTRONOMIE, REMOVE_CULTURE, REMOVE_BAR,
 } from '../store/action/filters-actions';
 
 // Initial STATE de filters
 export const initialState = {
   gastronomie: false,
-  gastronomieFilter: [],
+  allFilters: {
+    gastronomie: [],
+    bar: [],
+    culture: [],
+  },
   culture: false,
-  cultureFilter: [],
   bar: false,
-  barFilter: [],
   promenade: false,
   shopping: false,
   act_aqua: false,
   spectacle: false,
   monuments: false,
+  allPOI: [],
   search: '',
   searchedLocations: [],
   cordinates: [51.509865, -0.118092],
@@ -65,74 +68,118 @@ export default (state = initialState, action = {}) => {
         ...state,
         name: action.payload,
       };
-    case GET_PREF_GASTRONOMIE:
+    case ADD_GASTRONOMIE:
       return {
         ...state,
         loading: true,
         gastronomie: !state.gastronomie,
+        allFilters: {
+          ...state.allFilters,
+          gastronomie: [
+            ...action.payload,
+          ],
+        },
       };
-    case GET_FILTER_GASTRONOMIE_TO_STATE:
-      return {
-        ...state,
-        loading: false,
-        gastronomieFilter: [
-          ...action.payload,
-        ],
-      };
-    case REMOVE_PREF_GASTRONOMIE:
+    case REMOVE_GASTRONOMIE:
       return {
         ...state,
         gastronomie: !state.gastronomie,
-        gastronomieFilter: [],
+        allFilters: {
+          ...state.allFilters,
+          gastronomie: [],
+        },
       };
-    case GET_PREF_CULTURE:
+    case ADD_CULTURE:
       return {
         ...state,
+        loading: true,
         culture: !state.culture,
+        allFilters: {
+          ...state.allFilters,
+          culture: [
+            ...action.payload,
+          ],
+        },
       };
-    case GET_FILTER_CULTURE_TO_STATE:
+    case REMOVE_CULTURE:
       return {
         ...state,
-        cultureFilter: [
-          ...action.payload,
-        ],
+        gastronomie: !state.gastronomie,
+        allFilters: {
+          ...state.allFilters,
+          culture: [],
+        },
       };
-    case GET_PREF_BAR:
+    case ADD_BAR:
       return {
         ...state,
+        loading: true,
         bar: !state.bar,
+        allFilters: {
+          ...state.allFilters,
+          bar: [
+            ...action.payload,
+          ],
+        },
       };
-    case GET_FILTER_BAR_TO_STATE:
+    case REMOVE_BAR:
       return {
         ...state,
-        barFilter: [
-          ...action.payload,
-        ],
+        gastronomie: !state.gastronomie,
+        allFilters: {
+          ...state.allFilters,
+          bar: [],
+        },
       };
     case GET_PREF_PROMENADE:
       return {
         ...state,
+        loading: true,
         promenade: !state.promenade,
+        allPOI: [
+          ...state.allPOI,
+          ...action.payload,
+        ],
       };
     case GET_PREF_SHOPPING:
       return {
         ...state,
+        loading: true,
         shopping: !state.shopping,
+        allPOI: [
+          ...state.allPOI,
+          ...action.payload,
+        ],
       };
     case GET_PREF_ACT_AQUA:
       return {
         ...state,
+        loading: true,
         act_aqua: !state.act_aqua,
+        allPOI: [
+          ...state.allPOI,
+          ...action.payload,
+        ],
       };
     case GET_PREF_SPECTACLE:
       return {
         ...state,
+        loading: true,
         spectacle: !state.spectacle,
+        allPOI: [
+          ...state.allPOI,
+          ...action.payload,
+        ],
       };
     case GET_PREF_MONUMENTS:
       return {
         ...state,
+        loading: true,
         monuments: !state.monuments,
+        allPOI: [
+          ...state.allPOI,
+          ...action.payload,
+        ],
       };
     default:
       return state;

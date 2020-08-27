@@ -14,15 +14,10 @@ import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
-<<<<<<< HEAD
-import Details from '../Details';
-import Carnet from '../Carnet';
-import MonVoyage from '../../containers/MonVoyage';
-=======
 import Details from "../Details";
 import Carnet from "../Carnet";
 import SearchBar from '../SearchBar';
->>>>>>> develop
+import MonVoyage from '../MonVoyage';
 
 // == Composant
 const App = () => {
@@ -40,6 +35,7 @@ const App = () => {
 
       <Switch>
         <Route exact path="/">
+          <SearchBar />
           <HomePage />
         </Route>
         <Route exact path="/result">

@@ -14,9 +14,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         result: [
-          {
-            ...action.payload,
-          },
+          ...action.payload,
         ],
       };
     case ADD_NEW_ACTIVITY:

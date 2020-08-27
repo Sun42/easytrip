@@ -6,9 +6,11 @@ const mapStateToProps = (state) => ({
   cordinates: state.filters.cordinates,
   name: state.filters.name,
   loading: state.filters.loading,
-  resultList: state.trips.result,
-  gastronomieFilter: state.filters.gastronomieFilter,
-  barFilter: state.filters.barFilter,
+  allPoiOfDestination: state.filters.allPOI,
+  gastronomieFilter: state.filters.allFilters.gastronomie,
+  barFilter: state.filters.allFilters.bar,
+  cultureFilter: state.filters.allFilters.culture,
+
 });
 
 const mapDispatchToState = (dispatch) => ({
