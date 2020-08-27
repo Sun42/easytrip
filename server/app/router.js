@@ -39,6 +39,9 @@ router.route('/api/connexion')
 router.route('/api/mon-voyage/new')
     .post(tripController.createNewTravelogue);
 
+// Récupérer tous les carnets de voyages
+router.route('/api/mes-voyages')
+    .get(tripController.getAllTravelogues);
 
 router.get('/api/search', searchController.search);
 /* Profile routes 

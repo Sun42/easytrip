@@ -1,4 +1,4 @@
-const {User, Travelogue} = require('../models');
+const {Travelogue} = require('../models');
 
 const tripController = {
 
@@ -29,6 +29,25 @@ const tripController = {
                 console.log(newTravelogue);
             }
             
+    },
+
+    getAllTravelogues: async (request, response) => {
+        try {
+            const travelogues = await Travelogue.findAll({
+                order: [
+                    ['name', 'ASC']
+                ],
+                
+            });
+
+            if(!travelogues) {
+                response.status(204).json("Vous n'avez pas encore de carnet de voyage");
+            }
+
+            response.json(travelogues);
+        } catch (err) {
+            response.status(500).send(err)
+        }
     }
 
 
