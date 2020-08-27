@@ -7,11 +7,13 @@ const mapStateToProps = (state) => ({
   name: state.filters.name,
   loading: state.filters.loading,
   resultList: state.trips.result,
+  gastronomieFilter: state.filters.gastronomieFilter,
+  barFilter: state.filters.barFilter,
 });
 
 const mapDispatchToState = (dispatch) => ({
-  handleAddNewActivity: () => {
-    dispatch(addNewActivity());
+  handleAddNewActivity: (elem) => {
+    dispatch(addNewActivity(elem));
   },
 
 });

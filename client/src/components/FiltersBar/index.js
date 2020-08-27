@@ -21,7 +21,6 @@ const FiltersBar = ({
   handlePrefPromenade, handlePrefShopping, handlePrefActAqua,
   handlePrefSpectacle, handlePrefMonuments,
 }) => {
-
   const [dateRange, setDateRange] = useState({
     startDate: null,
     endDate: null,
@@ -73,8 +72,10 @@ const FiltersBar = ({
                   type="checkbox"
                   id="gastronomie"
                   name="gastronomie"
-                  onClick={() => {
-                    handlePrefGastronomie();
+                  onClick={(evt) => {
+                    const checkbox = evt.target;
+                    console.log(evt.target);
+                    handlePrefGastronomie(checkbox);
                   }}
                 />
               </div>

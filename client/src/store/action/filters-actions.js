@@ -1,4 +1,5 @@
 export const GET_PREF_GASTRONOMIE = 'GET_PREF_GASTRONOMIE';
+export const REMOVE_PREF_GASTRONOMIE = 'GET_PREF_GASTRONOMIE';
 export const GET_PREF_CULTURE = 'GET_PREF_CULTURE';
 export const GET_PREF_BAR = 'GET_PREF_BAR';
 export const GET_PREF_PROMENADE = 'GET_PREF_PROMENADE';
@@ -13,6 +14,7 @@ export const GET_SEARCH_SUBMIT_SUCCESS_NAME = 'GET_SEARCH_SUBMIT_SUCCESS_NAME';
 export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
 export const GET_FILTER_GASTRONOMIE_TO_STATE = 'GET_FILTER_GASTRONOMIE_TO_STATE';
 export const GET_FILTER_CULTURE_TO_STATE = 'GET_FILTER_CULTURE_TO_STATE';
+export const GET_FILTER_BAR_TO_STATE = 'GET_FILTER_BAR_TO_STATE';
 
 export const getSearch = (payload) => ({
   type: GET_SEARCH,
@@ -42,6 +44,10 @@ export const getPrefGastronomie = () => ({
   type: GET_PREF_GASTRONOMIE,
 });
 
+export const removePrefGastronomie = () => ({
+  type: REMOVE_PREF_GASTRONOMIE,
+});
+
 export const getFilterGastronomieToState = (payload) => ({
   type: GET_FILTER_GASTRONOMIE_TO_STATE,
   payload,
@@ -58,6 +64,11 @@ export const getFilterCultureToState = () => ({
 
 export const getPrefBar = () => ({
   type: GET_PREF_BAR,
+});
+
+export const getFilterBarToState = (payload) => ({
+  type: GET_FILTER_BAR_TO_STATE,
+  payload,
 });
 
 export const getPrefPromenade = () => ({

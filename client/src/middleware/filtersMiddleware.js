@@ -1,18 +1,15 @@
 import axios from 'axios';
 
 import {
-  GET_PREF_GASTRONOMIE, 
-  GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE,
-  GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE, GET_PREF_MONUMENTS,
-  getPrefCulture, getPrefBar, getPrefPromenade, getPrefShopping,
-  getPrefActAqua, getPrefSpectacle, getPrefMonuments, getFilterGastronomieToState, 
-  getFilterCultureToState,
+  GET_PREF_GASTRONOMIE, GET_PREF_BAR,
+  getFilterGastronomieToState, getFilterBarToState,
 } from '../store/action/filters-actions';
 
 const filtersMiddleware = (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
     case GET_PREF_GASTRONOMIE: {
+      console.log('je suis dans le mv');
       const destination = store.getState().filters.search;
       axios({
         method: 'get',
@@ -20,22 +17,22 @@ const filtersMiddleware = (store) => (next) => (action) => {
         data: destination,
       })
         .then((res) => {
-          store.dispatch(getFilterGastronomieToState(res.data));
+          store.dispatch(getFilterGastronomieToState(res.data.elements));
         })
         .catch((err) => {
           console.error(err);
         });
     }
       break;
-    case GET_PREF_CULTURE: {
+    case GET_PREF_BAR: {
       const destination = store.getState().filters.search;
       axios({
         method: 'get',
-        url: `http://localhost:3000/api/search?location=${destination}&filters=1&culture=1`,
+        url: `http://localhost:3000/api/search?location=${destination}&filters=1&pub=1`,
         data: destination,
       })
         .then((res) => {
-          store.dispatch(getFilterCultureToState(res.data));
+          store.dispatch(getFilterBarToState(res.data.elements));
         })
         .catch((err) => {
           console.error(err);

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  getPrefGastronomie, getPrefCulture, getPrefBar, getPrefPromenade,
+  getPrefGastronomie, removePrefGastronomie, getPrefCulture, getPrefBar, getPrefPromenade,
   getPrefShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
 } from '../store/action/filters-actions';
 
@@ -9,8 +9,15 @@ const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => ({
 
-  handlePrefGastronomie: () => {
-    dispatch(getPrefGastronomie());
+  handlePrefGastronomie: (checkbox) => {
+    if (checkbox.checked) {
+      console.log('je coche', checkbox.checked);
+      dispatch(getPrefGastronomie());
+    }
+    else {
+      console.log('je dechoche', checkbox.checked);
+      dispatch(removePrefGastronomie());
+    }
   },
 
   handlePrefCulture: () => {

@@ -25,7 +25,7 @@ export default (state = initialState, action = {}) => {
         tripBook: [
           ...state.tripBook,
           {
-            ...action.playload,
+            name: action.playload,
           },
         ],
       };

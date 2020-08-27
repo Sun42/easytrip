@@ -1,9 +1,10 @@
 import {
-  GET_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE,
+  GET_PREF_GASTRONOMIE, REMOVE_PREF_GASTRONOMIE, GET_PREF_CULTURE, GET_PREF_BAR, GET_PREF_PROMENADE,
   GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE,
   GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS,
   GET_SEARCH_SUBMIT_ERROR, GET_SEARCH_SUBMIT_SUCCESS_NAME,
   GET_PREF_MONUMENTS, GET_FILTER_GASTRONOMIE_TO_STATE, GET_FILTER_CULTURE_TO_STATE,
+  GET_FILTER_BAR_TO_STATE,
 } from '../store/action/filters-actions';
 
 // Initial STATE de filters
@@ -13,6 +14,7 @@ export const initialState = {
   culture: false,
   cultureFilter: [],
   bar: false,
+  barFilter: [],
   promenade: false,
   shopping: false,
   act_aqua: false,
@@ -66,14 +68,22 @@ export default (state = initialState, action = {}) => {
     case GET_PREF_GASTRONOMIE:
       return {
         ...state,
+        loading: true,
         gastronomie: !state.gastronomie,
       };
     case GET_FILTER_GASTRONOMIE_TO_STATE:
       return {
         ...state,
+        loading: false,
         gastronomieFilter: [
           ...action.payload,
         ],
+      };
+    case REMOVE_PREF_GASTRONOMIE:
+      return {
+        ...state,
+        gastronomie: !state.gastronomie,
+        gastronomieFilter: [],
       };
     case GET_PREF_CULTURE:
       return {
@@ -91,6 +101,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         bar: !state.bar,
+      };
+    case GET_FILTER_BAR_TO_STATE:
+      return {
+        ...state,
+        barFilter: [
+          ...action.payload,
+        ],
       };
     case GET_PREF_PROMENADE:
       return {
