@@ -75,6 +75,23 @@ const tripController = {
 
     },
 
+    updateTravelogue: async (request, response) => {
+        try {
+            const travelogueId = request.params.id;
+            const updated = await Travelogue.update(request.body, {
+                where: {id:travelogueId}
+            });
+
+            if(updated) {
+                const updatedTravelogue = await Travelogue.findOne({where: {id:travelogueId}});
+                return response.status(200).json({travelogue:updatedTravelogue});
+            }
+            throw new Error('Carnet de voyage introuvable')
+        } catch (err) {
+            response.status(500).json(err)
+        }
+    },
+
     deleteTravelogue: async (request, response) => {
         try {
             const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
