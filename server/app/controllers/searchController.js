@@ -1,12 +1,26 @@
 const axios = require('axios').default;
 
-const {available_filters, bboxToCardinalPoints, overpassURL
+const {
+    available_filters,
+    bboxToCardinalPoints,
+    overpassURL
 } = require('../helpers/filterHelper.js');
 
+/**
+ * Returns true if filters attribute is present and trueish
+ * @param {object} query  A req.query express object
+ * @returns {boolean}
+ */
 function checkFiltersParams(query) {
     return !!(query.filters && query.filters == true);
 };
 
+/**
+ * Retrieves query attributes matching available_filters keys
+ * @param {object} query A req.query express object
+ * @param {object} available_filters An object representing the available filters and their corresponding OSM values
+ * @returns {array} An array of filters keys
+ */
 function filterParams(query, available_filters) {
     const query_array = Object.keys(query);
     const available_filters_array = Object.keys(available_filters);
