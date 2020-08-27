@@ -6,6 +6,14 @@ const session = require('express-session');
 
 const cookieParser = require('cookie-parser');
 
+//database
+const db = require('./config/database');
+
+// Test DB
+db.authenticate()
+    .then(() => console.log('Database connected...'))
+    .catch(err => console.log('Error: ' + err));
+
 // For cross-origin sharing
 const cors = require('cors');
 // Import routing
@@ -17,8 +25,7 @@ const app = express();
 
 app.use(cors());
 
-// Add function to serve static files (REACT ??)
-// app.use(express.static('public'));
+
 // Gestion des sessions : saveInitialized à décider si vrai/faux, l'utilisateur reste loggé pendant 10 minutes
 app.use(session({
     saveUninitialized: true,
