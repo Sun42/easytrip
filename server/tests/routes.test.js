@@ -46,4 +46,6 @@ describe('/api/search ', () => {
     expect(response.body.location).toHaveProperty('display_name');
     expect(response.body.location).toHaveProperty('address');
   });
+  test('/api/search/ OK location with mock', async () => {
+  });
 });

@@ -64,23 +64,3 @@ describe('test searchController retrieve filters categories', () => {
         expect(response).toEqual(expect.arrayContaining(['food', 'pub']));
     });
 });
-
-describe('test overpass url generation', () => {
-    test('build URL with 1 param', () => {
-        const cp = {south : "45.7073666", north: "45.8082628",
-        west : "4.7718134", east: "4.8983774"};
-        const filters = ['pub'];
-        const expected_response = "http://overpass-api.de/api/interpreter?data=[out:json][timeout:25][bbox:45.7073666,4.7718134,45.8082628,4.8983774];node[amenity=pub];out;node[amenity=biergarten];out;node[amenity=bar];out;";
-        const response = sc.overpassURL(cp, filters);
-        expect(response).toBe(expected_response);
-    });
-
-    test('build URL with 2 param', () => {
-        const cp = {south : "45.7073666", north: "45.8082628",
-        west : "4.7718134", east: "4.8983774"};
-        const filters = ['pub', 'food'];
-        const expected_response = "http://overpass-api.de/api/interpreter?data=[out:json][timeout:25][bbox:45.7073666,4.7718134,45.8082628,4.8983774];node[amenity=pub];out;node[amenity=biergarten];out;node[amenity=bar];out;node[amenity=restaurant];out;node[amenity=fast_food];out;node[amenity=food_court];out;node[amenity=cafe];out;";
-        const response = sc.overpassURL(cp, filters);
-        expect(response).toBe(expected_response);
-    });
-});

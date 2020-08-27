@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "node app/start.js",
-    "test": "NODE_ENV=test jest --testTimeout=10000"
+    "test": "NODE_ENV=test jest --testTimeout=10000",
+    "coverage": "NODE_ENV=test jest --testTimeout=10000 --coverage"
   },
   "repository": {
     "type": "git",
