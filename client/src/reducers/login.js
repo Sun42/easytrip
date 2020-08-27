@@ -43,9 +43,6 @@ export default (state = stateInitial, action = {}) => {
     case LOGIN:
       return {
         ...state,
-        isLogged: true,
-        email: '',
-        password: '',
         error: '',
         login: action.payload,
       };

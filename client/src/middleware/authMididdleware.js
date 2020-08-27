@@ -19,7 +19,7 @@ export default (store) => (next) => (action) => {
         })
       break;
     }*/ 
-    /*case CHECK_AUTH: {
+    /* case CHECK_AUTH: {
       axios({
         method: 'post',
         url :"",
