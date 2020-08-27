@@ -18,8 +18,8 @@ function checkFiltersParams(query) {
 /**
  * Retrieves query attributes matching available_filters keys
  * @param {object} query A req.query express object
- * @param {object} available_filters An object representing the available filters and their corresponding OSM values
- * @returns {array} An array of filters keys
+ * @param {object.<string, string[]>} available_filters An object representing the available filters and their corresponding OSM values
+ * @returns {string[]}> An array of filters keys
  */
 function filterParams(query, available_filters) {
     const query_array = Object.keys(query);

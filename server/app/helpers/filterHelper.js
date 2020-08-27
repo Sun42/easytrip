@@ -1,4 +1,8 @@
-// mapping filters with OSM keywords
+/**
+ * Mapping our filters with OSM keywords
+ * see https://wiki.openstreetmap.org/wiki/Map_Features for the full list
+ * @type {object.<string, string[]>}
+ */
 const available_filters = {
         'food': ['amenity=restaurant',
                 'amenity=fast_food',
@@ -62,12 +66,12 @@ const available_filters = {
 };
 
 /**
- * "boundingbox": [
-        "48.8155755",S
-        "48.902156",N
-        "2.224122",W 
-        "2.4697602"E
-      ],
+ * Converts a nominatim formated boundingbox array to a cardinal object
+ * @example "boundingbox": ["48.815", "48.902", "2.224", "2.469"]
+                // returns {south :  "48.815", north: "48.902", west:"2.224", east: "2.469"}
+                bboxToCardinalPoints(bbox)
+ * @param {string[]} bbox An array of string representing a boundingbox
+ * @returns {object} An object with cardinal points as properties
  */
 function bboxToCardinalPoints(bbox) {
         const cardinal_point = {
@@ -78,24 +82,39 @@ function bboxToCardinalPoints(bbox) {
         };
         return cardinal_point;
 };
-    // "45.7073666,4.7718134,45.8082628,4.8983774"; South, west, north, east
-    function cardinalPointToBboxstr(cp) {
-        return [cp.south, cp.west, cp.north, cp.east].join()
-    };
-    
-    function filtersToOverpassStr(filters) {
-        str = "";
-        for (filter of filters) {
-            values = available_filters[filter];
-            for (value of values) {
-                str += `node[${value}];out;`
-            }
-        }
-        return str;
-    };
 
 /**
- * cp cardinal_points object
+ * Converts a cardinal points object to an overpass formated string  South, West, North, East
+ * @example cp {south :  "45.707", north: "48.902", west:"4.771", east: "4.898"}
+              // returns 45.707,4.771,48.902 4.898
+              cardinalPointToBboxstr(cp)
+ * @param {object} cp A cardinal points object
+ * @returns {string} An overpass formated string
+ */
+function cardinalPointToBboxstr(cp) {
+    return [cp.south, cp.west, cp.north, cp.east].join()
+};
+
+/**
+ * Returns a string of available_filters values for the overpassapi
+ * @param {string[]} filters 
+ * @return {string}
+ */
+function filtersToOverpassStr(filters) {
+    str = "";
+    for (filter of filters) {
+        values = available_filters[filter];
+        for (value of values) {
+            str += `node[${value}];out;`
+        }
+    }
+    return str;
+};
+
+/**
+ * @param {object} cardinal_points object
+ * @param {string[]} An array of desired filters
+ * @return {string} a full overpass api url
  */
 function overpassURL(cp, filters) {
         const bbox = cardinalPointToBboxstr(cp);
