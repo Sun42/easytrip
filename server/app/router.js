@@ -33,6 +33,12 @@ router.route('/api/connexion')
     .get(authController.signinPage)
     .post(authController.signinAction);
 
+// Trip routes
+
+// Créer un nouveau carnet de voyage
+router.route('/api/mon-voyage/new')
+    .post(tripController.createNewTravelogue);
+
 
 router.get('/api/search', searchController.search);
 /* Profile routes 
