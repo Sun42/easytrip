@@ -78,23 +78,6 @@ const authController = {
 
     },
 
-    isLoggedVerif: async (request, response) => {
-        console.log(request.session);
-        const thisUser = await User.findOne({
-            where: {
-                email
-            }
-        });
-        if (request.session.thisUser) {
-            response.json({
-                isLogged: true
-            })
-        } else {
-            response.json({
-                isLogged: false
-            })
-        }
-    }
 
     // Méthode déconnexion ? 
 }

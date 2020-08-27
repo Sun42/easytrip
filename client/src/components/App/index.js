@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
 import Footer from '../Footer';
-import Header from '../Header';
+import Header from '../../containers/Header';
 import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Result from '../Result';

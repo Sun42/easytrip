@@ -18,22 +18,14 @@ const tripController = require('./controllers/tripController');
 const searchController = require('./controllers/searchController');
 
 
-
-
-
-
-
 // Authentification routes
 router.route('/api/inscription')
     .post(authController.signupAction);
-
-    
+   
 
 router.route('/api/connexion')
     .post(authController.signinAction);
 
-router.route('/api/isLogged')
-    .post(authController.isLoggedVerif);
 
 // Trip routes
 router.route('/api/mon-voyage/new')
