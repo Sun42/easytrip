@@ -15,6 +15,7 @@ import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
 import Details from "../Details";
 import Carnet from "../Carnet";
+import SearchBar from '../SearchBar';
 
 // == Composant
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
             handleChange={setSearch}
           />
         </Route>
-        <Route exact path="/resultats">
+        <Route exact path="/result">
           <Result />
         </Route>
         <Route path="/details" component={() => <Details data={data} />} />
