@@ -31,6 +31,15 @@ const tripController = {
             
     },
 
+    /*editTravelogue: async (request, response) => {
+        try {
+            const travelogueId = request.params.id;
+            const travelogue = await Travelogue.findByPk(travelogueId, {
+
+            })
+        }
+    }, */
+
     getAllTravelogues: async (request, response) => {
         try {
             const travelogues = await Travelogue.findAll({
@@ -48,6 +57,20 @@ const tripController = {
         } catch (err) {
             response.status(500).send(err)
         }
+    },
+
+    getOneTravelogue: async (request, response) => {
+        try {
+    
+            const travelogue = await Travelogue.findByPk(request.params.id);
+
+            console.log(request.params.id);
+
+            response.json(travelogue);
+        } catch (err) {
+            response.status(500).send(err) 
+        }
+
     }
 
 
