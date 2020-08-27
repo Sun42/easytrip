@@ -41,7 +41,8 @@ router.route('/api/mon-voyage/new')
 
 // Récupérer un carnet de voyage
 router.route('/api/mesvoyages/monvoyage/:id')
-    .get(tripController.getOneTravelogue);
+    .get(tripController.getOneTravelogue)
+    .delete(tripController.deleteTravelogue);
 // Récupérer tous les carnets de voyages
 router.route('/api/mes-voyages')
     .get(tripController.getAllTravelogues);

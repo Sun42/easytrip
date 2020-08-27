@@ -64,13 +64,31 @@ const tripController = {
     
             const travelogue = await Travelogue.findByPk(request.params.id);
 
-            console.log(request.params.id);
+            if(!travelogue) {
+                response.status(404).json('Carnet de voyage introuvable')
+            }
 
             response.json(travelogue);
         } catch (err) {
             response.status(500).send(err) 
         }
 
+    },
+
+    deleteTravelogue: async (request, response) => {
+        try {
+            const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
+
+            if(!travelToBeDeleted) {
+                response.status(404).json('Carnet de voyage introuvable')
+            }
+
+            await travelToBeDeleted.destroy();
+            response.json('Le carnet de voyage a été supprimé')
+
+        } catch (err) {
+            response.status(500).json(err)
+        }
     }
 
 
