@@ -36,10 +36,7 @@ jobs:
         SECRET_SESSION: ${{ secrets.SECRET_SESSION }}
     - run: | 
         yarn
-        npm run build --if-present
+        npm run start --if-present
       working-directory: ./client
       env: 
-        CI: true 
-        SERVER_HOST: localhost
-        PORT: 3000
-        SECRET_SESSION: ${{ secrets.SECRET_SESSION }}
+        CI: true
