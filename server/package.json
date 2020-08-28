@@ -23,7 +23,7 @@
   "scripts": {
     "start": "node app/start.js",
     "test": "NODE_ENV=test jest --testTimeout=10000 --coverage",
-    "lint": "eslint"
+    "lint": "eslint app/** tests/**"
   },
   "repository": {
     "type": "git",
