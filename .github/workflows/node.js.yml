@@ -30,6 +30,7 @@ jobs:
         npm test
       working-directory: ./server
       env: 
+        CI: true 
         SERVER_HOST: localhost
         PORT: 3000
         secret: notsosecret
