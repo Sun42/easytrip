@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const cookieParser = require('cookie-parser');
 
-//database
+// database
 const db = require('./config/database');
 
 // Test DB
