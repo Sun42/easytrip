@@ -11,8 +11,6 @@ const cors = require('cors');
 // Import routing
 const router = require('./router');
 
-
-
 const app = express();
 
 app.use(cors());
@@ -23,15 +21,14 @@ app.use(cors());
 app.use(session({
     saveUninitialized: true,
     resave:true,
-    secret:process.env.SECRET
-    }));
-
+    secret:process.env.SECRET_SESSION,
+}));
 
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended:true }));
 
 app.use(express.json());
 // Routing
 app.use(router);
 
-module.exports = app
+module.exports = app;
