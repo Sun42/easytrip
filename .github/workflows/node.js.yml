@@ -30,3 +30,7 @@ jobs:
       working-directory: ./server
     - run: npm test
       working-directory: ./server
+      env: 
+        SERVER_HOST = localhost
+        PORT = 3000
+        secret = notsosecret
