@@ -1,4 +1,5 @@
 const app = require('./app.js');
+
 // config
 const SERVER_HOST = process.env.SERVER_HOST;
 const PORT = process.env.PORT || 3000;
