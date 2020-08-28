@@ -1,6 +1,14 @@
 
-const {overpassURL} = require('../app/helpers/filterHelper');
+const {bboxToCardinalPoints, overpassURL} = require('../app/helpers/filterHelper');
 
+describe('filterHelper functions', () => {
+    test('bboxToCardinalPoints', () => {
+        const boundingbox = ['48.815', '48.902', '2.224', '2.469'];
+        const expected = {south : '48.815', north : '48.902', west : '2.224', east : '2.469'};
+        const cp = bboxToCardinalPoints(boundingbox);
+        expect(cp).toEqual(expected);
+    });
+});
 describe('test overpass url generation', () => {
     test('build URL with 1 param', () => {
         const cp = {south : "45.7073666", north: "45.8082628",
