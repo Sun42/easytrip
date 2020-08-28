@@ -1,4 +1,3 @@
-
 const sc = require('../app/controllers/searchController');
 
 describe('test searchController check filters parameter', () => {

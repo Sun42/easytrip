@@ -14,6 +14,7 @@
     "pg": "^8.3.0"
   },
   "devDependencies": {
+    "eslint": "^7.7.0",
     "jest": "^26.4.2",
     "sequelize": "^6.3.4",
     "sequelize-cli": "^6.2.0",
@@ -21,7 +22,8 @@
   },
   "scripts": {
     "start": "node app/start.js",
-    "test": "NODE_ENV=test jest --testTimeout=10000 --coverage"
+    "test": "NODE_ENV=test jest --testTimeout=10000 --coverage",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,9 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ],
-    "coverageReporters": ["text", "html"]
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
   }
 }
