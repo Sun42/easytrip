@@ -11,6 +11,7 @@ const SignUp = ({
   email,
   password,
   changeField,
+  handleSignUp,
   name,
   lastName,
   birthDate,
@@ -20,7 +21,7 @@ const SignUp = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleLogin();
+    handleSignUp();
   };
 
   return (
@@ -40,6 +41,7 @@ const SignUp = ({
             placeholder=""
             value={lastName}
           />
+          <p>Prenom</p>
 
           <Field
             name="name"
@@ -47,13 +49,10 @@ const SignUp = ({
             placeholder=""
             value={name}
           />
-          <p>Prenom</p>
-
           <p>date de naissance</p>
 
           <Field
             name="date de naissance"
-            type="date de naissance"
             onChange={changeField}
             placeholder=""
             value={birthDate}
@@ -96,6 +95,7 @@ SignUp.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  birthDate: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
 

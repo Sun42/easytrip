@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SignUpForm from '../components/SignUpForm';
-import { changeField, login, logout } from '../store/action/login-actions';
+import { changeField, login, signup} from '../store/action/login-actions';
 
 const mapStateToProps = (state) => ({
   email: state.login.email,
@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
   lastName: state.login.lastName,
   birthDate: state.login.birthDate,
 });
-
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => {
@@ -22,14 +21,11 @@ const mapDispatchToProps = (dispatch) => ({
     console.log(changeObject)
     dispatch(changeField(changeObject));
   },
-  handleLogin: () => {
-    console.log('login');
-    dispatch(login());
+  handleSignUp: () => {
+    console.log('signup');
+    dispatch(signup());
   },
-  handleLogout: () => {
-    console.log('logout');
-    dispatch(logout());
-  },
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

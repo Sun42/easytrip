@@ -7,6 +7,7 @@ const User = require('../models/user');
 const authController = {
 
     signupAction: async (request, response) => {
+        try {
         const {
             name,
             surname,
@@ -15,13 +16,13 @@ const authController = {
         } = request.body
 
         // Si l'un de ces champs manquent, il faut les remplir
-        if (!name || !surname || !email || !password) {
+        /*if (!name || !surname || !email || !password) {
             response.status(400).send("Merci de remplir vos informations")
-        }
+        } */
 
-        if (!emailValidator.validate(email)) {
+        /*if (!emailValidator.validate(email)) {
             response.status(400).send('Cet email est invalide')
-        }
+        } */
 
         // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
         let newUser = User.build({
@@ -36,7 +37,9 @@ const authController = {
         await newUser.save();
 
         return response.json(newUser)
-
+        } catch(err) {
+            response.status(500).json(err)
+        }
 
     },
 
