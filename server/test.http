@@ -1,0 +1,29 @@
+
+@port = {{$dotenv PORT}}
+@hostname = {{$dotenv SERVER_HOST}}
+@baseurl = {{hostname}}:{{port}}
+
+### expected output HTTP/1.1 400 Bad Request {"error":"missing location parameter"}
+GET http://localhost:3000/api/search?
+
+### 
+GET http://localhost:3000/api/search?location=PARIS
+
+### 
+GET http://{{baseurl}}/api/search?location=''
+
+### 
+GET http://{{baseurl}}/api/search/?location=LYON
+
+###
+GET http://{{baseurl}}/api/search/?location=LYON&filters=1
+
+###
+GET http://{{baseurl}}/api/search/?location=PARIS&filters=1&food&aqua
+
+###
+GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1
+
+
+###
+GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1&food=1
