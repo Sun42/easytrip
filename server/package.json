@@ -21,8 +21,7 @@
   },
   "scripts": {
     "start": "node app/start.js",
-    "test": "NODE_ENV=test jest --testTimeout=10000",
-    "coverage": "NODE_ENV=test jest --testTimeout=10000 --coverage"
+    "test": "NODE_ENV=test jest --testTimeout=10000 --coverage"
   },
   "repository": {
     "type": "git",
@@ -38,6 +37,7 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "coverageReporters": ["text", "html"]
   }
 }
