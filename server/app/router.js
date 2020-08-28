@@ -20,14 +20,12 @@ const searchController = require('./controllers/searchController').searchControl
 const router = express.Router();
 
 // Homepage routes
-//router.get('/', mainController.homepage);
+// router.get('/', mainController.homepage);
 
 // Authentification routes
 router.route('/api/inscription')
     .get(authController.signupPage)
     .post(authController.signupAction);
-
-
 
 router.route('/api/connexion')
     .get(authController.signinPage)
@@ -44,12 +42,14 @@ router.route('/api/mesvoyages/monvoyage/:id')
     .get(tripController.getOneTravelogue)
     .patch(tripController.updateTravelogue)
     .delete(tripController.deleteTravelogue);
+
 // Récupérer tous les carnets de voyages
 router.route('/api/mes-voyages')
     .get(tripController.getAllTravelogues);
 
 router.get('/api/search', searchController.search);
-/* Profile routes 
+
+/* Profile routes
 router.get('/api/mon-profil', profileController.getProfile);
 
 router.post('/api/mon-profil', profilController.submitInfo);
@@ -79,10 +79,6 @@ Search routes
 
 
 Result routes TODO */
-
-
-
-
 
 
 // Exporting Router
