@@ -26,7 +26,8 @@ router.route('/api/inscription')
 router.route('/api/connexion')
     .post(authController.signinAction);
 
-
+router.route('/api/deconnexion')
+    .post(authController.signoutAction);
 // Trip routes
 router.route('/api/mon-voyage/new')
     .post(tripController.createNewTravelogue);

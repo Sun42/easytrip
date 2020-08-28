@@ -82,7 +82,14 @@ const authController = {
     },
 
 
-    // Méthode déconnexion ? 
+    signoutAction: async (request, response) => {
+        try {
+            request.session.destroy();
+            response.json('Déconnexion ok');
+        } catch (err) {
+            response.status(500).json(err);
+        }
+    }
 }
 
 module.exports = authController;
