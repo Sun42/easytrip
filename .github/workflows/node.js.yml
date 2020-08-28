@@ -33,4 +33,4 @@ jobs:
         CI: true 
         SERVER_HOST: localhost
         PORT: 3000
-        secret: notsosecret
+        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
