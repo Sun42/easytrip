@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  addGastronomie, addCulture, addBar, getPrefPromenade,
-  getPrefShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
-  removeGastronomie, removeCulture, removeBar,
+  addGastronomie, addCulture, addBar, addPromenade,
+  addShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
+  removeGastronomie, removeCulture, removeBar, removePromenade,
+  removeShopping,
 } from '../store/action/filters-actions';
 
 const mapStateToProps = (state) => ({
@@ -16,32 +17,40 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addGastronomie(gastronomie));
   },
 
-  handleRemoveGastronomie: (gastronomie) => {
-    dispatch(removeGastronomie(gastronomie));
+  handleRemoveGastronomie: () => {
+    dispatch(removeGastronomie());
   },
 
   handleAddCulture: (art) => {
     dispatch(addCulture(art));
   },
 
-  handleRemoveCulture: (art) => {
-    dispatch(removeCulture(art));
+  handleRemoveCulture: () => {
+    dispatch(removeCulture());
   },
 
   handleAddBar: (bars) => {
     dispatch(addBar(bars));
   },
 
-  handleRemoveBar: (bars) => {
-    dispatch(removeBar(bars));
+  handleRemoveBar: () => {
+    dispatch(removeBar());
   },
 
-  handlePrefPromenade: (excursion) => {
-    dispatch(getPrefPromenade(excursion));
+  handleAddPromenade: (excursion) => {
+    dispatch(addPromenade(excursion));
   },
 
-  handlePrefShopping: (shop) => {
-    dispatch(getPrefShopping(shop));
+  handleRemovePromenade: () => {
+    dispatch(removePromenade());
+  },
+
+  handleAddShopping: (shop) => {
+    dispatch(addShopping(shop));
+  },
+
+  handleRemoveShopping: () => {
+    dispatch(removeShopping());
   },
 
   handlePrefActAqua: (aquatic) => {

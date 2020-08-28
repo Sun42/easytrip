@@ -21,32 +21,45 @@ import {
 import Loading from '../Loading';
 
 const Result = ({
-  cordinates, loading, handleAddNewActivity, allPoiOfDestination,
-  gastronomieFilter, barFilter, cultureFilter,
+  cordinates, loading, handleAddNewActivity,
+  gastronomieFilter, barFilter, cultureFilter, promenadeFilter,
+  shoppingFilter,
 }) => (
   <div className="result">
     <div className="result-list">
-      {/* {loading && <Loading />} */}
-      {/* {allPoiOfDestination.length === 0 && <div><p>Selectionnez un filtre ...</p></div>} */}
+
+      {gastronomieFilter.length === [] && barFilter === []
+      && cultureFilter === [] && promenadeFilter === []
+      && shoppingFilter === []
+      && <div><p>Selectionnez au moins un filtre...</p></div>}
+
       <Item.Group divided>
         {gastronomieFilter.length > 0
         && gastronomieFilter.map((object) => (
-          <Activity object={object} />
+          <Activity key={object.id} object={object} />
         ))}
         {barFilter.length > 0
         && barFilter.map((object) => (
-          <Activity object={object} />
+          <Activity key={object.id} object={object} />
         ))}
         {cultureFilter.length > 0
         && cultureFilter.map((object) => (
-          <Activity object={object} />
+          <Activity key={object.id} object={object} />
+        ))}
+        {promenadeFilter.length > 0
+        && promenadeFilter.map((object) => (
+          <Activity key={object.id} object={object} />
+        ))}
+        {shoppingFilter.length > 0
+        && shoppingFilter.map((object) => (
+          <Activity key={object.id} object={object} />
         ))}
       </Item.Group>
     </div>
 
     <div className="result-map">
-      {loading && <div><p>Recherche en cours...</p></div>}
-      {/* {!loading && ( */}
+      {loading && <Loading />}
+      {!loading && (
       <Map
         center={cordinates}
         zoom={16}
@@ -62,7 +75,7 @@ const Result = ({
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
             return (
-              <Marker position={cordinatesPOI}>
+              <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{tags.amenity}</h4>
@@ -87,7 +100,7 @@ const Result = ({
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
             return (
-              <Marker position={cordinatesPOI}>
+              <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{tags.amenity}</h4>
@@ -112,7 +125,57 @@ const Result = ({
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
             return (
-              <Marker position={cordinatesPOI}>
+              <Marker key={object.id} position={cordinatesPOI}>
+                <Popup>
+                  <h3>{tags.name}</h3>
+                  <h4>{tags.amenity}</h4>
+                  <p><Link to="/amenity">Plus d'info</Link></p>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      console.log('popup buton');
+                    }}
+                  >
+                    Click
+                  </button>
+                </Popup>
+              </Marker>
+            );
+          })
+          }
+
+        {
+          promenadeFilter.length > 0
+          && promenadeFilter.map((object) => {
+            const { lat, lon, tags } = object;
+            const cordinatesPOI = [lat, lon];
+            return (
+              <Marker key={object.id} position={cordinatesPOI}>
+                <Popup>
+                  <h3>{tags.name}</h3>
+                  <h4>{tags.amenity}</h4>
+                  <p><Link to="/amenity">Plus d'info</Link></p>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      console.log('popup buton');
+                    }}
+                  >
+                    Click
+                  </button>
+                </Popup>
+              </Marker>
+            );
+          })
+          }
+
+        {
+          shoppingFilter.length > 0
+          && shoppingFilter.map((object) => {
+            const { lat, lon, tags } = object;
+            const cordinatesPOI = [lat, lon];
+            return (
+              <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{tags.amenity}</h4>
@@ -139,13 +202,14 @@ const Result = ({
 
 const Activity = ({ handleAddNewActivity, object }) => (
   <Item>
+    {/* <Item.Image size='tiny' src='/images/wireframe/image.png' /> */}
     <Item.Content>
       <h3>{object.tags.name}</h3>
       <Item.Meta>
         <h4>{object.tags.amenity}</h4>
       </Item.Meta>
-      <Item.Description>Romantique théâtre ouvert sur la Manche,
-        Étretat a inspiré les plus illustres artistes.
+      <Item.Description>
+        <a href="http://{object.tags.website}">Site www</a>
       </Item.Description>
       <Item.Extra>
         <Button>Plus d'info</Button>
@@ -166,12 +230,11 @@ const Activity = ({ handleAddNewActivity, object }) => (
 Result.propTypes = {
   cordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
   loading: PropTypes.bool.isRequired,
-  handleAddNewActivity: PropTypes.func.isRequired,
-  allPoiOfDestination: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   gastronomieFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   barFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   cultureFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-
+  promenadeFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  shoppingFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 Activity.propTypes = {

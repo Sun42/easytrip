@@ -10,6 +10,8 @@ const mapStateToProps = (state) => ({
   gastronomieFilter: state.filters.allFilters.gastronomie,
   barFilter: state.filters.allFilters.bar,
   cultureFilter: state.filters.allFilters.culture,
+  promenadeFilter: state.filters.allFilters.promenade,
+  shoppingFilter: state.filters.allFilters.shopping,
 
 });
 

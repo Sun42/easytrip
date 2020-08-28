@@ -1,21 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
+
+// router
+import { NavLink } from "react-router-dom";
+
+// semantic-ui
+import { Button, Icon } from 'semantic-ui-react';
 
 // Styles
 import "./styles.scss";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/newLogo.PNG";
 
 const Header = () => (
   <div className="header">
-    <img className="logo" src={Logo} alt="clermont" />
+    <img className="logo" src={Logo} alt="name of the page" />
     <div className="login">
-      <Link to="/login">
-        <button className="button">Connexion</button>
-      </Link>
-      <Link to="/login">
-        <button className="button">Inscription</button>
-      </Link>
+      <NavLink to="/login">
+        <Button animated>
+          <Button.Content visible>Connexion</Button.Content>
+          <Button.Content hidden>
+            <Icon name='arrow right' />
+          </Button.Content>
+        </Button>
+      </NavLink>
+      <NavLink to={"/inscription"}>
+        <Button animated>
+          <Button.Content visible>Inscription</Button.Content>
+          <Button.Content hidden>
+            <Icon name='arrow right' />
+          </Button.Content>
+        </Button>
+      </NavLink>
     </div>
   </div>
 );

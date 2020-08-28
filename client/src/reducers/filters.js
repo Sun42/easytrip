@@ -1,20 +1,23 @@
 import {
-  ADD_GASTRONOMIE, ADD_CULTURE, ADD_BAR, GET_PREF_PROMENADE,
-  GET_PREF_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE,
+  ADD_GASTRONOMIE, ADD_CULTURE, ADD_BAR, ADD_PROMENADE,
+  ADD_SHOPPING, GET_PREF_ACT_AQUA, GET_PREF_SPECTACLE,
   GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS,
   GET_SEARCH_SUBMIT_ERROR, GET_SEARCH_SUBMIT_SUCCESS_NAME,
   GET_PREF_MONUMENTS,
-  REMOVE_GASTRONOMIE, REMOVE_CULTURE, REMOVE_BAR,
+  REMOVE_GASTRONOMIE, REMOVE_CULTURE, REMOVE_BAR, REMOVE_PROMENADE,
+  REMOVE_SHOPPING,
 } from '../store/action/filters-actions';
 
 // Initial STATE de filters
 export const initialState = {
-  gastronomie: false,
   allFilters: {
     gastronomie: [],
     bar: [],
     culture: [],
+    promenade: [],
+    shopping: [],
   },
+  gastronomie: false,
   culture: false,
   bar: false,
   promenade: false,
@@ -61,17 +64,18 @@ export default (state = initialState, action = {}) => {
     case GET_SEARCH_SUBMIT_ERROR:
       return {
         ...state,
+        loading: false,
         error: 'Serched place doesnt exist',
       };
     case GET_SEARCH_SUBMIT_SUCCESS_NAME:
       return {
         ...state,
+        loading: false,
         name: action.payload,
       };
     case ADD_GASTRONOMIE:
       return {
         ...state,
-        loading: true,
         gastronomie: !state.gastronomie,
         allFilters: {
           ...state.allFilters,
@@ -92,7 +96,6 @@ export default (state = initialState, action = {}) => {
     case ADD_CULTURE:
       return {
         ...state,
-        loading: true,
         culture: !state.culture,
         allFilters: {
           ...state.allFilters,
@@ -113,7 +116,6 @@ export default (state = initialState, action = {}) => {
     case ADD_BAR:
       return {
         ...state,
-        loading: true,
         bar: !state.bar,
         allFilters: {
           ...state.allFilters,
@@ -131,25 +133,45 @@ export default (state = initialState, action = {}) => {
           bar: [],
         },
       };
-    case GET_PREF_PROMENADE:
+    case ADD_PROMENADE:
       return {
         ...state,
-        loading: true,
         promenade: !state.promenade,
-        allPOI: [
-          ...state.allPOI,
-          ...action.payload,
-        ],
+        allFilters: {
+          ...state.allFilters,
+          promenade: [
+            ...action.payload,
+          ],
+        },
       };
-    case GET_PREF_SHOPPING:
+    case REMOVE_PROMENADE:
       return {
         ...state,
-        loading: true,
+        promenade: !state.promenade,
+        allFilters: {
+          ...state.allFilters,
+          promenade: [],
+        },
+      };
+    case ADD_SHOPPING:
+      return {
+        ...state,
         shopping: !state.shopping,
-        allPOI: [
-          ...state.allPOI,
-          ...action.payload,
-        ],
+        allFilters: {
+          ...state.allFilters,
+          shopping: [
+            ...action.payload,
+          ],
+        },
+      };
+    case REMOVE_SHOPPING:
+      return {
+        ...state,
+        gastronomie: !state.gastronomie,
+        allFilters: {
+          ...state.allFilters,
+          shopping: [],
+        },
       };
     case GET_PREF_ACT_AQUA:
       return {
