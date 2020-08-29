@@ -66,5 +66,5 @@ L'objectif principal du projet est de proposer une application permettant aux vo
 
 ## Arborescence et routes de l'application EasyTrip
 
-*Se référer au fichier ``conception/arborescence_routes.md``
+* Se référer au fichier ``conception/arborescence_routes.md``
 
