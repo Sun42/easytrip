@@ -1,7 +1,6 @@
 # Arborescence de l'application EasyTrip 
 
-![Arborescence de l'application EasyTrip]
-(conception/Arbo.png)
+![Arborescence de l'application EasyTrip](Arbo.png)
 
 # Routes de l'application
 
