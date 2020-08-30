@@ -12,6 +12,18 @@ GET http://localhost:3000/api/search?location=PARIS
 ### 
 GET http://{{baseurl}}/api/search?location=''
 
+### 
+GET http://{{baseurl}}/api/search/?location=LYON
 
-### should test url encoding
-GET http://{{baseurl}}/api/search?location=''
+###
+GET http://{{baseurl}}/api/search/?location=LYON&filters=1
+
+###
+GET http://{{baseurl}}/api/search/?location=PARIS&filters=1&food&aqua
+
+###
+GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1
+
+
+###
+GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1&food=1

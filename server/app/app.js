@@ -16,12 +16,18 @@ db.authenticate()
 
 // const cookieParser = require('cookie-parser');
 
+// database
+const db = require('./config/database');
+
+// Test DB
+db.authenticate()
+    .then(() => console.log('Database connected...'))
+    .catch(err => console.log('Error: ' + err));
+
 // For cross-origin sharing
 const cors = require('cors');
 // Import routing
 const router = require('./router');
-
-
 
 const app = express();
 
@@ -29,10 +35,9 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true})) //conflict resolving might be useless
 
-// Add function to serve static files (REACT ??)
-// app.use(express.static('public'));
+
 // Gestion des sessions : saveInitialized à décider si vrai/faux, l'utilisateur reste loggé pendant 10 minutes
 app.use(session({
     saveUninitialized: true,
@@ -52,11 +57,4 @@ app.use(userMiddleware);
 // Routing
 app.use(router);
 
-
-// config
-const PORT = process.env.PORT || 3000;
-
-// Enable server
-app.listen(PORT, () => {
-    console.log(`Currently listening on ${PORT}`);
-});
+module.exports = app;

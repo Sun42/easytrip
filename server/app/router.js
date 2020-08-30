@@ -15,25 +15,41 @@ const profileController = require('./controllers/profileController');
 const tripController = require('./controllers/tripController');
 
 // Gestion des recherches et filtrages (préférences) + résultats
-const searchController = require('./controllers/searchController');
+const searchController = require('./controllers/searchController').searchController;
 
+const router = express.Router();
+
+// Homepage routes
+// router.get('/', mainController.homepage);
 
 // Authentification routes
 router.route('/api/inscription')
     .post(authController.signupAction);
-   
 
 router.route('/api/connexion')
     .post(authController.signinAction);
 
 router.route('/api/deconnexion')
     .post(authController.signoutAction);
+    
 // Trip routes
+// Créer un nouveau carnet de voyage
 router.route('/api/mon-voyage/new')
     .post(tripController.createNewTravelogue);
 
+// Route pour un carnet de voyage
+router.route('/api/mesvoyages/monvoyage/:id')
+    .get(tripController.getOneTravelogue)
+    .patch(tripController.updateTravelogue)
+    .delete(tripController.deleteTravelogue);
+
+// Récupérer tous les carnets de voyages
+router.route('/api/mes-voyages')
+    .get(tripController.getAllTravelogues);
+
 router.get('/api/search', searchController.search);
-/* Profile routes 
+
+/* Profile routes
 router.get('/api/mon-profil', profileController.getProfile);
 
 router.post('/api/mon-profil', profilController.submitInfo);
@@ -63,10 +79,6 @@ Search routes
 
 
 Result routes TODO */
-
-
-
-
 
 
 // Exporting Router

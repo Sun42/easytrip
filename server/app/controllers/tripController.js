@@ -1,46 +1,111 @@
-const { Travelogue } = require('../models/travelogue');
+const { Travelogue } = require('../models');
 
 const tripController = {
 
-        createNewTravelogue: async (request, response) => {
-            try {
-                const {name, city, date_departure, date_return} = request.body;
+    createNewTravelogue : async (request, response) => {
 
-            // Si l'utilisateur n'a pas donné de nom à son carnet de voyage on lui demande
-            if(!name) {
-                response.status(400).send('Vous devez donner au moins un nom à votre carnet de voyage');
-            };
+        const { name, city, date_departure, date_return } = request.body;
 
-            // Crée un nouveau carnet de voyage (crée un nouveau voyage)
-            let newTravelogue = Travelogue.build({
-                name,
-                city,
-                date_departure,
-                date_return,
-                user_id: Travelogue.findOne({
-                    include : User
-                })
-                
+        // Si l'utilisateur n'a pas donné de nom à son carnet, on le lui demande
+        if (!name) {
+            response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
+        }
 
-            });
-                await newTravelogue.save();
+        // Création d'un nouveau voyage (= nouveau carnet de voyage)
+        let newTravelogue = Travelogue.build({
+            name,
+            city,
+            date_departure,
+            date_return,
 
-                return response.json(newTravelogue);
-        } catch (err) {
-            response.status(401).send(err)
+        });
+        try {
+
+            await newTravelogue.save();
+            return response.json(newTravelogue);
+
+        }
+        catch {
+            response.status(400).json('Erreur dans la création du carnet de voyage');
+            console.log(newTravelogue);
         }
     },
-        /*addToTravelogue: async (request, response) => {
-                // Ajout d'une activité au travelogue
-    
-            },
-    
-        getAllTrips: async (request, response) => {
-    
-            }, */
-           
-};
 
-    
+    /* editTravelogue: async (request, response) => {
+        try {
+            const travelogueId = request.params.id;
+            const travelogue = await Travelogue.findByPk(travelogueId, {
+
+            })
+        }
+    }, */
+
+    getAllTravelogues: async (request, response) => {
+        try {
+            const travelogues = await Travelogue.findAll({
+                order: [
+                    ['name', 'ASC'],
+                ],
+            });
+
+            if(!travelogues) {
+                response.status(204).json('Vous n\'avez pas encore de carnet de voyage');
+            }
+
+            response.json(travelogues);
+        }
+        catch (err) {
+            response.status(500).send(err);
+        }
+    },
+
+    getOneTravelogue: async (request, response) => {
+        try {
+            const travelogue = await Travelogue.findByPk(request.params.id);
+
+            if (!travelogue) {
+                response.status(404).json('Carnet de voyage introuvable');
+            }
+
+            response.json(travelogue);
+        }
+        catch (err) {
+            response.status(500).send(err);
+        }
+    },
+
+    updateTravelogue: async (request, response) => {
+        try {
+            const travelogueId = request.params.id;
+            const updated = await Travelogue.update(request.body, { where: { id:travelogueId } });
+
+            if (updated) {
+                const updatedTravelogue = await Travelogue.findOne({ where: { id:travelogueId } });
+                return response.status(200).json({ travelogue:updatedTravelogue });
+            }
+            throw new Error('Carnet de voyage introuvable');
+        }
+        catch (err) {
+            response.status(500).json(err);
+        }
+    },
+
+    deleteTravelogue: async (request, response) => {
+        try {
+            const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
+
+            if (!travelToBeDeleted) {
+                response.status(404).json('Carnet de voyage introuvable');
+            }
+
+            await travelToBeDeleted.destroy();
+            response.json('Le carnet de voyage a été supprimé');
+
+        }
+        catch (err) {
+            response.status(500).json(err);
+        }
+    },
+};
 
 module.exports = tripController;
