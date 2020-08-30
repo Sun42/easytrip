@@ -10,18 +10,15 @@ import { DateRangePicker } from 'react-dates';
 // styles
 import './styles.scss';
 
-// semantic-ui
-import { Button } from 'semantic-ui-react';
-
 // import des autres composants
 import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
-  handleAvail, handlePrefGastronomie,
-  handlePrefCulture, handlePrefBar, handlePrefPromenade,
-  handlePrefShopping, handlePrefActAqua, handlePrefSpectacle,
+  handleAddGastronomie, handleAddCulture, handleAddBar,
+  handlePrefPromenade, handlePrefShopping, handlePrefActAqua,
+  handlePrefSpectacle, handlePrefMonuments, allPoiOfDestination,
+  handleRemoveGastronomie, handleRemoveCulture, handleRemoveBar,
 }) => {
-
   const [dateRange, setDateRange] = useState({
     startDate: null,
     endDate: null,
@@ -33,51 +30,32 @@ const FiltersBar = ({
   const handleOnDateChange = (startDate, endDate) => setDateRange(startDate, endDate);
 
   return (
+
     <div className="filtersbar">
       <div className="destination">
         <p>Selectionner votre destination</p>
         <SearchBar />
       </div>
-      <div className="availability">
-        <div className="availability-dates">
-          <p>Selectionner vos dates</p>
-          <div className="calendar">
+      <div className="dates">
+        <p>Selectionner vos dates</p>
+        <div className="calendar">
 
-            <DateRangePicker
-              startDatePlaceholderText="Départ"
-              startDate={startDate}
-              onDatesChange={handleOnDateChange}
-              endDatePlaceholderText="Retour"
-              endDate={endDate}
-              numberOfMonths={1}
-              displayFormat="DD/MM/YYYY"
-              showClearDates
-              focusedInput={focus}
-              onFocusChange={(focus) => setFocus(focus)}
-              startDateId="startDateMookh"
-              endDateId="endDateMookh"
-              minimumNights={0}
-              showDefaultInputIcon
-
-            />
-
-          </div>
-        </div>
-        <div className="availability-time">
-          <p>Je suis dispo</p>
-          <Button
-            onClick={() => {
-              handleAvail();
-            }}
-          >
-            Matin
-          </Button>
-          <Button>
-            Midi
-          </Button>
-          <Button>
-            Soir
-          </Button>
+          <DateRangePicker
+            startDatePlaceholderText="Départ"
+            startDate={startDate}
+            onDatesChange={handleOnDateChange}
+            endDatePlaceholderText="Retour"
+            endDate={endDate}
+            numberOfMonths={1}
+            displayFormat="DD/MM/YYYY"
+            showClearDates
+            focusedInput={focus}
+            onFocusChange={(focus) => setFocus(focus)}
+            startDateId="startDateMookh"
+            endDateId="endDateMookh"
+            minimumNights={0}
+            showDefaultInputIcon
+          />
         </div>
       </div>
 
@@ -92,8 +70,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="gastronomie"
                   name="gastronomie"
-                  onClick={() => {
-                    handlePrefGastronomie();
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const gastronomie = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'restaurant') || (poi.tags.amenity === 'fast-food') || (poi.tags.amenity === 'food-court') || (poi.tags.amenity === 'cafe'));
+                    if (checkboxValue === true) {
+                      handleAddGastronomie(gastronomie);
+                    }
+                    else {
+                      handleRemoveGastronomie(gastronomie);
+                    }
                   }}
                 />
               </div>
@@ -103,8 +88,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="culture_art"
                   name="culture_art"
-                  onClick={() => {
-                    handlePrefCulture();
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const art = allPoiOfDestination.filter((poi) => (poi.tags.tourism === 'artwork') || (poi.tags.amenity === 'arts_centre') || (poi.tags.tourism === 'gallery') || (poi.tags.tourism === 'museum'));
+                    if (checkboxValue === true) {
+                      handleAddCulture(art);
+                    }
+                    else {
+                      handleRemoveCulture(art);
+                    }
                   }}
                 />
               </div>
@@ -114,8 +106,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="bars"
                   name="bars"
-                  onClick={() => {
-                    handlePrefBar();
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const bars = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'pub') || (poi.tags.amenity === 'bar') || (poi.tags.amenity === 'biergarten'));
+                    if (checkboxValue === true) {
+                      handleAddBar(bars);
+                    }
+                    else {
+                      handleRemoveBar(bars);
+                    }
                   }}
                 />
               </div>
@@ -126,7 +125,8 @@ const FiltersBar = ({
                   id="promenades"
                   name="promenades"
                   onClick={() => {
-                    handlePrefPromenade();
+                    const excursion = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'excursion'));
+                    handlePrefPromenade(excursion);
                   }}
                 />
               </div>
@@ -139,7 +139,8 @@ const FiltersBar = ({
                   id="shopping"
                   name="shopping"
                   onClick={() => {
-                    handlePrefShopping();
+                    const shop = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'shop'));
+                    handlePrefShopping(shop);
                   }}
                 />
               </div>
@@ -150,7 +151,8 @@ const FiltersBar = ({
                   id="activites_acquatiques"
                   name="activites_acquatiques"
                   onClick={() => {
-                    handlePrefActAqua();
+                    const aquatic = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'aquatic'));
+                    handlePrefActAqua(aquatic);
                   }}
                 />
               </div>
@@ -161,20 +163,24 @@ const FiltersBar = ({
                   id="spectacles_concerts"
                   name="spectacles_concerts"
                   onClick={() => {
-                    handlePrefSpectacle();
+                    const fun = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'fun'));
+                    handlePrefSpectacle(fun);
+                  }}
+                />
+              </div>
+              <div>
+                <label htmlFor="monuments_historiques">Monuments historiques : </label>
+                <input
+                  type="checkbox"
+                  id="monuments_historiques"
+                  name="monuments_historiques"
+                  onClick={() => {
+                    const historic = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'historic'));
+                    handlePrefMonuments(historic);
                   }}
                 />
               </div>
             </div>
-          </div>
-          <div className="button-submit">
-            <Button
-              onClick={() => {
-                console.log('click');
-              }}
-            >
-              C'est parti !
-            </Button>
           </div>
         </form>
       </div>
@@ -183,14 +189,18 @@ const FiltersBar = ({
 };
 
 FiltersBar.propTypes = {
-  handleAvail: PropTypes.func.isRequired,
-  handlePrefGastronomie: PropTypes.func.isRequired,
-  handlePrefCulture: PropTypes.func.isRequired,
-  handlePrefBar: PropTypes.func.isRequired,
+  handleAddGastronomie: PropTypes.func.isRequired,
+  handleAddCulture: PropTypes.func.isRequired,
+  handleAddBar: PropTypes.func.isRequired,
   handlePrefPromenade: PropTypes.func.isRequired,
   handlePrefShopping: PropTypes.func.isRequired,
   handlePrefActAqua: PropTypes.func.isRequired,
   handlePrefSpectacle: PropTypes.func.isRequired,
+  handlePrefMonuments: PropTypes.func.isRequired,
+  allPoiOfDestination: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  handleRemoveGastronomie: PropTypes.func.isRequired,
+  handleRemoveCulture: PropTypes.func.isRequired,
+  handleRemoveBar: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;

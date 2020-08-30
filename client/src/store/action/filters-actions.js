@@ -1,20 +1,19 @@
-export const GET_AVAIL = 'GET_AVAIL';
-export const GET_PREF_GASTRONOMIE = 'GET_PREF_GASTRONOMIE';
-export const GET_PREF_CULTURE = 'GET_PREF_CULTURE';
-export const GET_PREF_BAR = 'GET_PREF_BAR';
+export const ADD_GASTRONOMIE = 'ADD_GASTRONOMIE';
+export const ADD_CULTURE = 'ADD_CULTURE';
+export const ADD_BAR = 'ADD_BAR';
 export const GET_PREF_PROMENADE = 'GET_PREF_PROMENADE';
 export const GET_PREF_SHOPPING = 'GET_PREF_SHOPPING';
 export const GET_PREF_ACT_AQUA = 'GET_PREF_ACT_AQUA';
 export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
+export const GET_PREF_MONUMENTS = 'GET_PREF_MONUMENTS';
 export const GET_SEARCH = 'GET_SEARCH';
 export const GET_SEARCH_SUBMIT = 'GET_SEARCH_SUBMIT';
 export const GET_SEARCH_SUBMIT_SUCCESS = 'GET_SEARCH_SUBMIT_SUCCESS';
 export const GET_SEARCH_SUBMIT_SUCCESS_NAME = 'GET_SEARCH_SUBMIT_SUCCESS_NAME';
 export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
-
-export const getAvail = () => ({
-  type: GET_AVAIL,
-});
+export const REMOVE_GASTRONOMIE = 'REMOVE_GASTRONOMIE';
+export const REMOVE_CULTURE = 'REMOVE_CULTURE';
+export const REMOVE_BAR = 'REMOVE_BAR';
 
 export const getSearch = (payload) => ({
   type: GET_SEARCH,
@@ -40,30 +39,57 @@ export const getSearchSubmitSuccessName = (payload) => ({
   payload,
 });
 
-export const getPrefGastronomie = () => ({
-  type: GET_PREF_GASTRONOMIE,
+export const addGastronomie = (payload) => ({
+  type: ADD_GASTRONOMIE,
+  payload,
 });
 
-export const getPrefCulture = () => ({
-  type: GET_PREF_CULTURE,
+export const removeGastronomie = (payload) => ({
+  type: REMOVE_GASTRONOMIE,
+  payload,
 });
 
-export const getPrefBar = () => ({
-  type: GET_PREF_BAR,
+export const addCulture = (payload) => ({
+  type: ADD_CULTURE,
+  payload,
 });
 
-export const getPrefPromenade = () => ({
+export const removeCulture = (payload) => ({
+  type: REMOVE_CULTURE,
+  payload,
+});
+
+export const addBar = (payload) => ({
+  type: ADD_BAR,
+  payload,
+});
+
+export const removeBar = (payload) => ({
+  type: REMOVE_BAR,
+  payload,
+});
+
+export const getPrefPromenade = (payload) => ({
   type: GET_PREF_PROMENADE,
+  payload,
 });
 
-export const getPrefShopping = () => ({
+export const getPrefShopping = (payload) => ({
   type: GET_PREF_SHOPPING,
+  payload,
 });
 
-export const getPrefActAqua = () => ({
+export const getPrefActAqua = (payload) => ({
   type: GET_PREF_ACT_AQUA,
+  payload
 });
 
-export const getPrefSpectacle = () => ({
+export const getPrefSpectacle = (payload) => ({
   type: GET_PREF_SPECTACLE,
+  payload,
+});
+
+export const getPrefMonuments = (payload) => ({
+  type: GET_PREF_MONUMENTS,
+  payload,
 });

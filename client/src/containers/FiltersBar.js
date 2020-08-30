@@ -1,45 +1,61 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  getAvail, getPrefGastronomie, getPrefCulture, getPrefBar, getPrefPromenade,
-  getPrefShopping, getPrefActAqua, getPrefSpectacle,
+  addGastronomie, addCulture, addBar, getPrefPromenade,
+  getPrefShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
+  removeGastronomie, removeCulture, removeBar,
 } from '../store/action/filters-actions';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+  allPoiOfDestination: state.trips.result,
+});
 
 const mapDispatchToProps = (dispatch) => ({
 
-  handleAvail: () => {
-    dispatch(getAvail());
+  handleAddGastronomie: (gastronomie) => {
+    dispatch(addGastronomie(gastronomie));
   },
 
-  handlePrefGastronomie: () => {
-    dispatch(getPrefGastronomie());
+  handleRemoveGastronomie: (gastronomie) => {
+    dispatch(removeGastronomie(gastronomie));
   },
 
-  handlePrefCulture: () => {
-    dispatch(getPrefCulture());
+  handleAddCulture: (art) => {
+    dispatch(addCulture(art));
   },
 
-  handlePrefBar: () => {
-    dispatch(getPrefBar());
+  handleRemoveCulture: (art) => {
+    dispatch(removeCulture(art));
   },
 
-  handlePrefPromenade: () => {
-    dispatch(getPrefPromenade());
+  handleAddBar: (bars) => {
+    dispatch(addBar(bars));
   },
 
-  handlePrefShopping: () => {
-    dispatch(getPrefShopping());
+  handleRemoveBar: (bars) => {
+    dispatch(removeBar(bars));
   },
 
-  handlePrefActAqua: () => {
-    dispatch(getPrefActAqua());
+  handlePrefPromenade: (excursion) => {
+    dispatch(getPrefPromenade(excursion));
   },
 
-  handlePrefSpectacle: () => {
-    dispatch(getPrefSpectacle());
+  handlePrefShopping: (shop) => {
+    dispatch(getPrefShopping(shop));
   },
+
+  handlePrefActAqua: (aquatic) => {
+    dispatch(getPrefActAqua(aquatic));
+  },
+
+  handlePrefSpectacle: (fun) => {
+    dispatch(getPrefSpectacle(fun));
+  },
+
+  handlePrefMonuments: (historic) => {
+    dispatch(getPrefMonuments(historic));
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FiltersBar);
