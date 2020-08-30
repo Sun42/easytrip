@@ -16,7 +16,9 @@ function checkFiltersParams(query) {
 }
 
 /**
- * Retrieves query attributes matching available_filters keys
+ * Retrieves query attributes matching available_filters keys,
+ * Notes : it assumes that query.filter=1
+ * Notes :  if 0 filter category found then returns all availabe_filters
  * @param {object} query A req.query express object
  * @param {object.<string, string[]>} af An object representing the available filters and their corresponding OSM values
  * @returns {string[]}> An array of filters keys
@@ -24,7 +26,11 @@ function checkFiltersParams(query) {
 function filterParams(query, af) {
     const query_array = Object.keys(query);
     const available_filters_array = Object.keys(af);
-    return query_array.filter(elem => available_filters_array.includes(elem));
+    const filters = query_array.filter(elem => available_filters_array.includes(elem));
+    if (filters.length == 0) {
+        return available_filters_array;
+    }
+    return filters;
 }
 
 const searchController = {
