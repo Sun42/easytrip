@@ -7,17 +7,16 @@ import Field from './Field.js';
 
 // import './style.scss';
 
-const SignUp = ({
+const SignUpForm = ({ // modif Sarah
   email,
   password,
   changeField,
   handleSignUp,
   name,
   lastName,
-  birthDate,
-  isLogged,
+  errorMessage,
 }) => {
-  console.log(SignUp);
+  console.log(SignUpForm);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -48,14 +47,6 @@ const SignUp = ({
             onChange={changeField}
             placeholder=""
             value={name}
-          />
-          <p>date de naissance</p>
-
-          <Field
-            name="date de naissance"
-            onChange={changeField}
-            placeholder=""
-            value={birthDate}
           />
 
           <p>email</p>
@@ -91,14 +82,13 @@ const SignUp = ({
   );
 };
 
-SignUp.propTypes = {
+SignUpForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  birthDate: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
 
 };
 
-export default SignUp;
+export default SignUpForm;
