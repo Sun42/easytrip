@@ -11,19 +11,22 @@ import Header from '../Header';
 import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Result from '../Result';
+import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../SignUpForm';
 import Details from "../Details";
 import Carnet from "../Carnet";
+import SearchBar from '../SearchBar';
+import MonVoyage from '../MonVoyage';
 
 // == Composant
 const App = () => {
   const [search, setSearch] = useState('');
 
   const data = {
-    ville: "Clermont-Ferrand",
+    ville: 'Clermont-Ferrand',
     description: "C'est une description",
-    horaire: "18h-20H",
+    horaire: '18h-20H',
   };
 
   return (
@@ -32,8 +35,11 @@ const App = () => {
 
       <Switch>
         <Route exact path="/">
-          <SearchBar search={search} handleChange={setSearch} />
+          <SearchBar />
           <HomePage />
+        </Route>
+        <Route exact path="/result">
+          <ResultPage />
         </Route>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/sign-up">
@@ -41,13 +47,15 @@ const App = () => {
             handleChange={setSearch}
           />
         </Route>
-        <Route exact path="/resultats">
+        <Route exact path="/result">
           <Result />
         </Route>
         <Route path="/details" component={() => <Details data={data} />} />
 
         <Route path="/carnet" component={() => <Carnet data={data} />} />
-
+        <Route>
+          <MonVoyage />
+        </Route>
         <Route>
           <NotFound />
         </Route>

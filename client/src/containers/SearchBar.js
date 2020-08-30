@@ -5,6 +5,7 @@ import { getSearch, getSearchSubmit } from '../store/action/filters-actions';
 const mapStateToProps = (state) => ({
   searchInput: state.filters.search,
   newMap: state.filters.cordinates,
+  loading: state.filters.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
