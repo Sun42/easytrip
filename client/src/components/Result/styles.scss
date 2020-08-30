@@ -11,6 +11,11 @@
     width: 60%;
     margin: 10px;
     overflow: scroll;
+
+    div.item:hover {
+      background-color: rgba(0, 0, 0, 0.089);
+      transition-duration: 0.2s;
+    }
   }
 
   &-map {
