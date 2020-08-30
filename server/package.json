@@ -17,15 +17,16 @@
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.18.2",
     "eslint": "^7.7.0",
     "jest": "^26.4.2",
-    "moxios": "^0.4.0",
     "supertest": "^4.0.2"
   },
   "scripts": {
     "start": "node app/start.js",
-    "test": "NODE_ENV=test jest --testTimeout=10000 --coverage",
-    "lint": "eslint app/** tests/**"
+    "test": "jest --testTimeout=10000",
+    "lint": "eslint app/** tests/**",
+    "coverage":  "jest --testTimeout=10000 --coverage"
   },
   "repository": {
     "type": "git",

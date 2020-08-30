@@ -38,8 +38,8 @@ const searchController = {
         if (request.query.location) {
             try {
                 const url = `https://nominatim.openstreetmap.org/search?q=${request.query.location}&format=json&addressdetails=1&limit=1`;
-                const data = await axios.get(url);
-                const ret = { location: data.data[0] };
+                const http_response = await axios.get(url);
+                const ret = { location : http_response.data[0] };
                 if (checkFiltersParams(request.query)) {
                     const asked_filters = filterParams(request.query, available_filters);
                     if (asked_filters.length > 0) {
