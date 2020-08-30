@@ -51,6 +51,7 @@ const available_filters = {
     ],
     'excursion' : ['tourism=viewpoint',
         'leisure=park',
+        'tourism=attraction',
     ],
     'fun' : ['amenity=casino',
         'amenity=cinema',
@@ -59,7 +60,6 @@ const available_filters = {
         'amenity=theatre',
         'leisure=amusement_arcade',
         'leisure=escape_game',
-        'tourism=attraction',
         'tourism=theme_park',
         'leisure=bandstand',
     ],
@@ -104,6 +104,7 @@ function filtersToOverpassStr(filters) {
     let str = '';
     for (const filter of filters) {
         const values = available_filters[filter];
+        // @todo use reduce ?
         for (const value of values) {
             str += `node[${value}];out;`;
         }
@@ -124,10 +125,61 @@ function overpassURL(cp, filters) {
     return overpass_url;
 }
 
+/**
+ * Group elements nodes by their category.
+ * A node belong to a category (category.key) if one of its tag matches category.values()
+ * @param {object[]} elements Array of [OSM node](https://wiki.openstreetmap.org/wiki/Node)
+ * @param {object} categories a filter object @see  {@link available_filters}
+ * @returns {object} {'category1': [nodes], 'category2': [nodes]}
+  */
+function groupByCategory(elements, categories) {
+    const grouped_elements = {
+        'food' : [],
+        'pub' : [],
+        'aquatic' : [],
+        'historic' : [],
+        'art' : [],
+        'shop' : [],
+        'excursion' : [],
+        'fun' : [],
+    };
+
+    for (const element of elements) {
+        const found = findGroup(element.tags, categories);
+        if (found) {
+            grouped_elements[found].push(element);
+        }
+    }
+
+    return grouped_elements;
+}
+
+/**
+ * @todo Add description here
+ * @param {object[]} tags
+ * @param {*} categories
+ * @returns {string|undefined} the category name found
+ */
+function findGroup(tags, categories) {
+    for (const [key, value] of Object.entries(tags)) {
+        for (const [categ_key, categ_values] of Object.entries(categories)) {
+            const found = categ_values.find(element => {
+                const splitted = element.split('=');
+                return (key == splitted[0] && value == splitted[1]);
+            });
+            if (found) {
+                return categ_key;
+            }
+        }
+    }
+}
+
+
 module.exports = {
     available_filters,
     bboxToCardinalPoints,
     cardinalPointToBboxstr,
     filtersToOverpassStr,
     overpassURL,
+    groupByCategory,
 };

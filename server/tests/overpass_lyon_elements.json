@@ -1,0 +1,826 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.56.7 b85c4387",
+  "osm3s": {
+    "timestamp_osm_base": "2020-08-30T12:45:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 25733700,
+  "lat": 45.7410332,
+  "lon": 4.8689407,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "L'Esprit Bistro",
+    "ref:FR:SIRET": "53178387600034"
+  }
+},
+{
+  "type": "node",
+  "id": 26641424,
+  "lat": 45.7569848,
+  "lon": 4.8346121,
+  "tags": {
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/LeComptoirDesMarronniers/",
+    "email": "lecomptoirdesmarronniers@gmail.com",
+    "name": "Comptoir des Marronniers",
+    "opening_hours:covid19": "off",
+    "phone": "+33 4 72 77 10 00",
+    "ref:FR:SIRET": "53801942300028",
+    "website": "http://lecomptoirdesmarronniers.fr/"
+  }
+},
+{
+  "type": "node",
+  "id": 3593848289,
+  "lat": 45.7487692,
+  "lon": 4.8400904,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "diet:vegetarian": "yes",
+    "name": "Au comptoir à pâtons",
+    "opening_hours": "Tu 19:00-23:00; We-Fr 12:00-14:00,19:00-23:00; Sa,Su 11:30-14:00,18:30-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+33 9 83 97 70 32",
+    "website": "https://au-comptoir-a-patons.business.site/"
+  }
+},
+
+{
+  "type": "node",
+  "id": 4198870596,
+  "lat": 45.7364726,
+  "lon": 4.8334487,
+  "tags": {
+    "amenity": "fast_food",
+    "level": "0",
+    "name": "Picotine",
+    "opening_hours": "Mo-Fr 09:00-17:00",
+    "phone": "+33 9 50 80 41 69",
+    "ref:FR:SIRET": "44790516700030",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+
+{
+  "type": "node",
+  "id": 61948298,
+  "lat": 45.7439501,
+  "lon": 4.8713975,
+  "tags": {
+    "amenity": "cafe",
+    "brewery": "Chouffe",
+    "cuisine": "french",
+    "name": "L'Industrie",
+    "wheelchair": "yes"
+  }
+},
+
+
+{
+  "type": "node",
+  "id": 2433758768,
+  "lat": 45.7588962,
+  "lon": 4.8269707,
+  "tags": {
+    "amenity": "pub",
+    "brewery": "guinness;Kilkenny",
+    "name": "Au'Tooley's"
+  }
+},
+
+{
+  "type": "node",
+  "id": 7783349437,
+  "lat": 45.7692247,
+  "lon": 4.8319487,
+  "tags": {
+    "amenity": "bar",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "0",
+    "name": "AlternatiBar - Maison des alternatives",
+    "opening_hours": "Th-Sa 18:00-24:00",
+    "outdoor_seating": "no",
+    "payment:cb": "yes",
+    "payment:credit_cards": "yes",
+    "phone": "+33 4 78 28 42 06",
+    "smoking": "no",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "website": "https://alternatiba.eu/rhone/alternatibar/"
+  }
+},
+{
+  "type": "node",
+  "id": 7795049785,
+  "lat": 45.7645661,
+  "lon": 4.8271756,
+  "tags": {
+    "amenity": "bar",
+    "name": "La Traboule"
+  }
+},
+
+{
+  "type": "node",
+  "id": 2503341166,
+  "lat": 45.7684458,
+  "lon": 4.8328797,
+  "tags": {
+    "contact:email": "contact@www.le-sun-gay.fr",
+    "contact:phone": "+33 4 72100221",
+    "contact:website": "https://www.le-sun-gay.fr/",
+    "gay": "welcome",
+    "leisure": "sauna",
+    "lgbtq": "primary",
+    "name": "Le Sun Gay"
+  }
+},
+
+{
+  "type": "node",
+  "id": 2837774589,
+  "lat": 45.7838441,
+  "lon": 4.8777507,
+  "tags": {
+    "leisure": "swimming_pool",
+    "location": "indoor",
+    "sport": "swimming",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 5508814792,
+  "lat": 45.7682624,
+  "lon": 4.8435283,
+  "tags": {
+    "amenity": "public_bath",
+    "bath:type": "hammam",
+    "leisure": "sauna",
+    "name": "Nomad et Sens",
+    "operator": "SARL AMAN-IMAN",
+    "website": "https://www.nomad-et-sens.com"
+  }
+},
+{
+  "type": "node",
+  "id": 1421057567,
+  "lat": 45.7627063,
+  "lon": 4.8270449,
+  "tags": {
+    "historic": "archaeological_site",
+    "name": "Statue du bœuf",
+    "note": "entre le rdc et le 1er étage"
+  }
+},
+{
+  "type": "node",
+  "id": 2179497299,
+  "lat": 45.7146717,
+  "lon": 4.8044581,
+  "tags": {
+    "building": "yes",
+    "heritage": "2",
+    "heritage:operator": "mhs",
+    "historic": "building",
+    "mhs:inscription_date": "1983-03-21",
+    "name": "Immeuble Le Castel",
+    "ref:mhs": "PA00118012",
+    "source": "data.gouv.fr:Ministère de la Culture - 08/2011",
+    "source:heritage": "data.gouv.fr:Ministère de la Culture - 04/2015",
+    "wikidata": "Q22968170",
+    "wikipedia": "fr:Immeuble Le Castel"
+  }
+},
+
+{
+  "type": "node",
+  "id": 6544937560,
+  "lat": 45.7680550,
+  "lon": 4.8315839,
+  "tags": {
+    "access": "no",
+    "historic": "ruins",
+    "name": "Vestige du couvent des Carmes",
+    "note": "Pilier sur la Place de la Paix à Lyon.",
+    "wikimedia_commons": "File:Pilier sur la Place de la Paix à Lyon (juin 2019).jpg"
+  }
+},
+{
+  "type": "node",
+  "id": 54704555,
+  "lat": 45.7637725,
+  "lon": 4.8740508,
+  "tags": {
+    "artist_name": "Guy de Rougemont",
+    "name": "\"Le Totem\"",
+    "tourism": "artwork"
+  }
+},
+{
+  "type": "node",
+  "id": 273211850,
+  "lat": 45.7582517,
+  "lon": 4.8332712,
+  "tags": {
+    "artist_name": "Georges Salendre",
+    "artwork_type": "sculpture",
+    "historic": "memorial",
+    "image": "https://commons.wikimedia.org/wiki/File:Le_Veilleur_de_pierre_place_Bellecour.jpg",
+    "name": "Veilleur de pierre",
+    "start_date": "1948",
+    "tourism": "artwork",
+    "wikidata": "Q18001861",
+    "wikipedia": "fr:Veilleur de pierre"
+  }
+},
+{
+  "type": "node",
+  "id": 3061656212,
+  "lat": 45.7532772,
+  "lon": 4.8501160,
+  "tags": {
+    "artwork_type": "statue",
+    "name": "Barthélemy Thimonnier, inventeur de la machine à coudre",
+    "tourism": "artwork"
+  }
+},
+{
+  "type": "node",
+  "id": 3155817267,
+  "lat": 45.7820256,
+  "lon": 4.7957511,
+  "tags": {
+    "artist_name": "Philolaos",
+    "artwork_type": "sculpture",
+    "image": "http://dvalot.free.fr/pictures/sculptures/Sculptures_boulevard_Duchere_DSCN6786.htm",
+    "loc_name": "Les Cinq Menhirs d’acier",
+    "name": "Sculpture",
+    "start_date": "1968",
+    "tourism": "artwork",
+    "wikidata": "Q18352932",
+    "wikipedia": "fr:Sculpture (Philolaos)"
+  }
+},
+
+{
+  "type": "node",
+  "id": 3593848291,
+  "lat": 45.7534193,
+  "lon": 4.8402895,
+  "tags": {
+    "amenity": "arts_centre",
+    "name": "La Rage"
+  }
+},
+{
+  "type": "node",
+  "id": 454178148,
+  "lat": 45.7592731,
+  "lon": 4.8444842,
+  "tags": {
+    "contact:email": "brindidee@gmail.com",
+    "contact:phone": "+33 6 03 45 17 10",
+    "contact:website": "http://www.brin-d-idee.net/",
+    "name": "Brin d'Idée",
+    "tourism": "gallery"
+  }
+},
+{
+  "type": "node",
+  "id": 2457712085,
+  "lat": 45.7684984,
+  "lon": 4.8260672,
+  "tags": {
+    "name": "Fedora Art Gallery",
+    "opening_hours": "Fr 14:00-19:00, Sa 10:00-12:00,14:00-18:00",
+    "tourism": "gallery",
+    "website": "http://www.fedoraartgallery.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 26132177,
+  "lat": 45.7499594,
+  "lon": 4.8577773,
+  "tags": {
+    "name": "Musée Africain",
+    "phone": "+33 4 78 61 60 98",
+    "tourism": "museum",
+    "website": "http://www.musee-africain-lyon.org/",
+    "wheelchair": "no",
+    "wikidata": "Q9494",
+    "wikipedia": "fr:Musée africain de Lyon"
+  }
+},
+{
+  "type": "node",
+  "id": 3822699441,
+  "lat": 45.7299317,
+  "lon": 4.8280106,
+  "tags": {
+    "name": "Maison des mathématiques et de l'informatique",
+    "opening_hours": "Sa 14:30-16:00,16:15-17:45; We 14:00-15:15,15:30-16:45",
+    "tourism": "museum",
+    "website": "http://www.mmi-lyon.fr/"
+  }
+},
+{
+  "type": "node",
+  "id": 1802682174,
+  "lat": 45.7577860,
+  "lon": 4.8249965,
+  "tags": {
+    "name": "Les Ateliers de Marinette",
+    "note": "brocante, location d'objet, exposition",
+    "shop": "gift",
+    "website": "https://www.ateliers-marinette.fr/"
+  }
+},
+{
+  "type": "node",
+  "id": 4426574490,
+  "lat": 45.7611738,
+  "lon": 4.8267751,
+  "tags": {
+    "level": "0",
+    "name": "Souvenirs de Saint-Jean",
+    "shop": "gift"
+  }
+},
+{
+  "type": "node",
+  "id": 6920877606,
+  "lat": 45.7588522,
+  "lon": 4.8345921,
+  "tags": {
+    "brand": "Nature & Découvertes",
+    "contact:facebook": "https://www.facebook.com/natureetdecouvertes",
+    "contact:instagram": "https://www.instagram.com/natureetdecouvertes",
+    "contact:pinterest": "https://www.pinterest.com/natureetd",
+    "contact:twitter": "https://twitter.com/netd_news",
+    "name": "Nature & Découvertes",
+    "opening_hours": "Mo-Sa 10:00-19:30",
+    "phone": "+33 4 78 38 38 74",
+    "ref:FR:SIRET": "37870267400060",
+    "shop": "gift"
+  }
+},
+
+{
+  "type": "node",
+  "id": 3607181133,
+  "lat": 45.7569472,
+  "lon": 4.8360506,
+  "tags": {
+    "brand": "Gibert Joseph",
+    "brand:wikidata": "Q3105347",
+    "name": "Gibert Joseph",
+    "opening_hours": "Mo-Sa 10:00-19:15",
+    "ref:FR:SIRET": "35386895300020",
+    "second_hand": "yes",
+    "shop": "books",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2485067998,
+  "lat": 45.7500637,
+  "lon": 4.8306316,
+  "tags": {
+    "name": "JS Musique",
+    "phone": "+33 4 78 38 20 47",
+    "shop": "music",
+    "website": "https://jsmusique.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2809937187,
+  "lat": 45.7624183,
+  "lon": 4.8277937,
+  "tags": {
+    "description": "Magasin de disques et de Bande Dessinėe d'occasion",
+    "email": "bouldingue@gmail.com",
+    "name": "Boul'Dingue",
+    "opening_hours": "11:00-12:30, 14:30-19:00",
+    "operator": "BOISSAT",
+    "phone": "+33478380397",
+    "shop": "music",
+    "source": "Grand Lyon - 10/2011"
+  }
+},
+{
+  "type": "node",
+  "id": 533377509,
+  "lat": 45.7588577,
+  "lon": 4.8482738,
+  "tags": {
+    "name": "Mazenod",
+    "shop": "art"
+  }
+},
+
+{
+  "type": "node",
+  "id": 7164676557,
+  "lat": 45.7525150,
+  "lon": 4.8321245,
+  "tags": {
+    "email": "ap.entrepose@gmail.com",
+    "name": "Au Passé Entreposé",
+    "opening_hours": "Tu 12:00-18:00; We-Sa 10:00-18:00",
+    "phone": "+33 4 78 92 85 81",
+    "ref:FR:SIRET": "83130183300016",
+    "shop": "antiques",
+    "website": "http://www.au-passe-entrepose.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 1616889092,
+  "lat": 45.7668747,
+  "lon": 4.8316960,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Rue Lanterne",
+    "name": "Carhartt WIP",
+    "opening_hours": "Tu-Sa 10:30-19:00; Mo 14:00-19:00",
+    "phone": "+33 4 78 29 95 13",
+    "ref:FR:SIRET": "40149353100123",
+    "shop": "clothes",
+    "wheelchair": "yes"
+  }
+},
+
+{
+  "type": "node",
+  "id": 6939207898,
+  "lat": 45.7616743,
+  "lon": 4.8331971,
+  "tags": {
+    "name": "SuperdrySport",
+    "ref:FR:SIRET": "33449777300021",
+    "shop": "clothes"
+  }
+},
+
+{
+  "type": "node",
+  "id": 6993844342,
+  "lat": 45.7523942,
+  "lon": 4.8312244,
+  "tags": {
+    "email": "naturhouse.lyon2charite@gmail.com",
+    "name": "Natur House",
+    "opening_hours": "Tu 10:00-13:00, 15:00-19:00; We-Fr 10:00-13:00, 14:00-19:00; Sa 08:00-13:00",
+    "opening_hours:covid19": "off",
+    "phone": "+33472040534",
+    "ref:FR:SIRET": "81957148000030",
+    "shop": "health_food",
+    "website": "https://www.naturhouse.fr/"
+  }
+},
+{
+  "type": "node",
+  "id": 388179388,
+  "lat": 45.7501211,
+  "lon": 4.8877964,
+  "tags": {
+    "opening_hours:covid19": "open",
+    "shop": "farm",
+    "website": "www.collectif-monchat.fr"
+  }
+},
+{
+  "type": "node",
+  "id": 4471398448,
+  "lat": 45.7570194,
+  "lon": 4.8644671,
+  "tags": {
+    "contact:website": "https://www.voieverte.fr/",
+    "name": "Voie Verte",
+    "opening_hours": "Mo-Fr 08:30-18:30; Sa 08:00-13:00",
+    "opening_hours:covid19": "same",
+    "organic": "yes",
+    "ref:FR:SIRET": "74995403800024",
+    "shop": "farm",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6406365100,
+  "lat": 45.7688574,
+  "lon": 4.8550868,
+  "tags": {
+    "brand": "Ma ferme en ville",
+    "contact:facebook": "https://www.facebook.com/mafermeenville/",
+    "contact:instagram": "https://www.instagram.com/mafermeenville/",
+    "delivery:covid19": "yes",
+    "description:covid19": "Uniquement en livraison à domicile ou retrait de commande en magasin",
+    "email": "lyon6@mafermeenville.fr",
+    "name": "Ma ferme en ville - Brotteaux",
+    "opening_hours:covid19": "restricted",
+    "phone": "+33 9 54 13 77 56",
+    "ref:FR:SIRET": "80126411000033",
+    "shop": "farm",
+    "takeaway:covid19": "yes",
+    "website": "https://www.mafermeenville.fr/"
+  }
+},
+{
+  "type": "node",
+  "id": 262861507,
+  "lat": 45.7627458,
+  "lon": 4.8230054,
+  "tags": {
+    "name": "Esplanade de Fourvière",
+    "tourism": "viewpoint",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6224558019,
+  "lat": 45.7188096,
+  "lon": 4.8163449,
+  "tags": {
+    "leisure": "park"
+  }
+},
+{
+  "type": "node",
+  "id": 2960324536,
+  "lat": 45.7847561,
+  "lon": 4.8527698,
+  "tags": {
+    "amenity": "casino",
+    "leisure": "adult_gaming_centre",
+    "name": "Le Pharaon",
+    "phone": "+33 4 78 17 53 53",
+    "website": "http://www.casino-lyon.com/",
+    "wikidata": "Q62571527"
+  }
+},
+{
+  "type": "node",
+  "id": 35967996,
+  "lat": 45.7653286,
+  "lon": 4.8341916,
+  "tags": {
+    "amenity": "cinema",
+    "capacity": "326",
+    "cinema:3D": "no",
+    "name": "Lumière Terreaux",
+    "opening_hours": "\"C'est un cinéma, les horaires dépendent des films et de leur durée.\"",
+    "ref:FR:CNC": "238351",
+    "ref:FR:SIRET": "80352971800048",
+    "screen": "4",
+    "wheelchair": "no",
+    "wikidata": "Q2931783"
+  }
+},
+{
+  "type": "node",
+  "id": 83435700,
+  "lat": 45.7474000,
+  "lon": 4.8355185,
+  "tags": {
+    "amenity": "cinema",
+    "capacity": "1281",
+    "cinema:3D": "yes",
+    "contact:email": "info@cinema-comoedia.com",
+    "contact:fax": "+33 4 26 99 45 19",
+    "contact:phone": "+33 8 92 68 69 22",
+    "deaf:description:en": "This cinema regularily offers movies with subtitles",
+    "deaf:description:fr": "Cinéma spécialisé dans les films d’auteur en version originale sous-titrée, des films documentaires, des reprises, des festivals, des soirée-débats, des rencontres avec les réalisateurs…",
+    "drive_in": "no",
+    "name": "Comœdia",
+    "opening_hours": "Mo-Su 10:30-22:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "phone": "+33426994500",
+    "ref:FR:CNC": "237933",
+    "ref:FR:SIRET": "33978883800052",
+    "screen": "9",
+    "website": "http://www.cinema-comoedia.com/",
+    "wheelchair": "yes",
+    "wikidata": "Q2991569",
+    "wikimedia_commons": "File:Le cinéma Comœdia (Lyon) en mai 2019.jpg",
+    "wikipedia": "fr:Comœdia"
+  }
+},
+{
+  "type": "node",
+  "id": 5403853443,
+  "lat": 45.7716236,
+  "lon": 4.8350589,
+  "tags": {
+    "amenity": "nightclub",
+    "contact:facebook": "https://www.facebook.com/raspoutine.lyon",
+    "contact:housenumber": "35",
+    "contact:street": "Rue Imbert Colomès",
+    "name": "Raspoutine",
+    "ref:FR:SIRET": "79139056000021"
+  }
+},
+{
+  "type": "node",
+  "id": 6345708218,
+  "lat": 45.7408169,
+  "lon": 4.8488250,
+  "tags": {
+    "amenity": "nightclub",
+    "email": "info@lpslyon.fr",
+    "name": "Le Petit Salon",
+    "phone": "+33 9 64 41 68 41",
+    "website": "https://www.lpslyon.fr/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6376637433,
+  "lat": 45.7704867,
+  "lon": 4.8371669,
+  "tags": {
+    "amenity": "nightclub",
+    "name": "Impérial Discothèque",
+    "ref:FR:SIRET": "81378788400028"
+  }
+},
+{
+  "type": "node",
+  "id": 714074101,
+  "lat": 45.7709134,
+  "lon": 4.8343897,
+  "tags": {
+    "amenity": "theatre",
+    "contact:facebook": "https://www.facebook.com/lenombrildumondelyon",
+    "contact:housenumber": "1",
+    "contact:phone": "+33 4 72 07 04 44",
+    "contact:street": "Place Chardonnet",
+    "contact:website": "http://lenombrildumonde.com",
+    "name": "Le Nombril du Monde"
+  }
+},
+
+{
+  "type": "node",
+  "id": 5750227976,
+  "lat": 45.7658507,
+  "lon": 4.8670050,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Théâtre du Gai Savoir",
+    "website": "https://theatre.gaisavoir.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 4008459790,
+  "lat": 45.7641033,
+  "lon": 4.8379842,
+  "tags": {
+    "email": "contact@gamespirit.fr",
+    "leisure": "amusement_arcade",
+    "name": "Game Spirit",
+    "opening_hours": "Mo-Fr 10:00-20:00, Sa 10:00-21:00",
+    "payment:coins": "yes",
+    "payment:notes": "yes",
+    "phone": "+33 4 78 60 32 20",
+    "ref:FR:SIRET": "50354340700020",
+    "shop": "video_games",
+    "website": "https://www.gamespirit.fr/"
+  }
+},
+{
+  "type": "node",
+  "id": 6176485117,
+  "lat": 45.7414777,
+  "lon": 4.8158654,
+  "tags": {
+    "leisure": "amusement_arcade",
+    "level": "2",
+    "name": "La tête dans les nuages",
+    "website": "https://latetedanslesnuages.com/nos-centres/lyon/"
+  }
+},
+{
+  "type": "node",
+  "id": 3961419764,
+  "lat": 45.7593820,
+  "lon": 4.8430195,
+  "tags": {
+    "email": "contact@enigmaticlyon.fr",
+    "leisure": "escape_game",
+    "name": "Enigmatic Lyon",
+    "phone": "+33 9 86159455",
+    "start_date": "2015",
+    "website": "https://www.enigmaticlyon.fr/"
+  }
+},
+
+{
+  "type": "node",
+  "id": 1357592004,
+  "lat": 45.7258436,
+  "lon": 4.7930643,
+  "tags": {
+    "name": "City Aventure Lyon - Ste Foy",
+    "sport": "climbing_adventure",
+    "tourism": "attraction",
+    "website": "http://www.cityaventure.com/parc/parc-d-attraction-ste-foy/"
+  }
+},
+{
+  "type": "node",
+  "id": 1714710866,
+  "lat": 45.7745536,
+  "lon": 4.8350046,
+  "tags": {
+    "name": "Le Gros Caillou",
+    "natural": "stone",
+    "tourism": "attraction",
+    "wikidata": "Q16303800",
+    "wikipedia": "fr:Le Gros Caillou"
+  }
+},
+{
+  "type": "node",
+  "id": 4868214931,
+  "lat": 45.7618612,
+  "lon": 4.8269888,
+  "tags": {
+    "name": "Place de la Basoche",
+    "name:fr": "Place de la Basoche",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 5779529854,
+  "lat": 45.7609435,
+  "lon": 4.8307512,
+  "tags": {
+    "description": "Point d'embarcadère de croisières à Lyon",
+    "name": "Les Bateaux Lyonnais",
+    "tourism": "attraction",
+    "website": "https://www.lesbateauxlyonnais.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6341893651,
+  "lat": 45.7630771,
+  "lon": 4.8279890,
+  "tags": {
+    "contact:phone": "+33 4 78 37 17 84",
+    "name": "Aux Azalées",
+    "opening_hours": "Tu,Su 10:30-19:00; Th-Sa 10:30-20:00",
+    "ref:FR:SIRET": "96341281200017",
+    "shop": "florist",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 6790324677,
+  "lat": 45.7480772,
+  "lon": 4.8408598,
+  "tags": {
+    "name": "Centre Kapla Animation",
+    "phone": "+33 4 37658821",
+    "tourism": "theme_park"
+  }
+},
+{
+  "type": "node",
+  "id": 7832319857,
+  "lat": 45.7233295,
+  "lon": 4.8951395,
+  "tags": {
+    "facebook": "wakoopark",
+    "fee": "yes",
+    "max_age": "12",
+    "min_age": "2",
+    "name": "Wakoo Park",
+    "opening_hours": "Mo-Su 10:00-19:00",
+    "phone": "+33 4 78 74 61 62",
+    "tourism": "theme_park",
+    "website": "http://wakoopark.com/"
+  }
+}
+  ]
+}
