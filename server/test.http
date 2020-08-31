@@ -19,7 +19,7 @@ GET http://{{baseurl}}/api/search/?location=LYON
 GET http://{{baseurl}}/api/search/?location=LYON&filters=1
 
 ###
-GET http://{{baseurl}}/api/search/?location=PARIS&filters=1&food&aqua
+GET http://{{baseurl}}/api/search/?location=ETRETAT&filters=1&food
 
 ###
 GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1

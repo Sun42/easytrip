@@ -75,19 +75,16 @@
         }
       }
     }
-
-    .button-submit {
-      display: flex;
-      justify-content: center;
-      margin-top: 25px;
-    }
   }
 }
 
 .filtersbar p {
   text-align: center;
   padding: 0.5em 1em 0.5em 1em;
-  background-color: vars.$filter-heading;
+  background-color:#FF834F;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 

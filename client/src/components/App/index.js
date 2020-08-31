@@ -32,10 +32,8 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-
       <Switch>
         <Route exact path="/">
-          <SearchBar />
           <HomePage />
         </Route>
         <Route exact path="/result">

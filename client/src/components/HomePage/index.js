@@ -12,16 +12,20 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 import Video from '../../assets/homepageVideo.mp4';
 
-// Composants
-import SearchBar from '../../containers/SearchBar';
-
 const HomePage = () => (
   <div className="wrapper">
     <video autoPlay loop muted>
       <source src={Video} />
     </video>
-    <SearchBar />
-    <div className="explications">
+    <Button animated>
+      <Button.Content visible>C'est parti !</Button.Content>
+      <Button.Content hidden>
+        <Link to="/result">
+          <Icon name="plane" size="huge" />
+        </Link>
+      </Button.Content>
+    </Button>
+    {/* <div className="explications">
       <Step.Group widths={3}>
         <Step>
           <Icon name="globe" />
@@ -63,7 +67,7 @@ const HomePage = () => (
           </Link>
         </Button.Content>
       </Button>
-    </div>
+    </div> */}
   </div>
 );
 
