@@ -2,6 +2,7 @@
 
 .wrapper {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   height: 70%;
@@ -15,28 +16,34 @@
     left: 0;
   }
 
-  .explications {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  button.ui.animated.button {
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.329);
+    margin-top: 25%;
+    height: 20%;
 
-    div.ui.three.steps {
-      margin: 0;
-      width: 50%;
+    div.visible.content {
+      font-size: 2rem;
+    }
 
-      div.step {
-        background-color: rgba(255, 255, 255, 0.651);
+      i.plane.icon {
+      color: white;
       }
     }
-
-    button.ui.animated.button {
-      color: white;
-      font-weight: bold;
-      background-color: black;
-      height: 70px;
-    }
-  }
 }
 
+// .explications {
+//   display: flex;
+//   justify-content: space-evenly;
+//   align-items: center;
 
+//   div.ui.three.steps {
+//     margin: 0;
+//     width: 50%;
 
+//     div.step {
+//       background-color: rgba(255, 255, 255, 0.651);
+//     }
+//   }
+// }

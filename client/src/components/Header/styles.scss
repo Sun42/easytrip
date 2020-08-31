@@ -1,30 +1,26 @@
+@use 'src/styles/vars';
+
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(51, 67, 117);
-  padding: 2rem;
+  align-items: center;
+  background-color: vars.$headerANDfooter;
+  padding: 1.5rem;
   height: 15%;
-}
 
-// .button {
-//   height: 50px;
-//   margin-right: 10px;
-//   box-shadow: 10px 5px 5px rgb(29, 29, 66);
-//   border: 1px solid rgb(29, 29, 66);
-//   background-color: white;
-//   position: relative;
-//   top: 50%;
-//   transform: translateY(-50%);
-// }
+  .logo {
+    width: 18%;
+  }
 
-// button:hover {
-//   background-color: rgb(94, 94, 167);
-//   color: white;
-//   transition: 0.5s;
-// }
+  .login {
+    align-items: center;
 
-.logo {
-  width: 15%;
+    button.ui.animated.button {
+      background-color: white;
+      border: 1px solid black;
+      margin-left: 20px;
+    }
+  }
 }
 
 @media screen and (max-width: 1250px) {
@@ -37,23 +33,4 @@
   .logo {
     width: 40%;
   }
-}
-
-.login {
-  width: 25%;
-  text-align: right;
-}
-
-.login a {
-  text-decoration: none;
-  margin-left: 20px;
-  margin-right: 5px;
-}
-
-.login a:hover {
-  color: #8a0f53;
-}
-
-.login .active {
-  color: #2c7613;
 }

@@ -58,6 +58,7 @@
     "add": "^2.0.6",
     "axios": "^0.19.2",
     "leaflet": "^1.6.0",
+    "moment": "^2.27.0",
     "prop-types": "*",
     "react": "*",
     "react-browser-router": "^2.1.2",
