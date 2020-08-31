@@ -34,9 +34,3 @@ jobs:
         SERVER_HOST: localhost
         PORT: 3000
         SECRET_SESSION: ${{ secrets.SECRET_SESSION }}
-    - run: | 
-        yarn
-        npm run start --if-present
-      working-directory: ./client
-      env: 
-        CI: true
