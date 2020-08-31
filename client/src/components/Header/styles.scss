@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -23,9 +25,25 @@ button:hover {
   transition: 0.5s;
 }
 
+  align-items: center;
+  background-color: vars.$headerANDfooter;
+  padding: 1.5rem;
+  height: 15%;
 
-.logo {
-  width: 15%;
+  .logo {
+    width: 18%;
+  }
+
+  .login {
+    align-items: center;
+}
+
+    button.ui.animated.button {
+      background-color: white;
+      border: 1px solid black;
+      margin-left: 20px;
+    }
+  }
 }
 
 @media screen and (max-width: 1250px) {
@@ -39,23 +57,4 @@ button:hover {
   .logo {
     width: 40%;
   }
-}
-
-.login {
-  width: 25%;
-  text-align: right;
-}
-
-.login a {
-  text-decoration: none;
-  margin-left: 20px;
-  margin-right: 5px;
-}
-
-.login a:hover {
-  color: #8a0f53;
-}
-
-.login .active {
-  color: #2c7613;
 }

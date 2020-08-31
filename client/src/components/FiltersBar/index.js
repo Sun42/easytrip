@@ -15,9 +15,10 @@ import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
   handleAddGastronomie, handleAddCulture, handleAddBar,
-  handlePrefPromenade, handlePrefShopping, handlePrefActAqua,
+  handleAddPromenade, handleAddShopping, handleAddActAqua,
   handlePrefSpectacle, handlePrefMonuments, allPoiOfDestination,
   handleRemoveGastronomie, handleRemoveCulture, handleRemoveBar,
+  handleRemovePromenade, handleRemoveShopping, handleRemoveActAqua,
 }) => {
   const [dateRange, setDateRange] = useState({
     startDate: null,
@@ -77,7 +78,7 @@ const FiltersBar = ({
                       handleAddGastronomie(gastronomie);
                     }
                     else {
-                      handleRemoveGastronomie(gastronomie);
+                      handleRemoveGastronomie();
                     }
                   }}
                 />
@@ -95,7 +96,7 @@ const FiltersBar = ({
                       handleAddCulture(art);
                     }
                     else {
-                      handleRemoveCulture(art);
+                      handleRemoveCulture();
                     }
                   }}
                 />
@@ -113,7 +114,7 @@ const FiltersBar = ({
                       handleAddBar(bars);
                     }
                     else {
-                      handleRemoveBar(bars);
+                      handleRemoveBar();
                     }
                   }}
                 />
@@ -124,9 +125,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="promenades"
                   name="promenades"
-                  onClick={() => {
-                    const excursion = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'excursion'));
-                    handlePrefPromenade(excursion);
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const excursion = allPoiOfDestination.filter((poi) => (poi.tags.tourism === 'viewpoint') || (poi.tags.leisure === 'park'));
+                    if (checkboxValue === true) {
+                      handleAddPromenade(excursion);
+                    }
+                    else {
+                      handleRemovePromenade();
+                    }
                   }}
                 />
               </div>
@@ -138,9 +145,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="shopping"
                   name="shopping"
-                  onClick={() => {
-                    const shop = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'shop'));
-                    handlePrefShopping(shop);
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const shop = allPoiOfDestination.filter((poi) => (poi.tags.shop === 'gift') || (poi.tags.shop === 'books') || (poi.tags.shop === 'anime') || (poi.tags.shop === 'music') || (poi.tags.shop === 'art') || (poi.tags.shop === 'antiques') || (poi.tags.shop === 'perfumery') || (poi.tags.shop === 'herbaliste') || (poi.tags.shop === 'second_hand') || (poi.tags.shop === 'clothes') || (poi.tags.shop === 'health_food') || (poi.tags.shop === 'farm'));
+                    if (checkboxValue === true) {
+                      handleAddShopping(shop);
+                    }
+                    else {
+                      handleRemoveShopping();
+                    }
                   }}
                 />
               </div>
@@ -150,9 +163,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="activites_acquatiques"
                   name="activites_acquatiques"
-                  onClick={() => {
-                    const aquatic = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'aquatic'));
-                    handlePrefActAqua(aquatic);
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const aquatic = allPoiOfDestination.filter((poi) => (poi.tags.leisure === 'sauna') || (poi.tags.leisure === 'beach_resort') || (poi.tags.leisure === 'swimming_pool') || (poi.tags.leisure === 'water_park') || (poi.tags.sport === 'water_ski') || (poi.tags.sport === 'wakeboarding') || (poi.tags.amenity === 'public_bath'));
+                    if (checkboxValue === true) {
+                      handleAddActAqua(aquatic);
+                    }
+                    else {
+                      handleRemoveActAqua();
+                    }
                   }}
                 />
               </div>
@@ -192,15 +211,18 @@ FiltersBar.propTypes = {
   handleAddGastronomie: PropTypes.func.isRequired,
   handleAddCulture: PropTypes.func.isRequired,
   handleAddBar: PropTypes.func.isRequired,
-  handlePrefPromenade: PropTypes.func.isRequired,
-  handlePrefShopping: PropTypes.func.isRequired,
-  handlePrefActAqua: PropTypes.func.isRequired,
+  handleAddPromenade: PropTypes.func.isRequired,
+  handleAddShopping: PropTypes.func.isRequired,
+  handleAddActAqua: PropTypes.func.isRequired,
   handlePrefSpectacle: PropTypes.func.isRequired,
   handlePrefMonuments: PropTypes.func.isRequired,
   allPoiOfDestination: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   handleRemoveGastronomie: PropTypes.func.isRequired,
   handleRemoveCulture: PropTypes.func.isRequired,
   handleRemoveBar: PropTypes.func.isRequired,
+  handleRemovePromenade: PropTypes.func.isRequired,
+  handleRemoveShopping: PropTypes.func.isRequired,
+  handleRemoveActAqua: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;

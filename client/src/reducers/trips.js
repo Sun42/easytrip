@@ -1,15 +1,55 @@
-import { ADD_NEW_ACTIVITY, GET_SEARCH_RESULT_TO_STATE } from '../store/action/trips-actions';
+import {
+  ADD_NEW_ACTIVITY, GET_SEARCH_RESULT_TO_STATE,
+  ADD_DESTINATION, ADD_START_DATE, ADD_END_DATE, ADD_TRIP,
+} from '../store/action/trips-actions';
 
 // Initial STATE de carnet, mon voyage et vignette
 export const initialState = {
-  destination: 'Paris',
+  destination: '',
+  startDate: '',
+  endDate: '',
   result: [],
-  tripBook: [],
+  carnet: [],
+  newTrip: [],
 };
 
 // Fonction de REDUCER
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case ADD_DESTINATION:
+      return {
+        ...state,
+        destination: action.payload,
+      };
+    case ADD_START_DATE:
+      return {
+        ...state,
+        startDate: action.payload,
+      };
+    case ADD_END_DATE:
+      return {
+        ...state,
+        endDate: action.payload,
+      };
+    case ADD_TRIP:
+      return {
+        ...state,
+        newTrip: [
+          {
+            destination: state.destination,
+          },
+          {
+            startDate: state.startDate,
+          },
+          {
+            endDate: state.endDate,
+          },
+        ],
+        destination: '',
+        startDate: '',
+        endDate: '',
+      };
+
     case GET_SEARCH_RESULT_TO_STATE:
       return {
         ...state,
@@ -20,8 +60,8 @@ export default (state = initialState, action = {}) => {
     case ADD_NEW_ACTIVITY:
       return {
         ...state,
-        tripBook: [
-          ...state.tripBook,
+        carnet: [
+          ...state.carnet,
           {
             name: action.playload,
           },
