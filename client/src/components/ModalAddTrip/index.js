@@ -40,7 +40,14 @@ const ModalTripAdd = ({
       onOpen={() => setOpen(true)}
       open={open}
       size="small"
-      trigger={<Button>Nouveau voyage</Button>}
+      trigger={(
+        <Button
+          circular
+          icon="add"
+          color="orange"
+          size="large"
+        />
+      )}
     >
       <Header icon>
         <Icon name="map outline" />

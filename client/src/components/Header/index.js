@@ -19,12 +19,28 @@ const Header = () => (
     <div className="login">
       <ModalAddTrip />
       <NavLink to="/login">
+        <Button
+          circular
+          icon="suitcase"
+          color="orange"
+          size="large"
+        />
+      </NavLink>
+      <NavLink to="/login">
         <Button animated>
           <Button.Content visible>Connexion</Button.Content>
           <Button.Content hidden>
             <Icon name="arrow right" />
           </Button.Content>
         </Button>
+      </NavLink>
+      <NavLink to="/login">
+        <Button
+          circular
+          icon="user"
+          color="black"
+          size="large"
+        />
       </NavLink>
       <NavLink to="/inscription">
         <Button animated>
