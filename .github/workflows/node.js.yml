@@ -34,7 +34,7 @@ jobs:
         SERVER_HOST: localhost
         PORT: 3000
         SECRET_SESSION: ${{ secrets.SECRET_SESSION }}
-      - run: | 
+    - run: | 
         yarn
         yarn build --if-present
       working-directory: ./client
