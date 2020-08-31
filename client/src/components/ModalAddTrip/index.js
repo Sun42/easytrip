@@ -13,8 +13,8 @@ import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 
 const ModalTripAdd = ({
-  handleAddDestination, handleAddTrip, handleAddStartDate,
-  handleAddEndDate, destination,
+  handleAddName, handleAddDestination, handleAddTrip, handleAddStartDate,
+  handleAddEndDate, destination, name,
 }) => {
   // modal state modifier
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ const ModalTripAdd = ({
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      size="small"
+      size="tiny"
       trigger={(
         <Button
           circular
@@ -63,6 +63,17 @@ const ModalTripAdd = ({
             setOpen(false);
           }}
         >
+          <Form.Field>
+            <label>Le nom du carnet</label>
+            <input
+              value={name}
+              placeholder="Le nom du carnet..."
+              onChange={(evt) => {
+                const text = evt.target.value;
+                handleAddName(text);
+              }}
+            />
+          </Form.Field>
           <Form.Field>
             <label>Destination</label>
             <input
@@ -109,11 +120,13 @@ const ModalTripAdd = ({
 };
 
 ModalTripAdd.propTypes = {
+  handleAddName: PropTypes.func.isRequired,
   handleAddDestination: PropTypes.func.isRequired,
   handleAddTrip: PropTypes.func.isRequired,
   handleAddStartDate: PropTypes.func.isRequired,
   handleAddEndDate: PropTypes.func.isRequired,
   destination: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ModalTripAdd;

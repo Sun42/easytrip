@@ -1,10 +1,11 @@
 import {
-  ADD_NEW_ACTIVITY, GET_SEARCH_RESULT_TO_STATE,
+  ADD_NEW_ACTIVITY, GET_SEARCH_RESULT_TO_STATE, ADD_NAME,
   ADD_DESTINATION, ADD_START_DATE, ADD_END_DATE, ADD_TRIP,
 } from '../store/action/trips-actions';
 
 // Initial STATE de carnet, mon voyage et vignette
 export const initialState = {
+  name: '',
   destination: '',
   startDate: '',
   endDate: '',
@@ -16,6 +17,11 @@ export const initialState = {
 // Fonction de REDUCER
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case ADD_NAME:
+      return {
+        ...state,
+        name: action.payload,
+      };
     case ADD_DESTINATION:
       return {
         ...state,
