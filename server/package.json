@@ -26,7 +26,7 @@
     "start": "node app/start.js",
     "test": "jest --testTimeout=10000",
     "lint": "eslint app/** tests/**",
-    "coverage":  "jest --testTimeout=10000 --coverage"
+    "coverage": "jest --testTimeout=10000 --coverage"
   },
   "repository": {
     "type": "git",
