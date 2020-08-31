@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
   addGastronomie, addCulture, addBar, addPromenade,
-  addShopping, getPrefActAqua, getPrefSpectacle, getPrefMonuments,
+  addShopping, addActAqua, getPrefSpectacle, getPrefMonuments,
   removeGastronomie, removeCulture, removeBar, removePromenade,
-  removeShopping,
+  removeShopping, removeActAqua,
 } from '../store/action/filters-actions';
 
 const mapStateToProps = (state) => ({
@@ -53,8 +53,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(removeShopping());
   },
 
-  handlePrefActAqua: (aquatic) => {
-    dispatch(getPrefActAqua(aquatic));
+  handleAddActAqua: (aquatic) => {
+    dispatch(addActAqua(aquatic));
+  },
+
+  handleRemoveActAqua: (aquatic) => {
+    dispatch(removeActAqua(aquatic));
   },
 
   handlePrefSpectacle: (fun) => {

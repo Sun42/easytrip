@@ -3,7 +3,7 @@ export const ADD_CULTURE = 'ADD_CULTURE';
 export const ADD_BAR = 'ADD_BAR';
 export const ADD_PROMENADE = 'ADD_PROMENADE';
 export const ADD_SHOPPING = 'ADD_SHOPPING';
-export const GET_PREF_ACT_AQUA = 'GET_PREF_ACT_AQUA';
+export const ADD_ACT_AQUA = 'ADD_ACT_AQUA';
 export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
 export const GET_PREF_MONUMENTS = 'GET_PREF_MONUMENTS';
 export const GET_SEARCH = 'GET_SEARCH';
@@ -16,6 +16,7 @@ export const REMOVE_CULTURE = 'REMOVE_CULTURE';
 export const REMOVE_BAR = 'REMOVE_BAR';
 export const REMOVE_PROMENADE = 'REMOVE_PROMENADE';
 export const REMOVE_SHOPPING = 'REMOVE_SHOPPING';
+export const REMOVE_ACT_AQUA = 'REMOVE_ACT_AQUA';
 
 export const getSearch = (payload) => ({
   type: GET_SEARCH,
@@ -86,9 +87,13 @@ export const removeShopping = () => ({
   type: REMOVE_SHOPPING,
 });
 
-export const getPrefActAqua = (payload) => ({
-  type: GET_PREF_ACT_AQUA,
-  payload
+export const addActAqua = (payload) => ({
+  type: ADD_ACT_AQUA,
+  payload,
+});
+
+export const removeActAqua = () => ({
+  type: REMOVE_ACT_AQUA,
 });
 
 export const getPrefSpectacle = (payload) => ({

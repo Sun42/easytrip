@@ -15,10 +15,10 @@ import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
   handleAddGastronomie, handleAddCulture, handleAddBar,
-  handleAddPromenade, handleAddShopping, handlePrefActAqua,
+  handleAddPromenade, handleAddShopping, handleAddActAqua,
   handlePrefSpectacle, handlePrefMonuments, allPoiOfDestination,
   handleRemoveGastronomie, handleRemoveCulture, handleRemoveBar,
-  handleRemovePromenade, handleRemoveShopping,
+  handleRemovePromenade, handleRemoveShopping, handleRemoveActAqua,
 }) => {
   const [dateRange, setDateRange] = useState({
     startDate: null,
@@ -163,9 +163,15 @@ const FiltersBar = ({
                   type="checkbox"
                   id="activites_acquatiques"
                   name="activites_acquatiques"
-                  onClick={() => {
-                    const aquatic = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'aquatic'));
-                    handlePrefActAqua(aquatic);
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    const aquatic = allPoiOfDestination.filter((poi) => (poi.tags.leisure === 'sauna') || (poi.tags.leisure === 'beach_resort') || (poi.tags.leisure === 'swimming_pool') || (poi.tags.leisure === 'water_park') || (poi.tags.sport === 'water_ski') || (poi.tags.sport === 'wakeboarding') || (poi.tags.amenity === 'public_bath'));
+                    if (checkboxValue === true) {
+                      handleAddActAqua(aquatic);
+                    }
+                    else {
+                      handleRemoveActAqua();
+                    }
                   }}
                 />
               </div>
@@ -207,7 +213,7 @@ FiltersBar.propTypes = {
   handleAddBar: PropTypes.func.isRequired,
   handleAddPromenade: PropTypes.func.isRequired,
   handleAddShopping: PropTypes.func.isRequired,
-  handlePrefActAqua: PropTypes.func.isRequired,
+  handleAddActAqua: PropTypes.func.isRequired,
   handlePrefSpectacle: PropTypes.func.isRequired,
   handlePrefMonuments: PropTypes.func.isRequired,
   allPoiOfDestination: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
@@ -216,6 +222,7 @@ FiltersBar.propTypes = {
   handleRemoveBar: PropTypes.func.isRequired,
   handleRemovePromenade: PropTypes.func.isRequired,
   handleRemoveShopping: PropTypes.func.isRequired,
+  handleRemoveActAqua: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;
