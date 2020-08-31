@@ -40,26 +40,33 @@ describe('test searchController check filters parameter', () => {
 });
 
 describe('test searchController retrieve filters categories', () => {
-    const available_filters = {
+    const categories = {
         'food' : 'amenity=restaurant',
-        'pub' : 'amenity=pub',
+        'pub' : ['amenity=pub', 'amenity=bar'],
     };
 
     test('unkown filters category should not be contained', () => {
         const query = { wrongfilter : 1, wrongfilter2 : '1' };
-        const response = sc.filterParams(query, available_filters);
+        const response = sc.filterParams(query, categories);
         expect(response).toEqual(expect.not.arrayContaining(Object.keys(query)));
     });
 
     test('ok filters should  be contained', () => {
         const query = { food : 1, pub : '1' };
-        const response = sc.filterParams(query, available_filters);
+        const response = sc.filterParams(query, categories);
         expect(response).toEqual(expect.arrayContaining(Object.keys(query)));
     });
 
     test('_only_ ok filters should be contained', () => {
-        const query = { food : 1, pub : '1', wrongfilter : 1, wrongfilter2 : '1' };
-        const response = sc.filterParams(query, available_filters);
+        const query = { food : 1, pub : '1', notcategoryfilter : 1, notcategoryfilter2 : '1' };
+        const response = sc.filterParams(query, categories);
         expect(response).toEqual(expect.arrayContaining(['food', 'pub']));
     });
+
+    test('filters=1 and no category filters in param then it should match all categories ', () => {
+        const query = { location : 'PARIS', filters : '1' };
+        const response = sc.filterParams(query, categories);
+        expect(response).toEqual(expect.arrayContaining(['food', 'pub']));
+    });
+
 });
