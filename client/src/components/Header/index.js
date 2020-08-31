@@ -1,48 +1,59 @@
 import React from 'react';
 
+// router
 import { NavLink } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
+
+// semantic-ui
+import { Button, Icon } from 'semantic-ui-react';
+
 // Styles
 import './styles.scss';
+import Logo from '../../assets/newLogo.PNG';
 
-const Header = ({
-  isLogged,
-  loggedMessage,
-}) => (
+// composants
+import ModalAddTrip from '../../containers/ModalAddTrip';
+
+const Header = () => (
   <div className="header">
-    <div>
-      <NavLink activeClassName="active" to="/"><h1>EasyTrip</h1></NavLink>
-    </div>
+    <img className="logo" src={Logo} alt="name of the page" />
     <div className="login">
-      {isLogged && (
-        <div className="login-form-logged">
-          <p className="login-form-message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login-form-button"
-          >
-            Carnet de voyage
-          </button>
-        </div>
-      )}
-      {!isLogged && (
-        <div>
-          <NavLink activeClassName="active" to="/Login">Connexion</NavLink>
-          <NavLink activeClassName="active" to="/sign-up">Inscription</NavLink>
-        </div>
-      )}
+      <ModalAddTrip />
+      <NavLink to="/login">
+        <Button
+          circular
+          icon="suitcase"
+          color="orange"
+          size="large"
+        />
+      </NavLink>
+      <NavLink to="/login">
+        <Button animated>
+          <Button.Content visible>Connexion</Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow right" />
+          </Button.Content>
+        </Button>
+      </NavLink>
+      <NavLink to="/login">
+        <Button
+          circular
+          icon="user"
+          color="black"
+          size="large"
+        />
+      </NavLink>
+      <NavLink to="/sign-up">
+        <Button animated>
+          <Button.Content visible>Inscription</Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow right" />
+          </Button.Content>
+        </Button>
+      </NavLink>
     </div>
   </div>
-
 );
-Header.propTypes = {
-  isLogged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
-};
-Header.defaultProps = {
-  isLogged: true,
-  loggedMessage: 'Connecté',
-};
+
 export default Header;

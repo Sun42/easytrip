@@ -11,7 +11,7 @@ import NotFound from '../NotFound';
 import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
-import SignUpForm from '../SignUpForm';
+import SignUpForm from '../../containers/SignUpForm';
 import Details from "../Details";
 import Carnet from "../Carnet";
 import SearchBar from '../SearchBar';
@@ -26,7 +26,6 @@ const App = () => {
     description: "C'est une description",
     horaire: '18h-20H',
   };
-
 
   return (
     <div className="app">
