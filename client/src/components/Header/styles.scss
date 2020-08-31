@@ -25,10 +25,6 @@ button:hover {
   transition: 0.5s;
 }
 
-  align-items: center;
-  background-color: vars.$headerANDfooter;
-  padding: 1.5rem;
-  height: 15%;
 
   .logo {
     width: 18%;
@@ -43,8 +39,7 @@ button:hover {
       border: 1px solid black;
       margin-left: 20px;
     }
-  }
-}
+
 
 @media screen and (max-width: 1250px) {
   .logo {
