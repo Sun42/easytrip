@@ -18,7 +18,6 @@
     "@babel/register": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
-    "chai": "*",
     "eslint": "*",
     "eslint-config-airbnb": "*",
     "eslint-import-resolver-alias": "*",
@@ -27,7 +26,6 @@
     "eslint-plugin-react": "*",
     "eslint-plugin-react-hooks": "*",
     "ignore-styles": "*",
-    "mocha": "*",
     "webpack-dev-server": "*"
   },
   "dependencies": {
