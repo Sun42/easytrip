@@ -1,12 +1,12 @@
 const express = require('express');
+const db = require('./config/database');
+const router = express.Router();
 
 // Import controllers here
 
 // Gestion des inscriptions et connexions en session
 const authController = require('./controllers/authController');
 
-// Gestion de la page d'accueil
-const mainController = require('./controllers/mainController');
 
 // Gestion du profil et des données personnelles
 const profileController = require('./controllers/profileController');
@@ -17,22 +17,21 @@ const tripController = require('./controllers/tripController');
 // Gestion des recherches et filtrages (préférences) + résultats
 const searchController = require('./controllers/searchController').searchController;
 
-const router = express.Router();
 
 // Homepage routes
 // router.get('/', mainController.homepage);
 
 // Authentification routes
 router.route('/api/inscription')
-    .get(authController.signupPage)
     .post(authController.signupAction);
 
 router.route('/api/connexion')
-    .get(authController.signinPage)
     .post(authController.signinAction);
 
+router.route('/api/deconnexion')
+    .post(authController.signoutAction);
+    
 // Trip routes
-
 // Créer un nouveau carnet de voyage
 router.route('/api/mon-voyage/new')
     .post(tripController.createNewTravelogue);

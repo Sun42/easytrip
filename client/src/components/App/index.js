@@ -2,18 +2,16 @@ import React, { useState, Component } from 'react';
 import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
-
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
-
 import Footer from '../Footer';
-import Header from '../Header';
+import Header from '../../containers/Header';
 import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
-import SignUpForm from '../SignUpForm';
+import SignUpForm from '../../containers/SignUpForm';
 import Details from "../Details";
 import Carnet from "../Carnet";
 import SearchBar from '../SearchBar';
@@ -34,6 +32,12 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
+
+          <SearchBar
+            search={search}
+            handleChange={setSearch}
+          />
+
           <HomePage />
         </Route>
         <Route exact path="/result">
@@ -42,12 +46,13 @@ const App = () => {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/sign-up">
           <SignUpForm
-            handleChange={setSearch}
+            component={SignUpForm}
           />
         </Route>
         <Route exact path="/result">
           <Result />
         </Route>
+
         <Route path="/details" component={() => <Details data={data} />} />
 
         <Route path="/carnet" component={() => <Carnet data={data} />} />
@@ -62,6 +67,5 @@ const App = () => {
     </div>
   );
 };
-
 // == Export
 export default App;
