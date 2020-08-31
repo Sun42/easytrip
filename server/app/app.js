@@ -11,11 +11,10 @@ const cookieParser = require('cookie-parser');
 const db = require('./config/database');
 
 // Test DB
-/*
 db.authenticate()
     .then(() => console.log('Database connected...'))
     .catch(err => console.log('Error: ' + err));
-*/
+
 // For cross-origin sharing
 const cors = require('cors');
 // Import routing
