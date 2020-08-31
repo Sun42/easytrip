@@ -16,8 +16,6 @@ db.authenticate()
 
 // const cookieParser = require('cookie-parser');
 
-// database
-const db = require('./config/database');
 
 // Test DB
 db.authenticate()
