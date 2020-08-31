@@ -54,8 +54,10 @@ describe('/api/search ', () => {
         expect(response.body.location).toHaveProperty('display_name');
         expect(response.body.location).toHaveProperty('boundingbox');
         expect(response.body).toHaveProperty('elements');
-        for (const [key] in (Object.keys(available_filters))) {
+        for (const [key] of (Object.entries(available_filters))) {
             expect(response.body.elements).toHaveProperty(key);
+            expect(response.body.elements[key].length).toBeGreaterThan(0);
         }
     });
+    // todo mock nomintaim erros response and tests L50-51
 });

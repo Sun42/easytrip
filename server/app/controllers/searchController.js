@@ -1,10 +1,6 @@
 const axios = require('axios').default;
 
-const {
-    available_filters,
-    bboxToCardinalPoints,
-    overpassURL,
-} = require('../helpers/filterHelper.js');
+const { ...fh } = require('../helpers/filterHelper.js');
 
 /**
  * Returns true if filters attribute is present and trueish
@@ -41,12 +37,12 @@ const searchController = {
                 const http_response = await axios.get(url);
                 const ret = { location : http_response.data[0] };
                 if (checkFiltersParams(request.query)) {
-                    const asked_filters = filterParams(request.query, available_filters);
+                    const asked_filters = filterParams(request.query, fh.available_filters);
                     if (asked_filters.length > 0) {
-                        const cp = bboxToCardinalPoints(ret.location['boundingbox']);
-                        const overpass_url = overpassURL(cp, asked_filters);
+                        const cp = fh.bboxToCardinalPoints(ret.location['boundingbox']);
+                        const overpass_url = fh.overpassURL(cp, asked_filters);
                         const overpass_data = await axios.get(overpass_url);
-                        ret.elements = overpass_data.data.elements;
+                        ret.elements = fh.groupByCategory(overpass_data.data.elements, fh.available_filters);
                     }
                 }
                 response.json(ret);
