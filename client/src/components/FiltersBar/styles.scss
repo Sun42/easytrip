@@ -1,9 +1,9 @@
-@use 'src/styles/vars';
+@import 'src/styles/vars';
 
 .filtersbar {
   width: 30%;
-  border: vars.$border;
-  border-radius: vars.$border-radius;
+  border: $border;
+  border-radius: $border-radius;
   margin: 5px;
 
   .destination {
@@ -32,7 +32,7 @@
       &-col1 {
         width: 50%;
         padding: 1em;
-        border: vars.$filter-columns;
+        border: $filter-columns;
         margin-right: 2px;
 
         div {
@@ -55,7 +55,7 @@
       &-col2 {
         width: 50%;
         padding: 1em;
-        border: vars.$filter-columns;
+        border: $filter-columns;
         margin-left: 2px;
 
         div {
@@ -87,7 +87,7 @@
 .filtersbar p {
   text-align: center;
   padding: 0.5em 1em 0.5em 1em;
-  background-color: vars.$filter-heading;
+  background-color: $filter-heading;
 }
 
 
