@@ -3,8 +3,9 @@ import React from 'react';
 // router
 import { NavLink } from 'react-router-dom';
 
+/* @fixme no-unused-vars
 import PropTypes from 'prop-types';
-
+*/
 // semantic-ui
 import { Button, Icon } from 'semantic-ui-react';
 

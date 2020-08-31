@@ -1,8 +1,8 @@
-@use 'src/styles/vars';
+@import 'src/styles/vars';
 
 .result {
   width: 70%;
-  border: vars.$border;
+  border: $border;
   border-radius: 10px;
   margin: 5px;
   display: flex;

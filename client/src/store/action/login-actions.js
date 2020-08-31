@@ -55,7 +55,7 @@ export const signupSuccess = () => ({
   type: SIGNUP_SUCCESS
 });
 
-export const signupChangeInput = () => ({
+export const signupChangeInput = (payload) => ({
   type: SIGNUP_CHANGE_INPUT,
   payload,
 });

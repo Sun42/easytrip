@@ -1,6 +1,10 @@
+/** @fixme @TODO clean this
 import React, { useState, Component } from 'react';
 import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
+*/
+import React, { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';

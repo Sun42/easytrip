@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Field from './Field.js';
+import Field from './Field.js/index.js';
 // import { useField } from './hooks';
 
 // import './style.scss';

@@ -1,9 +1,11 @@
 import axios from 'axios';
 import {
-  LOGIN, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM, signupForm, SignUpForm,
+  LOGIN, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM/*@fixme no-unused-vars, signupForm, SignUpForm*/,
 } from '../store/action/login-actions';
-import { GET_SEARCH_SUBMIT_SUCCESS } from '../store/action/filters-actions';
 
+/**@fixme no-unused-vars
+import { GET_SEARCH_SUBMIT_SUCCESS } from '../store/action/filters-actions';
+*/
 export default (store) => (next) => (action) => {
   next(action);
   switch (action.type) {
