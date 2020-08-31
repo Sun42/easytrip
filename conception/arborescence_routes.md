@@ -1,8 +1,8 @@
-# Arborescence de l'application EasyTrip 
+# Arborescence de l'application EasyTrip
 
 ![Arborescence de l'application EasyTrip](Arbo.png)
 
-# Routes de l'application
+## Routes de l'application
 
 ### Routes Front
 
@@ -26,10 +26,10 @@
 
 #### Synthèse du routage back
 
-Nous aurons un total de 5 controllers : 
+Nous aurons un total de 5 controllers :
 
 1. Le **mainController** : Gestion de la page d'accueil
-2. Le **profileController** : Gestion du profil utilisateur et des données utilisateur 
+2. Le **profileController** : Gestion du profil utilisateur et des données utilisateur
 3. Le **authController** : Gestion des inscriptions et connexions
 4. Le **tripController** : Gestion des carnets de voyage
 5. Le **searchController** : Gestion des recherches et filtrages selon les préférences utilisateurs
