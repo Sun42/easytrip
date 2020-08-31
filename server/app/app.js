@@ -1,6 +1,9 @@
 require('dotenv').config();
 // Import of needed packages (express)
 const express = require('express');
+
+const morgan = require('morgan');
+
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const userMiddleware = require('../app/middlewares/userMiddleware');
@@ -23,7 +26,7 @@ const cors = require('cors');
 const router = require('./router');
 
 const app = express();
-
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use(cors());
 
 app.use(express.urlencoded({ extended:true }));

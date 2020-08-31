@@ -1,0 +1,28 @@
+[{
+    "place_id": 235383791,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 120965,
+    "boundingbox": [
+        "45.7073666",
+        "45.8082628",
+        "4.7718134",
+        "4.8983774"
+    ],
+    "lat": "45.7578137",
+    "lon": "4.8320114",
+    "display_name": "Lyon, Métropole de Lyon, Circonscription départementale du Rhône, Auvergne-Rhône-Alpes, France métropolitaine, France",
+    "class": "boundary",
+    "type": "administrative",
+    "importance": 0.7913775965432666,
+    "icon": "https://nominatim.openstreetmap.org/images/mapicons/poi_boundary_administrative.p.20.png",
+    "address": {
+        "city": "Lyon",
+        "municipality": "Lyon",
+        "county": "Métropole de Lyon",
+        "state_district": "Circonscription départementale du Rhône",
+        "state": "Auvergne-Rhône-Alpes",
+        "country": "France",
+        "country_code": "fr"
+    }
+}]
