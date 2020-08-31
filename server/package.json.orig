@@ -13,7 +13,10 @@
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+<<<<<<< HEAD
+=======
     "morgan": "^1.10.0",
+>>>>>>> develop
     "pg": "^8.3.0",
     "sequelize": "^6.3.4",
     "sequelize-cli": "^6.2.0"

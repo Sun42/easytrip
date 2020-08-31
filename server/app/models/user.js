@@ -1,4 +1,3 @@
-// Risk of conflict because user model exists in branch login front & back (duplication)
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database');
 
@@ -16,3 +15,5 @@ User.init({
 });
 
 module.exports = User;
+
+

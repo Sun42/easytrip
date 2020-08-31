@@ -1,15 +1,17 @@
 import {
-  CHANGE_FIELD, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS, LOGIN, LOGOUT,
+  CHANGE_FIELD, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS, LOGIN, LOGOUT, SIGNUPFORM
 } from '../store/action/login-actions';
 
 const stateInitial = {
   email: 'nawal@easytrip.com',
   password: 'nawal',
-  username: 'Nawal',
+  lastName: 'Lotfi',
+  name: 'Nawal',
   isLogged: false,
   loggedMessage: 'Bienvenue Nawal',
   error: '',
   login: {},
+
 };
 
 export default (state = stateInitial, action = {}) => {
@@ -35,14 +37,12 @@ export default (state = stateInitial, action = {}) => {
         password: '',
         error: '',
         login: action.payload,
-        loggedMessage: `Bienvenue Nawal`,
+        loggedMessage: 'Bienvenue Nawal',
       };
     case LOGIN:
       return {
         ...state,
         isLogged: true,
-        email: '',
-        password: '',
         error: '',
         login: action.payload,
       };
@@ -51,7 +51,7 @@ export default (state = stateInitial, action = {}) => {
         ...state,
         password: '',
         error: action.payload,
-        loggedMessage: '',
+        loggedMessage: 'vous n\'avez pas le bon identifiant',
         login: {},
         isLogged: false,
       };
@@ -60,6 +60,15 @@ export default (state = stateInitial, action = {}) => {
         ...state,
         ...action.payload,
       };
+    case SIGNUPFORM:
+      return {
+        ...state,
+        //isLogged: true,
+        error: '',
+        ...action.payload,
+
+      }
+
     default:
       return state;
   }

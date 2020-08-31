@@ -1,4 +1,4 @@
-const app = require('./app.js');
+const app = require('./app');
 
 // config
 const SERVER_HOST = process.env.SERVER_HOST;

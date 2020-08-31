@@ -10,12 +10,15 @@ const mapStateToProps = (state) => ({
   gastronomieFilter: state.filters.allFilters.gastronomie,
   barFilter: state.filters.allFilters.bar,
   cultureFilter: state.filters.allFilters.culture,
+  promenadeFilter: state.filters.allFilters.promenade,
+  shoppingFilter: state.filters.allFilters.shopping,
+  actaquaFilter: state.filters.allFilters.actaqua,
 
 });
 
 const mapDispatchToState = (dispatch) => ({
-  handleAddNewActivity: (elem) => {
-    dispatch(addNewActivity(elem));
+  handleAddNewActivity: (clickedItem4) => {
+    dispatch(addNewActivity(clickedItem4));
   },
 
 });

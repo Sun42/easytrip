@@ -1,21 +1,57 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+
+// router
 import { NavLink } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
+// semantic-ui
+import { Button, Icon } from 'semantic-ui-react';
+
 // Styles
-import "./styles.scss";
-import Logo from "../../assets/logo.png";
+import './styles.scss';
+import Logo from '../../assets/newLogo.PNG';
+
+// composants
+import ModalAddTrip from '../../containers/ModalAddTrip';
 
 const Header = () => (
   <div className="header">
-    <img className="logo" src={Logo} alt="clermont" />
+    <img className="logo" src={Logo} alt="name of the page" />
     <div className="login">
-      <Link to="/login">
-        <button className="button">Connexion</button>
-      </Link>
-      <Link to="/login">
-        <button className="button">Inscription</button>
-      </Link>
+      <ModalAddTrip />
+      <NavLink to="/login">
+        <Button
+          circular
+          icon="suitcase"
+          color="orange"
+          size="large"
+        />
+      </NavLink>
+      <NavLink to="/login">
+        <Button animated>
+          <Button.Content visible>Connexion</Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow right" />
+          </Button.Content>
+        </Button>
+      </NavLink>
+      <NavLink to="/login">
+        <Button
+          circular
+          icon="user"
+          color="black"
+          size="large"
+        />
+      </NavLink>
+      <NavLink to="/sign-up">
+        <Button animated>
+          <Button.Content visible>Inscription</Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow right" />
+          </Button.Content>
+        </Button>
+      </NavLink>
     </div>
   </div>
 );

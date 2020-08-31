@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LoginForm from '../components/LoginForm';
-import { changeField, login, logout, loginSuccess, logoutSuccess } from '../store/action/login-actions';
+import { changeField, login, logout } from '../store/action/login-actions';
 
 const mapStateToProps = (state) => ({
   email: state.login.email,
