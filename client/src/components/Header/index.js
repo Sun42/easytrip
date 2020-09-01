@@ -3,6 +3,9 @@ import React from 'react';
 // router
 import { NavLink } from 'react-router-dom';
 
+/* @fixme no-unused-vars
+import PropTypes from 'prop-types';
+*/
 // semantic-ui
 import { Button, Icon } from 'semantic-ui-react';
 
@@ -42,7 +45,7 @@ const Header = () => (
           size="large"
         />
       </NavLink>
-      <NavLink to="/inscription">
+      <NavLink to="/sign-up">
         <Button animated>
           <Button.Content visible>Inscription</Button.Content>
           <Button.Content hidden>

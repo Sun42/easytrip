@@ -15,7 +15,7 @@ const NotFound = () => {
       </h2>
       <p>Désolé, cette page n'existe pas</p>
       {opened && (
-        <img src="https://c4.wallpaperflare.com/wallpaper/432/592/854/website-link-zelda-the-legend-of-zelda-wallpaper-preview.jpg" />
+        <img src="https://c4.wallpaperflare.com/wallpaper/432/592/854/website-link-zelda-the-legend-of-zelda-wallpaper-preview.jpg" alt="" />
       )}
     </div>
   );

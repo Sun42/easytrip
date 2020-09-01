@@ -1,0 +1,56 @@
+{
+  "name": "projet-voyage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+<<<<<<< HEAD
+=======
+    "morgan": "^1.10.0",
+>>>>>>> develop
+    "pg": "^8.3.0",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.18.2",
+    "eslint": "^7.7.0",
+    "jest": "^26.4.2",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "start": "node app/start.js",
+    "test": "jest --testTimeout=10000",
+    "lint": "eslint app/** tests/**",
+    "coverage": "jest --testTimeout=10000 --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Galactica/projet-voyage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Galactica/projet-voyage/issues"
+  },
+  "homepage": "https://github.com/O-clock-Galactica/projet-voyage#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
+  }
+}

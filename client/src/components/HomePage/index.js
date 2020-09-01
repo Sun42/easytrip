@@ -2,7 +2,7 @@ import React from 'react';
 
 // semantic-ui
 import {
-  Icon, Step, Button,
+  Icon,/*@fixme no-unused-vars Step, */Button,
 } from 'semantic-ui-react';
 
 // Router

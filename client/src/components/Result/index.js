@@ -337,9 +337,11 @@ const Activity = ({ handleAddNewActivity, object }) => (
             color="orange"
             icon
             onClick={(evt) => {
-              const elemClicked = evt.target.closest('div.content');
-              const elemTable = (elemClicked.children[0]);
-              const elemToState = elemTable.innerHTML;
+             /** @fixme no-unused-vars
+             const elemClicked = evt.target.closest('div.content');
+             const elemTable = (elemClicked.children[0]);
+             const elemToState = elemTable.innerHTML;
+             */
             }}
           >
             <Icon name="info" />

@@ -12,7 +12,7 @@ const tripController = {
         }
 
         // Création d'un nouveau voyage (= nouveau carnet de voyage)
-        let newTravelogue = Travelogue.build({
+        const newTravelogue = Travelogue.build({
             name,
             city,
             date_departure,

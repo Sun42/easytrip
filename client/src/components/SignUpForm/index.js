@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import Field from './Field.js';
+import Field from './Field.js/index.js';
 // import { useField } from './hooks';
 
 // import './style.scss';
 
-const SignUp = ({
+const SignUpForm = ({ // modif Sarah
   email,
   password,
   changeField,
+  handleSignUp,
   name,
   lastName,
-  birthDate,
+  errorMessage,
 }) => {
-  console.log(SignUp);
+  console.log(SignUpForm);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleLogin();
+    handleSignUp();
   };
 
   return (
@@ -34,28 +35,18 @@ const SignUp = ({
           <p>Nom</p>
 
           <Field
-            name="name"
-            onChange={changeField}
-            placeholder=""
-            value={name}
-          />
-          <p>Prenom</p>
-
-          <Field
             name="lastName"
-            type="password"
             onChange={changeField}
             placeholder=""
             value={lastName}
           />
-          <p>date de naissance</p>
+          <p>Prenom</p>
 
           <Field
-            name="date de naissance"
-            type="date de naissance"
+            name="name"
             onChange={changeField}
             placeholder=""
-            value={birthDate}
+            value={name}
           />
 
           <p>email</p>
@@ -81,9 +72,9 @@ const SignUp = ({
           >
             Valider mon incription
           </button>
-          <NavLink activeClassName="active" to="/login">
+          <Link activeClassName="active" to="/login">
             <span>vous avez deja un compte ?</span>
-          </NavLink>
+          </Link>
         </form>
 
       </div>
@@ -91,7 +82,7 @@ const SignUp = ({
   );
 };
 
-SignUp.propTypes = {
+SignUpForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -100,4 +91,4 @@ SignUp.propTypes = {
 
 };
 
-export default SignUp;
+export default SignUpForm;
