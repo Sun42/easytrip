@@ -9,7 +9,7 @@ CREATE TABLE "user"(
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "surname" TEXT NOT NULL,
+    "surname" TEXT NOT NULL
 
 ); 
 
