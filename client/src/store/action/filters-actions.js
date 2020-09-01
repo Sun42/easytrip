@@ -1,22 +1,25 @@
-export const ADD_GASTRONOMIE = 'ADD_GASTRONOMIE';
-export const ADD_CULTURE = 'ADD_CULTURE';
-export const ADD_BAR = 'ADD_BAR';
-export const ADD_PROMENADE = 'ADD_PROMENADE';
-export const ADD_SHOPPING = 'ADD_SHOPPING';
-export const ADD_ACT_AQUA = 'ADD_ACT_AQUA';
-export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
-export const GET_PREF_MONUMENTS = 'GET_PREF_MONUMENTS';
 export const GET_SEARCH = 'GET_SEARCH';
 export const GET_SEARCH_SUBMIT = 'GET_SEARCH_SUBMIT';
 export const GET_SEARCH_SUBMIT_SUCCESS = 'GET_SEARCH_SUBMIT_SUCCESS';
+export const GET_ALL_POI = 'GET_ALL_POI';
 export const GET_SEARCH_SUBMIT_SUCCESS_NAME = 'GET_SEARCH_SUBMIT_SUCCESS_NAME';
 export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
-export const REMOVE_GASTRONOMIE = 'REMOVE_GASTRONOMIE';
-export const REMOVE_CULTURE = 'REMOVE_CULTURE';
-export const REMOVE_BAR = 'REMOVE_BAR';
-export const REMOVE_PROMENADE = 'REMOVE_PROMENADE';
-export const REMOVE_SHOPPING = 'REMOVE_SHOPPING';
-export const REMOVE_ACT_AQUA = 'REMOVE_ACT_AQUA';
+export const ADD_FOOD = 'ADD_FOOD';
+export const ADD_ART = 'ADD_ART';
+export const ADD_PUB = 'ADD_PUB';
+export const ADD_EXCURSION = 'ADD_EXCURSION';
+export const ADD_SHOP = 'ADD_SHOP';
+export const ADD_ACQUATIC = 'ADD_ACQUATIC';
+export const ADD_FUN = 'ADD_FUN';
+export const ADD_HISTORIC = 'ADD_HISTORIC';
+export const REMOVE_FOOD = 'REMOVE_FOOD';
+export const REMOVE_ART = 'REMOVE_ART';
+export const REMOVE_PUB = 'REMOVE_PUB';
+export const REMOVE_EXCURSION = 'REMOVE_EXCURSION';
+export const REMOVE_SHOP = 'REMOVE_SHOP';
+export const REMOVE_ACQUATIC = 'REMOVE_ACQUATIC';
+export const REMOVE_FUN = 'REMOVE_FUN';
+export const REMOVE_HISTORIC = 'REMOVE_HISTORIC';
 
 export const getSearch = (payload) => ({
   type: GET_SEARCH,
@@ -32,8 +35,8 @@ export const getSearchSubmitSuccess = (payload) => ({
   payload,
 });
 
-export const getSearchSubmitError = (payload) => ({
-  type: GET_SEARCH_SUBMIT_ERROR,
+export const getAllPOI = (payload) => ({
+  type: GET_ALL_POI,
   payload,
 });
 
@@ -42,66 +45,71 @@ export const getSearchSubmitSuccessName = (payload) => ({
   payload,
 });
 
-export const addGastronomie = (payload) => ({
-  type: ADD_GASTRONOMIE,
+export const getSearchSubmitError = (payload) => ({
+  type: GET_SEARCH_SUBMIT_ERROR,
   payload,
 });
 
-export const removeGastronomie = () => ({
-  type: REMOVE_GASTRONOMIE,
+export const addFood = () => ({
+  type: ADD_FOOD,
 });
 
-export const addCulture = (payload) => ({
-  type: ADD_CULTURE,
-  payload,
+export const removeFood = () => ({
+  type: REMOVE_FOOD,
 });
 
-export const removeCulture = () => ({
-  type: REMOVE_CULTURE,
+export const addArt = () => ({
+  type: ADD_ART,
 });
 
-export const addBar = (payload) => ({
-  type: ADD_BAR,
-  payload,
+export const removeArt = () => ({
+  type: REMOVE_ART,
 });
 
-export const removeBar = () => ({
-  type: REMOVE_BAR,
+export const addPub = () => ({
+  type: ADD_PUB,
 });
 
-export const addPromenade = (payload) => ({
-  type: ADD_PROMENADE,
-  payload,
+export const removePub = () => ({
+  type: REMOVE_PUB,
 });
 
-export const removePromenade = () => ({
-  type: REMOVE_PROMENADE,
+export const addExcursion = () => ({
+  type: ADD_EXCURSION,
 });
 
-export const addShopping = (payload) => ({
-  type: ADD_SHOPPING,
-  payload,
+export const removeExcursion = () => ({
+  type: REMOVE_EXCURSION,
 });
 
-export const removeShopping = () => ({
-  type: REMOVE_SHOPPING,
+export const addShop = () => ({
+  type: ADD_SHOP,
 });
 
-export const addActAqua = (payload) => ({
-  type: ADD_ACT_AQUA,
-  payload,
+export const removeShop = () => ({
+  type: REMOVE_SHOP,
 });
 
-export const removeActAqua = () => ({
-  type: REMOVE_ACT_AQUA,
+export const addAcquatic = () => ({
+  type: ADD_ACQUATIC,
 });
 
-export const getPrefSpectacle = (payload) => ({
-  type: GET_PREF_SPECTACLE,
-  payload,
+export const removeAcquatic = () => ({
+  type: REMOVE_ACQUATIC,
 });
 
-export const getPrefMonuments = (payload) => ({
-  type: GET_PREF_MONUMENTS,
-  payload,
+export const addFun = () => ({
+  type: ADD_FUN,
+});
+
+export const removeFun = () => ({
+  type: REMOVE_FUN,
+});
+
+export const addHistoric = () => ({
+  type: ADD_HISTORIC,
+});
+
+export const removeHistoric = () => ({
+  type: REMOVE_HISTORIC,
 });

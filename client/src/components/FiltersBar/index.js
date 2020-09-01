@@ -14,11 +14,10 @@ import './styles.scss';
 import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
-  handleAddGastronomie, handleAddCulture, handleAddBar,
-  handleAddPromenade, handleAddShopping, handleAddActAqua,
-  handlePrefSpectacle, handlePrefMonuments, allPoiOfDestination,
-  handleRemoveGastronomie, handleRemoveCulture, handleRemoveBar,
-  handleRemovePromenade, handleRemoveShopping, handleRemoveActAqua,
+  handleAddFood, handleAddArt, handleAddPub, handleAddExcursion,
+  handleAddShop, handleAddAcquatic, handleAddFun, handleAddHistoric,
+  handleRemoveFood, handleRemoveArt, handleRemovePub, handleRemoveExcursion,
+  handleRemoveShop, handleRemoveAcquatic, handleRemoveFun, handleRemoveHistoric,
 }) => {
   const [dateRange, setDateRange] = useState({
     startDate: null,
@@ -66,19 +65,18 @@ const FiltersBar = ({
           <div className="form">
             <div className="form-col1">
               <div>
-                <label htmlFor="gastronomie">Gastronomie : </label>
+                <label htmlFor="food">Gastronomie : </label>
                 <input
                   type="checkbox"
-                  id="gastronomie"
-                  name="gastronomie"
+                  id="food"
+                  name="food"
                   onClick={(evt) => {
                     const checkboxValue = evt.target.checked;
-                    const gastronomie = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'restaurant') || (poi.tags.amenity === 'fast-food') || (poi.tags.amenity === 'food-court') || (poi.tags.amenity === 'cafe'));
                     if (checkboxValue === true) {
-                      handleAddGastronomie(gastronomie);
+                      handleAddFood();
                     }
                     else {
-                      handleRemoveGastronomie();
+                      handleRemoveFood();
                     }
                   }}
                 />
@@ -87,52 +85,49 @@ const FiltersBar = ({
                 <label htmlFor="culture_art">Culture / Art : </label>
                 <input
                   type="checkbox"
-                  id="culture_art"
-                  name="culture_art"
+                  id="art"
+                  name="art"
                   onClick={(evt) => {
                     const checkboxValue = evt.target.checked;
-                    const art = allPoiOfDestination.filter((poi) => (poi.tags.tourism === 'artwork') || (poi.tags.amenity === 'arts_centre') || (poi.tags.tourism === 'gallery') || (poi.tags.tourism === 'museum'));
                     if (checkboxValue === true) {
-                      handleAddCulture(art);
+                      handleAddArt();
                     }
                     else {
-                      handleRemoveCulture();
+                      handleRemoveArt();
                     }
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="bars">Bars : </label>
+                <label htmlFor="pub">Bars : </label>
                 <input
                   type="checkbox"
-                  id="bars"
-                  name="bars"
+                  id="pub"
+                  name="pub"
                   onClick={(evt) => {
                     const checkboxValue = evt.target.checked;
-                    const bars = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'pub') || (poi.tags.amenity === 'bar') || (poi.tags.amenity === 'biergarten'));
                     if (checkboxValue === true) {
-                      handleAddBar(bars);
+                      handleAddPub();
                     }
                     else {
-                      handleRemoveBar();
+                      handleRemovePub();
                     }
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="promenades">Promenades / Randonnées : </label>
+                <label htmlFor="excursion">Promenades / Randonnées : </label>
                 <input
                   type="checkbox"
-                  id="promenades"
-                  name="promenades"
+                  id="excursion"
+                  name="excursion"
                   onClick={(evt) => {
                     const checkboxValue = evt.target.checked;
-                    const excursion = allPoiOfDestination.filter((poi) => (poi.tags.tourism === 'viewpoint') || (poi.tags.leisure === 'park'));
                     if (checkboxValue === true) {
-                      handleAddPromenade(excursion);
+                      handleAddExcursion();
                     }
                     else {
-                      handleRemovePromenade();
+                      handleRemoveExcursion();
                     }
                   }}
                 />
@@ -140,62 +135,70 @@ const FiltersBar = ({
             </div>
             <div className="form-col2">
               <div>
-                <label htmlFor="shopping">Shopping : </label>
+                <label htmlFor="shop">Shopping : </label>
                 <input
                   type="checkbox"
-                  id="shopping"
-                  name="shopping"
+                  id="shop"
+                  name="shop"
                   onClick={(evt) => {
                     const checkboxValue = evt.target.checked;
-                    const shop = allPoiOfDestination.filter((poi) => (poi.tags.shop === 'gift') || (poi.tags.shop === 'books') || (poi.tags.shop === 'anime') || (poi.tags.shop === 'music') || (poi.tags.shop === 'art') || (poi.tags.shop === 'antiques') || (poi.tags.shop === 'perfumery') || (poi.tags.shop === 'herbaliste') || (poi.tags.shop === 'second_hand') || (poi.tags.shop === 'clothes') || (poi.tags.shop === 'health_food') || (poi.tags.shop === 'farm'));
                     if (checkboxValue === true) {
-                      handleAddShopping(shop);
+                      handleAddShop();
                     }
                     else {
-                      handleRemoveShopping();
+                      handleRemoveShop();
                     }
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="activites_acquatiques">Activités aquatiques : </label>
+                <label htmlFor="acquatic">Activités aquatiques : </label>
                 <input
                   type="checkbox"
-                  id="activites_acquatiques"
-                  name="activites_acquatiques"
+                  id="acquatic"
+                  name="acquatic"
                   onClick={(evt) => {
                     const checkboxValue = evt.target.checked;
-                    const aquatic = allPoiOfDestination.filter((poi) => (poi.tags.leisure === 'sauna') || (poi.tags.leisure === 'beach_resort') || (poi.tags.leisure === 'swimming_pool') || (poi.tags.leisure === 'water_park') || (poi.tags.sport === 'water_ski') || (poi.tags.sport === 'wakeboarding') || (poi.tags.amenity === 'public_bath'));
                     if (checkboxValue === true) {
-                      handleAddActAqua(aquatic);
+                      handleAddAcquatic();
                     }
                     else {
-                      handleRemoveActAqua();
+                      handleRemoveAcquatic();
                     }
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="spectacles_concerts">Spectacles / Concerts : </label>
+                <label htmlFor="fun">Spectacles / Concerts : </label>
                 <input
                   type="checkbox"
-                  id="spectacles_concerts"
-                  name="spectacles_concerts"
-                  onClick={() => {
-                    const fun = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'fun'));
-                    handlePrefSpectacle(fun);
+                  id="fun"
+                  name="fun"
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    if (checkboxValue === true) {
+                      handleAddFun();
+                    }
+                    else {
+                      handleRemoveFun();
+                    }
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="monuments_historiques">Monuments historiques : </label>
+                <label htmlFor="historic">Monuments historiques : </label>
                 <input
                   type="checkbox"
-                  id="monuments_historiques"
-                  name="monuments_historiques"
-                  onClick={() => {
-                    const historic = allPoiOfDestination.filter((poi) => (poi.tags.amenity === 'historic'));
-                    handlePrefMonuments(historic);
+                  id="historic"
+                  name="historic"
+                  onClick={(evt) => {
+                    const checkboxValue = evt.target.checked;
+                    if (checkboxValue === true) {
+                      handleAddHistoric();
+                    }
+                    else {
+                      handleRemoveHistoric();
+                    }
                   }}
                 />
               </div>
@@ -208,21 +211,22 @@ const FiltersBar = ({
 };
 
 FiltersBar.propTypes = {
-  handleAddGastronomie: PropTypes.func.isRequired,
-  handleAddCulture: PropTypes.func.isRequired,
-  handleAddBar: PropTypes.func.isRequired,
-  handleAddPromenade: PropTypes.func.isRequired,
-  handleAddShopping: PropTypes.func.isRequired,
-  handleAddActAqua: PropTypes.func.isRequired,
-  handlePrefSpectacle: PropTypes.func.isRequired,
-  handlePrefMonuments: PropTypes.func.isRequired,
-  allPoiOfDestination: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  handleRemoveGastronomie: PropTypes.func.isRequired,
-  handleRemoveCulture: PropTypes.func.isRequired,
-  handleRemoveBar: PropTypes.func.isRequired,
-  handleRemovePromenade: PropTypes.func.isRequired,
-  handleRemoveShopping: PropTypes.func.isRequired,
-  handleRemoveActAqua: PropTypes.func.isRequired,
+  handleAddFood: PropTypes.func.isRequired,
+  handleAddArt: PropTypes.func.isRequired,
+  handleAddPub: PropTypes.func.isRequired,
+  handleAddExcursion: PropTypes.func.isRequired,
+  handleAddShop: PropTypes.func.isRequired,
+  handleAddAcquatic: PropTypes.func.isRequired,
+  handleAddFun: PropTypes.func.isRequired,
+  handleAddHistoric: PropTypes.func.isRequired,
+  handleRemoveFood: PropTypes.func.isRequired,
+  handleRemoveArt: PropTypes.func.isRequired,
+  handleRemovePub: PropTypes.func.isRequired,
+  handleRemoveExcursion: PropTypes.func.isRequired,
+  handleRemoveShop: PropTypes.func.isRequired,
+  handleRemoveAcquatic: PropTypes.func.isRequired,
+  handleRemoveFun: PropTypes.func.isRequired,
+  handleRemoveHistoric: PropTypes.func.isRequired,
 };
 
 export default FiltersBar;

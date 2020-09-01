@@ -1,72 +1,78 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  addGastronomie, addCulture, addBar, addPromenade,
-  addShopping, addActAqua, getPrefSpectacle, getPrefMonuments,
-  removeGastronomie, removeCulture, removeBar, removePromenade,
-  removeShopping, removeActAqua,
+  addFood, addArt, addPub, addExcursion, addShop, 
+  addAcquatic, addFun, addHistoric,
+  removeFood, removeArt, removePub, removeExcursion,
+  removeShop, removeAcquatic, removeFun, removeHistoric,
 } from '../store/action/filters-actions';
 
-const mapStateToProps = (state) => ({
-  allPoiOfDestination: state.trips.result,
-});
+const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => ({
 
-  handleAddGastronomie: (gastronomie) => {
-    dispatch(addGastronomie(gastronomie));
+  handleAddFood: () => {
+    dispatch(addFood());
   },
 
-  handleRemoveGastronomie: () => {
-    dispatch(removeGastronomie());
+  handleRemoveFood: () => {
+    dispatch(removeFood());
   },
 
-  handleAddCulture: (art) => {
-    dispatch(addCulture(art));
+  handleAddArt: () => {
+    dispatch(addArt());
   },
 
-  handleRemoveCulture: () => {
-    dispatch(removeCulture());
+  handleRemoveArt: () => {
+    dispatch(removeArt());
   },
 
-  handleAddBar: (bars) => {
-    dispatch(addBar(bars));
+  handleAddPub: () => {
+    dispatch(addPub());
   },
 
-  handleRemoveBar: () => {
-    dispatch(removeBar());
+  handleRemovePub: () => {
+    dispatch(removePub());
   },
 
-  handleAddPromenade: (excursion) => {
-    dispatch(addPromenade(excursion));
+  handleAddExcursion: () => {
+    dispatch(addExcursion());
   },
 
-  handleRemovePromenade: () => {
-    dispatch(removePromenade());
+  handleRemoveExcursion: () => {
+    dispatch(removeExcursion());
   },
 
-  handleAddShopping: (shop) => {
-    dispatch(addShopping(shop));
+  handleAddShop: () => {
+    dispatch(addShop());
   },
 
-  handleRemoveShopping: () => {
-    dispatch(removeShopping());
+  handleRemoveShop: () => {
+    dispatch(removeShop());
   },
 
-  handleAddActAqua: (aquatic) => {
-    dispatch(addActAqua(aquatic));
+  handleAddAcquatic: () => {
+    dispatch(addAcquatic());
   },
 
-  handleRemoveActAqua: (aquatic) => {
-    dispatch(removeActAqua(aquatic));
+  handleRemoveAcquatic: () => {
+    dispatch(removeAcquatic());
   },
 
-  handlePrefSpectacle: (fun) => {
-    dispatch(getPrefSpectacle(fun));
+  handleAddFun: () => {
+    dispatch(addFun());
   },
 
-  handlePrefMonuments: (historic) => {
-    dispatch(getPrefMonuments(historic));
+  handleRemoveFun: () => {
+    dispatch(removeFun());
+  },
+
+  handleAddHistoric: () => {
+    dispatch(addHistoric());
+  },
+
+  handleRemoveHistoric: () => {
+    dispatch(removeHistoric());
   },
 
 });
