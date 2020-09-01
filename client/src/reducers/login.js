@@ -3,12 +3,12 @@ import {
 } from '../store/action/login-actions';
 
 const stateInitial = {
-  email: 'nawal@easytrip.com',
-  password: 'nawal',
-  lastName: 'Lotfi',
-  name: 'Nawal',
+  email: '',
+  password: '',
+  lastName: '',
+  name: '',
   isLogged: false,
-  loggedMessage: 'Bienvenue Nawal',
+  loggedMessage: `Bienvenue `,
   error: '',
   login: {},
 
@@ -37,7 +37,7 @@ export default (state = stateInitial, action = {}) => {
         password: '',
         error: '',
         login: action.payload,
-        loggedMessage: 'Bienvenue Nawal',
+        loggedMessage: `Bienvenue`,
       };
     case LOGIN:
       return {
