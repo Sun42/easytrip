@@ -27,7 +27,7 @@
   "scripts": {
     "start": "node app/start.js",
     "test": "jest --testTimeout=10000",
-    "lint": "eslint app/** tests/**",
+    "lint": "eslint .",
     "coverage": "jest --testTimeout=10000 --coverage"
   },
   "repository": {
