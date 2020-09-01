@@ -3,43 +3,19 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(51, 67, 117);
-  padding: 2rem;
-}
-
-
-.button {
-  height: 50px;
-  margin-right: 10px;
-  box-shadow: 10px 5px 5px rgb(29, 29, 66);
-  border: 1px solid rgb(29, 29, 66);
   background-color: white;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-button:hover {
-  background-color: rgb(94, 94, 167);
-  color: white;
-  transition: 0.5s;
-}
-
+  padding: 1rem;
 
   .logo {
     width: 18%;
   }
 
-  .login {
-    align-items: center;
+  button.ui.animated.button {
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 20px;
+  }
 }
-
-    button.ui.animated.button {
-      background-color: white;
-      border: 1px solid black;
-      margin-left: 20px;
-    }
-
 
 @media screen and (max-width: 1250px) {
   .logo {

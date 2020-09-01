@@ -364,10 +364,6 @@ const Activity = ({ handleAddNewActivity, object }) => (
               {object.tags.name}
             </Feed.Summary>
             <Feed.Date content={object.tags.amenity} />
-            {/* <p>{object.tags['addr:street']}</p>
-            <p>{object.tags.phone}</p>
-            <p>{object.tags.tourism}</p>
-            <a href="http://{object.tags.website}">{object.tags.website}</a> */}
           </Feed.Content>
         </Feed.Event>
       </Feed>

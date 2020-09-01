@@ -1,13 +1,11 @@
-/** @fixme @TODO clean this
-import React, { useState, Component } from 'react';
-import axios from 'axios';
-import { Route, Switch, Redirect } from 'react-router-dom';
-*/
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
+
+// == Composants - imports
 import Footer from '../Footer';
 import Header from '../../containers/Header';
 import HomePage from '../HomePage';
@@ -16,56 +14,57 @@ import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
-import Details from "../Details";
-import Carnet from "../Carnet";
+import Carnet from "../../containers/Carnet";
+import MonVoyage from "../../containers/MonVoyage";
 import SearchBar from '../SearchBar';
-import MonVoyage from '../MonVoyage';
 
 // == Composant
 const App = () => {
-  const [search, setSearch] = useState('');
-
-  const data = {
-    ville: 'Clermont-Ferrand',
-    description: "C'est une description",
-    horaire: '18h-20H',
-  };
 
   return (
     <div className="app">
       <Header />
       <Switch>
+
+        {/* homepage */}
         <Route exact path="/">
-
-          <SearchBar
-            search={search}
-            handleChange={setSearch}
-          />
-
+          <SearchBar />
           <HomePage />
         </Route>
+
+        {/* result page */}
         <Route exact path="/result">
           <ResultPage />
         </Route>
+
+        {/* les carnets */}
+        <Route exact path="/carnets">
+          <Carnet />
+        </Route>
+
+        {/* login page */}
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/sign-up">
           <SignUpForm
             component={SignUpForm}
           />
         </Route>
+
+        {/* result page */}
         <Route exact path="/result">
           <Result />
         </Route>
 
-        <Route path="/details" component={() => <Details data={data} />} />
-
-        <Route path="/carnet" component={() => <Carnet data={data} />} />
-        <Route>
+        {/* trip details page */}
+        <Route exact path="/mytrip">
           <MonVoyage />
         </Route>
+
+        {/* error */}
         <Route>
           <NotFound />
         </Route>
+
       </Switch>
       <Footer />
     </div>

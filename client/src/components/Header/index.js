@@ -21,7 +21,7 @@ const Header = () => (
     <img className="logo" src={Logo} alt="name of the page" />
     <div className="login">
       <ModalAddTrip />
-      <NavLink to="/login">
+      <NavLink to="/carnets">
         <Button
           circular
           icon="suitcase"
