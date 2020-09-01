@@ -2,10 +2,10 @@
 
 BEGIN;
 
-DROP TABLE "travelogue";
-DROP TABLE "activity";
-DROP TABLE "user";
-DROP TABLE "category";
+DROP TABLE "travelogue" CASCADE;
+DROP TABLE "activity" CASCADE;
+DROP TABLE "user" CASCADE;
+DROP TABLE "category" CASCADE;
 
 
 
