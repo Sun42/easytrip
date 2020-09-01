@@ -40,6 +40,7 @@ const LoginForm = ({
             placeholder=""
             value={password}
           />
+          {isLogged && (
           <NavLink activeClassName="active" to="/">
             <button
               type="submit"
@@ -48,7 +49,18 @@ const LoginForm = ({
             >
               OK
             </button>
-          </NavLink>
+            </NavLink>
+            )}
+         
+          {!isLogged && (
+            <button
+            type="submit"
+            className="login-form-button"
+            onClick="submit"
+          >
+            OK
+          </button>
+          )}
           <NavLink activeClassName="active" to="/sign-up">
             <span>vous n'avez pas de compte ?</span>
           </NavLink>

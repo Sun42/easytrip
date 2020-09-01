@@ -1,11 +1,11 @@
 import React from 'react';
 
 // router
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
-/* @fixme no-unused-vars
+
 import PropTypes from 'prop-types';
-*/
+
 // semantic-ui
 import { Button, Icon } from 'semantic-ui-react';
 
@@ -16,19 +16,33 @@ import Logo from '../../assets/newLogo.PNG';
 // composants
 import ModalAddTrip from '../../containers/ModalAddTrip';
 
-const Header = () => (
+const Header = ( {isLogged,
+  loggedMessage,}) => (
   <div className="header">
-    <img className="logo" src={Logo} alt="name of the page" />
+    <Link activeClassName="active" to="/">
+    
+  <img className="logo" src={Logo} alt="name of the page" />
+  </Link>
     <div className="login">
+  
+    {isLogged && (
+      <div>
+        <p className="login-form-message">
+              {loggedMessage}
+            </p>
       <ModalAddTrip />
-      <NavLink to="/login">
         <Button
           circular
           icon="suitcase"
           color="orange"
           size="large"
         />
-      </NavLink>
+      </div>
+        )}
+         </div>
+
+         {!isLogged && (
+           <div>
       <NavLink to="/login">
         <Button animated>
           <Button.Content visible>Connexion</Button.Content>
@@ -37,14 +51,7 @@ const Header = () => (
           </Button.Content>
         </Button>
       </NavLink>
-      <NavLink to="/login">
-        <Button
-          circular
-          icon="user"
-          color="black"
-          size="large"
-        />
-      </NavLink>
+      
       <NavLink to="/sign-up">
         <Button animated>
           <Button.Content visible>Inscription</Button.Content>
@@ -53,8 +60,18 @@ const Header = () => (
           </Button.Content>
         </Button>
       </NavLink>
+      </div>
+         )}
     </div>
-  </div>
 );
+
+Header.propTypes = {
+  isLogged: PropTypes.bool,
+  loggedMessage: PropTypes.string,
+};
+Header.defaultProps = {
+  isLogged: true,
+  loggedMessage: 'Connecté',
+};
 
 export default Header;
