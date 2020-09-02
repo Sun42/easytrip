@@ -1,4 +1,4 @@
-const userMiddleware = (request, response, next) => {
+/* const userMiddleware = (request, response, next) => {
     if (request.session.user) {
         console.log('Utilisateur connecté', request.session.user);
         response.locals.user = request.session.user;
@@ -13,3 +13,4 @@ const userMiddleware = (request, response, next) => {
 
 
 module.exports = userMiddleware;
+*/

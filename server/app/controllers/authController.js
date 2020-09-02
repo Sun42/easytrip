@@ -14,11 +14,9 @@ const authController = {
             } = request.body;
 
             // Si l'un de ces champs manquent, il faut les remplir
-            /* if (!name || !surname || !email || !password) {
-            response.status(400).send("Merci de remplir vos informations")
-        } */
-
-            const Users = [];
+            if (!name || !surname || !email || !password) {
+                response.status(400).send('Merci de remplir vos informations');
+            }
 
 
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
@@ -30,8 +28,9 @@ const authController = {
 
             });
 
-            Users.push(newUser);
+
             request.session.user = newUser;
+            console.log(request.session.user);
 
             // Sauvegarde de le nouvel utilisateur
             await newUser.save();
@@ -69,6 +68,7 @@ const authController = {
                 response.json({
                     isLogged: true,
                 });
+                console.log(request.session.user);
             }
             else {
                 response.status(403).json({
