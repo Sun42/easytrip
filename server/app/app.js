@@ -6,14 +6,9 @@ const morgan = require('morgan');
 
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const userMiddleware = require('../app/middlewares/userMiddleware');
-
 
 // database
 const db = require('./config/database');
-
-// const cookieParser = require('cookie-parser');
-
 
 // For cross-origin sharing
 const cors = require('cors');
@@ -37,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended:true }));
 
 app.use(bodyParser.json());
 
-app.use(userMiddleware);
+
 // Routing
 app.use(router);
 

@@ -1,5 +1,5 @@
-const { Travelogue } = require('../models');
-
+const { Travelogue, Activity } = require('../models');
+const { checkOwnership } = require('../helpers/tripHelper');
 const tripController = {
 
     createNewTravelogue : async (request, response) => {
@@ -22,7 +22,7 @@ const tripController = {
         try {
 
             await newTravelogue.save();
-            return response.json(newTravelogue);
+            return response.status(201).json(newTravelogue);
 
         }
         catch {
@@ -30,15 +30,6 @@ const tripController = {
             console.log(newTravelogue);
         }
     },
-
-    /* editTravelogue: async (request, response) => {
-        try {
-            const travelogueId = request.params.id;
-            const travelogue = await Travelogue.findByPk(travelogueId, {
-
-            })
-        }
-    }, */
 
     getAllTravelogues: async (request, response) => {
         try {
@@ -48,7 +39,7 @@ const tripController = {
                 ],
             });
 
-            if(!travelogues) {
+            if (!travelogues) {
                 response.status(204).json('Vous n\'avez pas encore de carnet de voyage');
             }
 
@@ -104,6 +95,30 @@ const tripController = {
         }
         catch (err) {
             response.status(500).json(err);
+        }
+    },
+
+    createActivity: async (request, response) => {
+        try {
+            console.log(request);
+            const { travelogue_id, name, information, localisation } = request.param;
+
+            if (!checkOwnership(request.session.user.id, travelogue_id)) {
+                throw new Error ('Error during travelogue to user ownership validation');
+            }
+            // @todo sequelize check
+            // Création d'un nouveau voyage (= nouveau carnet de voyage)
+            const activity = Activity.build({
+                travelogue_id,
+                name,
+                information,
+                localisation,
+            });
+            await activity.save();
+            response.status(201).json({ 'activity' : activity });
+        }
+        catch (error) {
+            response.status(400).json({ 'error' : error });
         }
     },
 };
