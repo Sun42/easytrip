@@ -2,6 +2,9 @@ const request = require('supertest');
 const app = require('../app/app.js');
 
 describe('Unkown endpoints should return a 404', () => {
+    afterAll(() => {
+        app.close();
+    });
     test('/', async () => {
         const response = await request(app).get('/');
         expect(response.statusCode).toBe(404);

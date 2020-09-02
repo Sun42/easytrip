@@ -48,37 +48,7 @@ router.route('/api/mes-voyages')
 
 router.get('/api/search', searchController.search);
 
-/* Profile routes
-router.get('/api/mon-profil', profileController.getProfile);
-
-router.post('/api/mon-profil', profilController.submitInfo);
-
-router.patch('/api/mon-profil', profilController.editInfo);
-
-router.delete('/api/mon-profil', profilController.deleteInfo);
-
-Carnet de voyage routes
-router.get('/api/mes-voyages', tripController.getAllTrips);
-
-router.get('/api/mes-voyages/mon-voyage/:tripId', tripController.getOneTrip);
-
-Accès au formulaire pour ajouter un nouveau voyage
-router.get('/api/mon-voyage/voyage/new', tripController.newTripForm);
-
-Permet d'ajouter un nouveau voyage
-router.post('/api/mon-voyage/new', tripController.submitNewTrip);
-
-Permet de modifier un voyage existant
-router.patch('/api/mon-voyage/:tripId', tripController.editTrip);
-
-Permet de supprimer un voyage existant
-router.delete('/api/mon-voyage/:tripId', tripController.deleteTrip);
-
-Search routes
-
-
-Result routes TODO */
-
+router.post('/api/activity/new', tripController.createActivity);
 
 // Exporting Router
 module.exports = router;
