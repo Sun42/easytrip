@@ -38,6 +38,8 @@ CREATE TABLE "activity"(
     "name" TEXT NOT NULL, 
     "information" TEXT, 
     "location" JSON,
+    "isFavorite" BOOLEAN DEFAULT false,
+    "isDone" BOOLEAN DEFAULT false,
     "travelogue_id" INT NOT NULL REFERENCES "travelogue"(id),
     "category_id" INT REFERENCES "category"(id)
 ); 
