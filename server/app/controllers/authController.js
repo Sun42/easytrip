@@ -15,9 +15,9 @@ const authController = {
 
             // Si l'un de ces champs manquent, il faut les remplir
             if (!name || !surname || !email || !password) {
-                response.status(400).send('Merci de remplir vos informations');
-            }
+                return response.status(400, 'Merci de remplir vos informations');
 
+            }
 
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
             const newUser = User.build({
@@ -30,12 +30,12 @@ const authController = {
 
 
             request.session.user = newUser;
-            console.log(request.session.user);
+            console.log(request.session.user.id);
 
             // Sauvegarde de le nouvel utilisateur
             await newUser.save();
 
-            return response.json(newUser);
+            return response.status(200).json(newUser);
         }
         catch(err) {
             response.status(500).json(err);
