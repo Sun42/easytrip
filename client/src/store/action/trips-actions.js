@@ -8,6 +8,7 @@ export const ADD_TRIP = 'ADD_TRIP';
 export const ACTIVITY_DONE = 'ACTIVITY_DONE';
 export const FAV_ACTIVITY = 'FAV_ACTIVITY';
 export const REMOVE_ACTIVITY = 'REMOVE_ACTIVITY';
+export const GET_USER_ALL_TRIPS = 'GET_USER_ALL_TRIPS';
 
 
 export const addNewActivity = (payload) => ({
@@ -57,4 +58,8 @@ export const favActivity = (payload) => ({
 export const removeActivity = (payload) => ({
   type: REMOVE_ACTIVITY,
   payload,
+});
+
+export const getUserAllTrips = () => ({
+  type: GET_USER_ALL_TRIPS,
 });

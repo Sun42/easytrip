@@ -339,7 +339,7 @@ const Activity = ({
   handleAddNewActivity, handleSelectedActivity, selectedActivity,
   object, mytrips 
 }) => {
-  const [open, setOpen] = React.useState(false)
+  
   return (
   <Card fluid>
     <Card.Content>

@@ -6,6 +6,7 @@ import rootReducer from '../reducers';
 import logMiddleware from '../middleware/logMiddleware';
 import ajaxMiddleware from '../middleware/ajaxMiddleware';
 import AuthMiddleware from '../middleware/authMididdleware';
+import tripMiddleware from '../middleware/tripMiddleware';
 
 // import filtersMiddleware from '../middleware/filtersMiddleware';
 
@@ -18,9 +19,7 @@ const enhancers = composeEnhancers(
     logMiddleware,
     ajaxMiddleware,
     AuthMiddleware,
-
-
-    // filtersMiddleware,
+    tripMiddleware
   ),
 );
 

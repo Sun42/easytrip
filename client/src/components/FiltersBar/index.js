@@ -1,5 +1,5 @@
 /* eslint-disable padded-blocks */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // styles
@@ -11,8 +11,14 @@ import SearchBar from '../../containers/SearchBar';
 const FiltersBar = ({
   handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
-  myTrips, handleTripID,
+  myTrips, handleTripID, handleUserAllTrips, 
 }) => {
+
+  useEffect(() => {
+    console.log('useffecttttt');
+    handleUserAllTrips();
+  }, []);
+
 
   return (
 
@@ -158,6 +164,7 @@ FiltersBar.propTypes = {
   handleToggleFun: PropTypes.func.isRequired,
   handleToggleHistoric: PropTypes.func.isRequired,
   handleTripID: PropTypes.func,
+  handleUserAllTrips: PropTypes.func,
 };
 
 export default FiltersBar;

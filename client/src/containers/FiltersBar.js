@@ -5,6 +5,8 @@ import {
   toggleAcquatic, toggleFun, toggleHistoric,
 } from '../store/action/filters-actions';
 
+import { getUserAllTrips } from '../store/action/trips-actions';
+
 const mapStateToProps = (state) => ({
   myTrips: state.trips.carnet,
 })
@@ -41,6 +43,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleToggleHistoric: () => {
     dispatch(toggleHistoric());
+  },
+
+  handleUserAllTrips: () => {
+    dispatch(getUserAllTrips());
   },
 
 });

@@ -2,6 +2,7 @@ import {
   ADD_NEW_ACTIVITY, GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
   ADD_START_DATE, ADD_END_DATE, ADD_TRIP, 
   ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
+  GET_USER_ALL_TRIPS,
 } from '../store/action/trips-actions';
 
 // Initial STATE de carnet, mon voyage et vignette
@@ -10,48 +11,7 @@ export const initialState = {
   destination: '',
   startDate: '',
   endDate: '',
-  carnet: [
-    { 
-      id: 1,
-      name: 'MyTrip1',
-      destination: 'Paris',
-      startDate: '30/12/2020', 
-      endDate: '12/12/2020',
-      activities: [],
-    },
-    { 
-      id: 2,
-      name: 'MyTrip2',
-      destination: 'Paris',
-      startDate: '30/12/2020', 
-      endDate: '12/12/2020',
-      activities: [],
-    },
-    {
-      id: 3,
-      name: 'MyTrip3',
-      destination: 'Paris',
-      startDate: '30/12/2020', 
-      endDate: '12/12/2020',
-      activities: [],
-    },
-    {
-      id: 4,
-      name: 'MyTrip4',
-      destination: 'Paris',
-      startDate: '30/12/2020', 
-      endDate: '12/12/2020',
-      activities: [],
-    },
-    {
-      id: 5,
-      name: 'MyTrip5',
-      destination: 'Paris',
-      startDate: '30/12/2020', 
-      endDate: '12/12/2020',
-      activities: [],
-    },
-  ],
+  carnet: [],
   activities: [
     {
       id: 1,
@@ -164,6 +124,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         activities: state.activities.filter(activity => activity.id !== action.payload)
       };
+    // case GET_USER_ALL_TRIPS: 
+    //   return {
+    //     ...state,
+    //     carnet: [
+    //       ...state.carnet,
+    //       ...action.payload,
+    //     ],
+    //   };
     default:
       return state;
   }
