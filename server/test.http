@@ -36,3 +36,10 @@ name='Plage'
 &travelogue_id=1
 &information="blabla"
 &localisation='{ "lat"="42.42", "lon"="04.04"}'
+
+### 
+GET http://{{baseurl}}/api/mes-voyages/1
+
+
+### 
+http://localhost:3000/api/mes-voyages/42

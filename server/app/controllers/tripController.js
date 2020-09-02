@@ -1,4 +1,4 @@
-const { Travelogue, Activity } = require('../models');
+const { Travelogue, Activity, User } = require('../models');
 const { checkOwnership } = require('../helpers/tripHelper');
 const tripController = {
 
@@ -32,18 +32,24 @@ const tripController = {
     },
 
     getAllTravelogues: async (request, response) => {
+        // @todo lorsque les sessions fonctionneront cote front, faire un check de l'user_id avec la session
         try {
+            const user_id = request.params.user_id;
+            const user = User.findByPk(user_id);
+            if (!user) {
+                response.status(400).json({ error : 'Invalid user' });
+                return ;
+            }
             const travelogues = await Travelogue.findAll({
+                where: {
+                    user_id : user_id,
+                },
                 order: [
                     ['name', 'ASC'],
                 ],
             });
 
-            if (!travelogues) {
-                response.status(204).json('Vous n\'avez pas encore de carnet de voyage');
-            }
-
-            response.json(travelogues);
+            response.json({ travelogues : travelogues });
         }
         catch (err) {
             response.status(500).send(err);

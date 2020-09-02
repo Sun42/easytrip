@@ -43,7 +43,7 @@ router.route('/api/mesvoyages/monvoyage/:id')
     .delete(tripController.deleteTravelogue);
 
 // Récupérer tous les carnets de voyages
-router.route('/api/mes-voyages')
+router.route('/api/mes-voyages/:user_id')
     .get(tripController.getAllTravelogues);
 
 router.get('/api/search', searchController.search);
