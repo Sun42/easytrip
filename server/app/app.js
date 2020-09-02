@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended:true }));
 
 app.use(bodyParser.json());
 
-//app.use(userMiddleware);
+// app.use(userMiddleware);
 
 // Routing
 app.use(router);
