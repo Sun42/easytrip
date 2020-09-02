@@ -1,4 +1,3 @@
-// const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
@@ -19,9 +18,8 @@ const authController = {
             response.status(400).send("Merci de remplir vos informations")
         } */
 
-            /* if (!emailValidator.validate(email)) {
-            response.status(400).send('Cet email est invalide')
-        } */
+            const Users = [];
+
 
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
             const newUser = User.build({
@@ -31,6 +29,9 @@ const authController = {
                 password: await bcrypt.hashSync(password, 10),
 
             });
+
+            Users.push(newUser);
+            request.session.user = newUser;
 
             // Sauvegarde de le nouvel utilisateur
             await newUser.save();
@@ -52,19 +53,19 @@ const authController = {
 
             console.log(email, password);
 
-            const thisUser = await User.findOne({
+            const user = await User.findOne({
                 where: {
                     email,
                 },
             });
 
             // On vérifie que l'utilisateur ait rempli le bon mail et le bon mot de passe associé
-            if (thisUser && await bcrypt.compareSync(password, thisUser.password)) {
+            if (user && await bcrypt.compareSync(password, user.password)) {
                 // Permet de ne récupérer que les 'dataValues' et pas les autres données
-                request.session.thisUser = thisUser.get({
+                request.session.user = user.get({
                     plain: true,
                 });
-                delete request.session.thisUser.password;
+                delete request.session.user.password;
                 response.json({
                     isLogged: true,
                 });
