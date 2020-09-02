@@ -1,5 +1,5 @@
 import {
-  ADD_NEW_ACTIVITY, ADD_NAME, ADD_DESTINATION,
+  ADD_NEW_ACTIVITY, GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
   ADD_START_DATE, ADD_END_DATE, ADD_TRIP, 
   ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
 } from '../store/action/trips-actions';
@@ -11,35 +11,45 @@ export const initialState = {
   startDate: '',
   endDate: '',
   carnet: [
-    {
+    { 
+      id: 1,
       name: 'MyTrip1',
       destination: 'Paris',
       startDate: '30/12/2020', 
       endDate: '12/12/2020',
+      activities: [],
     },
-    {
+    { 
+      id: 2,
       name: 'MyTrip2',
       destination: 'Paris',
       startDate: '30/12/2020', 
       endDate: '12/12/2020',
+      activities: [],
     },
     {
+      id: 3,
       name: 'MyTrip3',
       destination: 'Paris',
       startDate: '30/12/2020', 
       endDate: '12/12/2020',
+      activities: [],
     },
     {
+      id: 4,
       name: 'MyTrip4',
       destination: 'Paris',
       startDate: '30/12/2020', 
       endDate: '12/12/2020',
+      activities: [],
     },
     {
+      id: 5,
       name: 'MyTrip5',
       destination: 'Paris',
       startDate: '30/12/2020', 
       endDate: '12/12/2020',
+      activities: [],
     },
   ],
   activities: [
@@ -73,7 +83,8 @@ export const initialState = {
       done: false,
       favori: false,
     }
-  ]
+  ],
+  selectedActivity: [],
 };
 
 // Fonction de REDUCER
@@ -128,6 +139,15 @@ export default (state = initialState, action = {}) => {
             favori: false,
           }
         ]
+      };
+    case GET_SELECTED_ACTIVITY:
+      return {
+        ...state,
+        selectedActivity: [
+          {
+            activity: action.payload,
+          }
+        ],
       };
     case ACTIVITY_DONE:
       return {

@@ -19,14 +19,18 @@ import {
 
 // composants
 import Loading from '../Loading';
+// import { Projection } from 'leaflet';
 
 const Result = ({
-  cordinates, loading, handleAddNewActivity,
+  cordinates, loading, 
+  handleAddNewActivity, handleSelectedActivity, mytrips, selectedActivity,
   foodFilter, artFilter, pubFilter, excursionFilter, shopFilter,
   acquaticFilter, funFilter, historicFilter,
   foodCheck, artCheck, pubCheck, excursionCheck, shopCheck, acquaticCheck,
   funCheck, historicCheck,
-}) => (
+}) => {
+ 
+  return (
   <div className="result">
     <div className="result-list">
       {/* {gastronomieFilter.length === [] && barFilter === []
@@ -38,6 +42,9 @@ const Result = ({
             && foodFilter.map((object) => (
               <Activity
                 key={object.id}
+                mytrips={mytrips}
+                handleSelectedActivity={handleSelectedActivity}
+                selectedActivity={selectedActivity}
                 object={object}
                 handleAddNewActivity={handleAddNewActivity}
               />
@@ -326,9 +333,14 @@ const Result = ({
       )}
     </div>
   </div>
-);
+)};
 
-const Activity = ({ handleAddNewActivity, object }) => (
+const Activity = ({ 
+  handleAddNewActivity, handleSelectedActivity, selectedActivity,
+  object, mytrips 
+}) => {
+  const [open, setOpen] = React.useState(false)
+  return (
   <Card fluid>
     <Card.Content>
       <Feed>
@@ -336,29 +348,23 @@ const Activity = ({ handleAddNewActivity, object }) => (
           <Button
             color="orange"
             icon
-            onClick={(evt) => {
-             /** @fixme no-unused-vars
-             const elemClicked = evt.target.closest('div.content');
-             const elemTable = (elemClicked.children[0]);
-             const elemToState = elemTable.innerHTML;
-             */
-            }}
           >
             <Icon name="info" />
           </Button>
-          <Button
-            color="black"
-            icon
-            onClick={(evt) => {
-              const clickedItem1 = evt.target.closest('div');
-              const clickedItem2 = clickedItem1.children[2];
-              const clickedItem3 = clickedItem2.children[0];
-              const clickedItem4 = clickedItem3.firstChild.textContent;
-              handleAddNewActivity(clickedItem4);
-            }}
-          >
-            <Icon name="book" />
-          </Button>
+            <Button
+              color="black"
+              icon
+              onClick={(evt) => {
+                const clickedItem1 = evt.target.closest('div');
+                const clickedItem2 = clickedItem1.children[2];
+                const clickedItem3 = clickedItem2.children[0];
+                const clickedItem4 = clickedItem3.firstChild.textContent;
+                console.log('item4', clickedItem4);
+                handleSelectedActivity(clickedItem4);
+              }}
+            >
+              <Icon name="book" />
+            </Button>
           <Feed.Content>
             <Feed.Summary>
               {object.tags.name}
@@ -369,7 +375,7 @@ const Activity = ({ handleAddNewActivity, object }) => (
       </Feed>
     </Card.Content>
   </Card>
-);
+)};
 
 Result.propTypes = {
   cordinates: PropTypes.arrayOf(PropTypes.number),
@@ -390,7 +396,9 @@ Result.propTypes = {
   acquaticCheck: PropTypes.bool,
   funCheck: PropTypes.bool,
   historicCheck: PropTypes.bool,
+  mytrips: PropTypes.arrayOf(PropTypes.object.isRequired),
   handleAddNewActivity: PropTypes.func.isRequired,
+  handleSelectedActivity: PropTypes.func,
 };
 
 Result.defaultProps = {

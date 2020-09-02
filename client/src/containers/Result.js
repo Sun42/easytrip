@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Result from '../components/Result';
-import { addNewActivity } from '../store/action/trips-actions';
+import { addNewActivity, getSelectedActivity } from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
   cordinates: state.filters.cordinates,
@@ -22,11 +22,17 @@ const mapStateToProps = (state) => ({
   acquaticCheck: state.filters.checkbox.acquatuic,
   funCheck: state.filters.checkbox.fun,
   historicCheck: state.filters.checkbox.historic,
+  mytrips: state.trips.carnet,
+  selectedActivity: state.trips.selectedActivity,
 });
 
 const mapDispatchToState = (dispatch) => ({
   handleAddNewActivity: (clickedItem4) => {
     dispatch(addNewActivity(clickedItem4));
+  },
+
+  handleSelectedActivity: (clickedItem4) => {
+    dispatch(getSelectedActivity(clickedItem4));
   },
 
 });

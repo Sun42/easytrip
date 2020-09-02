@@ -2,10 +2,8 @@ import {
   GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS,
   GET_ALL_POI, GET_SEARCH_SUBMIT_SUCCESS_NAME,
   GET_SEARCH_SUBMIT_ERROR,
-  ADD_FOOD, ADD_ART, ADD_PUB, ADD_EXCURSION,
-  ADD_SHOP, ADD_ACQUATIC, ADD_FUN, ADD_HISTORIC,
-  REMOVE_FOOD, REMOVE_ART, REMOVE_PUB, REMOVE_EXCURSION,
-  REMOVE_SHOP, REMOVE_ACQUATIC, REMOVE_FUN, REMOVE_HISTORIC,
+  TOGGLE_FOOD, TOGGLE_ART, TOGGLE_PUB, TOGGLE_EXCURSION,
+  TOGGLE_SHOP, TOGGLE_ACQUATIC, TOGGLE_FUN, TOGGLE_HISTORIC,
 } from '../store/action/filters-actions';
 
 // Initial STATE de filters
@@ -75,7 +73,7 @@ export default (state = initialState, action = {}) => {
         loading: false,
         error: 'Nous sommes désolés mais ne n\'avons pas trouvés de résultat pour votre recherche',
       };
-    case ADD_FOOD:
+    case TOGGLE_FOOD:
       return {
         ...state,
         checkbox: {
@@ -83,15 +81,7 @@ export default (state = initialState, action = {}) => {
           food: !state.checkbox.food,
         },
       };
-    case REMOVE_FOOD:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          food: !state.checkbox.food,
-        },
-      };
-    case ADD_ART:
+    case TOGGLE_ART:
       return {
         ...state,
         checkbox: {
@@ -99,15 +89,7 @@ export default (state = initialState, action = {}) => {
           art: !state.checkbox.art,
         },
       };
-    case REMOVE_ART:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          art: !state.checkbox.art,
-        },
-      };
-    case ADD_PUB:
+    case TOGGLE_PUB:
       return {
         ...state,
         checkbox: {
@@ -115,15 +97,7 @@ export default (state = initialState, action = {}) => {
           pub: !state.checkbox.pub,
         },
       };
-    case REMOVE_PUB:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          pub: !state.checkbox.pub,
-        },
-      };
-    case ADD_EXCURSION:
+    case TOGGLE_EXCURSION:
       return {
         ...state,
         checkbox: {
@@ -131,15 +105,7 @@ export default (state = initialState, action = {}) => {
           excursion: !state.checkbox.excursion,
         },
       };
-    case REMOVE_EXCURSION:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          excursion: !state.checkbox.excursion,
-        },
-      };
-    case ADD_SHOP:
+    case TOGGLE_SHOP:
       return {
         ...state,
         checkbox: {
@@ -147,15 +113,7 @@ export default (state = initialState, action = {}) => {
           shop: !state.checkbox.shop,
         },
       };
-    case REMOVE_SHOP:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          shop: !state.checkbox.shop,
-        },
-      };
-    case ADD_ACQUATIC:
+    case TOGGLE_ACQUATIC:
       return {
         ...state,
         checkbox: {
@@ -163,15 +121,7 @@ export default (state = initialState, action = {}) => {
           acquatic: !state.checkbox.acquatic,
         },
       };
-    case REMOVE_ACQUATIC:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          acquatic: !state.checkbox.acquatic,
-        },
-      };
-    case ADD_FUN:
+    case TOGGLE_FUN:
       return {
         ...state,
         checkbox: {
@@ -179,23 +129,7 @@ export default (state = initialState, action = {}) => {
           fun: !state.checkbox.fun,
         },
       };
-    case REMOVE_FUN:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          fun: !state.checkbox.fun,
-        },
-      };
-    case ADD_HISTORIC:
-      return {
-        ...state,
-        checkbox: {
-          ...state.checkbox,
-          historic: !state.checkbox.historic,
-        },
-      };
-    case REMOVE_HISTORIC:
+    case TOGGLE_HISTORIC:
       return {
         ...state,
         checkbox: {

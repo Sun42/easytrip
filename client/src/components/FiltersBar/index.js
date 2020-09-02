@@ -1,11 +1,6 @@
 /* eslint-disable padded-blocks */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-// Calendar
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
-import { DateRangePicker } from 'react-dates';
 
 // styles
 import './styles.scss';
@@ -14,20 +9,10 @@ import './styles.scss';
 import SearchBar from '../../containers/SearchBar';
 
 const FiltersBar = ({
-  handleAddFood, handleAddArt, handleAddPub, handleAddExcursion,
-  handleAddShop, handleAddAcquatic, handleAddFun, handleAddHistoric,
-  handleRemoveFood, handleRemoveArt, handleRemovePub, handleRemoveExcursion,
-  handleRemoveShop, handleRemoveAcquatic, handleRemoveFun, handleRemoveHistoric,
+  handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
+  handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
+  myTrips, handleTripID,
 }) => {
-  const [dateRange, setDateRange] = useState({
-    startDate: null,
-    endDate: null,
-  });
-  const [focus, setFocus] = useState(null);
-
-  const { startDate, endDate } = dateRange;
-
-  const handleOnDateChange = (startDate, endDate) => setDateRange(startDate, endDate);
 
   return (
 
@@ -37,25 +22,26 @@ const FiltersBar = ({
         <SearchBar />
       </div>
       <div className="dates">
-        <p>Selectionner vos dates</p>
+        <p><label htmlFor="carnet">Selectionnez votre carnet :</label></p>
         <div className="calendar">
-
-          <DateRangePicker
-            startDatePlaceholderText="Départ"
-            startDate={startDate}
-            onDatesChange={handleOnDateChange}
-            endDatePlaceholderText="Retour"
-            endDate={endDate}
-            numberOfMonths={1}
-            displayFormat="DD/MM/YYYY"
-            showClearDates
-            focusedInput={focus}
-            onFocusChange={(focus) => setFocus(focus)}
-            startDateId="startDateMookh"
-            endDateId="endDateMookh"
-            minimumNights={0}
-            showDefaultInputIcon
-          />
+        <select name="trip" id="trip-select">
+          <option value="">--Selectionnez votre carnet--</option>
+        {
+          myTrips.map((trip) => {
+            return (
+            <option 
+              key={trip.id}
+              value={trip.name}
+              onClick={() => {
+                // handleTripID(trip.id);
+                console.log(trip.id);
+              }}
+            >
+              {trip.name}</option>
+            )
+          })
+        }
+        </select>
         </div>
       </div>
 
@@ -70,31 +56,19 @@ const FiltersBar = ({
                   type="checkbox"
                   id="food"
                   name="food"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddFood();
-                    }
-                    else {
-                      handleRemoveFood();
-                    }
+                  onClick={() => {
+                      handleToggleFood();
                   }}
                 />
               </div>
               <div>
-                <label htmlFor="culture_art">Culture / Art : </label>
+                <label htmlFor="art">Culture / Art : </label>
                 <input
                   type="checkbox"
                   id="art"
                   name="art"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddArt();
-                    }
-                    else {
-                      handleRemoveArt();
-                    }
+                  onClick={() => {
+                      handleToggleArt();
                   }}
                 />
               </div>
@@ -104,14 +78,8 @@ const FiltersBar = ({
                   type="checkbox"
                   id="pub"
                   name="pub"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddPub();
-                    }
-                    else {
-                      handleRemovePub();
-                    }
+                  onClick={() => {
+                      handleTogglePub();
                   }}
                 />
               </div>
@@ -121,14 +89,8 @@ const FiltersBar = ({
                   type="checkbox"
                   id="excursion"
                   name="excursion"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddExcursion();
-                    }
-                    else {
-                      handleRemoveExcursion();
-                    }
+                  onClick={() => {
+                      handleToggleExcursion();
                   }}
                 />
               </div>
@@ -140,14 +102,8 @@ const FiltersBar = ({
                   type="checkbox"
                   id="shop"
                   name="shop"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddShop();
-                    }
-                    else {
-                      handleRemoveShop();
-                    }
+                  onClick={() => {
+                      handleToggleShop();
                   }}
                 />
               </div>
@@ -157,14 +113,8 @@ const FiltersBar = ({
                   type="checkbox"
                   id="acquatic"
                   name="acquatic"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddAcquatic();
-                    }
-                    else {
-                      handleRemoveAcquatic();
-                    }
+                  onClick={() => {
+                      handleToggleAcquatic();
                   }}
                 />
               </div>
@@ -174,14 +124,8 @@ const FiltersBar = ({
                   type="checkbox"
                   id="fun"
                   name="fun"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddFun();
-                    }
-                    else {
-                      handleRemoveFun();
-                    }
+                  onClick={() => {
+                      handleToggleFun();
                   }}
                 />
               </div>
@@ -191,14 +135,8 @@ const FiltersBar = ({
                   type="checkbox"
                   id="historic"
                   name="historic"
-                  onClick={(evt) => {
-                    const checkboxValue = evt.target.checked;
-                    if (checkboxValue === true) {
-                      handleAddHistoric();
-                    }
-                    else {
-                      handleRemoveHistoric();
-                    }
+                  onClick={() => {
+                      handleToggleHistoric();
                   }}
                 />
               </div>
@@ -211,22 +149,15 @@ const FiltersBar = ({
 };
 
 FiltersBar.propTypes = {
-  handleAddFood: PropTypes.func.isRequired,
-  handleAddArt: PropTypes.func.isRequired,
-  handleAddPub: PropTypes.func.isRequired,
-  handleAddExcursion: PropTypes.func.isRequired,
-  handleAddShop: PropTypes.func.isRequired,
-  handleAddAcquatic: PropTypes.func.isRequired,
-  handleAddFun: PropTypes.func.isRequired,
-  handleAddHistoric: PropTypes.func.isRequired,
-  handleRemoveFood: PropTypes.func.isRequired,
-  handleRemoveArt: PropTypes.func.isRequired,
-  handleRemovePub: PropTypes.func.isRequired,
-  handleRemoveExcursion: PropTypes.func.isRequired,
-  handleRemoveShop: PropTypes.func.isRequired,
-  handleRemoveAcquatic: PropTypes.func.isRequired,
-  handleRemoveFun: PropTypes.func.isRequired,
-  handleRemoveHistoric: PropTypes.func.isRequired,
+  handleToggleFood: PropTypes.func.isRequired,
+  handleToggleArt: PropTypes.func.isRequired,
+  handleTogglePub: PropTypes.func.isRequired,
+  handleToggleExcursion: PropTypes.func.isRequired,
+  handleToggleShop: PropTypes.func.isRequired,
+  handleToggleAcquatic: PropTypes.func.isRequired,
+  handleToggleFun: PropTypes.func.isRequired,
+  handleToggleHistoric: PropTypes.func.isRequired,
+  handleTripID: PropTypes.func,
 };
 
 export default FiltersBar;

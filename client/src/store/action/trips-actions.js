@@ -1,4 +1,5 @@
 export const ADD_NEW_ACTIVITY = 'ADD_NEW_ACTIVITY';
+export const GET_SELECTED_ACTIVITY = 'GET_SELECTED_ACTIVITY';
 export const ADD_NAME = 'ADD_NAME';
 export const ADD_DESTINATION = 'ADD_DESTINATION';
 export const ADD_START_DATE = 'ADD_START_DATE';
@@ -11,6 +12,11 @@ export const REMOVE_ACTIVITY = 'REMOVE_ACTIVITY';
 
 export const addNewActivity = (payload) => ({
   type: ADD_NEW_ACTIVITY,
+  payload,
+});
+
+export const getSelectedActivity = (payload) => ({
+  type: GET_SELECTED_ACTIVITY,
   payload,
 });
 

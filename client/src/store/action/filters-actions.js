@@ -4,22 +4,14 @@ export const GET_SEARCH_SUBMIT_SUCCESS = 'GET_SEARCH_SUBMIT_SUCCESS';
 export const GET_ALL_POI = 'GET_ALL_POI';
 export const GET_SEARCH_SUBMIT_SUCCESS_NAME = 'GET_SEARCH_SUBMIT_SUCCESS_NAME';
 export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
-export const ADD_FOOD = 'ADD_FOOD';
-export const ADD_ART = 'ADD_ART';
-export const ADD_PUB = 'ADD_PUB';
-export const ADD_EXCURSION = 'ADD_EXCURSION';
-export const ADD_SHOP = 'ADD_SHOP';
-export const ADD_ACQUATIC = 'ADD_ACQUATIC';
-export const ADD_FUN = 'ADD_FUN';
-export const ADD_HISTORIC = 'ADD_HISTORIC';
-export const REMOVE_FOOD = 'REMOVE_FOOD';
-export const REMOVE_ART = 'REMOVE_ART';
-export const REMOVE_PUB = 'REMOVE_PUB';
-export const REMOVE_EXCURSION = 'REMOVE_EXCURSION';
-export const REMOVE_SHOP = 'REMOVE_SHOP';
-export const REMOVE_ACQUATIC = 'REMOVE_ACQUATIC';
-export const REMOVE_FUN = 'REMOVE_FUN';
-export const REMOVE_HISTORIC = 'REMOVE_HISTORIC';
+export const TOGGLE_FOOD = 'TOGGLE_FOOD';
+export const TOGGLE_ART = 'TOGGLE_ART';
+export const TOGGLE_PUB = 'TOGGLE_PUB';
+export const TOGGLE_EXCURSION = 'TOGGLE_EXCURSION';
+export const TOGGLE_SHOP = 'TOGGLE_SHOP';
+export const TOGGLE_ACQUATIC = 'TOGGLE_ACQUATIC';
+export const TOGGLE_FUN = 'TOGGLE_FUN';
+export const TOGGLE_HISTORIC = 'TOGGLE_HISTORIC';
 
 export const getSearch = (payload) => ({
   type: GET_SEARCH,
@@ -50,66 +42,34 @@ export const getSearchSubmitError = (payload) => ({
   payload,
 });
 
-export const addFood = () => ({
-  type: ADD_FOOD,
+export const toggleFood = () => ({
+  type: TOGGLE_FOOD,
 });
 
-export const removeFood = () => ({
-  type: REMOVE_FOOD,
+export const toggleArt = () => ({
+  type: TOGGLE_ART,
 });
 
-export const addArt = () => ({
-  type: ADD_ART,
+export const togglePub = () => ({
+  type: TOGGLE_PUB,
 });
 
-export const removeArt = () => ({
-  type: REMOVE_ART,
+export const toggleExcursion = () => ({
+  type: TOGGLE_EXCURSION,
 });
 
-export const addPub = () => ({
-  type: ADD_PUB,
+export const toggleShop = () => ({
+  type: TOGGLE_SHOP,
 });
 
-export const removePub = () => ({
-  type: REMOVE_PUB,
+export const toggleAcquatic = () => ({
+  type: TOGGLE_ACQUATIC,
 });
 
-export const addExcursion = () => ({
-  type: ADD_EXCURSION,
+export const toggleFun = () => ({
+  type: TOGGLE_FUN,
 });
 
-export const removeExcursion = () => ({
-  type: REMOVE_EXCURSION,
-});
-
-export const addShop = () => ({
-  type: ADD_SHOP,
-});
-
-export const removeShop = () => ({
-  type: REMOVE_SHOP,
-});
-
-export const addAcquatic = () => ({
-  type: ADD_ACQUATIC,
-});
-
-export const removeAcquatic = () => ({
-  type: REMOVE_ACQUATIC,
-});
-
-export const addFun = () => ({
-  type: ADD_FUN,
-});
-
-export const removeFun = () => ({
-  type: REMOVE_FUN,
-});
-
-export const addHistoric = () => ({
-  type: ADD_HISTORIC,
-});
-
-export const removeHistoric = () => ({
-  type: REMOVE_HISTORIC,
+export const toggleHistoric = () => ({
+  type: TOGGLE_HISTORIC,
 });

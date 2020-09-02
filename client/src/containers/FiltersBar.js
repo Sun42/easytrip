@@ -1,78 +1,46 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  addFood, addArt, addPub, addExcursion, addShop, 
-  addAcquatic, addFun, addHistoric,
-  removeFood, removeArt, removePub, removeExcursion,
-  removeShop, removeAcquatic, removeFun, removeHistoric,
+  toggleFood, toggleArt, togglePub, toggleExcursion, toggleShop, 
+  toggleAcquatic, toggleFun, toggleHistoric,
 } from '../store/action/filters-actions';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+  myTrips: state.trips.carnet,
+})
 
 const mapDispatchToProps = (dispatch) => ({
 
-  handleAddFood: () => {
-    dispatch(addFood());
+  handleToggleFood: () => {
+    dispatch(toggleFood());
   },
 
-  handleRemoveFood: () => {
-    dispatch(removeFood());
+  handleToggleArt: () => {
+    dispatch(toggleArt());
   },
 
-  handleAddArt: () => {
-    dispatch(addArt());
+  handleTogglePub: () => {
+    dispatch(togglePub());
   },
 
-  handleRemoveArt: () => {
-    dispatch(removeArt());
+  handleToggleExcursion: () => {
+    dispatch(toggleExcursion());
   },
 
-  handleAddPub: () => {
-    dispatch(addPub());
+  handleToggleShop: () => {
+    dispatch(toggleShop());
   },
 
-  handleRemovePub: () => {
-    dispatch(removePub());
+  handleToggleAcquatic: () => {
+    dispatch(toggleAcquatic());
   },
 
-  handleAddExcursion: () => {
-    dispatch(addExcursion());
+  handleToggleFun: () => {
+    dispatch(toggleFun());
   },
 
-  handleRemoveExcursion: () => {
-    dispatch(removeExcursion());
-  },
-
-  handleAddShop: () => {
-    dispatch(addShop());
-  },
-
-  handleRemoveShop: () => {
-    dispatch(removeShop());
-  },
-
-  handleAddAcquatic: () => {
-    dispatch(addAcquatic());
-  },
-
-  handleRemoveAcquatic: () => {
-    dispatch(removeAcquatic());
-  },
-
-  handleAddFun: () => {
-    dispatch(addFun());
-  },
-
-  handleRemoveFun: () => {
-    dispatch(removeFun());
-  },
-
-  handleAddHistoric: () => {
-    dispatch(addHistoric());
-  },
-
-  handleRemoveHistoric: () => {
-    dispatch(removeHistoric());
+  handleToggleHistoric: () => {
+    dispatch(toggleHistoric());
   },
 
 });
