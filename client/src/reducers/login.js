@@ -37,7 +37,7 @@ export default (state = stateInitial, action = {}) => {
         password: '',
         error: '',
         login: action.payload,
-        loggedMessage: `Bienvenue ${action.payload.name}`,
+        loggedMessage: `Bienvenue bel inconnu`,
       };
     case LOGIN:
       return {
@@ -51,7 +51,7 @@ export default (state = stateInitial, action = {}) => {
         ...state,
         password: '',
         error: action.payload,
-        loggedMessage: 'vous n\'avez pas le bon identifiant',
+        loggedMessage: action.payload,
         login: {},
         isLogged: false,
       };

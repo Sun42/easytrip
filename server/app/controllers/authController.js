@@ -70,12 +70,12 @@ const authController = {
                 console.log('signin session', request.session);
                 delete request.session.user.password;
                 response.status(200).json({
-                    isLogged: true,
+                    logged: true,
                 });
             }
             else {
                 response.status(403).json({
-                    isLogged: false,
+                    logged: false,
                 });
             }
         }

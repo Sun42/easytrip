@@ -6,8 +6,9 @@ import {
 /**@fixme no-unused-vars
 import { GET_SEARCH_SUBMIT_SUCCESS } from '../store/action/filters-actions';
 */
-export default (store) => (next) => (action) => {
+const authMiddleware = (store) => (next) => (action) => {
   next(action);
+  console.log('authMiddleware action.type', action.type);
   switch (action.type) {
     /* case LOGOUT: {
       axios({
@@ -38,10 +39,11 @@ export default (store) => (next) => (action) => {
         withCredentials: false, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          const { info } = res.data;
-          store.dispatch(loginSuccess(info));
+          console.log('Authmiddlware: then', res.data)
+          store.dispatch(loginSuccess(res.data));
         })
         .catch((err) => {
+          console.log('Authmiddleware error ',  err);
           store.dispatch(loginError('Impossible de connecter cet utilisateur'));
         });
 
@@ -50,10 +52,7 @@ export default (store) => (next) => (action) => {
     case CHECK_AUTH: {
       axios({
         method: 'post',
-        url: 'http://localhost:3000/isLogged',
-        data: {
-          logged: store.getState().login.isLogged,
-        },
+        url: 'http://localhost:3000/api/islogged',
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
@@ -95,3 +94,5 @@ export default (store) => (next) => (action) => {
     default:
   }
 };
+
+export default authMiddleware;
