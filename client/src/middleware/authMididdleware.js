@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  LOGIN, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM/*@fixme no-unused-vars, signupForm, SignUpForm*/,
+  LOGIN, CHECK_AUTH, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM/*@fixme no-unused-vars, signupForm, SignUpForm*/,
 } from '../store/action/login-actions';
 
 /**@fixme no-unused-vars
@@ -13,7 +13,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         url: ,
-        withCredentials: true
+        with: true
       })
         .then((res) => {
           console.log(res.data);
@@ -47,6 +47,26 @@ export default (store) => (next) => (action) => {
 
       break;
     }
+    case CHECK_AUTH: {
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/isLogged',
+        data: {
+          logged: store.getState().login.isLogged,
+        },
+        withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
+      })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.logged) {
+            store.dispatch(loginSuccess(res.data.info));
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+      break;
+    }
     // Inscription
     case SIGNUPFORM: {
       axios({
@@ -58,7 +78,7 @@ export default (store) => (next) => (action) => {
           name: store.getState().login.name,
           surname: store.getState().login.surName,
         },
-        withCredentials: false, // Je veux que le serveur sache qui je suis grace à la session
+        withCredentials: true, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
           console.log(res.data); // modif sarah

@@ -27,7 +27,7 @@ export default (state = stateInitial, action = {}) => {
       return {
         ...state,
         isLogged: false,
-        user: {},
+        login : {},
       };
     case LOGIN_SUCCESS:
       return {

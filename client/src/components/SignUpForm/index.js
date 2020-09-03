@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Field from './Field.js/index.js';
 // import { useField } from './hooks';
@@ -45,7 +45,7 @@ const SignUpForm = ({ // modif Sarah
           <p>Prenom</p>
 
           <Field
-            name="SurName"
+            name="surName"
             onChange={changeField}
             placeholder=""
             value={surName}
@@ -80,14 +80,6 @@ const SignUpForm = ({ // modif Sarah
           </form>)}
 
       </div>
-
-      {isLogged && (
-
-          
-<div>
-<Redirect activeClassName='active' to="/"/>
-</div>
-)}
 
     </div>
   );

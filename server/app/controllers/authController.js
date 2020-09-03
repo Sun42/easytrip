@@ -83,6 +83,16 @@ const authController = {
 
     },
 
+    isLogged: async (request, response) => {
+        console.log(request.session);
+        if(request.session.user) {
+            response.json({ logged: true, info: request.session.user });
+        }
+        else {
+            response.json({ logged:false });
+        }
+    },
+
 
     signoutAction: async (request, response) => {
         try {

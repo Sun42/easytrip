@@ -19,7 +19,8 @@ const router = require('./router');
 
 const app = express();
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
-app.use(cors());
+// app.use(cors());
+
 
 app.use(express.urlencoded({ extended:true }));
 
@@ -31,12 +32,21 @@ app.use(session({
     saveUninitialized: true,
     resave:true,
     secret: process.env.SECRET_SESSION,
+    cookie: {},
 }));
 
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
 app.use(bodyParser.urlencoded({ extended:true }));
 
 app.use(bodyParser.json());
+
+app.use((request, response, next) => {
+    response.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+    response.header('Access-Control-Allow-Credentials', true);
+    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    response.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
 
 app.use(userMiddleware);
 // Routing

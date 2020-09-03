@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Field from './Field';
 // import { useField } from './hooks';
 import './style.scss';
@@ -61,14 +61,6 @@ const LoginForm = ({
           
         </form>)}
         </div> 
-
-        {isLogged && (
-
-          
-          <div>
-<Redirect activeClassName='active' to="/"/>
-          </div>
-        )}
   </div>
   );
 };
