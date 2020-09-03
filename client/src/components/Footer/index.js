@@ -5,7 +5,7 @@ import './styles.scss';
 
 const Footer = () => (
   <div className="footer">
-    <div className="team">
+    {/* <div className="team">
       <p>Equipe EasyTrip</p>
     </div>
     <div className="team-member">
@@ -38,7 +38,7 @@ const Footer = () => (
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="linkedin" />
       </a>
     </div>
-    <p>Copyright</p>
+    <p>Copyright</p> */}
   </div>
 );
 

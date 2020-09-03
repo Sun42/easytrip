@@ -19,7 +19,7 @@ const Carnet = ( {carnet} ) => {
       {
       carnet.length > 0 
       && carnet.map((trip) => {
-          return <Trip {...trip} />;
+          return <Trip key={trip.id} {...trip} />;
         })
       }
       </Card.Group>
@@ -34,7 +34,7 @@ const Carnet = ( {carnet} ) => {
   </div>
 )};
 
-const Trip = ( { name, destination, startDate, endDate } ) => {
+const Trip = ( { city, date_departure, date_return, name } ) => {
   return (
     <div className="trip">
     <Card>
@@ -46,9 +46,9 @@ const Trip = ( { name, destination, startDate, endDate } ) => {
         />
           {name}
           </Card.Header>
-        <Card.Meta>{destination}</Card.Meta>
+        <Card.Meta>{city}</Card.Meta>
         <Card.Description>
-          {startDate} - {endDate}
+          {date_departure} - {date_return}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>

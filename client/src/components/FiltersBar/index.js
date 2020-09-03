@@ -11,35 +11,32 @@ import SearchBar from '../../containers/SearchBar';
 const FiltersBar = ({
   handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
-  myTrips, handleTripID, handleUserAllTrips, 
+  myCarnet, handleUserAllTrips, 
 }) => {
 
   useEffect(() => {
-    console.log('useffecttttt');
     handleUserAllTrips();
   }, []);
-
 
   return (
 
     <div className="filtersbar">
       <div className="destination">
-        <p>Selectionner votre destination</p>
+        <p>Destination</p>
         <SearchBar />
       </div>
-      <div className="dates">
-        <p><label htmlFor="carnet">Selectionnez votre carnet :</label></p>
-        <div className="calendar">
-        <select name="trip" id="trip-select">
-          <option value="">--Selectionnez votre carnet--</option>
+      <div className="carnet">
+        <p><label htmlFor="carnet-label">Carnet de voyage</label></p>
+        <div className="carnet-list">
+        <select name="trip" id="carnet-label">
+          <option value="">Selectionnez votre carnet...</option>
         {
-          myTrips.map((trip) => {
+          myCarnet.map((trip) => {
             return (
             <option 
               key={trip.id}
               value={trip.name}
               onClick={() => {
-                // handleTripID(trip.id);
                 console.log(trip.id);
               }}
             >
@@ -53,7 +50,7 @@ const FiltersBar = ({
 
       <div className="preferences">
         <form>
-          <p>Mes préférences : </p>
+          <p>Préférences</p>
           <div className="form">
             <div className="form-col1">
               <div>
@@ -163,7 +160,7 @@ FiltersBar.propTypes = {
   handleToggleAcquatic: PropTypes.func.isRequired,
   handleToggleFun: PropTypes.func.isRequired,
   handleToggleHistoric: PropTypes.func.isRequired,
-  handleTripID: PropTypes.func,
+  myCarnet: PropTypes.arrayOf(PropTypes.object),
   handleUserAllTrips: PropTypes.func,
 };
 

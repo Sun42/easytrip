@@ -8,7 +8,7 @@ import {
 import { getUserAllTrips } from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
-  myTrips: state.trips.carnet,
+  myCarnet: state.trips.carnet,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -10,7 +10,6 @@ import Footer from '../Footer';
 import Header from '../../containers/Header';
 import HomePage from '../HomePage';
 import NotFound from '../NotFound';
-import Result from '../Result';
 import ResultPage from '../ResultPage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
@@ -37,9 +36,19 @@ const App = () => {
           <ResultPage />
         </Route>
 
-        {/* les carnets */}
+        {/* all carnets page */}
         <Route exact path="/carnets">
           <Carnet />
+        </Route>
+
+        {/* trip details page */}
+        {/* <Route exact path="/mytrip">
+          <MonVoyage />
+        </Route> */}
+
+        {/* trip details page */}
+        <Route exact path="/carnets/:id">
+          <MonVoyage />
         </Route>
 
         {/* login page */}
@@ -50,17 +59,7 @@ const App = () => {
           />
         </Route>
 
-        {/* result page */}
-        <Route exact path="/result">
-          <Result />
-        </Route>
-
-        {/* trip details page */}
-        <Route exact path="/mytrip">
-          <MonVoyage />
-        </Route>
-
-        {/* error */}
+        {/* error page */}
         <Route>
           <NotFound />
         </Route>

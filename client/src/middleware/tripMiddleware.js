@@ -1,6 +1,10 @@
+// import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { GET_USER_ALL_TRIPS, getUserAllTrips } from '../store/action/trips-actions';
+import { 
+  GET_USER_ALL_TRIPS, 
+  getUserAllTripsSuccess, getUserAllTripsError 
+} from '../store/action/trips-actions';
 
 const tripMiddleware = (store) => (next) => (action) => {
   next(action);
@@ -12,14 +16,29 @@ const tripMiddleware = (store) => (next) => (action) => {
         url: `http://localhost:3000/api/mes-voyages/${userID}`
       })
         .then((res) => {
-        //   store.dispatch(getUserAllTripsToState(res.data));
-          console.log('je suis la data', res.data);
+          store.dispatch(getUserAllTripsSuccess(res.data.travelogues));
+          
         })
         .catch((e) => {
-          console.error(e);
+          store.dispatch(getUserAllTripsError(e));
         });
       break;  
-    }
+    };
+    // case ADD_NEW_ACTIVITY: {
+    //   const userID = 1;
+    //   axios({
+    //     method: 'post',
+    //     url: `http://localhost:3000/api/ /${userID}`,
+    //     data: 
+    //   })
+    //     .then((res) => {
+    //       store.dispatch(addNewActivitySuccess());
+    //     })
+    //     .catch((e) => {
+    //       store.dispatch(addNewActivityError(e));
+    //     });
+    //   break;  
+    // }
     default:
   }
 };

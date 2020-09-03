@@ -9,6 +9,8 @@ export const ACTIVITY_DONE = 'ACTIVITY_DONE';
 export const FAV_ACTIVITY = 'FAV_ACTIVITY';
 export const REMOVE_ACTIVITY = 'REMOVE_ACTIVITY';
 export const GET_USER_ALL_TRIPS = 'GET_USER_ALL_TRIPS';
+export const GET_USER_ALL_TRIPS_SUCCESS = 'GET_USER_ALL_TRIPS_SUCCESS';
+export const GET_USER_ALL_TRIPS_ERROR = 'GET_USER_ALL_TRIPS_ERROR';
 
 
 export const addNewActivity = (payload) => ({
@@ -62,4 +64,14 @@ export const removeActivity = (payload) => ({
 
 export const getUserAllTrips = () => ({
   type: GET_USER_ALL_TRIPS,
+});
+
+export const getUserAllTripsSuccess = (payload) => ({
+  type: GET_USER_ALL_TRIPS_SUCCESS,
+  payload,
+});
+
+export const getUserAllTripsError = (payload) => ({
+  type: GET_USER_ALL_TRIPS_ERROR,
+  payload,
 });

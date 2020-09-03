@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 .wrapper {
   height: 100hv;
   width: 80%;
@@ -13,14 +15,23 @@
 
   .trip-list {
     height: 100%;
+    width: 100%;
 
     .activity {
-      background-color: #eee;
+      width: 40%;
+      background-color: white;
       border-radius: 0.3em;
-      border: 1px solid #ccc;
-      margin: 0.5em 0;
+      border: 1px solid $orange;
+      margin: 0.5em auto;
       padding: 1em;
-      font-size: 1.2em;
+      font-size: 1em;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.151);
+      }
 
       &--done {
         opacity: 0.5;

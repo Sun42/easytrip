@@ -2,7 +2,7 @@ import {
   ADD_NEW_ACTIVITY, GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
   ADD_START_DATE, ADD_END_DATE, ADD_TRIP, 
   ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
-  GET_USER_ALL_TRIPS,
+  GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
 } from '../store/action/trips-actions';
 
 // Initial STATE de carnet, mon voyage et vignette
@@ -45,6 +45,7 @@ export const initialState = {
     }
   ],
   selectedActivity: [],
+  error: '',
 };
 
 // Fonction de REDUCER
@@ -124,14 +125,24 @@ export default (state = initialState, action = {}) => {
         ...state,
         activities: state.activities.filter(activity => activity.id !== action.payload)
       };
-    // case GET_USER_ALL_TRIPS: 
-    //   return {
-    //     ...state,
-    //     carnet: [
-    //       ...state.carnet,
-    //       ...action.payload,
-    //     ],
-    //   };
+    case GET_USER_ALL_TRIPS: 
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_USER_ALL_TRIPS_SUCCESS: 
+      return {
+        ...state,
+        carnet: [
+            ...action.payload,
+        ],
+      };
+    case GET_USER_ALL_TRIPS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: 'Votre carnet de voyage est vide',
+      } 
     default:
       return state;
   }
