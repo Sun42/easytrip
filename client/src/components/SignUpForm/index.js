@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Field from './Field.js/index.js';
 // import { useField } from './hooks';
@@ -13,7 +13,8 @@ const SignUpForm = ({ // modif Sarah
   changeField,
   handleSignUp,
   name,
-  lastName,
+  surName,
+  isLogged,
   errorMessage,
 }) => {
   console.log(SignUpForm);
@@ -29,24 +30,25 @@ const SignUpForm = ({ // modif Sarah
         <img src="https://www.bnc.ca/content/dam/fragment/images/Fotolia-79030524-Subscription-Monthly-M-1-e1481143505131.jpg" alt="" />
       </div>
       <div className="login-form">
+      {!isLogged && (
         <form method="post" autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <h2>Inscrivez-vous</h2>
 
           <p>Nom</p>
 
           <Field
-            name="lastName"
-            onChange={changeField}
-            placeholder=""
-            value={lastName}
-          />
-          <p>Prenom</p>
-
-          <Field
             name="name"
             onChange={changeField}
             placeholder=""
             value={name}
+          />
+          <p>Prenom</p>
+
+          <Field
+            name="SurName"
+            onChange={changeField}
+            placeholder=""
+            value={surName}
           />
 
           <p>email</p>
@@ -75,9 +77,18 @@ const SignUpForm = ({ // modif Sarah
           <Link activeClassName="active" to="/login">
             <span>vous avez deja un compte ?</span>
           </Link>
-        </form>
+          </form>)}
 
       </div>
+
+      {isLogged && (
+
+          
+<div>
+<Redirect activeClassName='active' to="/"/>
+</div>
+)}
+
     </div>
   );
 };
@@ -86,7 +97,7 @@ SignUpForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
+  surName: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
 
 };

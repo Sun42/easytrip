@@ -56,7 +56,7 @@ export default (store) => (next) => (action) => {
           email: store.getState().login.email,
           password: store.getState().login.password,
           name: store.getState().login.name,
-          surname: store.getState().login.lastname,
+          surname: store.getState().login.surName,
         },
         withCredentials: false, // Je veux que le serveur sache qui je suis grace à la session
       })

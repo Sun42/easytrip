@@ -5,8 +5,8 @@ import {
 const stateInitial = {
   email: '',
   password: '',
-  lastName: '',
   name: '',
+  surName: '',
   isLogged: false,
   loggedMessage: `Bienvenue `,
   error: '',
@@ -37,7 +37,7 @@ export default (state = stateInitial, action = {}) => {
         password: '',
         error: '',
         login: action.payload,
-        loggedMessage: `Bienvenue`,
+        loggedMessage: `Bienvenue ${action.payload.name}`,
       };
     case LOGIN:
       return {

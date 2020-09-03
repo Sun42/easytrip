@@ -27,9 +27,6 @@ const Header = ( {isLogged,
   
     {isLogged && (
       <div>
-        <p className="login-form-message">
-              {loggedMessage}
-            </p>
       <ModalAddTrip />
         <Button
           circular
