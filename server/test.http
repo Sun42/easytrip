@@ -27,3 +27,6 @@ GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1
 
 ###
 GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1&food=1
+
+###
+POST http://{{baseurl}}/api/islogged

@@ -28,7 +28,7 @@ router.route('/api/inscription')
 router.route('/api/connexion')
     .post(authController.signinAction);
 
-router.route('/isLogged')
+router.route('/api/islogged')
     .post(authController.isLogged);
 
 router.route('/api/deconnexion')
