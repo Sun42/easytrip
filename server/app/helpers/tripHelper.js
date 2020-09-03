@@ -7,16 +7,19 @@ const { Travelogue, User } = require('../models');
  * @throws {Error} will throw an error if <travelogue> is null
  * @throws {Error} will throw an error if <user> is null
  */
-function checkOwnership(user_id, travelogue_id) {
-    const travelogue = Travelogue.findByPk(travelogue_id);
-    const user = User.findByPk(user_id);
+async function checkOwnership(user_id, travelogue_id) {
+    const travelogue = await Travelogue.findByPk(travelogue_id);
+    const user = await User.findByPk(user_id);
 
     if (travelogue === null) {
-        throw new Error ('Invalid Travelogue');
+        console.error('Travelogue not found');
+        return false;
     }
     if (user === null) {
-        throw new Error ('Invalid User');
+        console.error('User not found');
+        return false;
     }
+    console.log(travelogue);
     if (travelogue.user_id == user_id) {
         return true;
     }
