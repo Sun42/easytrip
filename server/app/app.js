@@ -11,14 +11,6 @@ const userMiddleware = require('../app/middlewares/userMiddleware');
 // database
 const db = require('./config/database');
 
-// Test DB
-db.authenticate()
-    .then(() => console.log('Database connected....'))
-    .catch(err => console.log('Error: ' + err));
-
-
-// const cookieParser = require('cookie-parser');
-
 
 // For cross-origin sharing
 const cors = require('cors');
