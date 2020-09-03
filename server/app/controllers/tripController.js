@@ -106,25 +106,24 @@ const tripController = {
 
     createActivity: async (request, response) => {
         try {
-            console.log(request);
-            const { travelogue_id, name, information, localisation } = request.param;
-
-            if (!checkOwnership(request.session.user.id, travelogue_id)) {
-                throw new Error ('Error during travelogue to user ownership validation');
+            const { user_id, travelogue_id, name, information, localisation } = request.body;
+            // @todo user login id check
+            if (!checkOwnership(user_id, travelogue_id)) {
+                return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
             }
+
             // @todo sequelize check
-            // Création d'un nouveau voyage (= nouveau carnet de voyage)
-            const activity = Activity.build({
+            const activity = await Activity.create ({
                 travelogue_id,
                 name,
                 information,
                 localisation,
             });
-            await activity.save();
             response.status(201).json({ 'activity' : activity });
         }
         catch (error) {
-            response.status(400).json({ 'error' : error });
+            console.trace(error);
+            response.status(500).json({ 'error' : error });
         }
     },
 };
