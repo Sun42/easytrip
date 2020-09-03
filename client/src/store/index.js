@@ -5,7 +5,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import logMiddleware from '../middleware/logMiddleware';
 import ajaxMiddleware from '../middleware/ajaxMiddleware';
-import AuthMiddleware from '../middleware/authMididdleware';
+import authMiddleware from '../middleware/authMiddleware';
 
 // import filtersMiddleware from '../middleware/filtersMiddleware';
 
@@ -17,9 +17,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     logMiddleware,
     ajaxMiddleware,
-    AuthMiddleware,
-
-
+    authMiddleware,
     // filtersMiddleware,
   ),
 );

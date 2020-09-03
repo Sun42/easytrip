@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 */
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -22,7 +22,7 @@ import SearchBar from '../SearchBar';
 import MonVoyage from '../MonVoyage';
 
 // == Composant
-const App = () => {
+const App = ({isLogged}) => {
   const [search, setSearch] = useState('');
 
   const data = {
@@ -47,11 +47,12 @@ const App = () => {
         <Route exact path="/result">
           <ResultPage />
         </Route>
-        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/login">
+    { isLogged ? <Redirect to="/" /> : <LoginForm />}
+ </Route>
         <Route exact path="/sign-up">
-          <SignUpForm
-            component={SignUpForm}
-          />
+        { isLogged ? <Redirect to="/" /> : <SignUpForm component={SignUpForm} />}
+        
         </Route>
         <Route exact path="/result">
           <Result />

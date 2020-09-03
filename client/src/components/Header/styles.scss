@@ -3,8 +3,9 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(51, 67, 117);
+  background-color: white;
   padding: 2rem;
+  height: 8%;
 }
 
 
@@ -20,14 +21,14 @@
 }
 
 button:hover {
-  background-color: rgb(94, 94, 167);
   color: white;
   transition: 0.5s;
 }
 
 
   .logo {
-    width: 18%;
+    width: 50%;
+
   }
 
   .login {
