@@ -6,8 +6,6 @@ const morgan = require('morgan');
 
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const userMiddleware = require('../app/middlewares/userMiddleware');
-
 
 // database
 const db = require('./config/database');
@@ -40,7 +38,6 @@ app.use((request, response, next) => {
     next();
 });
 
-app.use(userMiddleware);
 // Routing
 app.use(router);
 

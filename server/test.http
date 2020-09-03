@@ -29,4 +29,18 @@ GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1
 GET http://{{baseurl}}/api/search/?location=LYON&filters=1&pub=1&food=1
 
 ###
-POST http://{{baseurl}}/api/islogged
+POST http://{{baseurl}}/api/activity/new
+Content-Type: application/x-www-form-urlencoded
+
+name='Plage'
+&user_id=1
+&travelogue_id=1
+&information="blabla"
+&localisation='{ "lat"="42.42", "lon"="04.04"}'
+
+### 
+GET http://{{baseurl}}/api/mes-voyages/1
+
+
+### 
+http://localhost:3000/api/mes-voyages/42
