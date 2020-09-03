@@ -45,7 +45,7 @@ const SignUpForm = ({ // modif Sarah
           <p>Prenom</p>
 
           <Field
-            name="SurName"
+            name="surName"
             onChange={changeField}
             placeholder=""
             value={surName}
