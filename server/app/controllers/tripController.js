@@ -112,12 +112,13 @@ const tripController = {
                 return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
             }
 
+            const localisation_string = JSON.stringify(localisation);
             // @todo sequelize check
             const activity = await Activity.create ({
                 travelogue_id,
                 name,
                 information,
-                localisation,
+                localisation : localisation_string,
             });
             response.status(201).json({ 'activity' : activity });
         }
