@@ -17,7 +17,6 @@ const tripController = {
             city,
             date_departure,
             date_return,
-
         });
         try {
 
@@ -106,19 +105,20 @@ const tripController = {
 
     createActivity: async (request, response) => {
         try {
-            const { user_id, travelogue_id, name, information, localisation } = request.body;
+            const { user_id, travelogue_id, name, information, location } = request.body;
             // @todo user login id check
+            console.log('Request.session:', request.session);
             if (!checkOwnership(user_id, travelogue_id)) {
                 return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
             }
 
-            const localisation_string = JSON.stringify(localisation);
+            const location_string = JSON.stringify(location);
             // @todo sequelize check
             const activity = await Activity.create ({
                 travelogue_id,
                 name,
                 information,
-                localisation : localisation_string,
+                location : location_string,
             });
             response.status(201).json({ 'activity' : activity });
         }

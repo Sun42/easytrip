@@ -34,7 +34,7 @@ const authMiddleware = (store) => (next) => (action) => {
           email: store.getState().login.email,
           password: store.getState().login.password,
         },
-        withCredentials: false, // Je veux que le serveur sache qui je suis grace à la session
+        withCredentials: true, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
           store.dispatch(loginSuccess(res.data));
