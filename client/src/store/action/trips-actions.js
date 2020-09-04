@@ -6,7 +6,9 @@ export const ADD_NAME = 'ADD_NAME';
 export const ADD_DESTINATION = 'ADD_DESTINATION';
 export const ADD_START_DATE = 'ADD_START_DATE';
 export const ADD_END_DATE = 'ADD_END_DATE';
-export const ADD_TRIP = 'ADD_TRIP';
+export const CREATE_NEW_TRAVELOGUE = 'CREATE_NEW_TRAVELOGUE';
+export const CREATE_NEW_TRAVELOGUE_SUCCESS = 'CREATE_NEW_TRAVELOGUE_SUCCESS';
+export const CREATE_NEW_TRAVELOGUE_ERROR = 'CREATE_NEW_TRAVELOGUE_ERROR';
 export const ACTIVITY_DONE = 'ACTIVITY_DONE';
 export const FAV_ACTIVITY = 'FAV_ACTIVITY';
 export const REMOVE_ACTIVITY = 'REMOVE_ACTIVITY';
@@ -55,8 +57,17 @@ export const addEndDate = (payload) => ({
 });
 
 export const addTrip = () => ({
-  type: ADD_TRIP,
+  type: CREATE_NEW_TRAVELOGUE,
 });
+
+export const createNewTravelogueSuccess = () => ({
+  type: CREATE_NEW_TRAVELOGUE_SUCCESS,
+});
+
+export const createNewTravelogueError = () => ({
+  type: CREATE_NEW_TRAVELOGUE_ERROR,
+});
+
 
 export const activityDone = (payload) => ({
   type: ACTIVITY_DONE,

@@ -5,16 +5,16 @@ import {
   GET_USER_ALL_TRIPS, 
   getUserAllTripsSuccess, getUserAllTripsError, 
   ADD_NEW_ACTIVITY, addNewActivitySuccess, addNewActivityError,
+  CREATE_NEW_TRAVELOGUE, createNewTravelogueSuccess, createNewTravelogueError
 } from '../store/action/trips-actions';
 
 const tripMiddleware = (store) => (next) => (action) => {
   next(action);
   switch(action.type) {
     case GET_USER_ALL_TRIPS: {
-      const userID = 1;
       axios({
         method: 'get',
-        url: `http://localhost:3000/api/mes-voyages/${userID}`,
+        url: `http://localhost:3000/api/mes-voyages/`,
         withCredentials: true, 
       })
         .then((res) => {
@@ -26,27 +26,29 @@ const tripMiddleware = (store) => (next) => (action) => {
         });
       break;  
     };
-    // case CREATE_NEW_TRAVELOGUE: {
-    //   axios({
-    //     method: 'post',
-    //     url: `http://localhost:3000/api/mon-voyage/new`,
-    //     data: {
-    //       name: 'name',
-    //       city: 'city',
-    //       date_departure: '11',
-    //       date_return: '12',
-    //     }
-    //   })
-    //     .then((res) => {
-    //       store.dispatch(createNewTravelogueSuccess());
-    //     })
-    //     .catch((e) => {
-    //       store.dispatch(createNewTravelogueError());
-    //     });
-    //   break;
-    // };
+    case CREATE_NEW_TRAVELOGUE: {
+      const travelogue = store.getState().trips.carnet[0];
+      console.log('Bonjour je suis le méchant travelogue', travelogue);
+       axios({
+        method: 'post',
+        url: `http://localhost:3000/api/mon-voyage/new`,
+         data: {
+           name: travelogue.name,
+           city: travelogue.destination,
+           date_departure: travelogue.startDate,
+           date_return: travelogue.endDate,
+          },
+          withCredentials:true,
+           })
+         .then((res) => {
+           store.dispatch(createNewTravelogueSuccess());
+        })
+         .catch((e) => {
+           store.dispatch(createNewTravelogueError());
+        });
+      break;
+    };
     case ADD_NEW_ACTIVITY: {
-      const userID = 1;
       const { information, location, name } = action.payload;
       const { lat, lon } = location;
       axios({

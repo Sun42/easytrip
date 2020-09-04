@@ -1,7 +1,7 @@
 import {
   ADD_NEW_ACTIVITY, ADD_NEW_ACTIVITY_SUCCESS, ADD_NEW_ACTIVITY_ERROR,
   GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
-  ADD_START_DATE, ADD_END_DATE, ADD_TRIP, 
+  ADD_START_DATE, ADD_END_DATE, CREATE_NEW_TRAVELOGUE, 
   ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
   GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
 } from '../store/action/trips-actions';
@@ -73,7 +73,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         endDate: action.payload,
       };
-    case ADD_TRIP:
+    case CREATE_NEW_TRAVELOGUE:
       return {
         ...state,
         carnet: [
@@ -81,7 +81,7 @@ export default (state = initialState, action = {}) => {
           {
             name: state.name,
             destination: state.destination,
-            startDate: state.startDate, 
+            startDate: state.startDate,
             endDate: state.endDate,
           }
         ],

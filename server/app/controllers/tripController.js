@@ -10,32 +10,32 @@ const tripController = {
         if (!name) {
             response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
         }
-
-        // Création d'un nouveau voyage (= nouveau carnet de voyage)
-        const newTravelogue = Travelogue.build({
-            name,
-            city,
-            date_departure,
-            date_return,
-            user_id : request.session.user_id,
-        });
-        console.log(newTravelogue);
         try {
+        // Création d'un nouveau voyage (= nouveau carnet de voyage)
+            const newTravelogue = await Travelogue.create({
+                name,
+                city,
+                date_departure,
+                date_return,
+                user_id : request.session.user.id,
+            });
 
-            await newTravelogue.save();
+            console.log(newTravelogue);
+
+
             return response.status(201).json(newTravelogue);
 
         }
-        catch {
+        catch(error) {
+            console.trace(error);
             response.status(400).json('Erreur dans la création du carnet de voyage');
-            console.log(newTravelogue);
+
         }
     },
 
     getAllTravelogues: async (request, response) => {
-        // @todo lorsque les sessions fonctionneront cote front, faire un check de l'user_id avec la session
         try {
-            const user_id = request.params.user_id;
+            const user_id = request.session.user.id;
             const user = User.findByPk(user_id);
             if (!user) {
                 response.status(400).json({ error : 'Invalid user' });
@@ -107,8 +107,8 @@ const tripController = {
 
     createActivity: async (request, response) => {
         try {
-            const { user_id, travelogue_id, name, information, location } = request.body;
-            // @todo user login id check
+            const { travelogue_id, name, information, location } = request.body;
+            const user_id = request.session.user.id;
             console.log('Request.session:', request.session);
             if (!checkOwnership(user_id, travelogue_id)) {
                 return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
