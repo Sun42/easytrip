@@ -29,12 +29,15 @@ const authController = {
                 surname,
                 email,
                 password: await bcrypt.hashSync(password, 10),
-
             });
 
             // Sauvegarde de le nouvel utilisateur
             await newUser.save();
-
+            request.session.user = newUser.get({
+                plain: true,
+            });
+            delete request.session.user.password;
+            console.log('signup session : ', request.session);
             return response.json(newUser);
         }
         catch(err) {
@@ -61,17 +64,18 @@ const authController = {
             // On vérifie que l'utilisateur ait rempli le bon mail et le bon mot de passe associé
             if (thisUser && await bcrypt.compareSync(password, thisUser.password)) {
                 // Permet de ne récupérer que les 'dataValues' et pas les autres données
-                request.session.thisUser = thisUser.get({
+                request.session.user = thisUser.get({
                     plain: true,
                 });
-                delete request.session.thisUser.password;
-                response.json({
-                    isLogged: true,
+                console.log('signin session', request.session);
+                delete request.session.user.password;
+                response.status(200).json({
+                    logged: true,
                 });
             }
             else {
                 response.status(403).json({
-                    isLogged: false,
+                    logged: false,
                 });
             }
         }
@@ -83,6 +87,15 @@ const authController = {
 
     },
 
+    isLogged: async (request, response) => {
+        console.log(request.session);
+        if (request.session.user) {
+            response.status(200).json({ logged: true, info: request.session.user });
+        }
+        else {
+            response.status(200).json({ logged: false });
+        }
+    },
 
     signoutAction: async (request, response) => {
         try {

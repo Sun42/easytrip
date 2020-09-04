@@ -1,4 +1,5 @@
 const userMiddleware = (request, response, next) => {
+    console.log('session', request.session);
     if (request.session.user) {
         console.log('Utilisateur connecté', request.session.user);
         response.locals.user = request.session.user;

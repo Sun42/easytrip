@@ -1,6 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -18,8 +17,11 @@ import MonVoyage from "../../containers/MonVoyage";
 import SearchBar from '../SearchBar';
 
 // == Composant
-const App = () => {
+const App = ({isLogged, checkAuth}) => {
+  useEffect(() => {
+    checkAuth();
 
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="app">
       <Header />
@@ -52,15 +54,18 @@ const App = () => {
         </Route>
 
         {/* login page */}
-        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/login">
+    { isLogged ? <Redirect to="/" /> : <LoginForm />}
+ </Route>
         <Route exact path="/sign-up">
-          <SignUpForm
-            component={SignUpForm}
-          />
+        { isLogged ? <Redirect to="/" /> : <SignUpForm component={SignUpForm} />}
+        
         </Route>
-
-        {/* error page */}
         <Route>
+          <MonVoyage />
+        </Route>
+        <Route>
+          {/* error page */}
           <NotFound />
         </Route>
 
