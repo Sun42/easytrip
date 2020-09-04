@@ -14,7 +14,6 @@ import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import Carnet from "../../containers/Carnet";
 import MonVoyage from "../../containers/MonVoyage";
-import SearchBar from '../SearchBar';
 
 // == Composant
 const App = ({isLogged, checkAuth}) => {
@@ -29,7 +28,6 @@ const App = ({isLogged, checkAuth}) => {
 
         {/* homepage */}
         <Route exact path="/">
-          <SearchBar />
           <HomePage />
         </Route>
 

@@ -19,7 +19,7 @@ import ModalAddTrip from '../../containers/ModalAddTrip';
 const Header = ( {isLogged,
   loggedMessage,}) => (
   <div className="header">
-    <Link activeClassName="active" to="/">
+    <Link className="active" to="/">
     
   <img className="logo" src={Logo} alt="name of the page" />
   </Link>
