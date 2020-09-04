@@ -9,7 +9,7 @@ import './styles.scss';
 
 // semantic-ui
 import {
-  Button, Item, Icon, Card, Feed,
+  Button, Item, Icon, Card, Feed
 } from 'semantic-ui-react';
 
 // react-leaflet AND leaflet
@@ -19,45 +19,104 @@ import {
 
 // composants
 import Loading from '../Loading';
+// import { Projection } from 'leaflet';
 
 const Result = ({
-  cordinates, loading, handleAddNewActivity,
-  gastronomieFilter, barFilter, cultureFilter, promenadeFilter,
-  shoppingFilter, actaquaFilter,
-}) => (
+  cordinates, loading, 
+  handleAddNewActivity, newActivityAdded, mytrips,
+  foodFilter, artFilter, pubFilter, excursionFilter, shopFilter,
+  acquaticFilter, funFilter, historicFilter,
+  foodCheck, artCheck, pubCheck, excursionCheck, shopCheck, acquaticCheck,
+  funCheck, historicCheck,
+}) => {
+
+  return (
   <div className="result">
     <div className="result-list">
-
-      {gastronomieFilter.length === [] && barFilter === []
+      {/* {gastronomieFilter.length === [] && barFilter === []
       && cultureFilter === [] && promenadeFilter === []
       && shoppingFilter === []
-      && <div><p>Selectionnez au moins un filtre...</p></div>}
-
+      && <div><p>Selectionnez au moins un filtre...</p></div>} */}
+      
+      {
+      newActivityAdded === true 
+      &&
+      <div className="popup">L'activité a été ajouté à votre carnet de voyage</div>
+      }
       <Item.Group divided>
-        {gastronomieFilter.length > 0
-        && gastronomieFilter.map((object) => (
-          <Activity key={object.id} object={object} handleAddNewActivity={handleAddNewActivity} />
+      {/* {loading && <Loading />} */}
+        {foodCheck === true
+            && foodFilter.map((object) => (
+              <Activity
+                key={object.id}
+                mytrips={mytrips} // supprimer ?
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
         ))}
-        {barFilter.length > 0
-        && barFilter.map((object) => (
-          <Activity key={object.id} object={object} handleAddNewActivity={handleAddNewActivity} />
-        ))}
-        {cultureFilter.length > 0
-        && cultureFilter.map((object) => (
-          <Activity key={object.id} object={object} handleAddNewActivity={handleAddNewActivity} />
-        ))}
-        {promenadeFilter.length > 0
-        && promenadeFilter.map((object) => (
-          <Activity key={object.id} object={object} handleAddNewActivity={handleAddNewActivity} />
-        ))}
-        {shoppingFilter.length > 0
-        && shoppingFilter.map((object) => (
-          <Activity key={object.id} object={object} handleAddNewActivity={handleAddNewActivity} />
-        ))}
-        {actaquaFilter.length > 0
-        && actaquaFilter.map((object) => (
-          <Activity key={object.id} object={object} handleAddNewActivity={handleAddNewActivity} />
-        ))}
+
+        {artCheck === true
+            && artFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
+
+        {pubCheck === true
+            && foodFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
+
+        {excursionCheck === true
+            && excursionFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
+
+        {shopCheck === true
+            && shopFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
+
+        {acquaticCheck === true
+            && acquaticFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
+
+        {funCheck === true
+            && funFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
+
+        {historicCheck === true
+            && historicFilter.map((object) => (
+              <Activity
+                key={object.id}
+                object={object}
+                handleAddNewActivity={handleAddNewActivity}
+              />
+            ))}
       </Item.Group>
     </div>
 
@@ -74,10 +133,12 @@ const Result = ({
           />
 
           {
-          gastronomieFilter.length > 0
-          && gastronomieFilter.map((object) => {
+          foodCheck === true
+          && foodFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker
                 key={object.id}
@@ -85,14 +146,23 @@ const Result = ({
               >
                 <Popup>
                   <h3>{tags.name}</h3>
-                  <h4>{tags.amenity}</h4>
+                  <h4>{capitalizeCategory}</h4>
                   <button
                     type="submit"
                     onClick={() => {
-                      console.log('popup buton');
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
                     }}
                   >
-                    Click
+                    Ajoutez au carnet
                   </button>
                 </Popup>
               </Marker>
@@ -101,23 +171,34 @@ const Result = ({
           }
 
           {
-          barFilter.length > 0
-          && barFilter.map((object) => {
+          artCheck === true
+          && artFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
-                  <h4>{tags.amenity}</h4>
+                  <h4>{capitalizeCategory}</h4>
                   <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
-                      console.log('popup buton');
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
                     }}
                   >
-                    Click
+                    Ajoutez au carnet
                   </button>
                 </Popup>
               </Marker>
@@ -126,23 +207,34 @@ const Result = ({
           }
 
           {
-          cultureFilter.length > 0
-          && cultureFilter.map((object) => {
+          pubCheck === true
+          && pubFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
-                  <h4>{tags.amenity}</h4>
+                  <h4>{capitalizeCategory}</h4>
                   <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
-                      console.log('popup buton');
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
                     }}
                   >
-                    Click
+                    Ajoutez au carnet
                   </button>
                 </Popup>
               </Marker>
@@ -151,23 +243,34 @@ const Result = ({
           }
 
           {
-          promenadeFilter.length > 0
-          && promenadeFilter.map((object) => {
+          excursionCheck === true
+          && excursionFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
-                  <h4>{tags.amenity}</h4>
+                  <h4>{capitalizeCategory}</h4>
                   <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
-                      console.log('popup buton');
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
                     }}
                   >
-                    Click
+                    Ajoutez au carnet
                   </button>
                 </Popup>
               </Marker>
@@ -176,23 +279,34 @@ const Result = ({
           }
 
           {
-          shoppingFilter.length > 0
-          && shoppingFilter.map((object) => {
+          shopCheck === true
+          && shopFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
-                  <h4>{tags.amenity}</h4>
+                  <h4>{capitalizeCategory}</h4>
                   <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
-                      console.log('popup buton');
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
                     }}
                   >
-                    Click
+                    Ajoutez au carnet
                   </button>
                 </Popup>
               </Marker>
@@ -201,23 +315,106 @@ const Result = ({
           }
 
           {
-          actaquaFilter.length > 0
-          && actaquaFilter.map((object) => {
+          acquaticCheck === true
+          && acquaticFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
-                  <h4>{tags.amenity}</h4>
+                  <h4>{capitalizeCategory}</h4>
                   <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
-                      console.log('popup buton');
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
                     }}
                   >
-                    Click
+                    Ajoutez au carnet
+                  </button>
+                </Popup>
+              </Marker>
+            );
+          })
+          }
+
+          {
+          funCheck === true
+          && funFilter.map((object) => {
+            const { lat, lon, tags } = object;
+            const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
+            return (
+              <Marker key={object.id} position={cordinatesPOI}>
+                <Popup>
+                  <h3>{tags.name}</h3>
+                  <h4>{capitalizeCategory}</h4>
+                  <p><Link to="/amenity">Plus d'info</Link></p>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
+                    }}
+                  >
+                    Ajoutez au carnet
+                  </button>
+                </Popup>
+              </Marker>
+            );
+          })
+          }
+
+          {
+          historicCheck === true
+          && historicFilter.map((object) => {
+            const { lat, lon, tags } = object;
+            const cordinatesPOI = [lat, lon];
+            const category = tags.amenity;
+            const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
+            return (
+              <Marker key={object.id} position={cordinatesPOI}>
+                <Popup>
+                  <h3>{tags.name}</h3>
+                  <h4>{capitalizeCategory}</h4>
+                  <p><Link to="/amenity">Plus d'info</Link></p>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      handleAddNewActivity(
+                        {
+                          localisation: 
+                          {
+                            lat: object.lat, 
+                            lon: object.lon, 
+                          },
+                          name: object.tags.name,
+                          information: object.tags.amenity,
+                        });
+                    }}
+                  >
+                    Ajoutez au carnet
                   </button>
                 </Popup>
               </Marker>
@@ -229,9 +426,13 @@ const Result = ({
       )}
     </div>
   </div>
-);
+)};
 
-const Activity = ({ handleAddNewActivity, object }) => (
+const Activity = ({ 
+  handleAddNewActivity, object, 
+}) => {
+  
+  return (
   <Card fluid>
     <Card.Content>
       <Feed>
@@ -239,55 +440,81 @@ const Activity = ({ handleAddNewActivity, object }) => (
           <Button
             color="orange"
             icon
-            onClick={(evt) => {
-             /** @fixme no-unused-vars
-             const elemClicked = evt.target.closest('div.content');
-             const elemTable = (elemClicked.children[0]);
-             const elemToState = elemTable.innerHTML;
-             */
-            }}
           >
             <Icon name="info" />
           </Button>
-          <Button
-            color="black"
-            icon
-            onClick={(evt) => {
-              const clickedItem1 = evt.target.closest('div');
-              const clickedItem2 = clickedItem1.children[2];
-              const clickedItem3 = clickedItem2.children[0];
-              const clickedItem4 = clickedItem3.firstChild.textContent;
-              handleAddNewActivity(clickedItem4);
-            }}
-          >
-            <Icon name="book" />
-          </Button>
+            <Button
+              color="black"
+              icon
+              onClick={(evt) => {
+                handleAddNewActivity(
+                  {
+                    localisation: 
+                    {
+                      lat: object.lat, 
+                      lon: object.lon, 
+                    },
+                    name: object.tags.name,
+                    information: object.tags.amenity,
+                  });
+              }}
+            >
+              <Icon name="book" />
+            </Button>
           <Feed.Content>
             <Feed.Summary>
               {object.tags.name}
             </Feed.Summary>
             <Feed.Date content={object.tags.amenity} />
-            {/* <p>{object.tags['addr:street']}</p>
-            <p>{object.tags.phone}</p>
-            <p>{object.tags.tourism}</p>
-            <a href="http://{object.tags.website}">{object.tags.website}</a> */}
           </Feed.Content>
         </Feed.Event>
       </Feed>
     </Card.Content>
   </Card>
-);
+)};
 
 Result.propTypes = {
-  cordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-  loading: PropTypes.bool.isRequired,
-  gastronomieFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  barFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  cultureFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  promenadeFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  shoppingFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  actaquaFilter: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  cordinates: PropTypes.arrayOf(PropTypes.number),
+  loading: PropTypes.bool,
+  foodFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  artFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  pubFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  excursionFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  shopFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  acquaticFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  funFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  historicFilter: PropTypes.arrayOf(PropTypes.object.isRequired),
+  foodCheck: PropTypes.bool,
+  artCheck: PropTypes.bool,
+  pubCheck: PropTypes.bool,
+  excursionCheck: PropTypes.bool,
+  shopCheck: PropTypes.bool,
+  acquaticCheck: PropTypes.bool,
+  funCheck: PropTypes.bool,
+  historicCheck: PropTypes.bool,
+  mytrips: PropTypes.arrayOf(PropTypes.object.isRequired),
   handleAddNewActivity: PropTypes.func.isRequired,
+};
+
+Result.defaultProps = {
+  cordinates: [48.117266, -1.6777926],
+  loading: false,
+  foodFilter: [],
+  artFilter: [],
+  pubFilter: [],
+  excursionFilter: [],
+  shopFilter: [],
+  acquaticFilter: [],
+  funFilter: [],
+  historicFilter: [],
+  foodCheck: false,
+  artCheck: false,
+  pubCheck: false,
+  excursionCheck: false,
+  shopCheck: false,
+  acquaticCheck: false,
+  funCheck: false,
+  historicCheck: false,
 };
 
 Activity.propTypes = {

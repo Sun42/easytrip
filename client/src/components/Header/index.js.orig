@@ -28,6 +28,10 @@ const Header = ( {isLogged,
     {isLogged && (
       <div>
       <ModalAddTrip />
+<<<<<<< HEAD
+      <NavLink to="/carnets">
+=======
+>>>>>>> develop
         <Button
           circular
           icon="suitcase"

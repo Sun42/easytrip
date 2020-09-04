@@ -9,20 +9,25 @@ const LoginForm = ({
   password,
   changeField,
   handleLogin,
-  isLogged,
+  isLogged
 }) => {
-  console.log(LoginForm);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
   return (
     <div className="settings">
+      
       <div className="settings-image">
+      {!isLogged && (
+      
         <img src="https://www.bnc.ca/content/dam/fragment/images/Fotolia-79030524-Subscription-Monthly-M-1-e1481143505131.jpg" alt="" />
+        )}
+
       </div>
+
       <div className="login-form">
-        {!isLogged && (
+      {!isLogged && (
         <form method="post" autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <h2>Identifiez-vous</h2>
           <p>email</p>
@@ -40,7 +45,7 @@ const LoginForm = ({
             placeholder=""
             value={password}
           />
-          <NavLink activeClassName="active" to="/">
+        
             <button
               type="submit"
               className="login-form-button"
@@ -48,16 +53,18 @@ const LoginForm = ({
             >
               OK
             </button>
-          </NavLink>
+         
           <NavLink activeClassName="active" to="/sign-up">
             <span>vous n'avez pas de compte ?</span>
           </NavLink>
-        </form>
-        )}
-      </div>
-    </div>
+          
+        </form>)}
+        </div> 
+  </div>
   );
 };
+
+
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

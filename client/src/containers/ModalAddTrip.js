@@ -1,12 +1,19 @@
 import { connect } from 'react-redux';
 import ModalAddTrip from '../components/ModalAddTrip';
-import { addDestination, addStartDate, addEndDate, addTrip } from '../store/action/trips-actions';
+import {
+  addName, addDestination, addStartDate, addEndDate, addTrip,
+} from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
   destination: state.trips.destination,
+  name: state.trips.name,
 });
 
 const mapDispatchToState = (dispatch) => ({
+
+  handleAddName: (text) => {
+    dispatch(addName(text));
+  },
 
   handleAddDestination: (text) => {
     dispatch(addDestination(text));

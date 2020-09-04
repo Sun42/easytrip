@@ -2,10 +2,8 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import Counter from 'src/components/Counter';
-
-// Action Creators
-import { increment, decrement } from '../actions';
+import App from '../components/App';
+import { checkAuth } from '../store/action/login-actions';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -15,7 +13,7 @@ import { increment, decrement } from '../actions';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = (state, ownProps) => ({
-  count: state.counter.value,
+  isLogged: state.login.isLogged,
 });
 
 /* === Actions ===
@@ -25,20 +23,15 @@ const mapStateToProps = (state, ownProps) => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  increment: () => {
-    dispatch(increment());
-  },
-  decrement: () => {
-    dispatch(decrement());
-  },
-});
+const mapDispatchToProps = (dispatch) => ({
+  
+  checkAuth: () => {
+    console.log('mapDispatchToProps.checkAuth');
+    dispatch(checkAuth());
+  }
 
-// Container
-const CounterContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Counter);
+  });
 
-// == Export
-export default CounterContainer;
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

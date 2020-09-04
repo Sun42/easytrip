@@ -1,5 +1,5 @@
-const { Travelogue } = require('../models');
-
+const { Travelogue, Activity, User } = require('../models');
+const { checkOwnership } = require('../helpers/tripHelper');
 const tripController = {
 
     createNewTravelogue : async (request, response) => {
@@ -22,7 +22,7 @@ const tripController = {
         try {
 
             await newTravelogue.save();
-            return response.json(newTravelogue);
+            return response.status(201).json(newTravelogue);
 
         }
         catch {
@@ -31,28 +31,25 @@ const tripController = {
         }
     },
 
-    /* editTravelogue: async (request, response) => {
-        try {
-            const travelogueId = request.params.id;
-            const travelogue = await Travelogue.findByPk(travelogueId, {
-
-            })
-        }
-    }, */
-
     getAllTravelogues: async (request, response) => {
+        // @todo lorsque les sessions fonctionneront cote front, faire un check de l'user_id avec la session
         try {
+            const user_id = request.params.user_id;
+            const user = User.findByPk(user_id);
+            if (!user) {
+                response.status(400).json({ error : 'Invalid user' });
+                return ;
+            }
             const travelogues = await Travelogue.findAll({
+                where: {
+                    user_id : user_id,
+                },
                 order: [
                     ['name', 'ASC'],
                 ],
             });
 
-            if(!travelogues) {
-                response.status(204).json('Vous n\'avez pas encore de carnet de voyage');
-            }
-
-            response.json(travelogues);
+            response.json({ travelogues : travelogues });
         }
         catch (err) {
             response.status(500).send(err);
@@ -104,6 +101,30 @@ const tripController = {
         }
         catch (err) {
             response.status(500).json(err);
+        }
+    },
+
+    createActivity: async (request, response) => {
+        try {
+            const { user_id, travelogue_id, name, information, localisation } = request.body;
+            // @todo user login id check
+            if (!checkOwnership(user_id, travelogue_id)) {
+                return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
+            }
+
+            const localisation_string = JSON.stringify(localisation);
+            // @todo sequelize check
+            const activity = await Activity.create ({
+                travelogue_id,
+                name,
+                information,
+                localisation : localisation_string,
+            });
+            response.status(201).json({ 'activity' : activity });
+        }
+        catch (error) {
+            console.trace(error);
+            response.status(500).json({ 'error' : error });
         }
     },
 };

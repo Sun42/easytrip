@@ -1,11 +1,15 @@
 .settings {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   padding-top: 5em;
+  padding-bottom: 5em;
+  
 }
+
 .login-form {
   border-radius: 10px;
-  border: 1px solid grey;
+  border-left: none;
+  border: 1px 1px 1px none solid grey;
     display: flex;
     flex-direction: column;
     justify-content: center;

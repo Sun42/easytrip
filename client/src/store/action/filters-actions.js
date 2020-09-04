@@ -1,22 +1,17 @@
-export const ADD_GASTRONOMIE = 'ADD_GASTRONOMIE';
-export const ADD_CULTURE = 'ADD_CULTURE';
-export const ADD_BAR = 'ADD_BAR';
-export const ADD_PROMENADE = 'ADD_PROMENADE';
-export const ADD_SHOPPING = 'ADD_SHOPPING';
-export const ADD_ACT_AQUA = 'ADD_ACT_AQUA';
-export const GET_PREF_SPECTACLE = 'GET_PREF_SPECTACLE';
-export const GET_PREF_MONUMENTS = 'GET_PREF_MONUMENTS';
 export const GET_SEARCH = 'GET_SEARCH';
 export const GET_SEARCH_SUBMIT = 'GET_SEARCH_SUBMIT';
 export const GET_SEARCH_SUBMIT_SUCCESS = 'GET_SEARCH_SUBMIT_SUCCESS';
+export const GET_ALL_POI = 'GET_ALL_POI';
 export const GET_SEARCH_SUBMIT_SUCCESS_NAME = 'GET_SEARCH_SUBMIT_SUCCESS_NAME';
 export const GET_SEARCH_SUBMIT_ERROR = 'GET_SEARCH_SUBMIT_ERROR';
-export const REMOVE_GASTRONOMIE = 'REMOVE_GASTRONOMIE';
-export const REMOVE_CULTURE = 'REMOVE_CULTURE';
-export const REMOVE_BAR = 'REMOVE_BAR';
-export const REMOVE_PROMENADE = 'REMOVE_PROMENADE';
-export const REMOVE_SHOPPING = 'REMOVE_SHOPPING';
-export const REMOVE_ACT_AQUA = 'REMOVE_ACT_AQUA';
+export const TOGGLE_FOOD = 'TOGGLE_FOOD';
+export const TOGGLE_ART = 'TOGGLE_ART';
+export const TOGGLE_PUB = 'TOGGLE_PUB';
+export const TOGGLE_EXCURSION = 'TOGGLE_EXCURSION';
+export const TOGGLE_SHOP = 'TOGGLE_SHOP';
+export const TOGGLE_ACQUATIC = 'TOGGLE_ACQUATIC';
+export const TOGGLE_FUN = 'TOGGLE_FUN';
+export const TOGGLE_HISTORIC = 'TOGGLE_HISTORIC';
 
 export const getSearch = (payload) => ({
   type: GET_SEARCH,
@@ -32,8 +27,8 @@ export const getSearchSubmitSuccess = (payload) => ({
   payload,
 });
 
-export const getSearchSubmitError = (payload) => ({
-  type: GET_SEARCH_SUBMIT_ERROR,
+export const getAllPOI = (payload) => ({
+  type: GET_ALL_POI,
   payload,
 });
 
@@ -42,66 +37,39 @@ export const getSearchSubmitSuccessName = (payload) => ({
   payload,
 });
 
-export const addGastronomie = (payload) => ({
-  type: ADD_GASTRONOMIE,
+export const getSearchSubmitError = (payload) => ({
+  type: GET_SEARCH_SUBMIT_ERROR,
   payload,
 });
 
-export const removeGastronomie = () => ({
-  type: REMOVE_GASTRONOMIE,
+export const toggleFood = () => ({
+  type: TOGGLE_FOOD,
 });
 
-export const addCulture = (payload) => ({
-  type: ADD_CULTURE,
-  payload,
+export const toggleArt = () => ({
+  type: TOGGLE_ART,
 });
 
-export const removeCulture = () => ({
-  type: REMOVE_CULTURE,
+export const togglePub = () => ({
+  type: TOGGLE_PUB,
 });
 
-export const addBar = (payload) => ({
-  type: ADD_BAR,
-  payload,
+export const toggleExcursion = () => ({
+  type: TOGGLE_EXCURSION,
 });
 
-export const removeBar = () => ({
-  type: REMOVE_BAR,
+export const toggleShop = () => ({
+  type: TOGGLE_SHOP,
 });
 
-export const addPromenade = (payload) => ({
-  type: ADD_PROMENADE,
-  payload,
+export const toggleAcquatic = () => ({
+  type: TOGGLE_ACQUATIC,
 });
 
-export const removePromenade = () => ({
-  type: REMOVE_PROMENADE,
+export const toggleFun = () => ({
+  type: TOGGLE_FUN,
 });
 
-export const addShopping = (payload) => ({
-  type: ADD_SHOPPING,
-  payload,
-});
-
-export const removeShopping = () => ({
-  type: REMOVE_SHOPPING,
-});
-
-export const addActAqua = (payload) => ({
-  type: ADD_ACT_AQUA,
-  payload,
-});
-
-export const removeActAqua = () => ({
-  type: REMOVE_ACT_AQUA,
-});
-
-export const getPrefSpectacle = (payload) => ({
-  type: GET_PREF_SPECTACLE,
-  payload,
-});
-
-export const getPrefMonuments = (payload) => ({
-  type: GET_PREF_MONUMENTS,
-  payload,
+export const toggleHistoric = () => ({
+  type: TOGGLE_HISTORIC,
 });
