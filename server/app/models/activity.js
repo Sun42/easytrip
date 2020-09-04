@@ -6,7 +6,7 @@ class Activity extends Model { }
 Activity.init({
     name: DataTypes.TEXT,
     information: DataTypes.TEXT,
-    localisation: DataTypes.TEXT,
+    location: DataTypes.TEXT,
 }, {
     sequelize,
     tableName: 'activity',

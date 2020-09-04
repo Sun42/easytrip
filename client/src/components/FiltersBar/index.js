@@ -32,6 +32,7 @@ const FiltersBar = ({
           <option value="">Selectionnez votre carnet...</option>
         {
           myCarnet.map((trip) => {
+            console.log('trip id', trip);
             return (
             <option 
               key={trip.id}

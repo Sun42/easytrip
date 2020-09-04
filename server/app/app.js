@@ -6,7 +6,7 @@ const morgan = require('morgan');
 
 const session = require('express-session');
 const bodyParser = require('body-parser');
-
+const userMiddleware = require('./middlewares/userMiddleware');
 // database
 const db = require('./config/database');
 
@@ -25,6 +25,7 @@ app.use(session({
     cookie: {},
 }));
 
+app.use(userMiddleware);
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
 app.use(bodyParser.urlencoded({ extended:true }));
 // app.use(cookieParser);

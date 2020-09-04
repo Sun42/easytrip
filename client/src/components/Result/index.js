@@ -152,7 +152,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -188,7 +188,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -224,7 +224,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -260,7 +260,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -296,7 +296,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -332,7 +332,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -368,7 +368,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -404,7 +404,7 @@ const Result = ({
                     onClick={() => {
                       handleAddNewActivity(
                         {
-                          localisation: 
+                          location: 
                           {
                             lat: object.lat, 
                             lon: object.lon, 
@@ -449,7 +449,7 @@ const Activity = ({
               onClick={(evt) => {
                 handleAddNewActivity(
                   {
-                    localisation: 
+                    location: 
                     {
                       lat: object.lat, 
                       lon: object.lon, 
