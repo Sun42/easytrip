@@ -27,8 +27,8 @@ const tripMiddleware = (store) => (next) => (action) => {
     };
     case ADD_NEW_ACTIVITY: {
       const userID = 1;
-      const { information, localisation, name } = action.payload;
-      const { lat, lon } = localisation;
+      const { information, location, name } = action.payload;
+      const { lat, lon } = location;
       axios({
         method: 'post',
         url: `http://localhost:3000/api/activity/new/`,
@@ -37,7 +37,7 @@ const tripMiddleware = (store) => (next) => (action) => {
           name: name,
           travelogue_id: 1,
           information: information,
-          localisation: {
+          location: {
             lat: lat,
             lon: lon,
           }
