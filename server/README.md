@@ -14,8 +14,8 @@ Notre utilisateur souhaite visiter des lieux historiques et culturels et se rest
 2. Setup role and database 'CREATE ROLE easytrip with LOGIN encrypted PASSWORD '****'; CREATE DATABASE easytrip owner easytrip;'
 3. psql -U easytrip -f  psql -U easytrip -f ./data/createDB_script.sql
 4. Install sqitch globally
-5. To deploy DB content, use the command `sqitch deploy` from `/server`
-6. You can revert changes with the command `sqitch revert` from `/server`
+5. To deploy DB content, use the command `sqitch deploy local` from `/server`
+6. You can revert changes with the command `sqitch revert local` from `/server`
 7. `cp .env.example .env`
 8. configure .env file with the appropriate values
 9. `npm install`
