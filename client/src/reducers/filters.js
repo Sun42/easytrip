@@ -1,35 +1,27 @@
 import {
-  ADD_GASTRONOMIE, ADD_CULTURE, ADD_BAR, ADD_PROMENADE,
-  ADD_SHOPPING, ADD_ACT_AQUA, GET_PREF_SPECTACLE,
   GET_SEARCH, GET_SEARCH_SUBMIT, GET_SEARCH_SUBMIT_SUCCESS,
-  GET_SEARCH_SUBMIT_ERROR, GET_SEARCH_SUBMIT_SUCCESS_NAME,
-  GET_PREF_MONUMENTS,
-  REMOVE_GASTRONOMIE, REMOVE_CULTURE, REMOVE_BAR, REMOVE_PROMENADE,
-  REMOVE_SHOPPING, REMOVE_ACT_AQUA,
+  GET_ALL_POI, GET_SEARCH_SUBMIT_SUCCESS_NAME,
+  GET_SEARCH_SUBMIT_ERROR,
+  TOGGLE_FOOD, TOGGLE_ART, TOGGLE_PUB, TOGGLE_EXCURSION,
+  TOGGLE_SHOP, TOGGLE_ACQUATIC, TOGGLE_FUN, TOGGLE_HISTORIC,
 } from '../store/action/filters-actions';
 
 // Initial STATE de filters
 export const initialState = {
-  allFilters: {
-    gastronomie: [],
-    bar: [],
-    culture: [],
-    promenade: [],
-    shopping: [],
-    actaqua: [],
+  checkbox: {
+    food: false,
+    art: false,
+    pub: false,
+    excursion: false,
+    shop: false,
+    acquatic: false,
+    fun: false,
+    historic: false,
   },
-  gastronomie: false,
-  culture: false,
-  bar: false,
-  promenade: false,
-  shopping: false,
-  act_aqua: false,
-  spectacle: false,
-  monuments: false,
   allPOI: [],
   search: '',
   searchedLocations: [],
-  cordinates: [51.509865, -0.118092],
+  cordinates: [48.117266, -1.6777926],
   error: '',
   name: 'London',
   loading: false,
@@ -62,11 +54,12 @@ export default (state = initialState, action = {}) => {
           ...action.payload,
         ],
       };
-    case GET_SEARCH_SUBMIT_ERROR:
+    case GET_ALL_POI:
       return {
         ...state,
-        loading: false,
-        error: 'Serched place doesnt exist',
+        allPOI: {
+          ...action.payload,
+        },
       };
     case GET_SEARCH_SUBMIT_SUCCESS_NAME:
       return {
@@ -74,145 +67,75 @@ export default (state = initialState, action = {}) => {
         loading: false,
         name: action.payload,
       };
-    case ADD_GASTRONOMIE:
+    case GET_SEARCH_SUBMIT_ERROR:
       return {
         ...state,
-        gastronomie: !state.gastronomie,
-        allFilters: {
-          ...state.allFilters,
-          gastronomie: [
-            ...action.payload,
-          ],
+        loading: false,
+        error: 'Nous sommes désolés mais ne n\'avons pas trouvés de résultat pour votre recherche',
+      };
+    case TOGGLE_FOOD:
+      return {
+        ...state,
+        checkbox: {
+          ...state.checkbox,
+          food: !state.checkbox.food,
         },
       };
-    case REMOVE_GASTRONOMIE:
+    case TOGGLE_ART:
       return {
         ...state,
-        gastronomie: !state.gastronomie,
-        allFilters: {
-          ...state.allFilters,
-          gastronomie: [],
+        checkbox: {
+          ...state.checkbox,
+          art: !state.checkbox.art,
         },
       };
-    case ADD_CULTURE:
+    case TOGGLE_PUB:
       return {
         ...state,
-        culture: !state.culture,
-        allFilters: {
-          ...state.allFilters,
-          culture: [
-            ...action.payload,
-          ],
+        checkbox: {
+          ...state.checkbox,
+          pub: !state.checkbox.pub,
         },
       };
-    case REMOVE_CULTURE:
+    case TOGGLE_EXCURSION:
       return {
         ...state,
-        culture: !state.culture,
-        allFilters: {
-          ...state.allFilters,
-          culture: [],
+        checkbox: {
+          ...state.checkbox,
+          excursion: !state.checkbox.excursion,
         },
       };
-    case ADD_BAR:
+    case TOGGLE_SHOP:
       return {
         ...state,
-        bar: !state.bar,
-        allFilters: {
-          ...state.allFilters,
-          bar: [
-            ...action.payload,
-          ],
+        checkbox: {
+          ...state.checkbox,
+          shop: !state.checkbox.shop,
         },
       };
-    case REMOVE_BAR:
+    case TOGGLE_ACQUATIC:
       return {
         ...state,
-        bar: !state.bar,
-        allFilters: {
-          ...state.allFilters,
-          bar: [],
+        checkbox: {
+          ...state.checkbox,
+          acquatic: !state.checkbox.acquatic,
         },
       };
-    case ADD_PROMENADE:
+    case TOGGLE_FUN:
       return {
         ...state,
-        promenade: !state.promenade,
-        allFilters: {
-          ...state.allFilters,
-          promenade: [
-            ...action.payload,
-          ],
+        checkbox: {
+          ...state.checkbox,
+          fun: !state.checkbox.fun,
         },
       };
-    case REMOVE_PROMENADE:
+    case TOGGLE_HISTORIC:
       return {
         ...state,
-        promenade: !state.promenade,
-        allFilters: {
-          ...state.allFilters,
-          promenade: [],
+        checkbox: {
+          ...state.checkbox,
+          historic: !state.checkbox.historic,
         },
-      };
-    case ADD_SHOPPING:
-      return {
-        ...state,
-        shopping: !state.shopping,
-        allFilters: {
-          ...state.allFilters,
-          shopping: [
-            ...action.payload,
-          ],
-        },
-      };
-    case REMOVE_SHOPPING:
-      return {
-        ...state,
-        shopping: !state.shopping,
-        allFilters: {
-          ...state.allFilters,
-          shopping: [],
-        },
-      };
-    case ADD_ACT_AQUA:
-      return {
-        ...state,
-        act_aqua: !state.act_aqua,
-        allFilters: {
-          ...state.allFilters,
-          actaqua: [
-            ...action.payload,
-          ],
-        },
-      };
-    case REMOVE_ACT_AQUA:
-      return {
-        ...state,
-        actaqua: !state.actaqua,
-        allFilters: {
-          ...state.allFilters,
-          actaqua: [],
-        },
-      };
-    case GET_PREF_SPECTACLE:
-      return {
-        ...state,
-        loading: true,
-        spectacle: !state.spectacle,
-        allPOI: [
-          ...state.allPOI,
-          ...action.payload,
-        ],
-      };
-    case GET_PREF_MONUMENTS:
-      return {
-        ...state,
-        loading: true,
-        monuments: !state.monuments,
-        allPOI: [
-          ...state.allPOI,
-          ...action.payload,
-        ],
       };
     default:
       return state;

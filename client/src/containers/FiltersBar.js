@@ -1,72 +1,52 @@
 import { connect } from 'react-redux';
 import FiltersBar from '../components/FiltersBar';
 import {
-  addGastronomie, addCulture, addBar, addPromenade,
-  addShopping, addActAqua, getPrefSpectacle, getPrefMonuments,
-  removeGastronomie, removeCulture, removeBar, removePromenade,
-  removeShopping, removeActAqua,
+  toggleFood, toggleArt, togglePub, toggleExcursion, toggleShop, 
+  toggleAcquatic, toggleFun, toggleHistoric,
 } from '../store/action/filters-actions';
 
+import { getUserAllTrips } from '../store/action/trips-actions';
+
 const mapStateToProps = (state) => ({
-  allPoiOfDestination: state.trips.result,
-});
+  myCarnet: state.trips.carnet,
+})
 
 const mapDispatchToProps = (dispatch) => ({
 
-  handleAddGastronomie: (gastronomie) => {
-    dispatch(addGastronomie(gastronomie));
+  handleToggleFood: () => {
+    dispatch(toggleFood());
   },
 
-  handleRemoveGastronomie: () => {
-    dispatch(removeGastronomie());
+  handleToggleArt: () => {
+    dispatch(toggleArt());
   },
 
-  handleAddCulture: (art) => {
-    dispatch(addCulture(art));
+  handleTogglePub: () => {
+    dispatch(togglePub());
   },
 
-  handleRemoveCulture: () => {
-    dispatch(removeCulture());
+  handleToggleExcursion: () => {
+    dispatch(toggleExcursion());
   },
 
-  handleAddBar: (bars) => {
-    dispatch(addBar(bars));
+  handleToggleShop: () => {
+    dispatch(toggleShop());
   },
 
-  handleRemoveBar: () => {
-    dispatch(removeBar());
+  handleToggleAcquatic: () => {
+    dispatch(toggleAcquatic());
   },
 
-  handleAddPromenade: (excursion) => {
-    dispatch(addPromenade(excursion));
+  handleToggleFun: () => {
+    dispatch(toggleFun());
   },
 
-  handleRemovePromenade: () => {
-    dispatch(removePromenade());
+  handleToggleHistoric: () => {
+    dispatch(toggleHistoric());
   },
 
-  handleAddShopping: (shop) => {
-    dispatch(addShopping(shop));
-  },
-
-  handleRemoveShopping: () => {
-    dispatch(removeShopping());
-  },
-
-  handleAddActAqua: (aquatic) => {
-    dispatch(addActAqua(aquatic));
-  },
-
-  handleRemoveActAqua: (aquatic) => {
-    dispatch(removeActAqua(aquatic));
-  },
-
-  handlePrefSpectacle: (fun) => {
-    dispatch(getPrefSpectacle(fun));
-  },
-
-  handlePrefMonuments: (historic) => {
-    dispatch(getPrefMonuments(historic));
+  handleUserAllTrips: () => {
+    dispatch(getUserAllTrips());
   },
 
 });

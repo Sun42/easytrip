@@ -3,12 +3,16 @@
 .header {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
+  background-color: white;
+  padding: 1rem;
+=======
   background-color: white;
   padding: 2rem;
   height: 8%;
 }
 
-/*
+
 .button {
   height: 50px;
   margin-right: 10px;
@@ -19,25 +23,25 @@
   top: 50%;
   transform: translateY(-50%);
 }
-*/
-/*
+
 button:hover {
   color: white;
   transition: 0.5s;
 }
-*/
-/*
+
+>>>>>>> develop
+
   .logo {
     width: 50%;
 
   }
-*/
+
   button.ui.animated.button {
     background-color: white;
     border: 1px solid black;
     margin-left: 20px;
   }
-
+}
 
 @media screen and (max-width: 1250px) {
   .logo {

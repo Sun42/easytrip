@@ -24,8 +24,8 @@ const SearchBar = ({
           handleSearch(text);
         }}
         loading={loading}
-        action="search"
-        placeholder="quelle est votre destination?"
+        action="Recherchez"
+        placeholder="Où allez-vous ?"
         fluid
         focus
         icon="search"

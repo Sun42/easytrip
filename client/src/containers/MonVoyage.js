@@ -1,35 +1,26 @@
 import { connect } from 'react-redux';
 import MonVoyage from '../components/MonVoyage';
 
+import { activityDone, favActivity, removeActivity } from '../store/action/trips-actions';
+
 const mapStateToProps = (state) => ({
-  destination: state.trips.destination,
-  destination2: state.filters.search,
-  tripBook: [
-    {
-      tripInfo: [
-        {
-          tripName: 'Mon voyage à Etretat',
-          destination: 'Etretat',
-        },
-      ],
-      activities: [
-        {
-          category: 'promenade',
-        },
-        {
-          category: 'promenade',
-        },
-        {
-          category: 'promenade',
-        },
-        {
-          category: 'promenade',
-        },
-      ],
-    },
-  ],
+  activities: state.trips.activities,
 });
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = ((dispatch) => ({
+
+  handleActivityDone: (id) => {
+    dispatch(activityDone(id));
+  },
+
+  handleFavActivity: (id) => {
+    dispatch(favActivity(id));
+  },
+
+  handleRemoveActivity: (id) => {
+    dispatch(removeActivity(id));
+  },
+
+}))
 
 export default connect(mapStateToProps, mapDispatchToProps)(MonVoyage);

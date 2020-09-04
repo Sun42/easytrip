@@ -1,17 +1,48 @@
+@import 'src/styles/vars';
+
 .wrapper {
-  height: 70%;
-  width: 80vw;
+  height: 100hv;
+  width: 80%;
   margin: auto;
 
   .trip-info {
-    height: 30%;
-
-    img {
-      height: 20vh;;
+    height: 15%;
+    
+    h3, h4, h5 {
+      margin: 0px;
     }
   }
 
   .trip-list {
-    height: 70%;
+    height: 100%;
+    width: 100%;
+
+    .activity {
+      width: 40%;
+      background-color: white;
+      border-radius: 0.3em;
+      border: 1px solid $orange;
+      margin: 0.5em auto;
+      padding: 1em;
+      font-size: 1em;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.151);
+      }
+
+      &--done {
+        opacity: 0.5;
+        text-decoration: line-through;
+      }
+
+      .icons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
   }
 }

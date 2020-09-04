@@ -1,11 +1,32 @@
-.titre-voyages {
-  text-align: center;
-  margin: 2%;
-  font-size: 40px;
-}
+.wrapper {
+  width: 80%;
 
-.vignette-voyage {
-  border: 1px solid black;
-  text-align: center;
-  margin: 5rem;
+  .title {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+  }
+
+  .trips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+
+    .trip {
+      margin: 5px;
+      width: 100%;
+      min-width: 200px;
+      max-width: 250px;
+      height: 100%;
+    }
+  .button {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+  }
+  }
 }
