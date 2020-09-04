@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // React router
@@ -9,7 +9,7 @@ import './styles.scss';
 
 // semantic-ui
 import {
-  Button, Item, Icon, Card, Feed, Message,
+  Button, Item, Icon, Card, Feed
 } from 'semantic-ui-react';
 
 // react-leaflet AND leaflet

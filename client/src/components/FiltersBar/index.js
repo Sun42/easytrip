@@ -16,7 +16,7 @@ const FiltersBar = ({
 
   useEffect(() => {
     handleUserAllTrips();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
 

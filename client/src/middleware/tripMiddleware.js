@@ -5,7 +5,6 @@ import {
   GET_USER_ALL_TRIPS, 
   getUserAllTripsSuccess, getUserAllTripsError, 
   ADD_NEW_ACTIVITY, addNewActivitySuccess, addNewActivityError,
-  showPopup,
 } from '../store/action/trips-actions';
 
 const tripMiddleware = (store) => (next) => (action) => {
