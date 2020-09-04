@@ -3,7 +3,7 @@ import React, { useState, Component } from 'react';
 import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 import './styles.css';
@@ -22,15 +22,12 @@ import SearchBar from '../SearchBar';
 import MonVoyage from '../MonVoyage';
 
 // == Composant
-const App = ({isLogged}) => {
+const App = ({isLogged, checkAuth}) => {
   const [search, setSearch] = useState('');
+  useEffect(() => {
+    checkAuth();
 
-  const data = {
-    ville: 'Clermont-Ferrand',
-    description: "C'est une description",
-    horaire: '18h-20H',
-  };
-
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="app">
       <Header />
@@ -58,9 +55,9 @@ const App = ({isLogged}) => {
           <Result />
         </Route>
 
-        <Route path="/details" component={() => <Details data={data} />} />
+        <Route path="/details" component={() => <Details />} />
 
-        <Route path="/carnet" component={() => <Carnet data={data} />} />
+        <Route path="/carnet" component={() => <Carnet />} />
         <Route>
           <MonVoyage />
         </Route>

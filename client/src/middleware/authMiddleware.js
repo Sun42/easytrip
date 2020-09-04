@@ -27,8 +27,6 @@ const authMiddleware = (store) => (next) => (action) => {
     } */
     // réagir au login
     case LOGIN: {
-      const { login } = store.getState();
-      console.log('LOOOOOOOGIIIIINNNNN', login);
       axios({
         method: 'post',
         url: 'http://localhost:3000/api/connexion',
@@ -39,11 +37,9 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: false, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          console.log('Authmiddlware: then', res.data)
           store.dispatch(loginSuccess(res.data));
         })
         .catch((err) => {
-          console.log('Authmiddleware error ',  err);
           store.dispatch(loginError('Impossible de connecter cet utilisateur'));
         });
 
@@ -56,12 +52,13 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          console.log(res.data);
+          console.log('CHECK_AUTH OK', res.data);
           if (res.data.logged) {
-            store.dispatch(loginSuccess(res.data.info));
+            store.dispatch(loginSuccess(res.data));
           }
         })
         .catch((err) => {
+          console.error('CHECK AUTH ERROR');
           console.error(err);
         })
       break;

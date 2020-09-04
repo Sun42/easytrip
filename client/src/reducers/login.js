@@ -37,7 +37,7 @@ export default (state = stateInitial, action = {}) => {
         password: '',
         error: '',
         login: action.payload,
-        loggedMessage: `Bienvenue bel inconnu`,
+        loggedMessage: `Bienvenue`,
       };
     case LOGIN:
       return {
@@ -63,7 +63,6 @@ export default (state = stateInitial, action = {}) => {
     case SIGNUPFORM:
       return {
         ...state,
-        //isLogged: true,
         error: '',
         ...action.payload,
 

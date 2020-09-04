@@ -2,8 +2,8 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import App from 'src/components/App';
-
+import App from '../components/App';
+import { checkAuth } from '../store/action/login-actions';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -23,6 +23,15 @@ const mapStateToProps = (state, ownProps) => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = null;
+const mapDispatchToProps = (dispatch) => ({
+  
+  checkAuth: () => {
+    console.log('mapDispatchToProps.checkAuth');
+    dispatch(checkAuth());
+  }
+
+  });
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

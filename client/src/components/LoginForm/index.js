@@ -11,7 +11,6 @@ const LoginForm = ({
   handleLogin,
   isLogged
 }) => {
-  console.log(LoginForm);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();

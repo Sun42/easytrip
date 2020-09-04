@@ -93,7 +93,7 @@ const authController = {
             response.status(200).json({ logged: true, info: request.session.user });
         }
         else {
-            response.status(400).json({ logged: false });
+            response.status(200).json({ logged: false });
         }
     },
 

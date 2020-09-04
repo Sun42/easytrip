@@ -10,13 +10,13 @@ const Footer = () => (
     </div>
     <div className="team-member">
       <p>Christophe</p>
-      <a href="linkedin.com/in/💻-michal-puczek-04959a108">
+      <a href="linkedin.com/in/">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="linkedin" />
       </a>
     </div>
     <div className="team-member">
       <p>Mathilde</p>
-      <a href="linkedin.com/in/💻-michal-puczek-04959a108">
+      <a href="linkedin.com/in/">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="linkedin" />
       </a>
     </div>
@@ -28,17 +28,17 @@ const Footer = () => (
     </div>
     <div className="team-member">
       <p>Nawal</p>
-      <a href="linkedin.com/in/💻-michal-puczek-04959a108">
+      <a href="linkedin.com/in/">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="linkedin" />
       </a>
     </div>
     <div className="team-member">
       <p>Sarah</p>
-      <a href="linkedin.com/in/💻-michal-puczek-04959a108">
+      <a href="linkedin.com/in/">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="linkedin" />
       </a>
     </div>
-    <p>Copyright</p>
+    <p>MIT</p>
   </div>
 );
 
