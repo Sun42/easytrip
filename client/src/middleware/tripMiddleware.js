@@ -14,7 +14,8 @@ const tripMiddleware = (store) => (next) => (action) => {
       const userID = 1;
       axios({
         method: 'get',
-        url: `http://localhost:3000/api/mes-voyages/${userID}`
+        url: `http://localhost:3000/api/mes-voyages/${userID}`,
+        withCredentials: true, 
       })
         .then((res) => {
           store.dispatch(getUserAllTripsSuccess(res.data.travelogues));
@@ -45,7 +46,7 @@ const tripMiddleware = (store) => (next) => (action) => {
     //   break;
     // };
     case ADD_NEW_ACTIVITY: {
-      // const userID = 1;
+      const userID = 1;
       const { information, location, name } = action.payload;
       const { lat, lon } = location;
       axios({
@@ -60,6 +61,7 @@ const tripMiddleware = (store) => (next) => (action) => {
             lon: lon,
           }
         },
+        withCredentials: true
       })
         .then((res) => {
           store.dispatch(addNewActivitySuccess());
@@ -67,7 +69,7 @@ const tripMiddleware = (store) => (next) => (action) => {
         .catch((e) => {
           store.dispatch(addNewActivityError(e));
         });
-      break;  
+      break;
     }
     default:
   }

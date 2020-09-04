@@ -107,9 +107,9 @@ const tripController = {
 
     createActivity: async (request, response) => {
         try {
-            const { travelogue_id, name, information, location } = request.body;
-            const user_id = request.session.user_id;
-            console.log('userID', user_id);
+            const { user_id, travelogue_id, name, information, location } = request.body;
+            // @todo user login id check
+            console.log('Request.session:', request.session);
             if (!checkOwnership(user_id, travelogue_id)) {
                 return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
             }
