@@ -36,7 +36,7 @@ name='Plage'
 &user_id=1
 &travelogue_id=1
 &information="blabla"
-&localisation='{ "lat"="42.42", "lon"="04.04"}'
+&localisation={ lat :42.42, lon=04.04 }
 
 ### 
 GET http://{{baseurl}}/api/mes-voyages/1
