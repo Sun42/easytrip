@@ -25,19 +25,37 @@ const tripMiddleware = (store) => (next) => (action) => {
         });
       break;  
     };
+    // case CREATE_NEW_TRAVELOGUE: {
+    //   axios({
+    //     method: 'post',
+    //     url: `http://localhost:3000/api/mon-voyage/new`,
+    //     data: {
+    //       name: 'name',
+    //       city: 'city',
+    //       date_departure: '11',
+    //       date_return: '12',
+    //     }
+    //   })
+    //     .then((res) => {
+    //       store.dispatch(createNewTravelogueSuccess());
+    //     })
+    //     .catch((e) => {
+    //       store.dispatch(createNewTravelogueError());
+    //     });
+    //   break;
+    // };
     case ADD_NEW_ACTIVITY: {
-      const userID = 1;
-      const { information, localisation, name } = action.payload;
-      const { lat, lon } = localisation;
+      // const userID = 1;
+      const { information, location, name } = action.payload;
+      const { lat, lon } = location;
       axios({
         method: 'post',
         url: `http://localhost:3000/api/activity/new/`,
         data: {
-          user_id: userID,
           name: name,
           travelogue_id: 1,
           information: information,
-          localisation: {
+          location: {
             lat: lat,
             lon: lon,
           }
