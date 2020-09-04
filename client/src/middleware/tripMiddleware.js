@@ -14,7 +14,7 @@ const tripMiddleware = (store) => (next) => (action) => {
     case GET_USER_ALL_TRIPS: {
       axios({
         method: 'get',
-        url: `http://localhost:3000/api/mes-voyages/`,
+        url: `http://localhost:3000/api/mes-voyages/:user_id`,
         withCredentials: true, 
       })
         .then((res) => {
