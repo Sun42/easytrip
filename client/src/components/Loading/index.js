@@ -6,10 +6,12 @@ import {
 import Logo from '../../assets/newLogo.PNG';
 
 const Loading = () => (
-  <Segment>
+  <div className="loading">
+      <Segment>
     <Loader size="big" active inline="centered">Chargement en cours...</Loader>
     <Image src={Logo} />
   </Segment>
+  </div>
 );
 
 export default Loading;

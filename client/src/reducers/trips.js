@@ -1,5 +1,6 @@
 import {
-  ADD_NEW_ACTIVITY, GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
+  ADD_NEW_ACTIVITY, ADD_NEW_ACTIVITY_SUCCESS, ADD_NEW_ACTIVITY_ERROR,
+  GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
   ADD_START_DATE, ADD_END_DATE, ADD_TRIP, 
   ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
   GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
@@ -45,6 +46,7 @@ export const initialState = {
     }
   ],
   selectedActivity: [],
+  newActivityAdded: false,
   error: '',
 };
 
@@ -88,18 +90,20 @@ export default (state = initialState, action = {}) => {
         startDate: '',
         endDate: '',
       };
+    // probablement à supprimer
     case ADD_NEW_ACTIVITY:
       return {
         ...state,
-        activities: [
-          ...state.activities,
-          {
-            id: 6,
-            label: action.payload,
-            done: false,
-            favori: false,
-          }
-        ]
+      };
+    case ADD_NEW_ACTIVITY_SUCCESS:
+      return {
+        ...state,
+        newActivityAdded: true,
+      };
+    case ADD_NEW_ACTIVITY_ERROR:
+      return {
+        ...state,
+        newActivityAdded: false,
       };
     case GET_SELECTED_ACTIVITY:
       return {
@@ -142,7 +146,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         error: 'Votre carnet de voyage est vide',
-      } 
+      };
     default:
       return state;
   }

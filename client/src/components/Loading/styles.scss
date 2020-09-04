@@ -1,26 +1,5 @@
 @import 'src/styles/vars';
 
-.spinner {
-  width: 5px;
-  height: 5px;
-  background-color: #e52354;
-  margin: 2rem auto;
-  animation: rotateplane 1.5s infinite ease-in-out;
-
-  img {
-    width: auto;
-    height: auto;
-  }
-}
-
-@keyframes rotateplane {
-  0% {
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-  }
-  50% {
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-  }
-  100% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-  }
+.loading {
+  margin-top: 25%;
 }

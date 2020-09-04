@@ -24,6 +24,7 @@ const mapStateToProps = (state) => ({
   historicCheck: state.filters.checkbox.historic,
   mytrips: state.trips.carnet,
   selectedActivity: state.trips.selectedActivity,
+  newActivityAdded: state.trips.newActivityAdded,
 });
 
 const mapDispatchToState = (dispatch) => ({

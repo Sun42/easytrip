@@ -1,5 +1,7 @@
 export const ADD_NEW_ACTIVITY = 'ADD_NEW_ACTIVITY';
 export const GET_SELECTED_ACTIVITY = 'GET_SELECTED_ACTIVITY';
+export const ADD_NEW_ACTIVITY_SUCCESS = 'ADD_NEW_ACTIVITY_SUCCESS';
+export const ADD_NEW_ACTIVITY_ERROR = 'ADD_NEW_ACTIVITY_ERROR';
 export const ADD_NAME = 'ADD_NAME';
 export const ADD_DESTINATION = 'ADD_DESTINATION';
 export const ADD_START_DATE = 'ADD_START_DATE';
@@ -13,9 +15,18 @@ export const GET_USER_ALL_TRIPS_SUCCESS = 'GET_USER_ALL_TRIPS_SUCCESS';
 export const GET_USER_ALL_TRIPS_ERROR = 'GET_USER_ALL_TRIPS_ERROR';
 
 
+
 export const addNewActivity = (payload) => ({
   type: ADD_NEW_ACTIVITY,
   payload,
+});
+
+export const addNewActivitySuccess = () => ({
+  type: ADD_NEW_ACTIVITY_SUCCESS,
+});
+
+export const addNewActivityError = () => ({
+  type: ADD_NEW_ACTIVITY_ERROR,
 });
 
 export const getSelectedActivity = (payload) => ({
