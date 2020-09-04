@@ -113,11 +113,12 @@ const tripController = {
             }
 
             // @todo sequelize check
+            const locationString = JSON.stringify(localisation);
             const activity = await Activity.create ({
                 travelogue_id,
                 name,
                 information,
-                localisation,
+                localisation: locationString,
             });
             response.status(201).json({ 'activity' : activity });
         }
