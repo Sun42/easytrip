@@ -1,3 +1,4 @@
+/*
 const userMiddleware = (request, response, next) => {
     console.log('session', request.session);
     if (request.session.user) {
@@ -14,3 +15,4 @@ const userMiddleware = (request, response, next) => {
 
 
 module.exports = userMiddleware;
+*/

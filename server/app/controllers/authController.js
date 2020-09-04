@@ -1,4 +1,3 @@
-// const emailValidator = require('email-validator');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
@@ -15,13 +14,10 @@ const authController = {
             } = request.body;
 
             // Si l'un de ces champs manquent, il faut les remplir
-            /* if (!name || !surname || !email || !password) {
-            response.status(400).send("Merci de remplir vos informations")
-        } */
+            if (!name || !surname || !email || !password) {
+                return response.status(400, 'Merci de remplir vos informations');
 
-            /* if (!emailValidator.validate(email)) {
-            response.status(400).send('Cet email est invalide')
-        } */
+            }
 
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
             const newUser = User.build({
@@ -30,6 +26,10 @@ const authController = {
                 email,
                 password: await bcrypt.hashSync(password, 10),
             });
+
+
+            request.session.user = newUser;
+            console.log(request.session.user.id);
 
             // Sauvegarde de le nouvel utilisateur
             await newUser.save();
@@ -55,16 +55,16 @@ const authController = {
 
             console.log(email, password);
 
-            const thisUser = await User.findOne({
+            const user = await User.findOne({
                 where: {
                     email,
                 },
             });
 
             // On vérifie que l'utilisateur ait rempli le bon mail et le bon mot de passe associé
-            if (thisUser && await bcrypt.compareSync(password, thisUser.password)) {
+            if (user && await bcrypt.compareSync(password, user.password)) {
                 // Permet de ne récupérer que les 'dataValues' et pas les autres données
-                request.session.user = thisUser.get({
+                request.session.user = user.get({
                     plain: true,
                 });
                 console.log('signin session', request.session);
@@ -72,6 +72,7 @@ const authController = {
                 response.status(200).json({
                     logged: true,
                 });
+                console.log(request.session.user);
             }
             else {
                 response.status(403).json({

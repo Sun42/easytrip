@@ -27,6 +27,7 @@ app.use(session({
 
 // Pour récupérer les données envoyées avec une méthode post et les mettre dans un objet response.body
 app.use(bodyParser.urlencoded({ extended:true }));
+// app.use(cookieParser);
 
 app.use(bodyParser.json());
 
