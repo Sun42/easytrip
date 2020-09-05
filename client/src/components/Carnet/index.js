@@ -8,7 +8,7 @@ import { Card, Icon, Button } from 'semantic-ui-react'
 // Styles
 import "./styles.scss";
 
-const Carnet = ( {carnet} ) => {
+const Carnet = ( {carnet, handleGetUserAllActivities} ) => {
   return (
   <div className="wrapper">
     <div className="title">
@@ -19,7 +19,7 @@ const Carnet = ( {carnet} ) => {
       {
       carnet.length > 0 
       && carnet.map((trip) => {
-          return <Trip key={trip.id} {...trip} />;
+          return <Trip key={trip.id} {...trip} handleGetUserAllActivities={handleGetUserAllActivities} />;
         })
       }
       </Card.Group>
@@ -34,7 +34,7 @@ const Carnet = ( {carnet} ) => {
   </div>
 )};
 
-const Trip = ( { city, date_departure, date_return, name } ) => {
+const Trip = ( { city, date_departure, date_return, name, id, handleGetUserAllActivities } ) => {
   return (
     <div className="trip">
     <Card>
@@ -53,8 +53,14 @@ const Trip = ( { city, date_departure, date_return, name } ) => {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Link to={'/mytrip'}>
-          <Button basic color='green'>
+          <Link to={`/carnets/${id}`}>
+          <Button 
+            basic 
+            color='green'
+            onClick={() => {
+              handleGetUserAllActivities({id});
+            }}
+            >
             Détails
           </Button>
           </Link>
@@ -70,6 +76,7 @@ const Trip = ( { city, date_departure, date_return, name } ) => {
 
 Carnet.propTypes = {
   carnet: PropTypes.arrayOf(PropTypes.object.isRequired),
+  handleGetUserAllActivities: PropTypes.func,
 };
 
 Trip.propTypes = {

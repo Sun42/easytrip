@@ -5,7 +5,7 @@ import {
   toggleAcquatic, toggleFun, toggleHistoric,
 } from '../store/action/filters-actions';
 
-import { getUserAllTrips } from '../store/action/trips-actions';
+import { getUserAllTrips, getTripID } from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
   myCarnet: state.trips.carnet,
@@ -47,6 +47,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleUserAllTrips: () => {
     dispatch(getUserAllTrips());
+  },
+
+  handleTripID: (id) => {
+    dispatch(getTripID(id));
   },
 
 });

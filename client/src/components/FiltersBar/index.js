@@ -1,5 +1,5 @@
 /* eslint-disable padded-blocks */
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // styles
@@ -11,12 +11,8 @@ import SearchBar from '../../containers/SearchBar';
 const FiltersBar = ({
   handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
-  myCarnet, handleUserAllTrips, 
+  myCarnet, handleUserAllTrips, handleTripID,
 }) => {
-
-  useEffect(() => {
-    handleUserAllTrips();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
 
@@ -32,13 +28,12 @@ const FiltersBar = ({
           <option value="">Selectionnez votre carnet...</option>
         {
           myCarnet.map((trip) => {
-            console.log('trip id', trip);
             return (
             <option 
               key={trip.id}
               value={trip.name}
               onClick={() => {
-                console.log(trip.id);
+                handleTripID(trip.id);
               }}
             >
               {trip.name}</option>
@@ -163,6 +158,7 @@ FiltersBar.propTypes = {
   handleToggleHistoric: PropTypes.func.isRequired,
   myCarnet: PropTypes.arrayOf(PropTypes.object),
   handleUserAllTrips: PropTypes.func,
+  handleTripID: PropTypes.func,
 };
 
 export default FiltersBar;

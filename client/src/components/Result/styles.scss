@@ -12,15 +12,33 @@
     margin: 10px;
     overflow: scroll;
 
-    div.item:hover {
-      background-color: rgba(0, 0, 0, 0.089);
+    div.ui.fluid.card:hover {
+      background-color: $resListHover;
       transition-duration: 0.2s;
+
+      button.ui.icon.button {
+        background-color: $resListHover;
+        
+        i.add.icon {
+          color:black;
+          font-size: 2.3em;
+        }
+      }
+    }
+
+    button.ui.icon.button {
+      background-color: white;
+
+      i.add.icon {
+        color:black;
+        font-size: 1.7em;
+      }
     }
   }
 
   &-map {
     width: 40%;
-    margin: 15px;
+    margin: 10px 10px 10px 0px;
 
     .leaflet-container {
       width: 100%;

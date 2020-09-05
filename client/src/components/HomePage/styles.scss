@@ -20,8 +20,12 @@
     color: white;
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.329);
-    margin-top: 25%;
+    margin: 25% 0% 0% 0%;
     height: 20%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     div.visible.content {
       font-size: 2rem;

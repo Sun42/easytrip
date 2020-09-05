@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// React router
-import { Link } from 'react-router-dom';
-
 // Styles
 import './styles.scss';
 
@@ -38,11 +35,11 @@ const Result = ({
       && shoppingFilter === []
       && <div><p>Selectionnez au moins un filtre...</p></div>} */}
       
-      {
+      {/* {
       newActivityAdded === true 
       &&
       <div className="popup">L'activité a été ajouté à votre carnet de voyage</div>
-      }
+      } */}
       <Item.Group divided>
       {/* {loading && <Loading />} */}
         {foodCheck === true
@@ -65,7 +62,7 @@ const Result = ({
             ))}
 
         {pubCheck === true
-            && foodFilter.map((object) => (
+            && pubFilter.map((object) => (
               <Activity
                 key={object.id}
                 object={object}
@@ -137,7 +134,7 @@ const Result = ({
           && foodFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker
@@ -157,8 +154,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -175,14 +172,13 @@ const Result = ({
           && artFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -193,8 +189,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -211,14 +207,13 @@ const Result = ({
           && pubFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -229,8 +224,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -247,14 +242,13 @@ const Result = ({
           && excursionFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -265,8 +259,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -283,14 +277,13 @@ const Result = ({
           && shopFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -301,8 +294,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -319,14 +312,13 @@ const Result = ({
           && acquaticFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -337,8 +329,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -355,14 +347,13 @@ const Result = ({
           && funFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -373,8 +364,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -391,14 +382,13 @@ const Result = ({
           && historicFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = tags.amenity;
+            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>
                 <Popup>
                   <h3>{tags.name}</h3>
                   <h4>{capitalizeCategory}</h4>
-                  <p><Link to="/amenity">Plus d'info</Link></p>
                   <button
                     type="submit"
                     onClick={() => {
@@ -409,8 +399,8 @@ const Result = ({
                             lat: object.lat, 
                             lon: object.lon, 
                           },
-                          name: object.tags.name,
-                          information: object.tags.amenity,
+                          name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                          information: capitalizeCategory,
                         });
                     }}
                   >
@@ -431,20 +421,16 @@ const Result = ({
 const Activity = ({ 
   handleAddNewActivity, object, 
 }) => {
-  
+
+
+  const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
+  const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
   return (
   <Card fluid>
     <Card.Content>
       <Feed>
         <Feed.Event>
-          <Button
-            color="orange"
-            icon
-          >
-            <Icon name="info" />
-          </Button>
             <Button
-              color="black"
               icon
               onClick={(evt) => {
                 handleAddNewActivity(
@@ -454,18 +440,18 @@ const Activity = ({
                       lat: object.lat, 
                       lon: object.lon, 
                     },
-                    name: object.tags.name,
-                    information: object.tags.amenity,
+                    name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                    information: capitalizeCategory,
                   });
               }}
             >
-              <Icon name="book" />
+              <Icon name="add to calendar" />
             </Button>
           <Feed.Content>
             <Feed.Summary>
-              {object.tags.name}
+              {object.tags.name ? object.tags.name : 'Nom inconnu'}
             </Feed.Summary>
-            <Feed.Date content={object.tags.amenity} />
+            <Feed.Date content={capitalizeCategory} />
           </Feed.Content>
         </Feed.Event>
       </Feed>

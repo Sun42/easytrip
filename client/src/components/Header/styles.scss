@@ -4,8 +4,14 @@
   display: flex;
   justify-content: space-between;
   background-color: white;
-  padding: 2rem;
-  height: 8%;
+  padding: 1rem;
+  height: 13%;
+
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
   .logo {

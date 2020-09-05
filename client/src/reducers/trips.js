@@ -4,6 +4,7 @@ import {
   ADD_START_DATE, ADD_END_DATE, CREATE_NEW_TRAVELOGUE, 
   ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
   GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
+  GET_TRIP_ID,
 } from '../store/action/trips-actions';
 
 // Initial STATE de carnet, mon voyage et vignette
@@ -12,20 +13,9 @@ export const initialState = {
   destination: '',
   startDate: '',
   endDate: '',
+  newCarnet: [],
   carnet: [],
   activities: [
-    {
-      id: 1,
-      label: 'Restaurant des deux...',
-      done: false,
-      favori: false,
-    },
-    {
-      id: 2,
-      label: 'Promenade...',
-      done: false,
-      favori: false,
-    },
     {
       id: 3,
       label: 'Musée..',
@@ -38,16 +28,11 @@ export const initialState = {
       done: false,
       favori: false,
     },
-    {
-      id: 5,
-      label: 'Shopping..',
-      done: false,
-      favori: false,
-    }
   ],
   selectedActivity: [],
   newActivityAdded: false,
   error: '',
+  tripID: 0,
 };
 
 // Fonction de REDUCER
@@ -76,8 +61,7 @@ export default (state = initialState, action = {}) => {
     case CREATE_NEW_TRAVELOGUE:
       return {
         ...state,
-        carnet: [
-          ...state.carnet,
+        newCarnet: [
           {
             name: state.name,
             destination: state.destination,
@@ -147,6 +131,11 @@ export default (state = initialState, action = {}) => {
         loading: false,
         error: 'Votre carnet de voyage est vide',
       };
+    case GET_TRIP_ID:
+      return {
+        ...state,
+        tripID: action.payload,
+      }
     default:
       return state;
   }

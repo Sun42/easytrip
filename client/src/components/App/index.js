@@ -42,14 +42,14 @@ const App = ({isLogged, checkAuth}) => {
         </Route>
 
         {/* trip details page */}
-        <Route exact path="/mytrip">
-          <MonVoyage />
-        </Route>
-
-        {/* trip details page */}
-        {/* <Route exact path="/carnets/:id">
+        {/* <Route exact path="/mytrip">
           <MonVoyage />
         </Route> */}
+
+        {/* trip details page */}
+        <Route exact path="/carnets/:id">
+          <MonVoyage />
+        </Route>
 
         {/* login page */}
         <Route exact path="/login">

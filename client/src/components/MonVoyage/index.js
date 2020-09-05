@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // router
@@ -14,11 +13,10 @@ import { FaHeart, FaHeartBroken, FaRegCheckSquare, FaTrashAlt } from 'react-icon
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRemoveActivity }) => {
-  console.log('parametres', useParams());
   return (
   <div className="wrapper">
     <div className="trip-info">
-      <h3>Le nom du voyage</h3>
+      <h3>Voyage</h3>
       <h4>Destination</h4>
       <h5>Les dates</h5>
     </div>
@@ -72,7 +70,6 @@ const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRe
 )};
 
 MonVoyage.propTypes = {
-  destination: PropTypes.string.isRequired,
   handleActivityDone: PropTypes.func.isRequired,
   handleFavActivity: PropTypes.func.isRequired,
   handleRemoveActivity: PropTypes.func.isRequired,

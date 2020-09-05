@@ -17,7 +17,7 @@ import Logo from '../../assets/newLogo.PNG';
 import ModalAddTrip from '../../containers/ModalAddTrip';
 
 const Header = ( {isLogged,
-  loggedMessage,}) => (
+  loggedMessage, handleGetUserAllTrips, }) => (
 
   <div className="header">
     <Link className="active" to="/">  
@@ -27,7 +27,7 @@ const Header = ( {isLogged,
     <div className="login">
   
     {isLogged && (
-      <div>
+      <div className="buttons-rounds">
       <ModalAddTrip />
         <NavLink to='/carnets'>
         <Button
@@ -35,14 +35,17 @@ const Header = ( {isLogged,
           icon="suitcase"
           color="orange"
           size="large"
+          onClick={() => {
+            handleGetUserAllTrips();
+          }}
         />
         </NavLink>
-      </div>
-        )}
-         </div>
+        </div>
+    )}
+        
 
          {!isLogged && (
-           <div>
+           <div className="buttons-rectangulars">
       <NavLink to="/login">
         <Button animated>
           <Button.Content visible>Connexion</Button.Content>
@@ -62,12 +65,14 @@ const Header = ( {isLogged,
       </NavLink>
       </div>
          )}
-    </div>
+     </div>
+  </div>
 );
 
 Header.propTypes = {
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
+  handleGetUserAllTrips: PropTypes.func,
 };
 Header.defaultProps = {
   isLogged: true,
