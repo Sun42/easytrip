@@ -4,8 +4,10 @@ const tripController = {
 
     createNewTravelogue : async (request, response) => {
 
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         const { name, city, date_departure, date_return } = request.body;
-
         // Si l'utilisateur n'a pas donné de nom à son carnet, on le lui demande
         if (!name) {
             response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
@@ -28,12 +30,16 @@ const tripController = {
         }
         catch(error) {
             console.trace(error);
-            response.status(400).json('Erreur dans la création du carnet de voyage');
+            response.status(500).json('Erreur dans la création du carnet de voyage');
 
         }
     },
 
     getAllTravelogues: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const user_id = request.session.user.id;
             const user = User.findByPk(user_id);
@@ -58,6 +64,10 @@ const tripController = {
     },
 
     getOneTravelogue: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const travelogue = await Travelogue.findByPk(request.params.id);
 
@@ -73,6 +83,10 @@ const tripController = {
     },
 
     updateTravelogue: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const travelogueId = request.params.id;
             const updated = await Travelogue.update(request.body, { where: { id:travelogueId } });
@@ -89,6 +103,10 @@ const tripController = {
     },
 
     deleteTravelogue: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
 
@@ -106,6 +124,10 @@ const tripController = {
     },
 
     createActivity: async (request, response) => {
+    
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const { travelogue_id, name, information, location } = request.body;
             const user_id = request.session.user.id;
