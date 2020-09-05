@@ -39,11 +39,11 @@ name='Plage'
 &location={ lat :42.42, lon=04.04 }
 
 ### 
-GET http://{{baseurl}}/api/mes-voyages/1
+GET http://{{baseurl}}/api/mesvoyages/1
 
 
 ### 
-http://localhost:3000/api/mes-voyages/42
+http://localhost:3000/api/mesvoyages/42
 
 ###
 
