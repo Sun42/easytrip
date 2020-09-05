@@ -44,3 +44,7 @@ GET http://{{baseurl}}/api/mes-voyages/1
 
 ### 
 http://localhost:3000/api/mes-voyages/42
+
+###
+
+http://{{baseurl}}/api/mesvoyages/monvoyage/1

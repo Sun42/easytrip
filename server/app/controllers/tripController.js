@@ -69,16 +69,24 @@ const tripController = {
             response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         try {
-            const travelogue = await Travelogue.findByPk(request.params.id);
-
+            const travel_id = parseInt(request.params.id);
+            const travelogue = await Travelogue.findOne({
+                where: { id: travel_id },
+                include: Activity,
+            });
             if (!travelogue) {
                 response.status(404).json('Carnet de voyage introuvable');
             }
-
-            response.json(travelogue);
+            const activities = await Activity.findAll({
+                where: { travelogue_id: travel_id },
+            });
+            console.log('activities', activities);
+            Object.assign(travelogue, { 'activities' : activities });
+            response.status(200).json({ 'travelogue' : travelogue });
         }
-        catch (err) {
-            response.status(500).send(err);
+        catch (error) {
+            console.trace(error);
+            response.status(500).json({ 'error' : error });
         }
     },
 
@@ -124,7 +132,7 @@ const tripController = {
     },
 
     createActivity: async (request, response) => {
-    
+
         if (!request.session.user) {
             response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
