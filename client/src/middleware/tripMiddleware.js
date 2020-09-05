@@ -16,7 +16,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       console.log('je suis dans le mv getuseralltrip');
       axios({
         method: 'get',
-        url: `http://localhost:3000/api/mes-voyages/:user_id`,
+        url: `http://localhost:3000/api/mesvoyages/:user_id`,
         withCredentials: true, 
       })
         .then((res) => {
@@ -34,7 +34,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       console.log('je suis le nouveau travelogue', travelogue);
        axios({
         method: 'post',
-        url: `http://localhost:3000/api/mon-voyage/new`,
+        url: `http://localhost:3000/api/monvoyage/new`,
          data: {
            name: travelogue.name,
            city: travelogue.destination,
