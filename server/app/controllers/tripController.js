@@ -4,8 +4,10 @@ const tripController = {
 
     createNewTravelogue : async (request, response) => {
 
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         const { name, city, date_departure, date_return } = request.body;
-
         // Si l'utilisateur n'a pas donné de nom à son carnet, on le lui demande
         if (!name) {
             response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
@@ -28,12 +30,16 @@ const tripController = {
         }
         catch(error) {
             console.trace(error);
-            response.status(400).json('Erreur dans la création du carnet de voyage');
+            response.status(500).json('Erreur dans la création du carnet de voyage');
 
         }
     },
 
     getAllTravelogues: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const user_id = request.session.user.id;
             const user = User.findByPk(user_id);
@@ -58,28 +64,44 @@ const tripController = {
     },
 
     getOneTravelogue: async (request, response) => {
-        try {
-            const travelogue = await Travelogue.findByPk(request.params.id);
 
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
+        try {
+            const travel_id = parseInt(request.params.id);
+            const travelogue = await Travelogue.findOne({
+                where: { id: travel_id },
+                include: Activity,
+            });
             if (!travelogue) {
                 response.status(404).json('Carnet de voyage introuvable');
             }
-
-            response.json(travelogue);
+            const activities = await Activity.findAll({
+                where: { travelogue_id: travel_id },
+            });
+            console.log('activities', activities);
+            Object.assign(travelogue, { 'activities' : activities });
+            response.status(200).json({ 'travelogue' : travelogue });
         }
-        catch (err) {
-            response.status(500).send(err);
+        catch (error) {
+            console.trace(error);
+            response.status(500).json({ 'error' : error });
         }
     },
 
     updateTravelogue: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const travelogueId = request.params.id;
-            const updated = await Travelogue.update(request.body, { where: { id:travelogueId } });
+            const updated = await Travelogue.update(request.body, { where: { id: travelogueId } });
 
             if (updated) {
-                const updatedTravelogue = await Travelogue.findOne({ where: { id:travelogueId } });
-                return response.status(200).json({ travelogue:updatedTravelogue });
+                const updatedTravelogue = await Travelogue.findOne({ where: { id: travelogueId } });
+                return response.status(200).json({ travelogue: updatedTravelogue });
             }
             throw new Error('Carnet de voyage introuvable');
         }
@@ -89,6 +111,10 @@ const tripController = {
     },
 
     deleteTravelogue: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
 
@@ -106,6 +132,10 @@ const tripController = {
     },
 
     createActivity: async (request, response) => {
+
+        if (!request.session.user) {
+            response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
         try {
             const { travelogue_id, name, information, location } = request.body;
             const user_id = request.session.user.id;

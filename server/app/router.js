@@ -36,7 +36,7 @@ router.route('/api/deconnexion')
 
 // Trip routes
 // Créer un nouveau carnet de voyage
-router.route('/api/mon-voyage/new')
+router.route('/api/monvoyage/new')
     .post(tripController.createNewTravelogue);
 
 // Route pour un carnet de voyage
@@ -46,7 +46,7 @@ router.route('/api/mesvoyages/monvoyage/:id')
     .delete(tripController.deleteTravelogue);
 
 // Récupérer tous les carnets de voyages
-router.route('/api/mes-voyages/:user_id')
+router.route('/api/mesvoyages/:user_id')
     .get(tripController.getAllTravelogues);
 
 router.get('/api/search', searchController.search);
