@@ -40,7 +40,7 @@ router.route('/api/mon-voyage/new')
     .post(tripController.createNewTravelogue);
 
 // Route pour un carnet de voyage
-router.route('/api/mesvoyages/monvoyage/:id')
+router.route('/api/mes-voyages/monvoyage/:id')
     .get(tripController.getOneTravelogue)
     .patch(tripController.updateTravelogue)
     .delete(tripController.deleteTravelogue);
