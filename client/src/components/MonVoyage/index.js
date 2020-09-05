@@ -12,13 +12,16 @@ import './styles.scss';
 import { FaHeart, FaHeartBroken, FaRegCheckSquare, FaTrashAlt } from 'react-icons/fa';
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
-const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRemoveActivity }) => {
+const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRemoveActivity, trip }) => {
+  console.log('ce sont les activities', activities);
+  console.log('slugifyyyy', trip);
   return (
   <div className="wrapper">
     <div className="trip-info">
-      <h3>Voyage</h3>
-      <h4>Destination</h4>
-      <h5>Les dates</h5>
+      <h3>{trip.name}</h3>
+      <h4>{trip.city}</h4>
+      <h5>{trip.date_departure}</h5>
+      <h5>{trip.date_return}</h5>
     </div>
     <div className="trip-list">
 

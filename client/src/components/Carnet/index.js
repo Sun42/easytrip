@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+// fonction slugify > utils
+import { slugifyNameCarnet } from '../../utils';
+
 // semantic-ui
 import { Card, Icon, Button } from 'semantic-ui-react'
 
 // Styles
 import "./styles.scss";
 
-const Carnet = ( {carnet, handleGetUserAllActivities} ) => {
+const Carnet = ( { carnet, handleGetUserAllActivities, handleDeleteTravelogue } ) => {
   return (
   <div className="wrapper">
     <div className="title">
@@ -19,7 +22,8 @@ const Carnet = ( {carnet, handleGetUserAllActivities} ) => {
       {
       carnet.length > 0 
       && carnet.map((trip) => {
-          return <Trip key={trip.id} {...trip} handleGetUserAllActivities={handleGetUserAllActivities} />;
+          return <Trip key={trip.id} {...trip} handleGetUserAllActivities={handleGetUserAllActivities} 
+          handleDeleteTravelogue={handleDeleteTravelogue} />;
         })
       }
       </Card.Group>
@@ -34,7 +38,7 @@ const Carnet = ( {carnet, handleGetUserAllActivities} ) => {
   </div>
 )};
 
-const Trip = ( { city, date_departure, date_return, name, id, handleGetUserAllActivities } ) => {
+const Trip = ( { city, date_departure, date_return, name, id, handleGetUserAllActivities, handleDeleteTravelogue } ) => {
   return (
     <div className="trip">
     <Card>
@@ -53,7 +57,7 @@ const Trip = ( { city, date_departure, date_return, name, id, handleGetUserAllAc
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
-          <Link to={`/carnets/${id}`}>
+          <Link to={slugifyNameCarnet(name)}>
           <Button 
             basic 
             color='green'
@@ -64,7 +68,13 @@ const Trip = ( { city, date_departure, date_return, name, id, handleGetUserAllAc
             Détails
           </Button>
           </Link>
-          <Button basic color='red'>
+          <Button 
+            basic 
+            color='red'
+            onClick={() => {
+              handleDeleteTravelogue({id});
+            }}
+            >
             Supprimer
           </Button>
         </div>
@@ -77,6 +87,7 @@ const Trip = ( { city, date_departure, date_return, name, id, handleGetUserAllAc
 Carnet.propTypes = {
   carnet: PropTypes.arrayOf(PropTypes.object.isRequired),
   handleGetUserAllActivities: PropTypes.func,
+  handleDeleteTravelogue: PropTypes.func,
 };
 
 Trip.propTypes = {

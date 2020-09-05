@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Carnet from '../components/Carnet';
 
-import { getUserAllActivities } from '../store/action/trips-actions';
+import { getUserAllActivities, deleteTravelogue } from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
     carnet: state.trips.carnet,
@@ -11,6 +11,10 @@ const mapDispatchToProps = (dispatch) => ({
 
     handleGetUserAllActivities: (id) => {
       dispatch(getUserAllActivities(id));
+    },
+
+    handleDeleteTravelogue: (id) => {
+      dispatch(deleteTravelogue(id));
     }
 })
 

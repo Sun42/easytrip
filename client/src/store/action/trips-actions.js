@@ -19,6 +19,9 @@ export const GET_TRIP_ID = 'GET_TRIP_ID';
 export const GET_USER_ALL_ACTIVITIES = 'GET_USER_ALL_ACTIVITIES';
 export const GET_USER_ALL_ACTIVITIES_SUCCESS = 'GET_USER_ALL_ACTIVITIES_SUCCESS';
 export const GET_USER_ALL_ACTIVITIES_ERROR = 'GET_USER_ALL_ACTIVITIES_ERROR';
+export const DELETE_TRAVELOGUE = 'DELETE_TRAVELOGUE';
+export const DELETE_TRAVELOGUE_SUCCESS = 'DELETE_TRAVELOGUE_SUCCESS';
+export const DELETE_TRAVELOGUE_ERROR = 'DELETE_TRAVELOGUE_ERROR';
 
 
 
@@ -100,6 +103,19 @@ export const getUserAllTripsSuccess = (payload) => ({
 export const getUserAllTripsError = (payload) => ({
   type: GET_USER_ALL_TRIPS_ERROR,
   payload,
+});
+
+export const deleteTravelogue = (payload) => ({
+  type: DELETE_TRAVELOGUE,
+  payload,
+});
+
+export const deleteTravelogueSuccess = () => ({
+  type: DELETE_TRAVELOGUE_SUCCESS,
+});
+
+export const deleteTravelogueError = () => ({
+  type: DELETE_TRAVELOGUE_ERROR,
 });
 
 export const getTripID = (payload) => ({

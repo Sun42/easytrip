@@ -5,19 +5,22 @@ import {
   getUserAllTripsSuccess, getUserAllTripsError, 
   ADD_NEW_ACTIVITY, addNewActivitySuccess, addNewActivityError,
   CREATE_NEW_TRAVELOGUE, createNewTravelogueSuccess, createNewTravelogueError,
-  GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError,
+  GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError, getUserAllTrips,
+  DELETE_TRAVELOGUE, deleteTravelogueSuccess, deleteTravelogueError,
 } from '../store/action/trips-actions';
 
 const tripMiddleware = (store) => (next) => (action) => {
   next(action);
   switch(action.type) {
     case GET_USER_ALL_TRIPS: //{
+      console.log('je suis dans le mv getuseralltrip');
       axios({
         method: 'get',
         url: `http://localhost:3000/api/mes-voyages/:user_id`,
         withCredentials: true, 
       })
         .then((res) => {
+          console.log('resdata travelogues', res.data.travelogues);
           store.dispatch(getUserAllTripsSuccess(res.data.travelogues));
           
         })
@@ -28,6 +31,7 @@ const tripMiddleware = (store) => (next) => (action) => {
     //};
     case CREATE_NEW_TRAVELOGUE: {
       const travelogue = store.getState().trips.newCarnet[0];
+      console.log('je suis le nouveau travelogue', travelogue);
        axios({
         method: 'post',
         url: `http://localhost:3000/api/mon-voyage/new`,
@@ -41,9 +45,27 @@ const tripMiddleware = (store) => (next) => (action) => {
            })
          .then((res) => {
            store.dispatch(createNewTravelogueSuccess());
+           store.dispatch(getUserAllTrips());
         })
          .catch((e) => {
            store.dispatch(createNewTravelogueError());
+        });
+      break;
+    };
+    case DELETE_TRAVELOGUE: {
+      const { id } = action.payload;
+      console.log('carnet to delete', id);
+      axios({
+        method: 'delete',
+        url: `http://localhost:3000/api/mesvoyages/monvoyage/${id}`,
+        withCredentials: true,
+      })
+        .then((res) => {
+          store.dispatch(deleteTravelogueSuccess());
+          store.dispatch(getUserAllTrips());
+        })
+        .catch((e) => {
+          store.dispatch(deleteTravelogueError());
         });
       break;
     };
@@ -75,13 +97,14 @@ const tripMiddleware = (store) => (next) => (action) => {
     }
     case GET_USER_ALL_ACTIVITIES: {
       const { id } = action.payload;
-      console.log('useparamsid', id);
+      console.log('mv de all activities', id);
       axios({
         method: 'get',
-        // url:,
+        url: `http://localhost:3000/api/mesvoyages/monvoyage/${id}`,
         withCredentials: true, 
       })
         .then((res) => {
+          console.log('res.data de all activities', res.data);
           store.dispatch(getUserAllActivitiesSuccess(res.data));
         })
         .catch((e) => {

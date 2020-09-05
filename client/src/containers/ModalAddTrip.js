@@ -29,10 +29,12 @@ const mapDispatchToState = (dispatch) => ({
   },
 
   handleAddTrip: () => {
+    console.log('je suis dans le AC ADD TRIP');
     dispatch(addTrip());
   },
 
   handleGetUserAllTrips: () => {
+    console.log('je suis dans le AC');
     dispatch(getUserAllTrips());
   }
 

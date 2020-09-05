@@ -13,7 +13,7 @@ const FiltersBar = ({
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
   myCarnet, handleUserAllTrips, handleTripID,
 }) => {
-
+  console.log('myCarnettttt', myCarnet);
   return (
 
     <div className="filtersbar">

@@ -20,7 +20,7 @@ const Header = ( {isLogged,
   loggedMessage, handleGetUserAllTrips, }) => (
 
   <div className="header">
-    <Link className="active" to="/">  
+    <Link to="/">  
       <img className="logo" src={Logo} alt="name of the page" />
     </Link>
 
@@ -29,7 +29,7 @@ const Header = ( {isLogged,
     {isLogged && (
       <div className="buttons-rounds">
       <ModalAddTrip />
-        <NavLink to='/carnets'>
+        <NavLink exact to='/carnets'>
         <Button
           circular
           icon="suitcase"
@@ -46,7 +46,7 @@ const Header = ( {isLogged,
 
          {!isLogged && (
            <div className="buttons-rectangulars">
-      <NavLink to="/login">
+      <NavLink exact to="/login">
         <Button animated>
           <Button.Content visible>Connexion</Button.Content>
           <Button.Content hidden>
@@ -55,7 +55,7 @@ const Header = ( {isLogged,
         </Button>
       </NavLink>
       
-      <NavLink to="/sign-up">
+      <NavLink exact to="/sign-up">
         <Button animated>
           <Button.Content visible>Inscription</Button.Content>
           <Button.Content hidden>
