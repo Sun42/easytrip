@@ -11,6 +11,7 @@ import {
 const tripMiddleware = (store) => (next) => (action) => {
   next(action);
   switch(action.type) {
+    // eslint-disable-next-line no-lone-blocks
     case GET_USER_ALL_TRIPS: {
       axios({
         method: 'get',
