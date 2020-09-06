@@ -128,8 +128,9 @@ export const getUserAllActivities = (payload) => ({
   payload,
 });
 
-export const getUserAllActivitiesSuccess = () => ({
+export const getUserAllActivitiesSuccess = (payload) => ({
   type: GET_USER_ALL_ACTIVITIES_SUCCESS,
+  payload,
 });
 
 export const getUserAllActivitiesError = () => ({

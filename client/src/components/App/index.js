@@ -4,7 +4,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
-import { slugifyNameCarnet } from '../../utils';
 
 // == Composants - imports
 import Footer from '../Footer';
@@ -44,17 +43,7 @@ const App = ({ isLogged, checkAuth, carnet }) => {
         </Route>
 
         {/* trip details page */}
-        <Route exact path="/carnets/:slug" render={(routerInfos) => {
-          console.log('routerInfos', routerInfos);
-          const {slug} = routerInfos.match.params;
-          const trip = carnet.find((trip) => {
-            const slugifyName = slugifyNameCarnet(trip.name);
-            const slugToFind = slugifyNameCarnet(slug);
-            console.log('mon slug', slug, slugToFind, slugifyName);
-            return slugifyName === slugToFind;
-          });
-          return <MonVoyage trip={trip} />;
-        }} />
+        <Route exact path="/carnets/:slug" component={MonVoyage} />
 
         {/* login page */}
         <Route exact path="/login">

@@ -1,5 +1,28 @@
+@import 'src/styles/vars';
+
 .wrapper {
   width: 80%;
+
+  .button {
+    margin-right: 50%;
+
+    button.ui.animated.button {
+      background-color: white;
+      color: black;
+      background-color: $orange;
+      height: 45%;
+      
+      div.visible.content {
+        font-size: 1.1em;
+        color: white;
+        text-transform: uppercase;
+      }
+
+      div.hidden.content {
+        color: white;
+      }
+    }
+  }
 
   .title {
     margin: 0px;
@@ -7,26 +30,51 @@
     justify-content: center;
     align-items: center;
     height: 15%;
+    text-transform: uppercase;
   }
 
   .trips {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 80%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 70%;
+    width: 100%;
 
     .trip {
+      padding: 1em;
       margin: 5px;
       width: 100%;
-      min-width: 200px;
+      // min-width: 100px;
       max-width: 250px;
-      height: 100%;
+      height: 150px;
+      border-left: 10px solid $orange;
+
+      &:hover {
+        background-color: rgba(255, 68, 0, 0.062);
+      }
+
+      &-info {
+        height: 70%;
+
+        h3, h4 {
+          margin: 0px;
+        }
+      }
+
+      &-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 30%;
+
+        button {
+          background-color: white;
+          border: none;
+          cursor: pointer;
+        }
+      }
     }
-  .button {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-  }
   }
 }

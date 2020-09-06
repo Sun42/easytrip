@@ -1,3 +1,5 @@
+import { slugifyNameCarnet } from '../utils';
+
 import {
   ADD_NEW_ACTIVITY, ADD_NEW_ACTIVITY_SUCCESS, ADD_NEW_ACTIVITY_ERROR,
   GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
@@ -112,11 +114,13 @@ export default (state = initialState, action = {}) => {
         activities: [
           ...action.payload,
         ],
+        error: '',
       };
     case GET_USER_ALL_ACTIVITIES_ERROR:
       return {
         ...state,
         error: 'Ce carnet de voyage n\'a pas d\'activités',
+        activities: [],
       };
     case GET_USER_ALL_TRIPS: 
       return {
@@ -129,12 +133,14 @@ export default (state = initialState, action = {}) => {
         carnet: [
             ...action.payload,
         ],
+        error: '',
       };
     case GET_USER_ALL_TRIPS_ERROR:
       return {
         ...state,
         loading: false,
         error: 'Votre carnet de voyage est vide',
+        carnet: [],
       };
     case DELETE_TRAVELOGUE:
       return {
@@ -145,6 +151,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         //new carnet?
+        error: '',
       };
     case DELETE_TRAVELOGUE_ERROR:
       return {
@@ -160,3 +167,13 @@ export default (state = initialState, action = {}) => {
       return state;
   }
 };
+
+// SELECTOR 
+export const getTripBySlug = (state, slug) => {
+  const voyage = state.trips.carnet.find((trip) => {
+    const slugifyName = slugifyNameCarnet(trip.name);
+    const slugToFind = slugifyNameCarnet(slug);
+    return slugifyName === slugToFind;
+  });
+  return voyage;
+}

@@ -1,27 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 // router
 import { Link } from 'react-router-dom';
 
 // semantic-ui
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 // Styles and react-icons
 import './styles.scss';
 import { FaHeart, FaHeartBroken, FaRegCheckSquare, FaTrashAlt } from 'react-icons/fa';
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
-const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRemoveActivity, trip }) => {
-  console.log('ce sont les activities', activities);
-  console.log('slugifyyyy', trip);
+const MonVoyage = ({ 
+  activities, handleActivityDone, handleFavActivity, 
+  handleRemoveActivity, trip 
+}) => {
+
+  // momentObject converter
+  const formatedStartDate = moment(trip.date_departure).format('DD/MM/YYYY');
+  const formatedEndDate = moment(trip.date_return).format('DD/MM/YYYY');
+
   return (
   <div className="wrapper">
+    <div className="button">
+      <Link to={'/carnets'}>
+        <Button animated>  
+          <Button.Content visible>Mes carnets</Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow left" />
+          </Button.Content>
+        </Button>
+      </Link>
+    </div>
     <div className="trip-info">
-      <h3>{trip.name}</h3>
-      <h4>{trip.city}</h4>
-      <h5>{trip.date_departure}</h5>
-      <h5>{trip.date_return}</h5>
+      <h2>{trip.name}</h2>
+      <h3>{trip.city}</h3>
+      <div className="trip-info-dates">
+        <span>{formatedStartDate} - {formatedEndDate}</span>
+      </div>
     </div>
     <div className="trip-list">
 
@@ -30,44 +48,38 @@ const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRe
         const goodClass = activity.done ? "activity activity--done" : "activity";
         return (
           <li key={activity.id} className={goodClass}>
-            <span>{activity.label}</span>
-            <div className="icons">
-            <span
-              onClick={() => {
-                handleFavActivity(activity.id);
+            <div className="left-side">
+              <span
+                onClick={() => {
+                  handleActivityDone(activity.id);
               }}
-            >
-              {activity.favori ? <FaHeart size={22} /> : <FaHeartBroken size={22} />}
-            </span>
-
-            <span
-              onClick={() => {
-                handleActivityDone(activity.id);
-            }}
-            >
-              {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
-            </span>
+              >
+                {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
+              </span>
+              <span>{activity.name}</span>
+            </div>
             
-            <span
-              onClick={() => {
-                handleRemoveActivity(activity.id);
-            }}
-            >
-              <FaTrashAlt size={22} />
-            </span>
+            <div className="right-side">
+              <span
+                onClick={() => {
+                  handleFavActivity(activity.id);
+                }}
+              >
+                {activity.favori ? <FaHeart size={22} /> : <FaHeartBroken size={22} />}
+              </span>
+            
+              <span
+                onClick={() => {
+                  handleRemoveActivity(activity.id);
+              }}
+              >
+                <FaTrashAlt size={22} />
+              </span>
             </div>
           </li>
         )
       })
     }
-
-    <div className="button">
-      <Link to={'/carnets'}>
-        <Button>
-          Carnet
-        </Button>
-      </Link>
-    </div>
   </div>
 </div>
 )};

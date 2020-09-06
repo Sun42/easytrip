@@ -61,8 +61,6 @@ const ModalTripAdd = ({
             handleAddEndDate(formatedEndDate);
             handleAddTrip();
             handleGetUserAllTrips();
-            console.log('je suis la fonction handleGetUserAllTrips', handleGetUserAllTrips);
-            console.log('je fais le submit');
             setOpen(false);
           }}
         >
