@@ -47,10 +47,10 @@ const App = ({ isLogged, checkAuth, carnet }) => {
 
         {/* login page */}
         <Route exact path="/login">
-          { isLogged ? <Redirect to="/" /> : <LoginForm />}
+          { isLogged ? <Redirect to="/result" /> : <LoginForm />}
         </Route>
         <Route exact path="/sign-up">
-          { isLogged ? <Redirect to="/" /> : <SignUpForm component={SignUpForm} />}
+          { isLogged ? <Redirect to="/login" /> : <SignUpForm component={SignUpForm} />}
         </Route>
 
         {/* error page */}

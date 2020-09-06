@@ -6,7 +6,7 @@ import './styles.scss';
 
 // semantic-ui
 import {
-  Button, Item, Icon, Card, Feed
+  Button, Item, Icon, Card, Feed,
 } from 'semantic-ui-react';
 
 // react-leaflet AND leaflet
@@ -24,7 +24,7 @@ const Result = ({
   foodFilter, artFilter, pubFilter, excursionFilter, shopFilter,
   acquaticFilter, funFilter, historicFilter,
   foodCheck, artCheck, pubCheck, excursionCheck, shopCheck, acquaticCheck,
-  funCheck, historicCheck,
+  funCheck, historicCheck, checkbox,
 }) => {
 
   return (
@@ -40,6 +40,28 @@ const Result = ({
       &&
       <div className="popup">L'activité a été ajouté à votre carnet de voyage</div>
       } */}
+
+      {!foodCheck && !artCheck && !pubCheck && !excursionCheck && !shopCheck && !acquaticCheck && !funCheck && !historicCheck &&
+        <div className="explications">
+        <div className="box1">
+          <Icon name="check circle"/>
+          <h3>Carnet</h3>
+          <p>...ensuite selectionnez ou créer votre carnet...</p>
+        </div>
+        <div className="box2">
+          <Icon name="globe" />
+          <h3>Destination</h3>
+          <p>D'abord selectionnez votre destination...</p>
+        </div>
+        <div className="box3">
+          <Icon name="check circle"/>
+          <h3>Activités</h3>
+          <p>...et enfin, dites nous quelles sont
+            vos activités préférées et nous nous chargerons du reste !</p>
+        </div>
+        </div>
+      }
+
       <Item.Group divided>
       {/* {loading && <Loading />} */}
         {foodCheck === true
@@ -312,7 +334,7 @@ const Result = ({
           && acquaticFilter.map((object) => {
             const { lat, lon, tags } = object;
             const cordinatesPOI = [lat, lon];
-            const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
+            const category = object.tags.amenity || object.tags.leisure || object.tags.sport;
             const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
             return (
               <Marker key={object.id} position={cordinatesPOI}>

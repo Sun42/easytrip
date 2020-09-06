@@ -34,6 +34,16 @@
         font-size: 1.7em;
       }
     }
+
+    .explications {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 60%;
+      height: 100%;
+      margin: auto;
+      text-align: center;
+    }
   }
 
   &-map {

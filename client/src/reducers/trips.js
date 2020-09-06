@@ -120,7 +120,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         error: 'Ce carnet de voyage n\'a pas d\'activités',
-        activities: [],
+        // activities: [],
       };
     case GET_USER_ALL_TRIPS: 
       return {
@@ -133,14 +133,14 @@ export default (state = initialState, action = {}) => {
         carnet: [
             ...action.payload,
         ],
-        error: '',
+        // error: '',
       };
     case GET_USER_ALL_TRIPS_ERROR:
       return {
         ...state,
         loading: false,
         error: 'Votre carnet de voyage est vide',
-        carnet: [],
+        // carnet: [],
       };
     case DELETE_TRAVELOGUE:
       return {
@@ -151,7 +151,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         //new carnet?
-        error: '',
+        // error: '',
       };
     case DELETE_TRAVELOGUE_ERROR:
       return {
