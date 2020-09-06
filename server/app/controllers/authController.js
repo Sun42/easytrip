@@ -41,7 +41,7 @@ const authController = {
             return response.json(newUser);
         }
         catch(err) {
-            response.status(500).json(err);
+            return response.status(500).json(err);
         }
 
     },
@@ -69,42 +69,40 @@ const authController = {
                 });
                 console.log('signin session', request.session);
                 delete request.session.user.password;
-                response.status(200).json({
+                return response.status(200).json({
                     logged: true,
                 });
-                console.log(request.session.user);
             }
             else {
-                response.status(403).json({
+                return response.status(403).json({
                     logged: false,
                 });
             }
         }
         catch (err) {
             console.log(err);
-            response.status(400).send(err);
+            return response.status(400).send(err);
 
         }
 
     },
 
     isLogged: async (request, response) => {
-        console.log(request.session);
         if (request.session.user) {
-            response.status(200).json({ logged: true, info: request.session.user });
+            return response.status(200).json({ logged: true, info: request.session.user });
         }
         else {
-            response.status(200).json({ logged: false });
+            return response.status(200).json({ logged: false });
         }
     },
 
     signoutAction: async (request, response) => {
         try {
             request.session.destroy();
-            response.json('Déconnexion ok');
+            return response.json('Déconnexion ok');
         }
         catch (err) {
-            response.status(500).json(err);
+            return response.status(500).json(err);
         }
     },
 };

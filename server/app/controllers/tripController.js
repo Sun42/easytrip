@@ -5,12 +5,12 @@ const tripController = {
     createNewTravelogue : async (request, response) => {
 
         if (!request.session.user) {
-            response.status(401).json({ error : 'Utilisateur non authentifié' });
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         const { name, city, date_departure, date_return } = request.body;
         // Si l'utilisateur n'a pas donné de nom à son carnet, on le lui demande
         if (!name) {
-            response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
+            return response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
         }
         try {
         // Création d'un nouveau voyage (= nouveau carnet de voyage)
@@ -30,7 +30,7 @@ const tripController = {
         }
         catch(error) {
             console.trace(error);
-            response.status(500).json('Erreur dans la création du carnet de voyage');
+            return response.status(500).json('Erreur dans la création du carnet de voyage');
 
         }
     },
@@ -38,14 +38,13 @@ const tripController = {
     getAllTravelogues: async (request, response) => {
 
         if (!request.session.user) {
-            response.status(401).json({ error : 'Utilisateur non authentifié' });
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         try {
             const user_id = request.session.user.id;
             const user = User.findByPk(user_id);
             if (!user) {
-                response.status(400).json({ error : 'Invalid user' });
-                return ;
+                return response.status(400).json({ error : 'Invalid user' });
             }
             const travelogues = await Travelogue.findAll({
                 where: {
@@ -56,17 +55,17 @@ const tripController = {
                 ],
             });
 
-            response.json({ travelogues : travelogues });
+            return response.json({ travelogues : travelogues });
         }
         catch (err) {
-            response.status(500).send(err);
+            return response.status(500).send(err);
         }
     },
 
     getOneTravelogue: async (request, response) => {
 
         if (!request.session.user) {
-            response.status(401).json({ error : 'Utilisateur non authentifié' });
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         try {
             const travel_id = parseInt(request.params.id);
@@ -75,25 +74,25 @@ const tripController = {
                 include: Activity,
             });
             if (!travelogue) {
-                response.status(404).json('Carnet de voyage introuvable');
+                return response.status(404).json('Carnet de voyage introuvable');
             }
             const activities = await Activity.findAll({
                 where: { travelogue_id: travel_id },
             });
             console.log('activities', activities);
             Object.assign(travelogue, { 'activities' : activities });
-            response.status(200).json({ 'travelogue' : travelogue });
+            return response.status(200).json({ 'travelogue' : travelogue });
         }
         catch (error) {
             console.trace(error);
-            response.status(500).json({ 'error' : error });
+            return response.status(500).json({ 'error' : error });
         }
     },
 
     updateTravelogue: async (request, response) => {
 
         if (!request.session.user) {
-            response.status(401).json({ error : 'Utilisateur non authentifié' });
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         try {
             const travelogueId = request.params.id;
@@ -106,36 +105,36 @@ const tripController = {
             throw new Error('Carnet de voyage introuvable');
         }
         catch (err) {
-            response.status(500).json(err);
+            return response.status(500).json(err);
         }
     },
 
     deleteTravelogue: async (request, response) => {
 
         if (!request.session.user) {
-            response.status(401).json({ error : 'Utilisateur non authentifié' });
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         try {
             const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
 
             if (!travelToBeDeleted) {
-                response.status(404).json('Carnet de voyage introuvable');
+                return response.status(404).json('Carnet de voyage introuvable');
             }
 
             await travelToBeDeleted.destroy();
-            response.json('Le carnet de voyage a été supprimé');
+            return response.json('Le carnet de voyage a été supprimé');
 
         }
         catch (err) {
-            response.status(500).json(err);
+            return response.status(500).json(err);
         }
     },
 
     createActivity: async (request, response) => {
-
         if (!request.session.user) {
-            response.status(401).json({ error : 'Utilisateur non authentifié' });
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
+        console.log('ca passe encore?');
         try {
             const { travelogue_id, name, information, location } = request.body;
             const user_id = request.session.user.id;
@@ -152,11 +151,11 @@ const tripController = {
                 information,
                 location : location_string,
             });
-            response.status(201).json({ 'activity' : activity });
+            return response.status(201).json({ 'activity' : activity });
         }
         catch (error) {
             console.trace(error);
-            response.status(500).json({ 'error' : error });
+            return response.status(500).json({ 'error' : error });
         }
     },
 };

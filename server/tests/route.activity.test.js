@@ -7,8 +7,7 @@ test('/api/search no location in query', async () => {
 
     const response = await request(app)
         .post('/api/activity/new')
-        .set('Accept', 'application/json')
-        .send({ name: 'Seeeeeaaaaaa sex and sun!!!'});
+        .send({ name: 'Seeeeeaaaaaa sex and sun!!!' });
 
 
     // expect(response.statusCode).toBe(201);
