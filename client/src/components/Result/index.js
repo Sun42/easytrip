@@ -46,17 +46,17 @@ const Result = ({
         <div className="box1">
           <Icon name="check circle"/>
           <h3>Carnet</h3>
-          <p>...ensuite selectionnez ou créer votre carnet...</p>
+          <p>D'abord, sélectionnez ou créez votre carnet de voyage...</p>
         </div>
         <div className="box2">
           <Icon name="globe" />
           <h3>Destination</h3>
-          <p>D'abord selectionnez votre destination...</p>
+          <p>Sélectionnez ensuite la destination de votre choix</p>
         </div>
         <div className="box3">
           <Icon name="check circle"/>
           <h3>Activités</h3>
-          <p>...et enfin, dites nous quelles sont
+          <p>Enfin, dites nous quelles sont
             vos activités préférées et nous nous chargerons du reste !</p>
         </div>
         </div>

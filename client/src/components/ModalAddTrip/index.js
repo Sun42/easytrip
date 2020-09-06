@@ -65,10 +65,10 @@ const ModalTripAdd = ({
           }}
         >
           <Form.Field>
-            <label>Le nom du carnet</label>
+            <label>Nom du carnet</label>
             <input
               value={name}
-              placeholder="Le nom du carnet..."
+              placeholder="Nom du carnet..."
               onChange={(evt) => {
                 const text = evt.target.value;
                 handleAddName(text);
