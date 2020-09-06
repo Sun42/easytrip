@@ -42,7 +42,7 @@ const SignUpForm = ({ // modif Sarah
             placeholder=""
             value={name}
           />
-          <p>Prenom</p>
+          <p>Prénom</p>
 
           <Field
             name="surName"
@@ -51,14 +51,14 @@ const SignUpForm = ({ // modif Sarah
             value={surName}
           />
 
-          <p>email</p>
+          <p>Email</p>
           <Field
             name="email"
             onChange={changeField}
             placeholder=""
             value={email}
           />
-          <p>mot de passe</p>
+          <p>Mot de passe</p>
 
           <Field
             name="password"
@@ -75,7 +75,7 @@ const SignUpForm = ({ // modif Sarah
             Valider mon incription
           </button>
           <Link activeClassName="active" to="/login">
-            <span>vous avez deja un compte ?</span>
+            <span>Vous avez deja un compte ?</span>
           </Link>
           </form>)}
 
