@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  LOGIN, CHECK_AUTH, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM/*@fixme no-unused-vars, signupForm, SignUpForm*/,
+  LOGIN, CHECK_AUTH, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM, LOGOUT, logoutSuccess/*@fixme no-unused-vars, signupForm, SignUpForm*/,
 } from '../store/action/login-actions';
 
 /**@fixme no-unused-vars
@@ -10,11 +10,11 @@ const authMiddleware = (store) => (next) => (action) => {
   next(action);
   console.log('authMiddleware action.type', action.type);
   switch (action.type) {
-    /* case LOGOUT: {
+    case LOGOUT: {
       axios({
         method: 'post',
-        url: ,
-        with: true
+        url: 'http://localhost:3000/api/deconnexion',
+        withCredentials: true
       })
         .then((res) => {
           console.log(res.data);
@@ -24,7 +24,7 @@ const authMiddleware = (store) => (next) => (action) => {
           console.error(err);
         })
       break;
-    } */
+    }
     // réagir au login
     case LOGIN: {
       axios({
