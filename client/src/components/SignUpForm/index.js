@@ -1,6 +1,7 @@
-import React from 'react';
+//import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link} from 'react-router-dom';
 
 import Field from './Field.js/index.js';
 // import { useField } from './hooks';
@@ -30,7 +31,7 @@ const SignUpForm = ({ // modif Sarah
         <img src="https://www.bnc.ca/content/dam/fragment/images/Fotolia-79030524-Subscription-Monthly-M-1-e1481143505131.jpg" alt="" />
       </div>
       <div className="login-form">
-      {!isLogged && (
+        {!isLogged && (
         <form method="post" autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <h2>Inscrivez-vous</h2>
 
@@ -67,13 +68,15 @@ const SignUpForm = ({ // modif Sarah
             placeholder=""
             value={password}
           />
+           
           <button
             type="submit"
             className="login-form-button"
             onClick="submit"
           >
-            Valider mon incription
+            Valider mon incription 
           </button>
+         
           <Link activeClassName="active" to="/login">
             <span>Vous avez deja un compte ?</span>
           </Link>
