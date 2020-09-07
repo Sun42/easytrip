@@ -19,7 +19,7 @@ const authController = {
 
             }
             if (password.length < 8) {
-                return response.status(403).json({ 'error' : 'Le mot de passe doit être de 8 caractères minimum'});
+                return response.status(403).json({ 'error' : 'Le mot de passe doit être de 8 caractères minimum' });
             }
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
             const newUser = User.build({

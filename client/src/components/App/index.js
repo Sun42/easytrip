@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -16,6 +19,8 @@ import SignUpForm from '../../containers/SignUpForm';
 import Carnet from "../../containers/Carnet";
 import MonVoyage from "../../containers/MonVoyage";
 
+
+
 // == Composant
 const App = ({ isLogged, checkAuth, carnet }) => {
   useEffect(() => {
@@ -24,6 +29,18 @@ const App = ({ isLogged, checkAuth, carnet }) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="app">
+       <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      toastClassName="toast"
+    />
       <Header />
       <Switch>
 
