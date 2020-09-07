@@ -53,7 +53,9 @@ router.get('/api/search', searchController.search);
 
 router.post('/api/activity/new', tripController.createActivity);
 
-router.delete('/api/activity/:id', tripController.deleteActivity);
+router.route('/api/activity/:id')
+    .delete(tripController.deleteActivity)
+    .patch(tripController.updateActivity);
 
 // Exporting Router
 module.exports = router;
