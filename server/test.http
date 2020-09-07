@@ -48,3 +48,8 @@ http://localhost:3000/api/mesvoyages/42
 ###
 
 http://{{baseurl}}/api/mesvoyages/monvoyage/1
+
+
+###
+
+DELETE http://{{baseurl}}/api/activity/3

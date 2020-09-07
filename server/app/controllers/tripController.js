@@ -57,7 +57,7 @@ const tripController = {
                     ['name', 'ASC'],
                 ],
             });
-
+            console.log({ travelogues : travelogues });
             return response.json({ travelogues : travelogues });
         }
         catch (err) {
@@ -143,7 +143,7 @@ const tripController = {
         try {
             const { travelogue_id, name, information, location } = request.body;
             const user_id = request.session.user.id;
-            console.log('Request.session:', request.session);
+            // console.log('Request.session:', request.session);
             if (!checkOwnership(user_id, travelogue_id)) {
                 return response.status(401).json({ 'error' : 'Error during travelogue to user ownership validation' });
             }
@@ -157,6 +157,22 @@ const tripController = {
                 location : location_string,
             });
             return response.status(201).json({ 'activity' : activity });
+        }
+        catch (error) {
+            console.trace(error);
+            return response.status(500).json({ 'error' : error });
+        }
+    },
+    deleteActivity: async (request, response) => {
+        if (!request.session.user) {
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
+        try {
+            // @todo activity ownership validation
+            const activity_id = request.params.id;
+            const activity = await Activity.findByPk(activity_id);
+            await activity.destroy();
+            return response.status(200).json({ 'activity' : activity });
         }
         catch (error) {
             console.trace(error);

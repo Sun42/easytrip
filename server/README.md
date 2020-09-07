@@ -11,7 +11,7 @@ Notre utilisateur souhaite visiter des lieux historiques et culturels et se rest
 ## Initialisation du projet-voyage
 
 1. Connect to the postgres database with administrator privileges ex : `sudo -i -u postgres` then `psql`
-2. Setup role and database 'CREATE ROLE easytrip with LOGIN encrypted PASSWORD '****'; CREATE DATABASE easytrip owner easytrip;'
+2. Setup role and database 'CREATE ROLE easytrip with LOGIN encrypted PASSWORD '****'; CREATE DATABASE easytrip owner easytrip;
 3. psql -U easytrip -f  psql -U easytrip -f ./data/createDB_script.sql
 4. Install sqitch globally
 5. To deploy DB content, use the command `sqitch deploy local` from `/server`
@@ -20,3 +20,4 @@ Notre utilisateur souhaite visiter des lieux historiques et culturels et se rest
 8. configure .env file with the appropriate values
 9. `npm install`
 10. `npm run start`
+
