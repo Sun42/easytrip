@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 // Styles and react-icons
 import './styles.scss';
-import {IconContext} from "react-icons";
-import { MdAddLocation } from 'react-icons/md';
 
 // semantic-ui
 import {
@@ -486,20 +484,12 @@ const Activity = ({
             });
         }}
       >
-        <IconContext.Provider
-          value={{ color: 'black', size: '40px', background: 'white' }}
-        >
-          <div>
-            <MdAddLocation />
-          </div>
-        </IconContext.Provider>
+        <Icon name="add" size="big" />
       </button>
     </div>
     <div className="activity-info-wrapper">
       <div className="activity-title">
-        <h3>{object.tags.name ? object.tags.name : 'Nom inconnu'}</h3>
-      </div>
-      <div className="activity-amenities">
+        <h4>{object.tags.name ? object.tags.name : 'Nom inconnu'}</h4>
         <p>{capitalizeCategory}</p>
       </div>
       <div className="activity-details">

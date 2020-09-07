@@ -14,7 +14,7 @@ import { FaHeart, FaHeartBroken, FaRegCheckSquare, FaTrashAlt } from 'react-icon
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 const MonVoyage = ({ 
-  activities, handleActivityDone, handleFavActivity, 
+  activities, handleChangeDoneActivity, handleFavActivity, 
   handleDeleteActivity, trip 
 }) => {
 
@@ -51,7 +51,7 @@ const MonVoyage = ({
             <div className="left-side">
               <span
                 onClick={() => {
-                  handleActivityDone(activity.id);
+                  handleChangeDoneActivity(activity.id);
               }}
               >
                 {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
@@ -86,7 +86,7 @@ const MonVoyage = ({
 )};
 
 MonVoyage.propTypes = {
-  handleActivityDone: PropTypes.func.isRequired,
+  handleChangeDoneActivity: PropTypes.func.isRequired,
   handleFavActivity: PropTypes.func.isRequired,
   handleDeleteActivity: PropTypes.func.isRequired,
 };

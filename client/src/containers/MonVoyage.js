@@ -4,7 +4,7 @@ import MonVoyage from '../components/MonVoyage';
 // SELECTOR
 import { getTripBySlug } from '../reducers/trips';
 
-import { activityDone, favActivity, deleteActivity } from '../store/action/trips-actions';
+import { changeDoneActivity, favActivity, deleteActivity } from '../store/action/trips-actions';
 
 const mapStateToProps = (state, ownProps) => {
   const { slug } = ownProps.match.params;
@@ -16,8 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = ((dispatch) => ({
 
-  handleActivityDone: (id) => {
-    dispatch(activityDone(id));
+  handleChangeDoneActivity: (id) => {
+    dispatch(changeDoneActivity(id));
   },
 
   handleFavActivity: (id) => {

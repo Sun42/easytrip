@@ -5,12 +5,14 @@ import {
   GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
   ADD_START_DATE, ADD_END_DATE, CREATE_NEW_TRAVELOGUE, CREATE_NEW_TRAVELOGUE_SUCCESS,
   CREATE_NEW_TRAVELOGUE_ERROR,
-  ACTIVITY_DONE, DELETE_ACTIVITY, FAV_ACTIVITY,
+  CHANGE_DONE_ACTIVITY, CHANGE_DONE_ACTIVITY_SUCCESS, CHANGE_DONE_ACTIVITY_ERROR,
+  FAV_ACTIVITY,
   GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
   GET_TRIP_ID,
   GET_USER_ALL_ACTIVITIES, GET_USER_ALL_ACTIVITIES_SUCCESS, GET_USER_ALL_ACTIVITIES_ERROR,
   DELETE_TRAVELOGUE, DELETE_TRAVELOGUE_SUCCESS, DELETE_TRAVELOGUE_ERROR,
   CLOSE_POPUP,
+  DELETE_ACTIVITY, DELETE_ACTIVITY_SUCCESSS, DELETE_ACTIVITY_ERROR,
 } from '../store/action/trips-actions';
 
 // Initial STATE de carnet, mon voyage et vignette
@@ -105,10 +107,18 @@ export default (state = initialState, action = {}) => {
           }
         ],
       };
-    case ACTIVITY_DONE:
+    case CHANGE_DONE_ACTIVITY:
       return {
         ...state,
         activities: state.activities.map(activity => activity.id === action.payload ? {...activity, done: !activity.done} : activity)
+      };
+    case CHANGE_DONE_ACTIVITY_SUCCESS:
+      return {
+        ...state,
+      };
+    case CHANGE_DONE_ACTIVITY_ERROR:
+      return {
+        ...state,
       };
     case FAV_ACTIVITY:
       return {
@@ -119,6 +129,14 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         activities: state.activities.filter(activity => activity.id !== action.payload)
+      };
+    case DELETE_ACTIVITY_SUCCESSS:
+      return {
+        ...state,
+      };
+    case DELETE_ACTIVITY_ERROR:
+      return {
+        ...state,
       };
     case GET_USER_ALL_ACTIVITIES:
       return {

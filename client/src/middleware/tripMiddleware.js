@@ -8,6 +8,7 @@ import {
   GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError, getUserAllTrips,
   DELETE_TRAVELOGUE, deleteTravelogueSuccess, deleteTravelogueError,
   DELETE_ACTIVITY, deleteActivitySuccess, deleteActivityError,
+  CHANGE_DONE_ACTIVITY, changeDoneActivitySuccess, changeDoneActivityError,
 } from '../store/action/trips-actions';
 
 const tripMiddleware = (store) => (next) => (action) => {
@@ -113,8 +114,6 @@ const tripMiddleware = (store) => (next) => (action) => {
     }
     case DELETE_ACTIVITY: {
       const id = action.payload;
-      console.log('action.payload', action.payload);
-      console.log('id de activity a supprimer', id);
       axios({
         method: 'delete',
         url: `http://localhost:3000/api/activity/${id}`,
@@ -125,6 +124,21 @@ const tripMiddleware = (store) => (next) => (action) => {
         })
         .catch((e) => {
           store.dispatch(deleteActivityError());
+        });
+      break;
+    }
+    case CHANGE_DONE_ACTIVITY: {
+      const id = action.payload;
+      axios({
+        method: 'patch',
+        url: `http://localhost:3000/api/activity/${id}`,
+        withCredentials: true,
+      })
+        .then((res) => {
+          store.dispatch(changeDoneActivitySuccess());
+        })
+        .catch((e) => {
+          store.dispatch(changeDoneActivityError());
         });
       break;
     }
