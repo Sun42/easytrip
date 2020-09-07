@@ -70,10 +70,9 @@ const tripMiddleware = (store) => (next) => (action) => {
       break;
     };
     case ADD_NEW_ACTIVITY: {
-      const { information, location, name } = action.payload;
+      const { information, location, name, is_done } = action.payload;
       const { lat, lon } = location;
       const tripID = store.getState().trips.tripID;
-      console.log('id de travelogue dans le mv', tripID);
       axios({
         method: 'post',
         url: `http://localhost:3000/api/activity/new/`,
@@ -84,7 +83,8 @@ const tripMiddleware = (store) => (next) => (action) => {
           location: {
             lat: lat,
             lon: lon,
-          }
+          },
+          is_done: is_done,
         },
         withCredentials: true
       })
@@ -129,6 +129,7 @@ const tripMiddleware = (store) => (next) => (action) => {
     }
     case CHANGE_DONE_ACTIVITY: {
       const id = action.payload;
+      const done = store.getState().trips.acti
       axios({
         method: 'patch',
         url: `http://localhost:3000/api/activity/${id}`,

@@ -51,6 +51,8 @@ const MonVoyage = ({
             <div className="left-side">
               <span
                 onClick={() => {
+                  console.log('all activities', activities);
+                  console.log('activity', activity.is_done);
                   handleChangeDoneActivity(activity.id);
               }}
               >
