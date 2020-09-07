@@ -3,9 +3,6 @@ import {
   LOGIN, CHECK_AUTH, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM, LOGOUT, logoutSuccess/*@fixme no-unused-vars, signupForm, SignUpForm*/,
 } from '../store/action/login-actions';
 
-/**@fixme no-unused-vars
-import { GET_SEARCH_SUBMIT_SUCCESS } from '../store/action/filters-actions';
-*/
 const authMiddleware = (store) => (next) => (action) => {
   next(action);
   console.log('authMiddleware action.type', action.type);
@@ -53,7 +50,7 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log('CHECK_AUTH', res.data);
-          if (res.data.logged === true ){
+          if (res.data.logged === true ) {
             store.dispatch(loginSuccess(res.data));
           } else {store.dispatch(loginError('Utilisateur non connecté'));}
         })

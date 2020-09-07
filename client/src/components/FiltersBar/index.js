@@ -11,7 +11,8 @@ import SearchBar from '../../containers/SearchBar';
 const FiltersBar = ({
   handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
-  myCarnet, handleUserAllTrips, handleTripID, handleGetUserAllTrips,
+  myCarnet, handleUserAllTrips, handleTripID, handleGetUserAllTrips, foodCheck, artCheck, pubCheck,
+  excursionCheck, shopCheck, acquaticCheck, funCheck, historicCheck
 }) => {
   return (
 
@@ -63,6 +64,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="food"
                   name="food"
+                  checked={foodCheck === true}
                   onClick={() => {
                       handleToggleFood();
                   }}
@@ -74,6 +76,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="art"
                   name="art"
+                  checked={artCheck === true}
                   onClick={() => {
                       handleToggleArt();
                   }}
@@ -85,6 +88,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="pub"
                   name="pub"
+                  checked={pubCheck === true}
                   onClick={() => {
                       handleTogglePub();
                   }}
@@ -96,6 +100,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="excursion"
                   name="excursion"
+                  checked={excursionCheck === true}
                   onClick={() => {
                       handleToggleExcursion();
                   }}
@@ -109,6 +114,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="shop"
                   name="shop"
+                  checked={shopCheck === true}
                   onClick={() => {
                       handleToggleShop();
                   }}
@@ -120,6 +126,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="acquatic"
                   name="acquatic"
+                  checked={acquaticCheck === true}
                   onClick={() => {
                       handleToggleAcquatic();
                   }}
@@ -131,6 +138,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="fun"
                   name="fun"
+                  checked={funCheck === true}
                   onClick={() => {
                       handleToggleFun();
                   }}
@@ -142,6 +150,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="historic"
                   name="historic"
+                  checked={historicCheck === true}
                   onClick={() => {
                       handleToggleHistoric();
                   }}
