@@ -9,7 +9,9 @@ export const ADD_END_DATE = 'ADD_END_DATE';
 export const CREATE_NEW_TRAVELOGUE = 'CREATE_NEW_TRAVELOGUE';
 export const CREATE_NEW_TRAVELOGUE_SUCCESS = 'CREATE_NEW_TRAVELOGUE_SUCCESS';
 export const CREATE_NEW_TRAVELOGUE_ERROR = 'CREATE_NEW_TRAVELOGUE_ERROR';
-export const ACTIVITY_DONE = 'ACTIVITY_DONE';
+export const CHANGE_DONE_ACTIVITY = 'CHANGE_DONE_ACTIVITY';
+export const CHANGE_DONE_ACTIVITY_SUCCESS = 'CHANGE_DONE_ACTIVITY_SUCCESS';
+export const CHANGE_DONE_ACTIVITY_ERROR = 'CHANGE_DONE_ACTIVITY_ERROR';
 export const FAV_ACTIVITY = 'FAV_ACTIVITY';
 export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const DELETE_ACTIVITY_SUCCESSS = 'DELETE_ACTIVITY_SUCCESSS';
@@ -79,8 +81,18 @@ export const createNewTravelogueError = () => ({
 });
 
 
-export const activityDone = (payload) => ({
-  type: ACTIVITY_DONE,
+export const changeDoneActivity = (payload) => ({
+  type: CHANGE_DONE_ACTIVITY,
+  payload,
+});
+
+export const changeDoneActivitySuccess = (payload) => ({
+  type: CHANGE_DONE_ACTIVITY_SUCCESS,
+  payload,
+});
+
+export const changeDoneActivityError = (payload) => ({
+  type: CHANGE_DONE_ACTIVITY_ERROR,
   payload,
 });
 
