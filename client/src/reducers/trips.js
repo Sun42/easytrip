@@ -5,7 +5,7 @@ import {
   GET_SELECTED_ACTIVITY, ADD_NAME, ADD_DESTINATION,
   ADD_START_DATE, ADD_END_DATE, CREATE_NEW_TRAVELOGUE, CREATE_NEW_TRAVELOGUE_SUCCESS,
   CREATE_NEW_TRAVELOGUE_ERROR,
-  ACTIVITY_DONE, REMOVE_ACTIVITY, FAV_ACTIVITY,
+  ACTIVITY_DONE, DELETE_ACTIVITY, FAV_ACTIVITY,
   GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
   GET_TRIP_ID,
   GET_USER_ALL_ACTIVITIES, GET_USER_ALL_ACTIVITIES_SUCCESS, GET_USER_ALL_ACTIVITIES_ERROR,
@@ -115,7 +115,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         activities: state.activities.map(activity => activity.id === action.payload ? {...activity, favori: !activity.favori} : activity)
       };
-    case REMOVE_ACTIVITY:
+    case DELETE_ACTIVITY:
       return {
         ...state,
         activities: state.activities.filter(activity => activity.id !== action.payload)
