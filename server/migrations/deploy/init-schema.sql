@@ -21,7 +21,7 @@ CREATE TABLE "travelogue"(
     "city" TEXT,
     "date_departure" TIMESTAMPTZ,
     "date_return" TIMESTAMPTZ,
-    "user_id" INT NOT NULL REFERENCES "user"(id) 
+    "user_id" INT NOT NULL REFERENCES "user"(id)
 ); 
 
 -- Category table
@@ -38,9 +38,9 @@ CREATE TABLE "activity"(
     "name" TEXT NOT NULL, 
     "information" TEXT, 
     "location" JSON,
-    "isFavorite" BOOLEAN DEFAULT false,
-    "isDone" BOOLEAN DEFAULT false,
-    "travelogue_id" INT NOT NULL REFERENCES "travelogue"(id),
+    "is_favorite" BOOLEAN DEFAULT false,
+    "is_done" BOOLEAN DEFAULT false,
+    "travelogue_id" INT NOT NULL REFERENCES "travelogue"(id) ON DELETE CASCADE,
     "category_id" INT REFERENCES "category"(id)
 ); 
 
