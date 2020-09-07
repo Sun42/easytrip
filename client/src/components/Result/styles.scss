@@ -12,6 +12,23 @@
     margin: 10px;
     overflow: scroll;
 
+    .popup {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-weight: bolder;
+      border: 3px solid $orange;
+      border-radius: 5px;
+      height: 6%;
+      margin-right: 10px;
+
+      button {
+        border: none;
+        font-weight: bolder;
+        font-size: 1.3em;
+      }
+    }
+
     div.ui.fluid.card:hover {
       background-color: $resListHover;
       transition-duration: 0.2s;
