@@ -15,10 +15,6 @@ const tripController = {
         }
         const str_departure = moment(date_departure, 'DD/MM/YYYY').format();
         const str_return = moment(date_return, 'DD/MM/YYYY').format();
-        console.log('date_departure', date_departure);
-        console.log('str_departure', str_departure);
-        console.log('date_departure', date_return);
-        console.log('str_return', str_return);
         try {
         // Création d'un nouveau voyage (= nouveau carnet de voyage)
             const newTravelogue = await Travelogue.create({
