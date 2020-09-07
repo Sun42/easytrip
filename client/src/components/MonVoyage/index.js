@@ -45,7 +45,7 @@ const MonVoyage = ({
 
     {
       activities.map((activity) => {
-        const goodClass = activity.done ? "activity activity--done" : "activity";
+        const goodClass = activity.is_done ? "activity activity--done" : "activity";
         return (
           <li key={activity.id} className={goodClass}>
             <div className="left-side">
