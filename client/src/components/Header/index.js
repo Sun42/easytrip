@@ -17,7 +17,7 @@ import Logo from '../../assets/newLogo.PNG';
 import ModalAddTrip from '../../containers/ModalAddTrip';
 
 const Header = ( {isLogged,
-  loggedMessage, handleGetUserAllTrips, }) => (
+  loggedMessage, handleGetUserAllTrips, handleLogout}) => (
 
   <div className="header">
     <Link to="/">  
@@ -40,7 +40,22 @@ const Header = ( {isLogged,
           }}
         />
         </NavLink>
-        </div>
+      
+      <NavLink exact to='/'> 
+      <Button
+        circular
+        icon= "sign-out"
+        color="orange"
+        size="large"
+        onClick={() => {
+          handleLogout();
+        }}
+        />
+      </NavLink>
+      
+      </div>
+
+      
     )}
         
 
@@ -73,6 +88,7 @@ Header.propTypes = {
   isLogged: PropTypes.bool,
   loggedMessage: PropTypes.string,
   handleGetUserAllTrips: PropTypes.func,
+  handleLogout: PropTypes.func,
 };
 Header.defaultProps = {
   isLogged: true,

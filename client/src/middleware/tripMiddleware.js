@@ -71,7 +71,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       break;
     };
     case ADD_NEW_ACTIVITY: {
-      const { information, location, name, is_done } = action.payload;
+      const { information, location, name } = action.payload;
       const { lat, lon } = location;
       const tripID = store.getState().trips.tripID;
       axios({
