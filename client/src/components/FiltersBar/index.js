@@ -11,7 +11,7 @@ import SearchBar from '../../containers/SearchBar';
 const FiltersBar = ({
   handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
-  myCarnet, handleUserAllTrips, handleTripID,
+  myCarnet, handleUserAllTrips, handleTripID, handleGetUserAllTrips,
 }) => {
   return (
 
@@ -23,8 +23,16 @@ const FiltersBar = ({
       <div className="carnet">
         <p><label htmlFor="carnet-label">Carnet de voyage</label></p>
         <div className="carnet-list">
-        <select name="trip" id="carnet-label">
-          <option value="">Selectionnez votre carnet...</option>
+        <select 
+          onClick={() => {
+          handleGetUserAllTrips();
+          }}
+          name="trip" 
+          id="carnet-label"
+          >
+          <option value="">
+            Selectionnez votre carnet...
+          </option>
         {
           myCarnet.map((trip) => {
             return (
@@ -158,6 +166,7 @@ FiltersBar.propTypes = {
   myCarnet: PropTypes.arrayOf(PropTypes.object),
   handleUserAllTrips: PropTypes.func,
   handleTripID: PropTypes.func,
+  handleGetUserAllTrips: PropTypes.func,
 };
 
 export default FiltersBar;

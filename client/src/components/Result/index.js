@@ -20,28 +20,47 @@ import Loading from '../Loading';
 
 const Result = ({
   cordinates, loading, 
-  handleAddNewActivity, newActivityAdded, mytrips,
+  handleAddNewActivity, newActivityAddedBool, newActivityAddedInfo, 
+  newCarnetCreated, mytrips,
   foodFilter, artFilter, pubFilter, excursionFilter, shopFilter,
   acquaticFilter, funFilter, historicFilter,
   foodCheck, artCheck, pubCheck, excursionCheck, shopCheck, acquaticCheck,
-  funCheck, historicCheck, checkbox,
+  funCheck, historicCheck,
+  handleClosePopUp,
 }) => {
 
   return (
   <div className="result">
     <div className="result-list">
-      {/* {gastronomieFilter.length === [] && barFilter === []
-      && cultureFilter === [] && promenadeFilter === []
-      && shoppingFilter === []
-      && <div><p>Selectionnez au moins un filtre...</p></div>} */}
-      
-      {/* {
-      newActivityAdded === true 
-      &&
-      <div className="popup">L'activité a été ajouté à votre carnet de voyage</div>
-      } */}
 
-      {!foodCheck && !artCheck && !pubCheck && !excursionCheck && !shopCheck && !acquaticCheck && !funCheck && !historicCheck &&
+    {/* POP UP new activity added */}
+      {
+      newActivityAddedBool === true 
+      &&
+      <div className="popup">
+        <p>L'activité "{newActivityAddedInfo.name}" a été ajouté à votre carnet de voyage</p>
+        <button
+          onClick={() => {
+            handleClosePopUp();
+          }}
+        >X</button>
+      </div>
+      }
+    {/* POP UP new carnet added */}
+      {
+      newCarnetCreated === true 
+      &&
+      <div className="popup">
+        <p>Votre nouveau carnet a été créé</p>
+        <button
+          onClick={() => {
+            handleClosePopUp();
+          }}
+        >X</button>
+      </div>
+      }
+    {/* Explanation boxes / steps + condition */}
+      {!foodCheck && !artCheck && !pubCheck && !excursionCheck && !shopCheck && !acquaticCheck && !funCheck && !historicCheck && !newCarnetCreated &&
         <div className="explications">
         <div className="box1">
           <Icon name="check circle"/>
@@ -455,6 +474,7 @@ const Activity = ({
             <Button
               icon
               onClick={(evt) => {
+                console.log('cest obket', object);
                 handleAddNewActivity(
                   {
                     location: 
@@ -501,7 +521,11 @@ Result.propTypes = {
   funCheck: PropTypes.bool,
   historicCheck: PropTypes.bool,
   mytrips: PropTypes.arrayOf(PropTypes.object.isRequired),
-  handleAddNewActivity: PropTypes.func.isRequired,
+  handleAddNewActivityBool: PropTypes.func,
+  newActivityAddedBool: PropTypes.bool,
+  newActivityAddedInfo: PropTypes.object,
+  handleClosePopUp: PropTypes.func,
+  newCarnetCreated: PropTypes.bool,
 };
 
 Result.defaultProps = {

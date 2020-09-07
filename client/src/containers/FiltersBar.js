@@ -45,12 +45,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(toggleHistoric());
   },
 
-  handleUserAllTrips: () => {
-    dispatch(getUserAllTrips());
-  },
+  // handleUserAllTrips: () => {
+  //   dispatch(getUserAllTrips());
+  // },
 
   handleTripID: (id) => {
     dispatch(getTripID(id));
+  },
+
+  handleGetUserAllTrips: () => {
+    dispatch(getUserAllTrips());
   },
 
 });
