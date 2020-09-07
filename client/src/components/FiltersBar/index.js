@@ -40,6 +40,7 @@ const FiltersBar = ({
               key={trip.id}
               value={trip.name}
               onClick={() => {
+                console.log('tripID', trip.id);
                 handleTripID(trip.id);
               }}
             >

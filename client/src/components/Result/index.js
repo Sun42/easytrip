@@ -6,7 +6,7 @@ import './styles.scss';
 
 // semantic-ui
 import {
-  Button, Item, Icon, Card, Feed,
+  Button, Item, Icon,
 } from 'semantic-ui-react';
 
 // react-leaflet AND leaflet
@@ -63,17 +63,17 @@ const Result = ({
       {!foodCheck && !artCheck && !pubCheck && !excursionCheck && !shopCheck && !acquaticCheck && !funCheck && !historicCheck && !newCarnetCreated &&
         <div className="explications">
         <div className="box1">
-          <Icon name="check circle"/>
+          <Icon size="big" name="check circle"/>
           <h3>Carnet</h3>
           <p>D'abord, sélectionnez ou créez votre carnet de voyage...</p>
         </div>
         <div className="box2">
-          <Icon name="globe" />
+          <Icon size="big" name="globe" />
           <h3>Destination</h3>
           <p>Sélectionnez ensuite la destination de votre choix</p>
         </div>
         <div className="box3">
-          <Icon name="check circle"/>
+          <Icon size="big" name="check circle"/>
           <h3>Activités</h3>
           <p>Enfin, dites nous quelles sont
             vos activités préférées et nous nous chargerons du reste !</p>
@@ -467,38 +467,51 @@ const Activity = ({
   const category = object.tags.amenity || object.tags.tourism || object.tags.leisure || object.tags.sport || object.tags.shop || object.tags.historic;
   const capitalizeCategory = category.charAt(0).toUpperCase() + category.slice(1)
   return (
-  <Card fluid>
-    <Card.Content>
-      <Feed>
-        <Feed.Event>
-            <Button
-              icon
-              onClick={(evt) => {
-                console.log('cest obket', object);
-                handleAddNewActivity(
-                  {
-                    location: 
-                    {
-                      lat: object.lat, 
-                      lon: object.lon, 
-                    },
-                    name: object.tags.name ? object.tags.name : 'Nom inconnu',
-                    information: capitalizeCategory,
-                  });
-              }}
-            >
-              <Icon name="add to calendar" />
-            </Button>
-          <Feed.Content>
-            <Feed.Summary>
-              {object.tags.name ? object.tags.name : 'Nom inconnu'}
-            </Feed.Summary>
-            <Feed.Date content={capitalizeCategory} />
-          </Feed.Content>
-        </Feed.Event>
-      </Feed>
-    </Card.Content>
-  </Card>
+
+  <div className="activity">
+    <div className="activity-button--add">
+      <Button
+        icon
+        onClick={() => {
+          handleAddNewActivity(
+            {
+              location: 
+                {
+                  lat: object.lat, 
+                  lon: object.lon, 
+                },
+                  name: object.tags.name ? object.tags.name : 'Nom inconnu',
+                  information: capitalizeCategory,
+            });
+        }}
+      >
+        <Icon name="add to calendar" />
+      </Button>
+    </div>
+    <div className="activity-info-wrapper">
+      <div className="activity-title">
+        <h3>{object.tags.name ? object.tags.name : 'Nom inconnu'}</h3>
+      </div>
+      <div className="activity-details">
+        <div className="activity-details-address">
+          <p>{object.tags['addr:city']} {object.tags['addr:postcode']}</p>
+          <p>{object.tags['addr:street']}</p>
+          <p>{object.tags.phone}</p>
+          <p>{object.tags['contact:email']}</p>
+          <p>{object.tags.website}</p>
+        </div>
+        <div className="activity-details-services">
+          {object.tags.cuisine && <p>Type de cusine : {object.tags.cuisine}</p>}
+          {object.tags.delivery && <p>Livraison : {object.tags.delivery}</p>}
+          {object.tags.takeaway&& <p>A emporter : {object.tags.takeaway}</p>}
+          {object.tags.outdoor_seating && <p>Terrasse : {object.tags.outdoor_seating}</p>}
+        </div>
+      </div>
+      <div className="activity-amenities">
+        <p>{capitalizeCategory}</p>
+    </div>
+  </div>
+</div>
 )};
 
 Result.propTypes = {

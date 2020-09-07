@@ -71,6 +71,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       const { information, location, name } = action.payload;
       const { lat, lon } = location;
       const tripID = store.getState().trips.tripID;
+      console.log('id de travelogue dans le mv', tripID);
       axios({
         method: 'post',
         url: `http://localhost:3000/api/activity/new/`,

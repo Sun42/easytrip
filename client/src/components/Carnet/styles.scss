@@ -68,11 +68,23 @@
         flex-direction: row;
         justify-content: space-between;
         height: 30%;
+        align-items: center;
 
-        button {
-          background-color: white;
+        button:first-child {
+          background-color: $orange;
           border: none;
           cursor: pointer;
+          border: 0.5px solid $orange;
+          border-radius: 5px;
+          color: white;
+        }
+
+        button:first-child:hover {
+          font-size: 1.1em;
+        }
+
+        button {
+          border: none;
         }
       }
     }

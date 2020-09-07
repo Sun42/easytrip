@@ -1,3 +1,4 @@
+const moment = require('moment');
 const { Travelogue, Activity, User } = require('../models');
 const { checkOwnership } = require('../helpers/tripHelper');
 const tripController = {
@@ -12,13 +13,15 @@ const tripController = {
         if (!name) {
             return response.status(403).json('Vous devez donner au moins un nom à votre carnet de voyage');
         }
+        const str_departure = moment(date_departure, 'DD/MM/YYYY').format();
+        const str_return = moment(date_return, 'DD/MM/YYYY').format();
         try {
         // Création d'un nouveau voyage (= nouveau carnet de voyage)
             const newTravelogue = await Travelogue.create({
                 name,
                 city,
-                date_departure,
-                date_return,
+                date_departure : str_departure,
+                date_return: str_return,
                 user_id : request.session.user.id,
             });
 
@@ -76,11 +79,13 @@ const tripController = {
             if (!travelogue) {
                 return response.status(404).json('Carnet de voyage introuvable');
             }
+            /*
             const activities = await Activity.findAll({
                 where: { travelogue_id: travel_id },
             });
             console.log('activities', activities);
             Object.assign(travelogue, { 'activities' : activities });
+            */
             return response.status(200).json({ 'travelogue' : travelogue });
         }
         catch (error) {
@@ -115,7 +120,8 @@ const tripController = {
             return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
         try {
-            const travelToBeDeleted = await Travelogue.findByPk(request.params.id);
+            const travel_id = request.params.id;
+            const travelToBeDeleted = await Travelogue.findByPk(travel_id);
 
             if (!travelToBeDeleted) {
                 return response.status(404).json('Carnet de voyage introuvable');
@@ -134,7 +140,6 @@ const tripController = {
         if (!request.session.user) {
             return response.status(401).json({ error : 'Utilisateur non authentifié' });
         }
-        console.log('ca passe encore?');
         try {
             const { travelogue_id, name, information, location } = request.body;
             const user_id = request.session.user.id;
