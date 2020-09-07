@@ -12,7 +12,9 @@ export const CREATE_NEW_TRAVELOGUE_ERROR = 'CREATE_NEW_TRAVELOGUE_ERROR';
 export const CHANGE_DONE_ACTIVITY = 'CHANGE_DONE_ACTIVITY';
 export const CHANGE_DONE_ACTIVITY_SUCCESS = 'CHANGE_DONE_ACTIVITY_SUCCESS';
 export const CHANGE_DONE_ACTIVITY_ERROR = 'CHANGE_DONE_ACTIVITY_ERROR';
-export const FAV_ACTIVITY = 'FAV_ACTIVITY';
+export const CHANGE_FAVORITE_ACTIVITY = 'CHANGE_FAVORITE_ACTIVITY';
+export const CHANGE_FAVORITE_ACTIVITY_SUCCESS = 'CHANGE_FAVORITE_ACTIVITY_SUCCESS';
+export const CHANGE_FAVORITE_ACTIVITY_ERROR = 'CHANGE_FAVORITE_ACTIVITY_ERROR';
 export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const DELETE_ACTIVITY_SUCCESSS = 'DELETE_ACTIVITY_SUCCESSS';
 export const DELETE_ACTIVITY_ERROR = 'DELETE_ACTIVITY_ERROR';
@@ -96,8 +98,18 @@ export const changeDoneActivityError = (payload) => ({
   payload,
 });
 
-export const favActivity = (payload) => ({
-  type: FAV_ACTIVITY,
+export const changeFavoriteActivity = (payload) => ({
+  type: CHANGE_FAVORITE_ACTIVITY,
+  payload,
+});
+
+export const changeFavoriteActivitySuccess = (payload) => ({
+  type: CHANGE_FAVORITE_ACTIVITY_SUCCESS,
+  payload,
+});
+
+export const changeFavoriteActivityError = (payload) => ({
+  type: CHANGE_FAVORITE_ACTIVITY_ERROR,
   payload,
 });
 

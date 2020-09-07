@@ -196,13 +196,14 @@ const tripController = {
                 return response.status(400).json({ 'error': 'activité non reconnue' });
             }
 
-            if (request.body.is_done) {
+            if ('is_done' in request.body) {
                 activity.is_done = request.body.is_done;
             }
-            if (request.body.is_favorite) {
+            if ('is_favorite' in request.body) {
                 activity.is_favorite = request.body.is_favorite;
             }
             await activity.save();
+            console.log({ 'activity' : activity });
             return response.status(200).json({ 'activity' : activity });
         }
         catch (error) {
