@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {toast} from 'react-toastify';
 import {
   LOGIN, CHECK_AUTH, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM, LOGOUT, logoutSuccess/*@fixme no-unused-vars, signupForm, SignUpForm*/,
 } from '../store/action/login-actions';
@@ -18,7 +19,9 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res.data);
+          toast.dark('Déconnecté!');
           store.dispatch(logoutSuccess());
+          
         })
         .catch((err) => {
           console.error(err);
@@ -37,6 +40,7 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: true, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
+          toast.dark(`Bienvenue !`);
           store.dispatch(loginSuccess(res.data));
         })
         .catch((err) => {
@@ -79,10 +83,12 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res.data); // modif sarah
+          toast.dark('Vous êtes bien inscrit');
           store.dispatch(signupSuccess()); // modif sarah
         })
         .catch((err) => {
           console.log(err); // modif sarah
+          toast.dark('Inscription impossible');
           store.dispatch(signupFailed(err)); // modif sarah
         });
 

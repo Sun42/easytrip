@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import {toast} from 'react-toastify';
+
 import { 
   GET_USER_ALL_TRIPS, 
   getUserAllTripsSuccess, getUserAllTripsError, 
@@ -44,10 +46,12 @@ const tripMiddleware = (store) => (next) => (action) => {
            })
          .then((res) => {
            store.dispatch(createNewTravelogueSuccess());
+           toast.dark('Carnet de voyage créé')
            store.dispatch(getUserAllTrips());
         })
          .catch((e) => {
            store.dispatch(createNewTravelogueError());
+           toast.dark('Impossible de créer un carnet')
         });
       break;
     };
@@ -62,6 +66,7 @@ const tripMiddleware = (store) => (next) => (action) => {
         .then((res) => {
           console.log('supprimé!!!');
           store.dispatch(deleteTravelogueSuccess());
+          toast.dark('Carnet supprimé !')
           store.dispatch(getUserAllTrips());
         })
         .catch((e) => {
@@ -89,6 +94,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(addNewActivitySuccess());
+          toast.dark(`Activité ajoutée à votre carnet de voyage`)
         })
         .catch((e) => {
           store.dispatch(addNewActivityError(e));
@@ -120,6 +126,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(deleteActivitySuccess());
+          toast.dark('Activité supprimée de votre carnet de voyage!')
         })
         .catch((e) => {
           store.dispatch(deleteActivityError());
