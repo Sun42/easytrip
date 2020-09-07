@@ -51,9 +51,11 @@ const MonVoyage = ({
             <div className="left-side">
               <span
                 onClick={() => {
-                  console.log('all activities', activities);
-                  console.log('activity', activity.is_done);
-                  handleChangeDoneActivity(activity.id);
+                  console.log('click', activity.id, activity.is_done);
+                  handleChangeDoneActivity({
+                    id: activity.id, 
+                    is_done: activity.is_done,
+                  });
               }}
               >
                 {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}

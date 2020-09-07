@@ -84,7 +84,6 @@ const tripMiddleware = (store) => (next) => (action) => {
             lat: lat,
             lon: lon,
           },
-          is_done: is_done,
         },
         withCredentials: true
       })
@@ -128,11 +127,14 @@ const tripMiddleware = (store) => (next) => (action) => {
       break;
     }
     case CHANGE_DONE_ACTIVITY: {
-      const id = action.payload;
-      const done = store.getState().trips.acti
+      const {id, is_done } = action.payload;
+      console.log('action', action.payload, id, is_done);
       axios({
         method: 'patch',
         url: `http://localhost:3000/api/activity/${id}`,
+        data: {
+          is_done: is_done,
+        },
         withCredentials: true,
       })
         .then((res) => {
@@ -143,6 +145,25 @@ const tripMiddleware = (store) => (next) => (action) => {
         });
       break;
     }
+    // case CHANGE_FAVORITE_ACTIVITY: {
+    //   const {id, is_favorite } = action.payload;
+    //   console.log('action', action.payload, id, is_favorite);
+    //   axios({
+    //     method: 'patch',
+    //     url: `http://localhost:3000/api/activity/${id}`,
+    //     data: {
+    //       is_favorite: is_favorite,
+    //     },
+    //     withCredentials: true,
+    //   })
+    //     .then((res) => {
+    //       store.dispatch(changeFavoriteActivitySuccess());
+    //     })
+    //     .catch((e) => {
+    //       store.dispatch(changeFavoriteActivityError());
+    //     });
+    //   break;
+    // }
     default:
   }
 };

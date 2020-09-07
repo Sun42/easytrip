@@ -481,7 +481,6 @@ const Activity = ({
                 },
               name: object.tags.name ? object.tags.name : 'Nom inconnu',
               information: capitalizeCategory,
-              is_done: false,
             });
         }}
       >
