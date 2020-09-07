@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Styles
+// Styles and react-icons
 import './styles.scss';
+import {IconContext} from "react-icons";
+import { MdAddLocation } from 'react-icons/md';
 
 // semantic-ui
 import {
-  Button, Item, Icon,
+  Item, Icon,
 } from 'semantic-ui-react';
 
 // react-leaflet AND leaflet
@@ -470,8 +472,7 @@ const Activity = ({
 
   <div className="activity">
     <div className="activity-button--add">
-      <Button
-        icon
+      <button
         onClick={() => {
           handleAddNewActivity(
             {
@@ -485,20 +486,29 @@ const Activity = ({
             });
         }}
       >
-        <Icon name="add to calendar" />
-      </Button>
+        <IconContext.Provider
+          value={{ color: 'black', size: '40px', background: 'white' }}
+        >
+          <div>
+            <MdAddLocation />
+          </div>
+        </IconContext.Provider>
+      </button>
     </div>
     <div className="activity-info-wrapper">
       <div className="activity-title">
         <h3>{object.tags.name ? object.tags.name : 'Nom inconnu'}</h3>
+      </div>
+      <div className="activity-amenities">
+        <p>{capitalizeCategory}</p>
       </div>
       <div className="activity-details">
         <div className="activity-details-address">
           <p>{object.tags['addr:city']} {object.tags['addr:postcode']}</p>
           <p>{object.tags['addr:street']}</p>
           <p>{object.tags.phone}</p>
-          <p>{object.tags['contact:email']}</p>
-          <p>{object.tags.website}</p>
+          <p><a href="mailto:{object.tags['contact:email']}">{object.tags['contact:email']}</a></p>
+          <p><a href="http://{object.tags.website}">{object.tags.website}</a></p>
         </div>
         <div className="activity-details-services">
           {object.tags.cuisine && <p>Type de cusine : {object.tags.cuisine}</p>}
@@ -507,11 +517,8 @@ const Activity = ({
           {object.tags.outdoor_seating && <p>Terrasse : {object.tags.outdoor_seating}</p>}
         </div>
       </div>
-      <div className="activity-amenities">
-        <p>{capitalizeCategory}</p>
     </div>
   </div>
-</div>
 )};
 
 Result.propTypes = {

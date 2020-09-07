@@ -11,7 +11,9 @@ export const CREATE_NEW_TRAVELOGUE_SUCCESS = 'CREATE_NEW_TRAVELOGUE_SUCCESS';
 export const CREATE_NEW_TRAVELOGUE_ERROR = 'CREATE_NEW_TRAVELOGUE_ERROR';
 export const ACTIVITY_DONE = 'ACTIVITY_DONE';
 export const FAV_ACTIVITY = 'FAV_ACTIVITY';
-export const REMOVE_ACTIVITY = 'REMOVE_ACTIVITY';
+export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
+export const DELETE_ACTIVITY_SUCCESSS = 'DELETE_ACTIVITY_SUCCESSS';
+export const DELETE_ACTIVITY_ERROR = 'DELETE_ACTIVITY_ERROR';
 export const GET_USER_ALL_TRIPS = 'GET_USER_ALL_TRIPS';
 export const GET_USER_ALL_TRIPS_SUCCESS = 'GET_USER_ALL_TRIPS_SUCCESS';
 export const GET_USER_ALL_TRIPS_ERROR = 'GET_USER_ALL_TRIPS_ERROR';
@@ -87,8 +89,18 @@ export const favActivity = (payload) => ({
   payload,
 });
 
-export const removeActivity = (payload) => ({
-  type: REMOVE_ACTIVITY,
+export const deleteActivity = (payload) => ({
+  type: DELETE_ACTIVITY,
+  payload,
+});
+
+export const deleteActivitySuccess = (payload) => ({
+  type: DELETE_ACTIVITY_SUCCESSS,
+  payload,
+});
+
+export const deleteActivityError = (payload) => ({
+  type: DELETE_ACTIVITY_ERROR,
   payload,
 });
 

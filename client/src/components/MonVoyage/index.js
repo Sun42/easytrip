@@ -15,7 +15,7 @@ import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 const MonVoyage = ({ 
   activities, handleActivityDone, handleFavActivity, 
-  handleRemoveActivity, trip 
+  handleDeleteActivity, trip 
 }) => {
 
   // momentObject converter
@@ -70,7 +70,8 @@ const MonVoyage = ({
             
               <span
                 onClick={() => {
-                  handleRemoveActivity(activity.id);
+                  console.log('id activity au click', activity.id);
+                  handleDeleteActivity(activity.id);
               }}
               >
                 <FaTrashAlt size={22} />
@@ -87,7 +88,7 @@ const MonVoyage = ({
 MonVoyage.propTypes = {
   handleActivityDone: PropTypes.func.isRequired,
   handleFavActivity: PropTypes.func.isRequired,
-  handleRemoveActivity: PropTypes.func.isRequired,
+  handleDeleteActivity: PropTypes.func.isRequired,
 };
 
 export default MonVoyage;
