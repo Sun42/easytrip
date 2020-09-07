@@ -1,5 +1,6 @@
 require('dotenv').config();
 // Import of needed packages (express)
+const path = require('path');
 const express = require('express');
 
 const morgan = require('morgan');
@@ -36,10 +37,16 @@ app.use((request, response, next) => {
     response.header('Access-Control-Allow-Origin', 'http://localhost:8080');
     response.header('Access-Control-Allow-Credentials', true);
     response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    response.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    response.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE, PATCH');
     next();
 });
 
+/*
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+*/
 // Routing
 app.use(router);
 

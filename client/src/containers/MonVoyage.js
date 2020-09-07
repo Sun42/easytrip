@@ -16,8 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = ((dispatch) => ({
 
-  handleChangeDoneActivity: (id) => {
-    dispatch(changeDoneActivity(id));
+  handleChangeDoneActivity: (id, is_done) => {
+    dispatch(changeDoneActivity(id, is_done));
   },
 
   handleFavActivity: (id) => {

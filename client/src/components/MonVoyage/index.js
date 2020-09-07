@@ -45,13 +45,17 @@ const MonVoyage = ({
 
     {
       activities.map((activity) => {
-        const goodClass = activity.done ? "activity activity--done" : "activity";
+        const goodClass = activity.is_done ? "activity activity--done" : "activity";
         return (
           <li key={activity.id} className={goodClass}>
             <div className="left-side">
               <span
                 onClick={() => {
-                  handleChangeDoneActivity(activity.id);
+                  console.log('click', activity.id, activity.is_done);
+                  handleChangeDoneActivity({
+                    id: activity.id, 
+                    is_done: activity.is_done,
+                  });
               }}
               >
                 {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}

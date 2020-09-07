@@ -479,8 +479,8 @@ const Activity = ({
                   lat: object.lat, 
                   lon: object.lon, 
                 },
-                  name: object.tags.name ? object.tags.name : 'Nom inconnu',
-                  information: capitalizeCategory,
+              name: object.tags.name ? object.tags.name : 'Nom inconnu',
+              information: capitalizeCategory,
             });
         }}
       >
