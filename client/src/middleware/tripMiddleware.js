@@ -8,7 +8,7 @@ import {
   ADD_NEW_ACTIVITY, addNewActivitySuccess, addNewActivityError,
   CREATE_NEW_TRAVELOGUE, createNewTravelogueSuccess, createNewTravelogueError,
   GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError, 
-  getUserAllTrips, getUserAllActivities,
+  getUserAllTrips,
   DELETE_TRAVELOGUE, deleteTravelogueSuccess, deleteTravelogueError,
   DELETE_ACTIVITY, deleteActivitySuccess, deleteActivityError,
   CHANGE_DONE_ACTIVITY, changeDoneActivitySuccess, changeDoneActivityError,
