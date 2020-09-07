@@ -47,12 +47,12 @@ const tripMiddleware = (store) => (next) => (action) => {
            })
          .then((res) => {
            store.dispatch(createNewTravelogueSuccess());
-           toast.dark('Carnet de voyage créé')
+           toast.success('Vous avez créé un nouveau carnet de voyage')
            store.dispatch(getUserAllTrips());
         })
          .catch((e) => {
            store.dispatch(createNewTravelogueError());
-           toast.dark('Impossible de créer un carnet')
+           toast.success('Impossible de créer un nouveau carnet')
         });
       break;
     };
@@ -66,7 +66,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(deleteTravelogueSuccess());
-          toast.dark('Carnet supprimé !')
+          toast.success('Carnet supprimé !')
           store.dispatch(getUserAllTrips());
         })
         .catch((e) => {
@@ -94,7 +94,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(addNewActivitySuccess());
-          toast.dark(`Activité ajoutée à votre carnet de voyage`)
+          toast.success(`Activité ajoutée à votre carnet de voyage`)
         })
         .catch((e) => {
           store.dispatch(addNewActivityError(e));
@@ -126,7 +126,7 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(deleteActivitySuccess());
-          toast.dark('Activité supprimée de votre carnet de voyage!')
+          toast.success('Activité supprimée de votre carnet de voyage!')
         })
         .catch((e) => {
           store.dispatch(deleteActivityError());

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {toast} from 'react-toastify';
+
 import {
   LOGIN, CHECK_AUTH, loginSuccess, loginError, signupSuccess, signupFailed, SIGNUPFORM, LOGOUT, logoutSuccess/*@fixme no-unused-vars, signupForm, SignUpForm*/,
 } from '../store/action/login-actions';
@@ -16,7 +17,7 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res.data);
-          toast.dark('Déconnecté!');
+          toast.success('A bientôt !');
           store.dispatch(logoutSuccess());
           
         })
@@ -37,7 +38,7 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: true, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          toast.dark(`Bienvenue !`);
+          toast.success('Bonjour :)');
           store.dispatch(loginSuccess(res.data));
         })
         .catch((err) => {
@@ -56,7 +57,8 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log('CHECK_AUTH', res.data);
           if (res.data.logged === true ) {
             store.dispatch(loginSuccess(res.data));
-          } else {store.dispatch(loginError('Utilisateur non connecté'));}
+          } else {
+            store.dispatch(loginError('Utilisateur non connecté'));}
         })
         .catch((err) => {
           console.error('CHECK AUTH ERROR');
@@ -79,14 +81,14 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: true, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          console.log(res.data); // modif sarah
-          toast.dark('Vous êtes bien inscrit');
-          store.dispatch(signupSuccess()); // modif sarah
+          console.log(res.data); 
+          toast.success('Bienvenue sur Easytrip');
+          store.dispatch(signupSuccess()); 
         })
         .catch((err) => {
-          console.log(err); // modif sarah
-          toast.dark('Inscription impossible');
-          store.dispatch(signupFailed(err)); // modif sarah
+          console.log(err); 
+          toast.error('Votre mot de passe doit faire au moins 8 caractères');
+          store.dispatch(signupFailed(err)); 
         });
 
       break;
