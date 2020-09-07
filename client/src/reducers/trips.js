@@ -6,7 +6,7 @@ import {
   ADD_START_DATE, ADD_END_DATE, CREATE_NEW_TRAVELOGUE, CREATE_NEW_TRAVELOGUE_SUCCESS,
   CREATE_NEW_TRAVELOGUE_ERROR,
   CHANGE_DONE_ACTIVITY, CHANGE_DONE_ACTIVITY_SUCCESS, CHANGE_DONE_ACTIVITY_ERROR,
-  FAV_ACTIVITY,
+  CHANGE_FAVORITE_ACTIVITY, CHANGE_FAVORITE_ACTIVITY_SUCCESS, CHANGE_FAVORITE_ACTIVITY_ERROR,
   GET_USER_ALL_TRIPS, GET_USER_ALL_TRIPS_SUCCESS, GET_USER_ALL_TRIPS_ERROR,
   GET_TRIP_ID,
   GET_USER_ALL_ACTIVITIES, GET_USER_ALL_ACTIVITIES_SUCCESS, GET_USER_ALL_ACTIVITIES_ERROR,
@@ -110,20 +110,28 @@ export default (state = initialState, action = {}) => {
     case CHANGE_DONE_ACTIVITY:
       return {
         ...state,
-        activities: state.activities.map(activity => activity.id === action.payload ? {...activity, done: !activity.done} : activity)
       };
     case CHANGE_DONE_ACTIVITY_SUCCESS:
       return {
         ...state,
+        activities: state.activities.map(activity => activity.id === action.payload.id ? {...activity, is_done: action.payload.is_done} : activity)
       };
     case CHANGE_DONE_ACTIVITY_ERROR:
       return {
         ...state,
       };
-    case FAV_ACTIVITY:
+    case CHANGE_FAVORITE_ACTIVITY:
       return {
         ...state,
-        activities: state.activities.map(activity => activity.id === action.payload ? {...activity, favori: !activity.favori} : activity)
+      };
+    case CHANGE_FAVORITE_ACTIVITY_SUCCESS:
+      return {
+        ...state,
+        activities: state.activities.map(activity => activity.id === action.payload ? {...activity, is_favorite: !activity.is_favorite} : activity)
+      };
+    case CHANGE_FAVORITE_ACTIVITY_ERROR:
+      return {
+        ...state,
       };
     case DELETE_ACTIVITY:
       return {

@@ -14,7 +14,7 @@ import { FaHeart, FaHeartBroken, FaRegCheckSquare, FaTrashAlt } from 'react-icon
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
 const MonVoyage = ({ 
-  activities, handleChangeDoneActivity, handleFavActivity, 
+  activities, handleChangeDoneActivity, handleChangeFavoriteActivity, 
   handleDeleteActivity, trip 
 }) => {
 
@@ -46,19 +46,20 @@ const MonVoyage = ({
     {
       activities.map((activity) => {
         const goodClass = activity.is_done ? "activity activity--done" : "activity";
+        console.log('activity que je recois', activity);
         return (
           <li key={activity.id} className={goodClass}>
             <div className="left-side">
               <span
                 onClick={() => {
-                  console.log('click', activity.id, activity.is_done);
                   handleChangeDoneActivity({
                     id: activity.id, 
-                    is_done: activity.is_done,
+                    is_done: !activity.is_done,
                   });
               }}
               >
-                {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
+                
+                {activity.is_done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
               </span>
               <span>{activity.name}</span>
             </div>
@@ -66,10 +67,13 @@ const MonVoyage = ({
             <div className="right-side">
               <span
                 onClick={() => {
-                  handleFavActivity(activity.id);
+                  handleChangeFavoriteActivity({
+                    id: activity.id, 
+                    is_favorite: activity.is_favorite,
+                  });
                 }}
               >
-                {activity.favori ? <FaHeart size={22} /> : <FaHeartBroken size={22} />}
+                {activity.is_favorite ? <FaHeart size={22} /> : <FaHeartBroken size={22} />}
               </span>
             
               <span
@@ -91,7 +95,7 @@ const MonVoyage = ({
 
 MonVoyage.propTypes = {
   handleChangeDoneActivity: PropTypes.func.isRequired,
-  handleFavActivity: PropTypes.func.isRequired,
+  handleChangeFavoriteActivity: PropTypes.func.isRequired,
   handleDeleteActivity: PropTypes.func.isRequired,
 };
 

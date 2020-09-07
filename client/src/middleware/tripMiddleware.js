@@ -5,10 +5,12 @@ import {
   getUserAllTripsSuccess, getUserAllTripsError, 
   ADD_NEW_ACTIVITY, addNewActivitySuccess, addNewActivityError,
   CREATE_NEW_TRAVELOGUE, createNewTravelogueSuccess, createNewTravelogueError,
-  GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError, getUserAllTrips,
+  GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError, 
+  getUserAllTrips, getUserAllActivities,
   DELETE_TRAVELOGUE, deleteTravelogueSuccess, deleteTravelogueError,
   DELETE_ACTIVITY, deleteActivitySuccess, deleteActivityError,
   CHANGE_DONE_ACTIVITY, changeDoneActivitySuccess, changeDoneActivityError,
+  CHANGE_FAVORITE_ACTIVITY, changeFavoriteActivitySuccess, changeFavoriteActivityError,
 } from '../store/action/trips-actions';
 
 const tripMiddleware = (store) => (next) => (action) => {
@@ -60,7 +62,6 @@ const tripMiddleware = (store) => (next) => (action) => {
         withCredentials: true,
       })
         .then((res) => {
-          console.log('supprimé!!!');
           store.dispatch(deleteTravelogueSuccess());
           store.dispatch(getUserAllTrips());
         })
@@ -128,7 +129,7 @@ const tripMiddleware = (store) => (next) => (action) => {
     }
     case CHANGE_DONE_ACTIVITY: {
       const {id, is_done } = action.payload;
-      console.log('action', action.payload, id, is_done);
+      console.log('boolean que je recois dans le mv', is_done);
       axios({
         method: 'patch',
         url: `http://localhost:3000/api/activity/${id}`,
@@ -138,32 +139,34 @@ const tripMiddleware = (store) => (next) => (action) => {
         withCredentials: true,
       })
         .then((res) => {
-          store.dispatch(changeDoneActivitySuccess());
+          console.log('boolean dactivite que je viens de modifier', res.data.activity.is_done);
+          console.log('id', res.data.activity);
+          store.dispatch(changeDoneActivitySuccess(res.data.activity));
         })
         .catch((e) => {
           store.dispatch(changeDoneActivityError());
         });
       break;
     }
-    // case CHANGE_FAVORITE_ACTIVITY: {
-    //   const {id, is_favorite } = action.payload;
-    //   console.log('action', action.payload, id, is_favorite);
-    //   axios({
-    //     method: 'patch',
-    //     url: `http://localhost:3000/api/activity/${id}`,
-    //     data: {
-    //       is_favorite: is_favorite,
-    //     },
-    //     withCredentials: true,
-    //   })
-    //     .then((res) => {
-    //       store.dispatch(changeFavoriteActivitySuccess());
-    //     })
-    //     .catch((e) => {
-    //       store.dispatch(changeFavoriteActivityError());
-    //     });
-    //   break;
-    // }
+    case CHANGE_FAVORITE_ACTIVITY: {
+      const {id, is_favorite } = action.payload;
+      console.log('action', action.payload, id, is_favorite);
+      axios({
+        method: 'patch',
+        url: `http://localhost:3000/api/activity/${id}`,
+        data: {
+          is_favorite: !is_favorite,
+        },
+        withCredentials: true,
+      })
+        .then((res) => {
+          store.dispatch(changeFavoriteActivitySuccess(res.data.activity.id));
+        })
+        .catch((e) => {
+          store.dispatch(changeFavoriteActivityError());
+        });
+      break;
+    }
     default:
   }
 };
