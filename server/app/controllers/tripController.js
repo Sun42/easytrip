@@ -163,6 +163,7 @@ const tripController = {
             return response.status(500).json({ 'error' : error });
         }
     },
+
     deleteActivity: async (request, response) => {
         if (!request.session.user) {
             return response.status(401).json({ error : 'Utilisateur non authentifié' });
@@ -172,6 +173,36 @@ const tripController = {
             const activity_id = request.params.id;
             const activity = await Activity.findByPk(activity_id);
             await activity.destroy();
+            return response.status(200).json({ 'activity' : activity });
+        }
+        catch (error) {
+            console.trace(error);
+            return response.status(500).json({ 'error' : error });
+        }
+    },
+    updateActivity : async (request, response) => {
+        if (!request.session.user) {
+            return response.status(401).json({ error : 'Utilisateur non authentifié' });
+        }
+
+        // @todo activity ownership validation
+        try {
+            console.log('request.body', request.body);
+            console.log('request.params', request.params);
+            const activity_id = request.params.id;
+            const activity = await Activity.findByPk(activity_id);
+            console.log('activity', activity);
+            if (!activity) {
+                return response.status(400).json({ 'error': 'activité non reconnue' });
+            }
+
+            if (request.body.is_done) {
+                activity.is_done = request.body.is_done;
+            }
+            if (request.body.is_favorite) {
+                activity.is_favorite = request.body.is_favorite;
+            }
+            await activity.save();
             return response.status(200).json({ 'activity' : activity });
         }
         catch (error) {

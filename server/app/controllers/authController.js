@@ -18,7 +18,9 @@ const authController = {
                 return response.status(400, 'Merci de remplir vos informations');
 
             }
-
+            if (password.length < 8) {
+                return response.status(403).json({ 'error' : 'Le mot de passe doit être de 8 caractères minimum'});
+            }
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
             const newUser = User.build({
                 name,
@@ -60,7 +62,6 @@ const authController = {
                     email,
                 },
             });
-
             // On vérifie que l'utilisateur ait rempli le bon mail et le bon mot de passe associé
             if (user && await bcrypt.compareSync(password, user.password)) {
                 // Permet de ne récupérer que les 'dataValues' et pas les autres données
