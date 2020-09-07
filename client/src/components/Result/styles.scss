@@ -29,6 +29,19 @@
       }
     }
 
+    .activity {
+      display: flex;
+      justify-content: left;
+      flex-direction: row;
+      width: 100%;
+
+      &-button--add {
+
+      }
+
+      
+    }
+
     div.ui.fluid.card:hover {
       background-color: $resListHover;
       transition-duration: 0.2s;
@@ -55,11 +68,21 @@
     .explications {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-evenly;
       width: 60%;
       height: 100%;
       margin: auto;
       text-align: center;
+
+      .box1, .box2, .box3 {
+        border: 1px solid $orange;
+        border-radius: 5px;
+        padding: 1em;
+        
+        h3 {
+          margin: 0px;
+        }
+      }
     }
   }
 

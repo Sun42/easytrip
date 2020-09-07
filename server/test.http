@@ -16,7 +16,7 @@ GET http://{{baseurl}}/api/search?location=''
 GET http://{{baseurl}}/api/search/?location=LYON
 
 ###
-GET http://{{baseurl}}/api/search/?location=LYON&filters=1
+GET http://{{baseurl}}/api/search/?location=ETRETAT&filters=1
 
 ###
 GET http://{{baseurl}}/api/search/?location=ETRETAT&filters=1&food

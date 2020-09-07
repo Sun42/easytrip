@@ -74,7 +74,7 @@ const Trip = ({ city, date_departure, date_return, name, id,
               handleGetUserAllActivities({id});
             }}
             >
-            Détails
+            Voir les activités
           </Button>
         </Link>
           <button 
@@ -82,7 +82,7 @@ const Trip = ({ city, date_departure, date_return, name, id,
               handleDeleteTravelogue({id});
             }}
             >
-            <FaTrashAlt size={22} />
+            <FaTrashAlt size={29} />
           </button>
       </div>
   </div>
