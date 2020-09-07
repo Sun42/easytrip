@@ -1,15 +1,7 @@
 //import React from 'react';
 import PropTypes from 'prop-types';
-import React, { useState} from "react";
+import React from "react";
 import { Link} from 'react-router-dom';
-
-import {
-
-  Checkbox,
-
-  Form,
-  
-} from "semantic-ui-react";
 
 import Field from './Field.js/index.js';
 // import { useField } from './hooks';
@@ -27,8 +19,6 @@ const SignUpForm = ({ // modif Sarah
   errorMessage,
 }) => {
   console.log(SignUpForm);
-
-  const [terms, setTerms] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -78,28 +68,13 @@ const SignUpForm = ({ // modif Sarah
             placeholder=""
             value={password}
           />
-
-<Form.Field
-                        control={Checkbox}
-                        onChange={() => setTerms(!terms)}
-                        id="terms"
-                        label={{
-                            children: [
-                                "J'accepte les",
-                                <a className="internal-link" href="/test">
-                                    termes
-                                </a>,
-                            ],
-                        }}
-                    />
            
           <button
             type="submit"
             className="login-form-button"
             onClick="submit"
           >
-          <Link activeClassName="active" to="/result">
-            Valider mon incription </Link>
+            Valider mon incription 
           </button>
          
           <Link activeClassName="active" to="/login">
