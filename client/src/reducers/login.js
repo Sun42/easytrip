@@ -1,5 +1,5 @@
 import {
-  CHANGE_FIELD, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS, LOGIN, LOGOUT, SIGNUPFORM
+  CHANGE_FIELD, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS, LOGIN, LOGOUT, SIGNUPFORM, SIGNUP_FAILED, SIGNUP_SUCCESS,
 } from '../store/action/login-actions';
 
 const stateInitial = {
@@ -63,11 +63,32 @@ export default (state = stateInitial, action = {}) => {
     case SIGNUPFORM:
       return {
         ...state,
+        isLogged: false,
         error: '',
         ...action.payload,
 
       }
-
+      case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        isLogged: true,
+        email: '',
+        password: '',
+        name: '',
+        surName: '',
+        error: '',
+        login: action.payload,
+        
+      };
+      case SIGNUP_FAILED:
+          return {
+            ...state,
+            password: '',
+            error: action.payload,
+            loggedMessage: action.payload,
+            login: {},
+            isLogged: false,
+          };
     default:
       return state;
   }

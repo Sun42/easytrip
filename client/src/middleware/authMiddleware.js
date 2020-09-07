@@ -52,14 +52,15 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: true // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          console.log('CHECK_AUTH OK', res.data);
-          if (res.data.logged) {
+          console.log('CHECK_AUTH', res.data);
+          if (res.data.logged === true ){
             store.dispatch(loginSuccess(res.data));
-          }
+          } else {store.dispatch(loginError('Utilisateur non connecté'));}
         })
         .catch((err) => {
           console.error('CHECK AUTH ERROR');
           console.error(err);
+          store.dispatch(loginError('Utilisateur non connecté'));
         })
       break;
     }

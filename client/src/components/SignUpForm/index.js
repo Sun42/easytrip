@@ -1,7 +1,7 @@
 //import React from 'react';
 import PropTypes from 'prop-types';
 import React from "react";
-import { Link} from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 
 import Field from './Field.js/index.js';
 // import { useField } from './hooks';
@@ -81,6 +81,9 @@ const SignUpForm = ({ // modif Sarah
             <span>Vous avez deja un compte ?</span>
           </Link>
           </form>)}
+          {isLogged && (
+            <Redirect to='/login' > </Redirect>
+          )}
 
       </div>
 
@@ -94,6 +97,7 @@ SignUpForm.propTypes = {
   name: PropTypes.string.isRequired,
   surName: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
+  
 
 };
 
