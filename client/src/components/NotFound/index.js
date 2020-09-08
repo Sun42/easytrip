@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {  Link } from 'react-router-dom';
 import "./styles.scss";
 
 const NotFound = () => {
@@ -15,7 +16,9 @@ const NotFound = () => {
       </h2>
       <p>Désolé, cette page n'existe pas</p>
       {opened && (
-        <img src="https://c4.wallpaperflare.com/wallpaper/432/592/854/website-link-zelda-the-legend-of-zelda-wallpaper-preview.jpg" alt="" />
+        <Link to="/">  
+        <img src="la-bouee-de-secours-ou-de-sauvetage-13371-720-0.jpg" alt="" />
+        </Link>
       )}
     </div>
   );

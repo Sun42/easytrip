@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Result from '../components/Result';
-import { addNewActivity, getSelectedActivity, closePopUp } from '../store/action/trips-actions';
+import { addNewActivity, getSelectedActivity} from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
   cordinates: state.filters.cordinates,
@@ -24,9 +24,6 @@ const mapStateToProps = (state) => ({
   historicCheck: state.filters.checkbox.historic,
   mytrips: state.trips.carnet,
   selectedActivity: state.trips.selectedActivity,
-  newActivityAddedBool: state.trips.newActivityAddedBool,
-  newActivityAddedInfo: state.trips.newActivityAddedInfo,
-  newCarnetCreated: state.trips.newCarnetCreated,
 });
 
 const mapDispatchToState = (dispatch) => ({
@@ -38,9 +35,6 @@ const mapDispatchToState = (dispatch) => ({
     dispatch(getSelectedActivity(clickedItem4));
   },
 
-  handleClosePopUp: () => {
-    dispatch(closePopUp());
-  },
 
 });
 

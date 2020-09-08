@@ -28,7 +28,6 @@ export const GET_USER_ALL_ACTIVITIES_ERROR = 'GET_USER_ALL_ACTIVITIES_ERROR';
 export const DELETE_TRAVELOGUE = 'DELETE_TRAVELOGUE';
 export const DELETE_TRAVELOGUE_SUCCESS = 'DELETE_TRAVELOGUE_SUCCESS';
 export const DELETE_TRAVELOGUE_ERROR = 'DELETE_TRAVELOGUE_ERROR';
-export const CLOSE_POPUP = 'CLOSE_POPUP';
 
 
 
@@ -174,6 +173,3 @@ export const getUserAllActivitiesError = () => ({
   type: GET_USER_ALL_ACTIVITIES_ERROR,
 });
 
-export const closePopUp = () => ({
-  type: CLOSE_POPUP,
-});
