@@ -4,6 +4,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { Flip} from 'react-toastify';
+
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -31,11 +33,12 @@ const App = ({ isLogged, checkAuth, carnet }) => {
     <div className="app">
        <ToastContainer
       position="top-right"
-      autoClose={5000}
+      autoClose={1800}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
       rtl={false}
+      transition={Flip}
       pauseOnFocusLoss
       draggable
       pauseOnHover
