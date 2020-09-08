@@ -9,6 +9,14 @@ import { getUserAllTrips, getTripID } from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
   myCarnet: state.trips.carnet,
+  foodCheck: state.filters.checkbox.food,
+  artCheck: state.filters.checkbox.art,
+  pubCheck: state.filters.checkbox.pub,
+  excursionCheck: state.filters.checkbox.excursion,
+  shopCheck: state.filters.checkbox.shop,
+  acquaticCheck: state.filters.checkbox.acquatic,
+  funCheck: state.filters.checkbox.fun,
+  historicCheck: state.filters.checkbox.historic,
 })
 
 const mapDispatchToProps = (dispatch) => ({
