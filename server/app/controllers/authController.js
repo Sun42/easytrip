@@ -72,6 +72,7 @@ const authController = {
                 delete request.session.user.password;
                 return response.status(200).json({
                     logged: true,
+                    user: user,
                 });
             }
             else {

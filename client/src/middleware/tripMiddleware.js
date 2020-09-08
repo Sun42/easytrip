@@ -8,7 +8,8 @@ import {
   ADD_NEW_ACTIVITY, addNewActivitySuccess, addNewActivityError,
   CREATE_NEW_TRAVELOGUE, createNewTravelogueSuccess, createNewTravelogueError,
   GET_USER_ALL_ACTIVITIES, getUserAllActivitiesSuccess, getUserAllActivitiesError, 
-  getUserAllTrips, DELETE_TRAVELOGUE, deleteTravelogueSuccess, deleteTravelogueError,
+  getUserAllTrips,
+  DELETE_TRAVELOGUE, deleteTravelogueSuccess, deleteTravelogueError,
   DELETE_ACTIVITY, deleteActivitySuccess, deleteActivityError,
   CHANGE_DONE_ACTIVITY, changeDoneActivitySuccess, changeDoneActivityError,
   CHANGE_FAVORITE_ACTIVITY, changeFavoriteActivitySuccess, changeFavoriteActivityError,
@@ -47,8 +48,9 @@ const tripMiddleware = (store) => (next) => (action) => {
            })
          .then((res) => {
            store.dispatch(createNewTravelogueSuccess());
-           toast.success('Vous avez créé un nouveau carnet de voyage')
+           console.log(res.data);
            store.dispatch(getUserAllTrips());
+           toast.success(`Votre nouveau carnet ${res.data.name} a bien été créé`);
         })
          .catch((e) => {
            store.dispatch(createNewTravelogueError());
@@ -94,10 +96,11 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(addNewActivitySuccess());
-          toast.success(`Activité ajoutée à votre carnet de voyage`)
+          toast.success(`Activité ${res.data.activity.name} ajoutée à votre carnet de voyage`)
         })
         .catch((e) => {
           store.dispatch(addNewActivityError(e));
+          toast.error(`Impossible d'ajouter l'activité à votre carnet`);
         });
       break;
     }
@@ -135,7 +138,6 @@ const tripMiddleware = (store) => (next) => (action) => {
     }
     case CHANGE_DONE_ACTIVITY: {
       const {id, is_done } = action.payload;
-      console.log('boolean que je recois dans le mv', is_done);
       axios({
         method: 'patch',
         url: `http://localhost:3000/api/activity/${id}`,
@@ -145,8 +147,6 @@ const tripMiddleware = (store) => (next) => (action) => {
         withCredentials: true,
       })
         .then((res) => {
-          console.log('boolean dactivite que je viens de modifier', res.data.activity.is_done);
-          console.log('id', res.data.activity);
           store.dispatch(changeDoneActivitySuccess(res.data.activity));
         })
         .catch((e) => {
@@ -156,17 +156,16 @@ const tripMiddleware = (store) => (next) => (action) => {
     }
     case CHANGE_FAVORITE_ACTIVITY: {
       const {id, is_favorite } = action.payload;
-      console.log('action', action.payload, id, is_favorite);
       axios({
         method: 'patch',
         url: `http://localhost:3000/api/activity/${id}`,
         data: {
-          is_favorite: !is_favorite,
+          is_favorite: is_favorite,
         },
         withCredentials: true,
       })
         .then((res) => {
-          store.dispatch(changeFavoriteActivitySuccess(res.data.activity.id));
+          store.dispatch(changeFavoriteActivitySuccess(res.data.activity));
         })
         .catch((e) => {
           store.dispatch(changeFavoriteActivityError());

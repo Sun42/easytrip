@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import MonVoyage from '../components/MonVoyage';
 
-// SELECTOR
-import { getTripBySlug } from '../reducers/trips';
+// SELECTORS
+import { getTripBySlug, sortActivities } from '../reducers/trips';
 
 import { changeDoneActivity, changeFavoriteActivity, deleteActivity } from '../store/action/trips-actions';
 
 const mapStateToProps = (state, ownProps) => {
   const { slug } = ownProps.match.params;
   return {
-    activities: state.trips.activities,
+    activities: sortActivities(state),
     trip: getTripBySlug(state, slug),
   }
 };

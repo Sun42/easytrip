@@ -11,7 +11,7 @@ import {
   GET_TRIP_ID,
   GET_USER_ALL_ACTIVITIES, GET_USER_ALL_ACTIVITIES_SUCCESS, GET_USER_ALL_ACTIVITIES_ERROR,
   DELETE_TRAVELOGUE, DELETE_TRAVELOGUE_SUCCESS, DELETE_TRAVELOGUE_ERROR,
-  CLOSE_POPUP,
+  
   DELETE_ACTIVITY, DELETE_ACTIVITY_SUCCESSS, DELETE_ACTIVITY_ERROR,
 } from '../store/action/trips-actions';
 
@@ -25,9 +25,6 @@ export const initialState = {
   carnet: [],
   activities: [],
   selectedActivity: [],
-  newActivityAddedInfo: {},
-  newActivityAddedBool: false,
-  newCarnetCreated: false,
   error: '',
   tripID: 0,
 };
@@ -84,19 +81,14 @@ export default (state = initialState, action = {}) => {
     case ADD_NEW_ACTIVITY:
       return {
         ...state,
-        newActivityAddedInfo: {
-          ...action.payload,
-        },
       };
     case ADD_NEW_ACTIVITY_SUCCESS:
       return {
         ...state,
-        newActivityAddedBool: true,
       };
     case ADD_NEW_ACTIVITY_ERROR:
       return {
         ...state,
-        newActivityAddedBool: false,
       };
     case GET_SELECTED_ACTIVITY:
       return {
@@ -127,7 +119,7 @@ export default (state = initialState, action = {}) => {
     case CHANGE_FAVORITE_ACTIVITY_SUCCESS:
       return {
         ...state,
-        activities: state.activities.map(activity => activity.id === action.payload ? {...activity, is_favorite: !activity.is_favorite} : activity)
+        activities: state.activities.map(activity => activity.id === action.payload.id ? {...activity, is_favorite: action.payload.is_favorite} : activity)
       };
     case CHANGE_FAVORITE_ACTIVITY_ERROR:
       return {
@@ -205,18 +197,13 @@ export default (state = initialState, action = {}) => {
         ...state,
         tripID: action.payload,
       };
-    case CLOSE_POPUP:
-      return {
-        ...state,
-        newActivityAddedBool: false,
-        newCarnetCreated: false,
-      };
+
     default:
       return state;
   }
 };
 
-// SELECTOR 
+// SELECTORS
 export const getTripBySlug = (state, slug) => {
   const voyage = state.trips.carnet.find((trip) => {
     const slugifyName = slugifyNameCarnet(trip.name);
@@ -225,3 +212,14 @@ export const getTripBySlug = (state, slug) => {
   });
   return voyage;
 }
+
+export const sortActivities = (state) => {
+  const activities = state.trips.activities;
+  console.log('ce sont les activities de sort', activities);
+  const notDoneFav = activities.filter((activity) => !activity.is_done && activity.is_favorite);
+  const notDoneNotFav = activities.filter((activity) => !activity.is_done && !activity.is_favorite);
+  const DoneFav = activities.filter((activity) => activity.is_done && activity.is_favorite);
+  const DoneNotFav = activities.filter((activity) => activity.is_done && !activity.is_favorite);
+
+  return [...notDoneFav, ...notDoneNotFav, ...DoneFav, ...DoneNotFav];
+};
