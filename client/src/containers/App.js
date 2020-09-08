@@ -14,6 +14,7 @@ import { checkAuth } from '../store/action/login-actions';
  */
 const mapStateToProps = (state, ownProps) => ({
   isLogged: state.login.isLogged,
+  carnet: state.trips.carnet,
 });
 
 /* === Actions ===

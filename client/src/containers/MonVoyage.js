@@ -1,24 +1,31 @@
 import { connect } from 'react-redux';
 import MonVoyage from '../components/MonVoyage';
 
-import { activityDone, favActivity, removeActivity } from '../store/action/trips-actions';
+// SELECTOR
+import { getTripBySlug } from '../reducers/trips';
 
-const mapStateToProps = (state) => ({
-  activities: state.trips.activities,
-});
+import { changeDoneActivity, changeFavoriteActivity, deleteActivity } from '../store/action/trips-actions';
+
+const mapStateToProps = (state, ownProps) => {
+  const { slug } = ownProps.match.params;
+  return {
+    activities: state.trips.activities,
+    trip: getTripBySlug(state, slug),
+  }
+};
 
 const mapDispatchToProps = ((dispatch) => ({
 
-  handleActivityDone: (id) => {
-    dispatch(activityDone(id));
+  handleChangeDoneActivity: (id, is_done) => {
+    dispatch(changeDoneActivity(id, is_done));
   },
 
-  handleFavActivity: (id) => {
-    dispatch(favActivity(id));
+  handleChangeFavoriteActivity: (id, is_favorite) => {
+    dispatch(changeFavoriteActivity(id, is_favorite));
   },
 
-  handleRemoveActivity: (id) => {
-    dispatch(removeActivity(id));
+  handleDeleteActivity: (id) => {
+    dispatch(deleteActivity(id));
   },
 
 }))

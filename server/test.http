@@ -16,7 +16,7 @@ GET http://{{baseurl}}/api/search?location=''
 GET http://{{baseurl}}/api/search/?location=LYON
 
 ###
-GET http://{{baseurl}}/api/search/?location=LYON&filters=1
+GET http://{{baseurl}}/api/search/?location=ETRETAT&filters=1
 
 ###
 GET http://{{baseurl}}/api/search/?location=ETRETAT&filters=1&food
@@ -36,11 +36,30 @@ name='Plage'
 &user_id=1
 &travelogue_id=1
 &information="blabla"
-&localisation={ lat :42.42, lon=04.04 }
+&location={ lat :42.42, lon=04.04 }
 
 ### 
-GET http://{{baseurl}}/api/mes-voyages/1
+GET http://{{baseurl}}/api/mesvoyages/1
 
 
 ### 
-http://localhost:3000/api/mes-voyages/42
+http://localhost:3000/api/mesvoyages/42
+
+###
+
+http://{{baseurl}}/api/mesvoyages/monvoyage/1
+
+
+###
+
+DELETE http://{{baseurl}}/api/activity/3
+
+
+
+###
+
+PATCH http://{{baseurl}}/api/activity/2
+Content-Type: application/x-www-form-urlencoded
+
+is_done=false
+&is_favorite=false

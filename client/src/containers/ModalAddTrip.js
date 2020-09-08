@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ModalAddTrip from '../components/ModalAddTrip';
 import {
   addName, addDestination, addStartDate, addEndDate, addTrip,
+  getUserAllTrips,
 } from '../store/action/trips-actions';
 
 const mapStateToProps = (state) => ({
@@ -30,6 +31,10 @@ const mapDispatchToState = (dispatch) => ({
   handleAddTrip: () => {
     dispatch(addTrip());
   },
+
+  handleGetUserAllTrips: () => {
+    dispatch(getUserAllTrips());
+  }
 
 });
 

@@ -30,14 +30,14 @@ const LoginForm = ({
       {!isLogged && (
         <form method="post" autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <h2>Identifiez-vous</h2>
-          <p>email</p>
+          <p>Email</p>
           <Field
             name="email"
             onChange={changeField}
             placeholder=""
             value={email}
           />
-          <p>mot de passe</p>
+          <p>Mot de passe</p>
           <Field
             name="password"
             type="password"
@@ -51,11 +51,11 @@ const LoginForm = ({
               className="login-form-button"
               onClick="submit"
             >
-              OK
+              Connexion 
             </button>
          
           <NavLink activeClassName="active" to="/sign-up">
-            <span>vous n'avez pas de compte ?</span>
+            <span>Vous n'avez pas de compte ?</span>
           </NavLink>
           
         </form>)}

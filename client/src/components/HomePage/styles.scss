@@ -10,7 +10,7 @@
   video {
     object-fit: cover;
     width: 100vw;
-    height: 70vh;
+    height: 71vh;
     position: fixed;
     top: 2;
     left: 0;
@@ -19,9 +19,13 @@
   button.ui.animated.button {
     color: white;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.329);
-    margin-top: 25%;
-    height: 20%;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 20% 0% 0% 0%;
+    height: 25%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     div.visible.content {
       font-size: 2rem;

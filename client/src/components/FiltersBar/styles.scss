@@ -19,11 +19,12 @@
     &-list {
       margin-top: 25px;
       position: relative;
-      width: 350px;
-      height: 45px;
+      width: 90%;
+      height: 40%;
       overflow: hidden;
       border-radius: 5px;
       border: 1px solid #CED4DA;
+      margin: 8% auto;
     }
 
     &-list::after {
@@ -48,6 +49,7 @@
         box-shadow: none;
         font-size: 1.2em;
         width: 100%;
+        margin: auto;
         height: 100%;
         margin: 0;
         padding-left: 15px;
@@ -63,6 +65,7 @@
     .form {
       display: flex;
       height: 100%;
+      margin-top: 5%;
 
       &-col1 {
         width: 50%;

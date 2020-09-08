@@ -13,7 +13,7 @@ INSERT INTO "user" (email, password, name, surname) VALUES
 
 INSERT INTO travelogue(name, city, date_departure, date_return, user_id) VALUES
 ('Roadtrip dans le sud', 'Narbonne', timestamp '2016-06-22', timestamp '2016-07-01', 1),
-('Tourisme à Paris', 'Paris', timestamp '2017-05-22', timestamp '2016-05-30', 1),
+('Tourisme à Paris', 'Paris', timestamp '2017-05-22', timestamp  '2016-05-30', 1),
 ('Découverte de la gastronomie Lyonnaise', 'Lyon', timestamp '2017-05-22', timestamp '2016-05-30', 1);
 
 INSERT INTO category(label) VALUES

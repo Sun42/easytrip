@@ -18,7 +18,9 @@ const authController = {
                 return response.status(400, 'Merci de remplir vos informations');
 
             }
-
+            if (password.length < 8) {
+                return response.status(403).json({ 'error' : 'Le mot de passe doit être de 8 caractères minimum' });
+            }
             // Crée un nouveau utilisateur avec un mot de passe crypté avec 10 saltrounds
             const newUser = User.build({
                 name,
@@ -41,7 +43,7 @@ const authController = {
             return response.json(newUser);
         }
         catch(err) {
-            response.status(500).json(err);
+            return response.status(500).json(err);
         }
 
     },
@@ -60,7 +62,6 @@ const authController = {
                     email,
                 },
             });
-
             // On vérifie que l'utilisateur ait rempli le bon mail et le bon mot de passe associé
             if (user && await bcrypt.compareSync(password, user.password)) {
                 // Permet de ne récupérer que les 'dataValues' et pas les autres données
@@ -69,42 +70,40 @@ const authController = {
                 });
                 console.log('signin session', request.session);
                 delete request.session.user.password;
-                response.status(200).json({
+                return response.status(200).json({
                     logged: true,
                 });
-                console.log(request.session.user);
             }
             else {
-                response.status(403).json({
+                return response.status(403).json({
                     logged: false,
                 });
             }
         }
         catch (err) {
             console.log(err);
-            response.status(400).send(err);
+            return response.status(400).send(err);
 
         }
 
     },
 
     isLogged: async (request, response) => {
-        console.log(request.session);
         if (request.session.user) {
-            response.status(200).json({ logged: true, info: request.session.user });
+            return response.status(200).json({ logged: true, info: request.session.user });
         }
         else {
-            response.status(200).json({ logged: false });
+            return response.status(200).json({ logged: false });
         }
     },
 
     signoutAction: async (request, response) => {
         try {
             request.session.destroy();
-            response.json('Déconnexion ok');
+            return response.json('Déconnexion ok');
         }
         catch (err) {
-            response.status(500).json(err);
+            return response.status(500).json(err);
         }
     },
 };

@@ -1,6 +1,7 @@
-import React from 'react';
+//import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, Redirect} from 'react-router-dom';
 
 import Field from './Field.js/index.js';
 // import { useField } from './hooks';
@@ -30,7 +31,7 @@ const SignUpForm = ({ // modif Sarah
         <img src="https://www.bnc.ca/content/dam/fragment/images/Fotolia-79030524-Subscription-Monthly-M-1-e1481143505131.jpg" alt="" />
       </div>
       <div className="login-form">
-      {!isLogged && (
+        {!isLogged && (
         <form method="post" autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
           <h2>Inscrivez-vous</h2>
 
@@ -42,7 +43,7 @@ const SignUpForm = ({ // modif Sarah
             placeholder=""
             value={name}
           />
-          <p>Prenom</p>
+          <p>Prénom</p>
 
           <Field
             name="surName"
@@ -51,14 +52,14 @@ const SignUpForm = ({ // modif Sarah
             value={surName}
           />
 
-          <p>email</p>
+          <p>Email</p>
           <Field
             name="email"
             onChange={changeField}
             placeholder=""
             value={email}
           />
-          <p>mot de passe</p>
+          <p>Mot de passe</p>
 
           <Field
             name="password"
@@ -67,17 +68,22 @@ const SignUpForm = ({ // modif Sarah
             placeholder=""
             value={password}
           />
+           
           <button
             type="submit"
             className="login-form-button"
             onClick="submit"
           >
-            Valider mon incription
+            Valider mon incription 
           </button>
+         
           <Link activeClassName="active" to="/login">
-            <span>vous avez deja un compte ?</span>
+            <span>Vous avez deja un compte ?</span>
           </Link>
           </form>)}
+          {isLogged && (
+            <Redirect to='/login' > </Redirect>
+          )}
 
       </div>
 
@@ -91,6 +97,7 @@ SignUpForm.propTypes = {
   name: PropTypes.string.isRequired,
   surName: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
+  
 
 };
 

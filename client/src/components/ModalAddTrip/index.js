@@ -14,7 +14,7 @@ import moment from 'moment';
 
 const ModalTripAdd = ({
   handleAddName, handleAddDestination, handleAddTrip, handleAddStartDate,
-  handleAddEndDate, destination, name,
+  handleAddEndDate, destination, name, handleGetUserAllTrips,
 }) => {
   // modal state modifier
   const [open, setOpen] = useState(false);
@@ -60,14 +60,15 @@ const ModalTripAdd = ({
             handleAddStartDate(formatedStartDate);
             handleAddEndDate(formatedEndDate);
             handleAddTrip();
+            handleGetUserAllTrips();
             setOpen(false);
           }}
         >
           <Form.Field>
-            <label>Le nom du carnet</label>
+            <label>Nom du carnet</label>
             <input
               value={name}
-              placeholder="Le nom du carnet..."
+              placeholder="Nom du carnet..."
               onChange={(evt) => {
                 const text = evt.target.value;
                 handleAddName(text);
@@ -127,6 +128,7 @@ ModalTripAdd.propTypes = {
   handleAddEndDate: PropTypes.func.isRequired,
   destination: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  handleGetUserAllTrips: PropTypes.func,
 };
 
 export default ModalTripAdd;

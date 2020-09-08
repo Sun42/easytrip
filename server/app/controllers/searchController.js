@@ -45,15 +45,15 @@ const searchController = {
                         ret.elements = fh.groupByCategory(overpass_data.data.elements, fh.available_filters);
                     }
                 }
-                response.json(ret);
+                return response.json(ret);
             }
             catch (error) {
                 console.trace(error);
-                response.json({ 'error': error });
+                return response.json({ 'error': error });
             }
         }
         else {
-            response.status(400).json({ 'error': 'missing location parameter' });
+            return response.status(400).json({ 'error': 'missing location parameter' });
         }
     },
 };

@@ -13,6 +13,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         method: 'get',
         url: `http://localhost:3000/api/search?location=${destination}&filters=1`,
         data: destination,
+        withCredentials: true, 
       })
         .then((res) => {
           const lat = parseFloat((res.data.location.lat), 10);

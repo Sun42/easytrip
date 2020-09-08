@@ -1,81 +1,102 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 // router
 import { Link } from 'react-router-dom';
 
 // semantic-ui
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 // Styles and react-icons
 import './styles.scss';
 import { FaHeart, FaHeartBroken, FaRegCheckSquare, FaTrashAlt } from 'react-icons/fa';
 import { MdCheckBoxOutlineBlank } from 'react-icons/md';
 
-const MonVoyage = ({ activities, handleActivityDone, handleFavActivity, handleRemoveActivity }) => {
-  console.log('parametres', useParams());
+const MonVoyage = ({ 
+  activities, handleChangeDoneActivity, handleChangeFavoriteActivity, 
+  handleDeleteActivity, trip 
+}) => {
+
+  // momentObject converter
+  const formatedStartDate = moment(trip.date_departure).format('DD/MM/YYYY');
+  const formatedEndDate = moment(trip.date_return).format('DD/MM/YYYY');
+
   return (
   <div className="wrapper">
+    <div className="button">
+      <Link to={'/carnets'}>
+        <Button animated>  
+          <Button.Content visible>Mes carnets</Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow left" />
+          </Button.Content>
+        </Button>
+      </Link>
+    </div>
     <div className="trip-info">
-      <h3>Le nom du voyage</h3>
-      <h4>Destination</h4>
-      <h5>Les dates</h5>
+      <h2>{trip.name}</h2>
+      <h3>{trip.city}</h3>
+      <div className="trip-info-dates">
+        <span>{formatedStartDate} - {formatedEndDate}</span>
+      </div>
     </div>
     <div className="trip-list">
 
     {
       activities.map((activity) => {
-        const goodClass = activity.done ? "activity activity--done" : "activity";
+        const goodClass = activity.is_done ? "activity activity--done" : "activity";
+        console.log('activity que je recois', activity);
         return (
           <li key={activity.id} className={goodClass}>
-            <span>{activity.label}</span>
-            <div className="icons">
-            <span
-              onClick={() => {
-                handleFavActivity(activity.id);
+            <div className="left-side">
+              <span
+                onClick={() => {
+                  handleChangeDoneActivity({
+                    id: activity.id, 
+                    is_done: !activity.is_done,
+                  });
               }}
-            >
-              {activity.favori ? <FaHeart size={22} /> : <FaHeartBroken size={22} />}
-            </span>
-
-            <span
-              onClick={() => {
-                handleActivityDone(activity.id);
-            }}
-            >
-              {activity.done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
-            </span>
+              >
+                
+                {activity.is_done ? <FaRegCheckSquare size={22} /> : <MdCheckBoxOutlineBlank size={22} />}
+              </span>
+              <span>{activity.name}</span>
+            </div>
             
-            <span
-              onClick={() => {
-                handleRemoveActivity(activity.id);
-            }}
-            >
-              <FaTrashAlt size={22} />
-            </span>
+            <div className="right-side">
+              <span
+                onClick={() => {
+                  handleChangeFavoriteActivity({
+                    id: activity.id, 
+                    is_favorite: activity.is_favorite,
+                  });
+                }}
+              >
+                {activity.is_favorite ? <FaHeart size={22} /> : <FaHeartBroken size={22} />}
+              </span>
+            
+              <span
+                onClick={() => {
+                  console.log('id activity au click', activity.id);
+                  handleDeleteActivity(activity.id);
+              }}
+              >
+                <FaTrashAlt size={22} />
+              </span>
             </div>
           </li>
         )
       })
     }
-
-    <div className="button">
-      <Link to={'/carnets'}>
-        <Button>
-          Carnet
-        </Button>
-      </Link>
-    </div>
   </div>
 </div>
 )};
 
 MonVoyage.propTypes = {
-  destination: PropTypes.string.isRequired,
-  handleActivityDone: PropTypes.func.isRequired,
-  handleFavActivity: PropTypes.func.isRequired,
-  handleRemoveActivity: PropTypes.func.isRequired,
+  handleChangeDoneActivity: PropTypes.func.isRequired,
+  handleChangeFavoriteActivity: PropTypes.func.isRequired,
+  handleDeleteActivity: PropTypes.func.isRequired,
 };
 
 export default MonVoyage;

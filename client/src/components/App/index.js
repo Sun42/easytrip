@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { Flip} from 'react-toastify';
+
 // == Import
 import './styles.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -14,22 +20,35 @@ import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import Carnet from "../../containers/Carnet";
 import MonVoyage from "../../containers/MonVoyage";
-import SearchBar from '../SearchBar';
+
+
 
 // == Composant
-const App = ({isLogged, checkAuth}) => {
+const App = ({ isLogged, checkAuth, carnet }) => {
   useEffect(() => {
     checkAuth();
 
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="app">
+       <ToastContainer
+      position="top-right"
+      autoClose={1800}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      transition={Flip}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      toastClassName="toast"
+    />
       <Header />
       <Switch>
 
         {/* homepage */}
         <Route exact path="/">
-          <SearchBar />
           <HomePage />
         </Route>
 
@@ -44,28 +63,18 @@ const App = ({isLogged, checkAuth}) => {
         </Route>
 
         {/* trip details page */}
-        {/* <Route exact path="/mytrip">
-          <MonVoyage />
-        </Route> */}
-
-        {/* trip details page */}
-        <Route exact path="/carnets/:id">
-          <MonVoyage />
-        </Route>
+        <Route exact path="/carnets/:slug" component={MonVoyage} />
 
         {/* login page */}
         <Route exact path="/login">
-    { isLogged ? <Redirect to="/" /> : <LoginForm />}
- </Route>
-        <Route exact path="/sign-up">
-        { isLogged ? <Redirect to="/" /> : <SignUpForm component={SignUpForm} />}
-        
+          { isLogged ? <Redirect to="/result" /> : <LoginForm />}
         </Route>
-        <Route>
-          <MonVoyage />
+        <Route exact path="/sign-up" component={SignUpForm}>
+        { isLogged ? <Redirect to="/result" /> : <SignUpForm />}
         </Route>
+
+        {/* error page */}
         <Route>
-          {/* error page */}
           <NotFound />
         </Route>
 

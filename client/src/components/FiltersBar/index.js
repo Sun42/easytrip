@@ -1,5 +1,5 @@
 /* eslint-disable padded-blocks */
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // styles
@@ -11,13 +11,9 @@ import SearchBar from '../../containers/SearchBar';
 const FiltersBar = ({
   handleToggleFood, handleToggleArt, handleTogglePub, handleToggleExcursion,
   handleToggleShop, handleToggleAcquatic, handleToggleFun, handleToggleHistoric,
-  myCarnet, handleUserAllTrips, 
+  myCarnet, handleUserAllTrips, handleTripID, handleGetUserAllTrips, foodCheck, artCheck, pubCheck,
+  excursionCheck, shopCheck, acquaticCheck, funCheck, historicCheck
 }) => {
-
-  useEffect(() => {
-    handleUserAllTrips();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
 
     <div className="filtersbar">
@@ -28,8 +24,16 @@ const FiltersBar = ({
       <div className="carnet">
         <p><label htmlFor="carnet-label">Carnet de voyage</label></p>
         <div className="carnet-list">
-        <select name="trip" id="carnet-label">
-          <option value="">Selectionnez votre carnet...</option>
+        <select 
+          onClick={() => {
+          handleGetUserAllTrips();
+          }}
+          name="trip" 
+          id="carnet-label"
+          >
+          <option value="">
+            Selectionnez votre carnet...
+          </option>
         {
           myCarnet.map((trip) => {
             return (
@@ -37,7 +41,8 @@ const FiltersBar = ({
               key={trip.id}
               value={trip.name}
               onClick={() => {
-                console.log(trip.id);
+                console.log('tripID', trip.id);
+                handleTripID(trip.id);
               }}
             >
               {trip.name}</option>
@@ -59,6 +64,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="food"
                   name="food"
+                  checked={foodCheck === true}
                   onClick={() => {
                       handleToggleFood();
                   }}
@@ -70,6 +76,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="art"
                   name="art"
+                  checked={artCheck === true}
                   onClick={() => {
                       handleToggleArt();
                   }}
@@ -81,6 +88,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="pub"
                   name="pub"
+                  checked={pubCheck === true}
                   onClick={() => {
                       handleTogglePub();
                   }}
@@ -92,6 +100,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="excursion"
                   name="excursion"
+                  checked={excursionCheck === true}
                   onClick={() => {
                       handleToggleExcursion();
                   }}
@@ -105,6 +114,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="shop"
                   name="shop"
+                  checked={shopCheck === true}
                   onClick={() => {
                       handleToggleShop();
                   }}
@@ -116,6 +126,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="acquatic"
                   name="acquatic"
+                  checked={acquaticCheck === true}
                   onClick={() => {
                       handleToggleAcquatic();
                   }}
@@ -127,6 +138,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="fun"
                   name="fun"
+                  checked={funCheck === true}
                   onClick={() => {
                       handleToggleFun();
                   }}
@@ -138,6 +150,7 @@ const FiltersBar = ({
                   type="checkbox"
                   id="historic"
                   name="historic"
+                  checked={historicCheck === true}
                   onClick={() => {
                       handleToggleHistoric();
                   }}
@@ -162,6 +175,8 @@ FiltersBar.propTypes = {
   handleToggleHistoric: PropTypes.func.isRequired,
   myCarnet: PropTypes.arrayOf(PropTypes.object),
   handleUserAllTrips: PropTypes.func,
+  handleTripID: PropTypes.func,
+  handleGetUserAllTrips: PropTypes.func,
 };
 
 export default FiltersBar;
