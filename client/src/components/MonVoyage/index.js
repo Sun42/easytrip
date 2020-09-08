@@ -69,7 +69,7 @@ const MonVoyage = ({
                 onClick={() => {
                   handleChangeFavoriteActivity({
                     id: activity.id, 
-                    is_favorite: activity.is_favorite,
+                    is_favorite: !activity.is_favorite,
                   });
                 }}
               >

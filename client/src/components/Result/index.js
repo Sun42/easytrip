@@ -495,16 +495,37 @@ const Activity = ({
       <div className="activity-details">
         <div className="activity-details-address">
           <p>{object.tags['addr:city']} {object.tags['addr:postcode']}</p>
-          <p>{object.tags['addr:street']}</p>
+          <p>{object.tags['opening_hours']}</p>
           <p>{object.tags.phone}</p>
+          <p>{object.tags['addr:city']} {object.tags['addr:postcode']}</p>
           <p><a href="mailto:{object.tags['contact:email']}">{object.tags['contact:email']}</a></p>
           <p><a href="http://{object.tags.website}">{object.tags.website}</a></p>
         </div>
         <div className="activity-details-services">
+          {/* Tags for FOOD */}
           {object.tags.cuisine && <p>Type de cusine : {object.tags.cuisine}</p>}
+          {object.tags.delivery && <p>Plat végétarien : {object.tags['diet:vegetarian']}</p>}
           {object.tags.delivery && <p>Livraison : {object.tags.delivery}</p>}
           {object.tags.takeaway&& <p>A emporter : {object.tags.takeaway}</p>}
           {object.tags.outdoor_seating && <p>Terrasse : {object.tags.outdoor_seating}</p>}
+          {/* Tags for ART */}
+          {/* {object.tags.name && <p>Nom : {object.tags.name}</p>} */}
+          {object.tags.artist_name && <p>Artiste : {object.tags.artist_name}</p>}
+          {object.tags.artwork_type && <p>Domaine : {object.tags.artwork_type}</p>}
+          {/* {object.tags.start_date && <p>Année : {object.tags.start_date}</p>} */}
+          {/* Tags for PUB */}
+          {object.tags.smoking && <p>Fumoir : {object.tags.smoking}</p>}
+          {object.tags.brewery && <p>Bières : {object.tags.brewery}</p>}
+          {/* Tags for EXCURSION = already DONE in the upper part */}
+          {/* Tags for SHOP */}
+          {object.tags.shop && <p>Type : {object.tags.shop}</p>}
+          {/* Tags for ACQUATIC */}
+          {object.tags['bath:type'] && <p>Type : {object.tags['bath:type']}</p>}
+          {object.tags.leisure && <p>Service : {object.tags.leisure}</p>}
+          {/* Tags for FUN */}
+          {object.tags['payment:cb'] && <p>Paiement CB : {object.tags['payment:cb']}</p>}
+          {/* Tags for HISTORIC */}
+          {object.tags['mhs:inscription_date'] && <p>Date d'inscription aux monuments historiques : {object.tags['mhs:inscription_date']}</p>}
         </div>
       </div>
     </div>

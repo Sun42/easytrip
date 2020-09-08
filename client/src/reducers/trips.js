@@ -127,7 +127,7 @@ export default (state = initialState, action = {}) => {
     case CHANGE_FAVORITE_ACTIVITY_SUCCESS:
       return {
         ...state,
-        activities: state.activities.map(activity => activity.id === action.payload ? {...activity, is_favorite: !activity.is_favorite} : activity)
+        activities: state.activities.map(activity => activity.id === action.payload.id ? {...activity, is_favorite: action.payload.is_favorite} : activity)
       };
     case CHANGE_FAVORITE_ACTIVITY_ERROR:
       return {
@@ -216,7 +216,7 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-// SELECTOR 
+// SELECTORS
 export const getTripBySlug = (state, slug) => {
   const voyage = state.trips.carnet.find((trip) => {
     const slugifyName = slugifyNameCarnet(trip.name);
@@ -225,3 +225,14 @@ export const getTripBySlug = (state, slug) => {
   });
   return voyage;
 }
+
+export const sortActivities = (state) => {
+  const activities = state.trips.activities;
+  console.log('ce sont les activities de sort', activities);
+  const notDoneFav = activities.filter((activity) => !activity.is_done && activity.is_favorite);
+  const notDoneNotFav = activities.filter((activity) => !activity.is_done && !activity.is_favorite);
+  const DoneFav = activities.filter((activity) => activity.is_done && activity.is_favorite);
+  const DoneNotFav = activities.filter((activity) => activity.is_done && !activity.is_favorite);
+
+  return [...notDoneFav, ...notDoneNotFav, ...DoneFav, ...DoneNotFav];
+};
