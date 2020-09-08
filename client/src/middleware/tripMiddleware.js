@@ -47,8 +47,9 @@ const tripMiddleware = (store) => (next) => (action) => {
            })
          .then((res) => {
            store.dispatch(createNewTravelogueSuccess());
-           toast.success('Vous avez créé un nouveau carnet de voyage')
+           console.log(res.data);
            store.dispatch(getUserAllTrips());
+           toast.success(`Votre nouveau carnet ${res.data.name} a bien été créé`);
         })
          .catch((e) => {
            store.dispatch(createNewTravelogueError());
@@ -94,10 +95,11 @@ const tripMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           store.dispatch(addNewActivitySuccess());
-          toast.success(`Activité ajoutée à votre carnet de voyage`)
+          toast.success(`Activité ${res.data.activity.name} ajoutée à votre carnet de voyage`)
         })
         .catch((e) => {
           store.dispatch(addNewActivityError(e));
+          toast.error(`Impossible d'ajouter l'activité à votre carnet`);
         });
       break;
     }

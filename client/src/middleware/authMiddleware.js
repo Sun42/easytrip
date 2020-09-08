@@ -17,7 +17,7 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res.data);
-          toast.success('A bientôt !');
+          toast.success(`A bientôt!`);
           store.dispatch(logoutSuccess());
           
         })
@@ -38,7 +38,8 @@ const authMiddleware = (store) => (next) => (action) => {
         withCredentials: true, // Je veux que le serveur sache qui je suis grace à la session
       })
         .then((res) => {
-          toast.success('Bonjour :)');
+          console.log(res.data)
+          toast.success(`Bonjour ${res.data.user.surname} :)`);
           store.dispatch(loginSuccess(res.data));
         })
         .catch((err) => {
@@ -82,7 +83,7 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(res.data); 
-          toast.success('Bienvenue sur Easytrip');
+          toast.success(`Bienvenue ${res.data.surname}`);
           store.dispatch(signupSuccess()); 
         })
         .catch((err) => {

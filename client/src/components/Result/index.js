@@ -20,45 +20,18 @@ import Loading from '../Loading';
 
 const Result = ({
   cordinates, loading, 
-  handleAddNewActivity, newActivityAddedBool, newActivityAddedInfo, 
+  handleAddNewActivity, 
   newCarnetCreated, mytrips,
   foodFilter, artFilter, pubFilter, excursionFilter, shopFilter,
   acquaticFilter, funFilter, historicFilter,
   foodCheck, artCheck, pubCheck, excursionCheck, shopCheck, acquaticCheck,
   funCheck, historicCheck,
-  handleClosePopUp,
 }) => {
 
   return (
   <div className="result">
     <div className="result-list">
 
-    {/* POP UP new activity added */}
-      {
-      newActivityAddedBool === true 
-      &&
-      <div className="popup">
-        <p>L'activité "{newActivityAddedInfo.name}" a été ajouté à votre carnet de voyage</p>
-        <button
-          onClick={() => {
-            handleClosePopUp();
-          }}
-        >X</button>
-      </div>
-      }
-    {/* POP UP new carnet added */}
-      {
-      newCarnetCreated === true 
-      &&
-      <div className="popup">
-        <p>Votre nouveau carnet a été créé</p>
-        <button
-          onClick={() => {
-            handleClosePopUp();
-          }}
-        >X</button>
-      </div>
-      }
     {/* Explanation boxes / steps + condition */}
       {!foodCheck && !artCheck && !pubCheck && !excursionCheck && !shopCheck && !acquaticCheck && !funCheck && !historicCheck && !newCarnetCreated &&
         <div className="explications">
@@ -531,11 +504,6 @@ Result.propTypes = {
   funCheck: PropTypes.bool,
   historicCheck: PropTypes.bool,
   mytrips: PropTypes.arrayOf(PropTypes.object.isRequired),
-  handleAddNewActivityBool: PropTypes.func,
-  newActivityAddedBool: PropTypes.bool,
-  newActivityAddedInfo: PropTypes.object,
-  handleClosePopUp: PropTypes.func,
-  newCarnetCreated: PropTypes.bool,
 };
 
 Result.defaultProps = {
