@@ -1,0 +1,40 @@
+@import 'src/styles/vars';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  height: 13%;
+
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+  .logo {
+    width: 50%;
+
+  }
+
+  button.ui.animated.button {
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 20px;
+  }
+
+
+@media screen and (max-width: 1250px) {
+  .logo {
+    width: 30%;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 40%;
+  }
+}

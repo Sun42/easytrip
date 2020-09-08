@@ -1,0 +1,127 @@
+@import 'src/styles/vars';
+
+.filtersbar {
+  width: 30%;
+  border: $border;
+  border-radius: $border-radius;
+  margin: 5px;
+
+  .destination {
+    height: 20%;
+    margin: 15px 10px 0px 10px;
+  }
+
+  .carnet {
+    height: 20%;
+    margin: 15px 15px 15px 15px;
+    text-align: center;
+
+    &-list {
+      margin-top: 25px;
+      position: relative;
+      width: 90%;
+      height: 40%;
+      overflow: hidden;
+      border-radius: 5px;
+      border: 1px solid #CED4DA;
+      margin: 8% auto;
+    }
+
+    &-list::after {
+      content: '\276F';
+      position: absolute;
+      top: 20%;
+      right: 0;
+      padding: 0 15px;
+      background: white;
+      pointer-events: none;
+      transform: rotate(90deg);
+      font-size: 1.5em;
+      background: #F9F9F9;
+    }
+
+      select {
+        appearance: none;
+        outline: 0;
+        border: 0 !important;
+        background: #F9F9F9;
+        background-image: none;
+        box-shadow: none;
+        font-size: 1.2em;
+        width: 100%;
+        margin: auto;
+        height: 100%;
+        margin: 0;
+        padding-left: 15px;
+        color: #555555;
+        cursor: pointer;
+      }
+  }
+
+  .preferences {
+    height: 50%;
+    margin: 15px;
+
+    .form {
+      display: flex;
+      height: 100%;
+      margin-top: 5%;
+
+      &-col1 {
+        width: 50%;
+        padding: 1em;
+        border: $filter-columns;
+        margin-right: 2px;
+
+        div {
+          padding: 0.5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+    
+          label {
+            width: 90%;
+          }
+
+          input {
+            display: block;
+            width: 15%;
+          }
+        }
+      }
+
+      &-col2 {
+        width: 50%;
+        padding: 1em;
+        border: $filter-columns;
+        margin-left: 2px;
+
+        div {
+          padding: 0.5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          label {
+            width: 90%;
+          }
+
+          input {
+            display: block;
+            width: 15%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.filtersbar p {
+  text-align: center;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color:#FF834F;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+}

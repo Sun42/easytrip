@@ -1,0 +1,86 @@
+@import 'src/styles/vars';
+
+.wrapper {
+  height: 100hv;
+  width: 80%;
+  margin: auto;
+
+  .button {
+    margin-right: 50%;
+
+    button.ui.animated.button {
+      background-color: white;
+      color: black;
+      background-color: $orange;
+      height: 45%;
+      
+      div.visible.content {
+        font-size: 1.1em;
+        color: white;
+        text-transform: uppercase;
+      }
+
+      div.hidden.content {
+        color: white;
+      }
+    }
+  }
+
+  .trip-info {
+    height: 10%;
+    text-align: center;
+    margin-bottom: 5px;
+    
+    h2, h3 {
+      margin: 0px;
+    }
+
+    &-dates {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+  }
+
+  .trip-list {
+    height: 85%;
+    width: 100%;
+
+    .activity {
+      width: 40%;
+      border-bottom: 0.5px solid $orange;
+      margin: 0.5em auto;
+      padding: 1em;
+      font-size: 1em;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: $orange;
+        color: white;
+        font-weight: bolder;
+        font-size: 1.1em;
+      }
+
+      &--done {
+        opacity: 0.5;
+        text-decoration: line-through;
+      }
+
+      .left-side {
+        display: flex;
+        align-items: center;
+      }
+
+      .right-side {
+        display: flex;
+        flex-direction: row;
+
+        span {
+          margin-left: 15px;;
+        }
+      }
+    }
+  }
+}

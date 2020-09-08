@@ -1,76 +1,61 @@
 const express = require('express');
+// const db = require('./config/database');
+const router = express.Router();
 
 // Import controllers here
 
 // Gestion des inscriptions et connexions en session
 const authController = require('./controllers/authController');
 
-// Gestion de la page d'accueil
-const mainController = require('./controllers/mainController');
 
 // Gestion du profil et des données personnelles
-const profileController = require('./controllers/profileController');
+// const profileController = require('./controllers/profileController');
 
 // Gestion des carnets de voyage et accès aux détails d'un voyage
 const tripController = require('./controllers/tripController');
 
 // Gestion des recherches et filtrages (préférences) + résultats
-const searchController = require('./controllers/searchController');
+const searchController = require('./controllers/searchController').searchController;
 
-
-
-const router = express.Router();
 
 // Homepage routes
-//router.get('/', mainController.homepage);
+// router.get('/', mainController.homepage);
 
 // Authentification routes
-router.route('/inscription')
-    .get(authController.signupPage)
+router.route('/api/inscription')
     .post(authController.signupAction);
 
-
-
-router.route('/connexion')
-    .get(authController.signinPage)
+router.route('/api/connexion')
     .post(authController.signinAction);
 
+router.route('/api/islogged')
+    .post(authController.isLogged);
 
-/* Profile routes 
-router.get('/mon-profil', profileController.getProfile);
+router.route('/api/deconnexion')
+    .post(authController.signoutAction);
 
-router.post('/mon-profil', profilController.submitInfo);
+// Trip routes
+// Créer un nouveau carnet de voyage
+router.route('/api/monvoyage/new')
+    .post(tripController.createNewTravelogue);
 
-router.patch('/mon-profil', profilController.editInfo);
+// Route pour un carnet de voyage
+router.route('/api/mesvoyages/monvoyage/:id')
+    .get(tripController.getOneTravelogue)
+    .patch(tripController.updateTravelogue)
+    .delete(tripController.deleteTravelogue);
 
-router.delete('/mon-profil', profilController.deleteInfo);
+// Récupérer tous les carnets de voyages
+router.route('/api/mesvoyages/:user_id')
+    .get(tripController.getAllTravelogues);
 
-Carnet de voyage routes
-router.get('/mes-voyages', tripController.getAllTrips); 
+router.get('/api/search', searchController.search);
 
-router.get('/mes-voyages/mon-voyage/:tripId', tripController.getOneTrip);
+router.post('/api/activity/new', tripController.createActivity);
 
-Accès au formulaire pour ajouter un nouveau voyage
-router.get('mon-voyage/voyage/new', tripController.newTripForm);
-
-Permet d'ajouter un nouveau voyage
-router.post('mon-voyage/new', tripController.submitNewTrip);
-
-Permet de modifier un voyage existant
-router.patch('/mon-voyage/:tripId', tripController.editTrip);
-
-Permet de supprimer un voyage existant
-router.delete('/mon-voyage/:tripId', tripController.deleteTrip);
-
-Search routes
-router.get('/recherche', searchController.getSearchPage);
-
-Result routes TODO */
-
-
-
-
-
+router.route('/api/activity/:id')
+    .delete(tripController.deleteActivity)
+    .patch(tripController.updateActivity);
 
 // Exporting Router
 module.exports = router;
