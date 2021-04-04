@@ -1,0 +1,35 @@
+TODO
+
+[]
+[back] [jest] env file
+[back] [redis store] -> session.store
+[back][redis cache] https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/
+
+[CI]
+[CI][back ajouter redis à la CI]
+[CI][back faire un docker de la db]pour la CI ?
+[CI] Postgres sequelize https://www.jaygould.co.uk/2020-07-28-jest-sequelize-testing-dedicated-database/
+
+
+[CD] DB/back/front sur digitalOCean
+
+[PRODUCTION]
+    [X] DB postgres
+    - setup nginx
+    - setup dns/external
+    - copy build/front
+    - server back
+
+[x] Ajout travelogue, fix dates
+[x] Suppression d'un carnet de voyage (cascade en DB)
+[x] Suppression de l'activité
+[] update activity favorite, done
+[] si on laisse un filter selectioné puis changement de page, lorsqu'on revient dessus 
+le filter n'est plus selectioné mais les marker sont là
+[] toastify
+[] Redirection apres inscription
+[x] signout
+
+
+[] apres un restart du serveur, le client ne comprends pas qu'il n'est plus loggé
+[] Toastify lors d'un ajout activité, faire en sorte que la notficiation disparaisse apres un certain temps
